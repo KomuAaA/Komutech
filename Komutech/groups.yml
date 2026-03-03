@@ -1,0 +1,666 @@
+##==========口木科技==========
+Komutech:
+  lateInit: false
+  type: nested
+  item:
+    material_type: skull_hash
+    material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+    name: '{#00FA9A}&kA{#2DFBAE}&l口{#5AFCC2}&l木{#86FDD7}&l科{#B3FEEB}&l技{#E0FFFF}&kA'
+  tier: 0
+##口木科技
+Komutech_CD1:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 1
+Komutech_JZ_XX:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+    name: '{#00FA9A}&kA{#2DFBAE}&l口{#5AFCC2}&l木{#86FDD7}&l科{#B3FEEB}&l技{#E0FFFF}&kA &7- &4&l信息'
+  parent: Komutech
+  tier: 2
+Komutech_CD3:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 3
+Komutech_GXRZ:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: globe_banner_pattern
+    glow: true
+    name: '&6&l更新日志'
+  parent: Komutech
+  tier: 4
+  actions:
+  - "display_slimefunitem KOMUTECH_更新日志"
+Komutech_CD5:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 5
+Komutech_CD6:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 6
+Komutech_L_XX:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: painting
+    name: '&b&l灵 &7- &4&l信息'
+    glow: true
+  parent: Komutech
+  tier: 7
+Komutech_CD8:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 8
+Komutech_L_GL:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: structure_void
+    glow: true
+    name: '&b&l灵 &7- {#FF00FF}&l管{#D80080}&l理{#B20060}&l物{#8B0000}&l品'
+    glow: true
+  parent: Komutech
+  tier: 9
+Komutech_JZ_JCWP:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: potion
+    name: '{#00FA9A}&kA{#2DFBAE}&l口{#5AFCC2}&l木{#86FDD7}&l科{#B3FEEB}&l技{#E0FFFF}&kA &7- {#00FA9A}&l基{#27FBA6}&l础{#4FFCB3}&l物{#77FDC0}&l品'
+  parent: Komutech
+  tier: 10
+Komutech_JZ_JCJQ:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: structure_block
+    name: '{#00FA9A}&kA{#2DFBAE}&l口{#5AFCC2}&l木{#86FDD7}&l科{#B3FEEB}&l技{#E0FFFF}&kA &7- {#00FA9A}&l基{#27FBA6}&l础{#6BD5E6}&l机{#00BFFF}&l器'
+  parent: Komutech
+  tier: 11
+Komutech_JZ_GJ:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: shears
+    name: '{#00FA9A}&kA{#2DFBAE}&l口{#5AFCC2}&l木{#86FDD7}&l科{#B3FEEB}&l技{#E0FFFF}&kA &7- {#FFFACD}&l工{#FFDAB9}&l具'
+  parent: Komutech
+  tier: 12
+Komutech_CD13:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: white_stained_glass_pane
+    glow: false
+    name: '&f&l第一页'
+  parent: Komutech
+  tier: 13
+Komutech_L_JCWP:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: amethyst_cluster
+    name: '&b&l灵 &7- {#00FA9A}&l基{#27FBA6}&l础{#4FFCB3}&l物{#77FDC0}&l品'
+  parent: Komutech
+  tier: 14
+Komutech_L_DJ:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: magma_cream
+    name: '&b&l灵 &7- {#FFF0F5}&l道{#FFE4E1}&l具'
+  parent: Komutech
+  tier: 15
+Komutech_L_GJ:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: ender_eye
+    name: '&b&l灵 &7- {#FFFACD}&l工{#FFDAB9}&l具'
+  parent: Komutech
+  tier: 16
+Komutech_CD17:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 17
+Komutech_CD18:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 18
+Komutech_JZ_CZWQ:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: white_stained_glass
+    name: '{#00FA9A}&kA{#2DFBAE}&l口{#5AFCC2}&l木{#86FDD7}&l科{#B3FEEB}&l技{#E0FFFF}&kA &7- &9&l材质&3网桥&f(仅展示)'
+  parent: Komutech
+  tier: 19
+Komutech_CD20:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 20
+Komutech_JZ_CZNYGLQ:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: sea_lantern
+    name: '{#00FA9A}&kA{#2DFBAE}&l口{#5AFCC2}&l木{#86FDD7}&l科{#B3FEEB}&l技{#E0FFFF}&kA &7- &9&l材质&c能源管理器&f(仅展示)'
+  parent: Komutech
+  tier: 21
+Komutech_CD22:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: white_stained_glass_pane
+    glow: false
+    name: '&f&l第一页'
+  parent: Komutech
+  tier: 22
+Komutech_L_KW:
+  lateInit: false
+  type: sub
+  item:
+    material_type: skull_url
+    material: http://textures.minecraft.net/texture/1fc1c8e8fade18537ed91bfd1bd922a55e17cdc3e5150781a777694f5f097363
+    glow: true
+    name: '&b&l灵 &7- {#778899}&l矿{#708090}&l物'
+  parent: Komutech
+  tier: 23
+Komutech_L_LZZZ:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: bamboo
+    glow: true
+    name: '&b&l灵 &7- {#7FFFD4}&l灵{#55FDC1}&l植{#2AFCAE}&l种{#00FA9A}&l子'
+  parent: Komutech
+  tier: 24
+Komutech_L_LZ:
+  lateInit: false
+  type: sub
+  item:
+    material_type: skull_url
+    material: http://textures.minecraft.net/texture/df9f652e81c8da9a6d74182d6305fd70fd0cde9d4c86a0cee0972134c8b28673
+    glow: true
+    name: '&b&l灵 &7- {#7FFFD4}&l灵{#55FDC1}&l植'
+  parent: Komutech
+  tier: 25
+Komutech_L_FZ:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: end_crystal
+    glow: true
+    name: '&b&l灵 &7- {#E0FFFF}&kA{#E0FFFF}&l法{#FFFDD0}&l则{#FFD700}&kA'
+  parent: Komutech
+  tier: 26
+Komutech_L_WD:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: end_crystal
+    glow: true
+    name: '&b&l灵 &7- {#AFEEEE}&kA{#AFEEEE}&l悟{#CAE6FA}&l道{#E6E6FA}&kA'
+  parent: Komutech
+  tier: 27
+Komutech_CD28:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 28
+Komutech_CD29:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 29
+Komutech_CD30:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 30
+Komutech_CD31:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: white_stained_glass_pane
+    glow: false
+    name: '&f&l第一页'
+  parent: Komutech
+  tier: 31
+Komutech_L_DFKJQ:
+  lateInit: false
+  type: sub
+  item:
+    material_type: skull_url
+    material: http://textures.minecraft.net/texture/145c70e5e5a96bae45c6530ca83faf53231642cca06dff5677640ede978ce3b2
+    glow: true
+    name: '&b&l灵 &7- {#FAF0E6}&l多{#CAE7F6}&l方{#9BDEEE}&l快{#6BD5E6}&l机{#00BFFF}&l器'
+  parent: Komutech
+  tier: 32
+Komutech_L_JQ:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: furnace
+    name: '&b&l灵 &7- {#6BD5E6}&l机{#00BFFF}&l器'
+  parent: Komutech
+  tier: 33
+Komutech_L_LD:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: end_rod
+    glow: false
+    name: '&b&l灵 &7- {#00BFFF}&l灵{#1E90FF}&l电'
+  parent: Komutech
+  tier: 34
+Komutech_CD35:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 35
+Komutech_CD36:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 36
+Komutech_JZ_GLWPJ:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: chain_command_block
+    glow: true
+    name: '{#00FA9A}&kA{#2DFBAE}&l口{#5AFCC2}&l木{#86FDD7}&l科{#B3FEEB}&l技{#E0FFFF}&kA &7- &c&l管理物品集'
+  parent: Komutech
+  tier: 37
+Komutech_JZ_CSGJ:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: light
+    glow: true
+    name: '{#00FA9A}&kA{#2DFBAE}&l口{#5AFCC2}&l木{#86FDD7}&l科{#B3FEEB}&l技{#E0FFFF}&kA &7- &c&l测试工具'
+  parent: Komutech
+  tier: 38
+Komutech_JZ_DJR:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: command_block_minecart
+    glow: true
+    name: '{#00FA9A}&kA{#2DFBAE}&l口{#5AFCC2}&l木{#86FDD7}&l科{#B3FEEB}&l技{#E0FFFF}&kA &7- &a&l&m待加入'
+  parent: Komutech
+  tier: 39
+Komutech_CD40:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: white_stained_glass_pane
+    glow: false
+    name: '&f&l第二页'
+  parent: Komutech
+  tier: 40
+Komutech_L_JZ:
+  lateInit: false
+  type: sub
+  item:
+    material_type: skull_url
+    material: http://textures.minecraft.net/texture/777e40bb0b371b3745dfe5ed52033ffcfc8c82feefc25b34bac7aed1ff9ce58f
+    name: '&b&l灵 &7- {#F4A460}&l卷{#D2691E}&l轴'
+  parent: Komutech
+  tier: 41
+Komutech_L_W:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: netherite_sword
+    name: '&b&l灵 &7- {#800000}&l武'
+  parent: Komutech
+  tier: 42
+Komutech_L_J:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: netherite_chestplate
+    name: '&b&l灵 &7- {#2F4F4F}&l甲'
+  parent: Komutech
+  tier: 43
+Komutech_L_Q:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: blaze_rod
+    name: '&b&l灵 &7- {#5F9EA0}&l器'
+  parent: Komutech
+  tier: 44
+Komutech_L_GF:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: enchanted_book
+    name: '&b&l灵 &7- {#7FFFD4}&l功{#00FFFF}&l法'
+  parent: Komutech
+  tier: 45
+Komutech_CD46:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 46
+Komutech_CD47:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 47
+Komutech_CD48:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 48
+Komutech_CD49:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: white_stained_glass_pane
+    glow: false
+    name: '&f&l第二页'
+  parent: Komutech
+  tier: 49
+Komutech_L_F:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: mojang_banner_pattern
+    name: '&b&l灵 &7- {#C1FFC1}&l符'
+    glow: true
+  parent: Komutech
+  tier: 50
+Komutech_L_DY:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: book
+    name: '&b&l灵 &7- {#F0FFFF}&l丹{#F5FFFA}&l药'
+  parent: Komutech
+  tier: 51
+Komutech_L_SW:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: creeper_spawn_egg
+    name: '&b&l灵 &7- {#FFFAF0}&l生{#FFD700}&l物'
+    glow: true
+  parent: Komutech
+  tier: 52
+Komutech_CD53:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 53
+Komutech_CD54:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 54
+Komutech_CD55:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 55
+Komutech_CD56:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 56
+Komutech_CD57:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 57
+Komutech_CD58:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: white_stained_glass_pane
+    glow: false
+    name: '&f&l第二页'
+  parent: Komutech
+  tier: 58
+Komutech_L_GLY:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: crafting_table
+    name: '&b&l灵 &7- {#ff9a9e}&l✦{#ffacb0}&l赶{#ffbec1}&l流{#fdd0ca}&l云{#fad0c4}&l✦'
+    glow: true
+  parent: Komutech
+  tier: 59
+Komutech_L_ZYC1:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: crafter
+    name: '&b&l灵 &7- {#ffecd2}&l❖{#ffdcc8}&l走{#fccbb5}&l云{#fcbba1}&l川{#fcb69f}&l❖ {#F0FFF0}·➧ {#FF69B4}原版'
+  parent: Komutech
+  tier: 60
+Komutech_L_ZYC2:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: crafter
+    name: '&b&l灵 &7- {#ffecd2}&l❖{#ffdcc8}&l走{#fccbb5}&l云{#fcbba1}&l川{#fcb69f}&l❖ {#E0FFFF}·➧ {#DC143C}粘液'
+    glow: true
+  parent: Komutech
+  tier: 61
+Komutech_CD62:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 62
+Komutech_CD63:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 63
+Komutech_CD64:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 64
+Komutech_CD65:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 65
+Komutech_CD66:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 66
+Komutech_CD67:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: white_stained_glass_pane
+    glow: false
+    name: '&f&l第二页'
+  parent: Komutech
+  tier: 67

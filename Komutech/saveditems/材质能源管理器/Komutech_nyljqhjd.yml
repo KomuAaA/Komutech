@@ -1,0 +1,21 @@
+item:
+  ==: org.bukkit.inventory.ItemStack
+  v: 3465
+  type: sea_lantern
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name:  '{"extra":[{"italic":false,
+     "color":"#F35151","text":"能源连接器"},{"italic":false,
+     "color":"#53EAFD","text":"海晶灯"}],"text":""}'
+    lore:
+    - '{"extra":[{"bold":false,"italic":false,"color":"gray",
+     "text":"范围:"},{bold":true,"italic":false,
+     "color":"#F35151","text":" 6 格"}],"text":""}'
+    - '{"text":""}'
+    - '{"extra":[{"bold":false,"italic":false,"color":"white",
+     "text":"用于连接机器和发电机"}],"text":""}'
+    - '{"extra":[{"bold":false,"italic":false,"color":"white",
+     "text":"可以连接到附近的能源网络"}],"text":""}'
+    PublicBukkitValues:
+      slimefun:slimefun_item: ENERGY_CONNECTOR

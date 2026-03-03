@@ -1,0 +1,40 @@
+item:
+  ==: org.bukkit.inventory.ItemStack
+  v: 3955
+  type: NETHERITE_SWORD
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    enchants:
+      DAMAGE_ALL: 8
+      DURABILITY: 15
+    Unbreakable: true
+    attribute-modifiers:
+      GENERIC_ATTACK_DAMAGE:     # 攻击伤害
+      - ==: org.bukkit.attribute.AttributeModifier
+        amount: 3.0              # ＋3点
+        name: GENERIC.ATTACK_DAMAGE
+        slot: HAND
+        uuid: 00004869-0000-0001-a001-a001a0000000
+        operation: 0
+      GENERIC_ATTACK_SPEED:     # 攻击速度
+      - ==: org.bukkit.attribute.AttributeModifier
+        amount: 0.03              # ＋3%
+        name: GENERIC.ATTACK_SPEED
+        slot: HAND
+        uuid: 00004869-0000-0001-a001-a001b0000000
+        operation: 1
+      minecraft:sweeping_damage_ratio: # 横扫伤害 +100% (相当于横扫之刃II加强版)
+      - ==: org.bukkit.attribute.AttributeModifier
+        amount: 1.0  # 100%额外横扫伤害
+        name: minecraft:sweeping_damage_ratio
+        slot: HAND
+        uuid: 00004869-0000-0001-a001-a001c0000000
+        operation: 0
+      minecraft:block_interaction_range:  # 触及距离 +2格
+      - ==: org.bukkit.attribute.AttributeModifier
+        amount: 3.0
+        name: generic.block_interaction_range
+        slot: HAND
+        uuid: 00004869-0000-0001-a001-a001d0000000
+        operation: 0

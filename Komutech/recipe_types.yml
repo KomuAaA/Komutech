@@ -1,0 +1,290 @@
+KOMUTECH_JZ_JSTQQ:
+  lateInit: false
+  name: '&b&l胶水提取器'
+  lore:
+      - '&f提取胶水'
+      - '&8⇨ &e⚡&7 128 J 可存储'
+      - '&8⇨ &e⚡&7 16 J/s'
+  material_type: mc
+  material: smoker
+KOMUTECH_JZ_WQCZGHQ:
+  lateInit: false
+  name: '&b&l网桥材质更换器'
+  lore:
+      - '&f更换网桥材质'
+      - '&8⇨ &e⚡&7 4096 J 可存储'
+      - '&8⇨ &e⚡&7 128 J/s'
+      - '&b机器'
+  material_type: mc
+  material: smoker
+KOMUTECH_JZ_NYLJQCZGHQ:
+  lateInit: false
+  name: '&b&l能源连接器材质更换器'
+  lore:
+      - '&f更换网桥材质'
+      - '&8⇨ &e⚡&7 4096 J 可存储'
+      - '&8⇨ &e⚡&7 128 J/s'
+      - '&b机器'
+  material_type: mc
+  material: redstone_lamp
+
+##灵脉矿井
+KOMUTECH_L_JQ_LMKJ:
+  lateInit: false
+  name: '{#B0E0E6}&l灵{#87CEEB}&l脉{#4682B4}&l矿{#4169E1}&l井'
+  lore:
+    - '{#B0E0E6}✦ {#87CEEB}开采灵石{#4682B4}·深入灵脉'
+    - '{#87CEEB}▸ {#4682B4}灵能存储 {#4169E1}⚡ {#B0E0E6}4096 J'
+    - '{#4682B4}▸ {#4169E1}能量输出 {#B0E0E6}⚡ {#87CEEB}128 J/s'
+    - '{#4169E1}└─ {#B0E0E6}灵能机器 {#87CEEB}·自动化开采'
+  material_type: skull_url
+  material: http://textures.minecraft.net/texture/8ff3ed1343229f8bc9e1961adeb5b0b0d19db926403978d9502dee578d764355
+KOMUTECH_L_JQ_LNTQQ:
+  lateInit: false
+  name: '{#A6E3FF}&l灵{#87CEEB}&l能{#6495ED}&l提{#9370DB}&l取{#8A2BE2}&l器'
+  lore:
+    - '{#A6E3FF}✦ {#87CEEB}提取灵石{#6495ED}·提取矿石'
+    - '{#87CEEB}▸ {#6495ED}灵能存储 {#9370DB}⚡ {#8A2BE2}4096 J'
+    - '{#6495ED}▸ {#9370DB}能量输出 {#8A2BE2}⚡ {#A6E3FF}128 J/s'
+    - '{#9370DB}└─ {#8A2BE2}灵能机器 {#A6E3FF}·高效稳定'
+  material_type: mc
+  material: light_blue_stained_glass
+KOMUTECH_L_JQ_LNTLQ:
+  lateInit: false
+  name: '{#B0E2FF}&l灵{#7EC0EE}&l能{#5D8AA8}&l提{#4169E1}&l炼{#9370DB}&l器'
+  lore:
+    - '{#B0E2FF}✦ {#7EC0EE}提炼灵矿{#5D8AA8}·提纯灵能'
+    - '{#7EC0EE}▸ {#5D8AA8}灵能存储 {#4169E1}⚡ {#9370DB}4096 J'
+    - '{#5D8AA8}▸ {#4169E1}能量输出 {#9370DB}⚡ {#B0E2FF}128 J/s'
+    - '{#4169E1}└─ {#9370DB}灵能机器 {#B0E2FF}·高效稳定'
+    - '&7些许配方需塞入2个到堆叠里合成！'
+  material_type: skull_url
+  material: http://textures.minecraft.net/texture/2a74ac4d1f9cbd107d4aa858a232c44915579aaca32aa2af95459fca0aac9b
+
+##轮回渡罪狱
+KOMUTECH_L_JQ_LHDZY:
+  lateInit: false
+  name: '{#FF5555}&l😈{#FF3333}&l轮{#FF0000}&l回{#CC2244}&l渡{#991166}&l罪{#770088}&l狱{#550066}&l😈'
+  lore:
+    - "{#FF5555}◈ {#FF3333}轮{#FF0000}回{#CC2244}渡{#991166}罪{#770088}狱{#550066}·{#550066}业{#770088}火{#991166}炼{#CC2244}心{#FF0000} {#FF3333}◈"
+    - "{#FF5555}§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+    - "{#FF3333}│ {#FF0000}囚心锁魄 {#CC2244}│ {#991166}锢影铸形 {#FF3333}│"
+    - "{#FF0000}│ {#CC2244}砺体涤尘 {#991166}│ {#770088}革心洗业 {#FF0000}│"
+    - "{#CC2244}│ {#991166}洗尽罪孽 {#770088}│ {#550066}重塑魂魄 {#CC2244}│"
+    - "{#FF5555}§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+    - "{#FF3333}❖ {#FF0000}灵能存储 {#CC2244}► {#991166}133,441 J {#FF3333}⚡"
+    - "{#FF0000}❖ {#CC2244}能量输出 {#991166}► {#770088}1,314 J/s {#FF0000}⚡"
+    - "{#FF5555}§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+    - "{#FF3333}『{#FF0000}渡尽轮回·方得解脱{#FF3333}』"
+  material_type: skull_base64
+  material: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTcwNTdhMDUzNGQyYTVjYzM1NTJkMDk4MjAxMTY4ODNiN2E2Y2ExMzhlMWRhMTkyYjFmNmU1MDcwMWZmNzdkZSJ9fX0=
+
+##一芥乾坤
+KOMUTECH_L_JQ_XPYJQK:
+  lateInit: false
+  name: '&6&l『&a下品&6&l』{#7FFFD4}&l一{#55FFAA}&l芥{#FFA500}&l乾{#8B0000}&l坤{#8B0000}&l'
+  lore:
+      - '{#7FFFD4}❖ {#55FFAA}芥子纳须弥 {#FFA500}·乾坤藏洞天'
+      - '{#7FFFD4}│ {#55FFAA}链接大能开辟的材料洞天'
+      - '{#55FFAA}│ {#FFA500}能量存储 {#8B0000}⚡ {#7FFFD4}3344 J'
+      - '{#FFA500}│ {#8B0000}能量输出 {#7FFFD4}⚡ {#55FFAA}520 J/s'
+      - '{#8B0000}└─ {#7FFFD4}灵能机器 {#55FFAA}·连接虚实'
+  material_type: skull_url
+  material: http://textures.minecraft.net/texture/fbe0d9c13294d6c217c34d6662dd7d1755176c062e0c1974c55f48667a4857
+KOMUTECH_L_JQ_ZPYJQK:
+  lateInit: false
+  name: '&6&l『&e中品&6&l』{#7FFFD4}&l一{#55FFAA}&l芥{#FFA500}&l乾{#8B0000}&l坤{#8B0000}&l'
+  lore:
+      - '{#7FFFD4}❖ {#55FFAA}芥子纳须弥 {#FFA500}·乾坤藏洞天'
+      - '{#7FFFD4}│ {#55FFAA}链接大能开辟的材料洞天'
+      - '{#55FFAA}│ {#FFA500}能量存储 {#8B0000}⚡ {#7FFFD4}32768 J'
+      - '{#FFA500}│ {#8B0000}能量输出 {#7FFFD4}⚡ {#55FFAA}1314 J/s'
+      - '{#8B0000}└─ {#7FFFD4}灵能机器 {#55FFAA}·连接虚实'
+  material_type: skull_base64
+  material: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWIzNTNjMDcxNzk3NDUxMDAzMmM2MWYyZGU2NGFlZTA4MTg4MzUyZDZkMDE0NDQwOGZhMjI5NzYyOWEyZDYyIn19fQ==
+KOMUTECH_L_JQ_SPYJQK:
+  lateInit: false
+  name: '&6&l『&3上品&6&l』{#7FFFD4}&l一{#55FFAA}&l芥{#FFA500}&l乾{#8B0000}&l坤{#8B0000}&l'
+  lore:
+      - '{#7FFFD4}❖ {#55FFAA}芥子纳须弥 {#FFA500}·乾坤藏洞天'
+      - '{#7FFFD4}│ {#55FFAA}链接大能开辟的材料洞天'
+      - '{#55FFAA}│ {#FFA500}能量存储 {#8B0000}⚡ {#7FFFD4}114514 J'
+      - '{#FFA500}│ {#8B0000}能量输出 {#7FFFD4}⚡ {#55FFAA}3344 J/s'
+      - '{#8B0000}└─ {#7FFFD4}灵能机器 {#55FFAA}·连接虚实'
+  material_type: skull_base64
+  material: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTI4OWQ1YjE3ODYyNmVhMjNkMGIwYzNkMmRmNWMwODVlODM3NTA1NmJmNjg1YjVlZDViYjQ3N2ZlODQ3MmQ5NCJ9fX0=
+KOMUTECH_L_JQ_JPYJQK:
+  lateInit: false
+  name: '&6&l『&c极品&6&l』{#7FFFD4}&l一{#55FFAA}&l芥{#FFA500}&l乾{#8B0000}&l坤{#8B0000}&l'
+  lore:
+      - '{#7FFFD4}❖ {#55FFAA}芥子纳须弥 {#FFA500}·乾坤藏洞天'
+      - '{#7FFFD4}│ {#55FFAA}链接大能开辟的材料洞天'
+      - '{#55FFAA}│ {#FFA500}能量存储 {#8B0000}⚡ {#7FFFD4}1314520 J'
+      - '{#FFA500}│ {#8B0000}能量输出 {#7FFFD4}⚡ {#55FFAA}114514 J/s'
+      - '{#8B0000}└─ {#7FFFD4}灵能机器 {#55FFAA}·连接虚实'
+  material_type: skull_base64
+  material: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjU5ZThkNDE5NmZlYTgyNzAyNWMyOTI3YTZmY2Q2ZTk4ZDAzMDA1NzM3MTIzOGE3N2FlNGNkZGViY2U4NjQ3NyJ9fX0=
+
+KOMUTECH_L_DFKJQ_GJT:
+  lateInit: false
+  name: "{#D7C9AB}&l工{#B8A07B}&l匠{#8B7355}&l台"
+  lore:
+    - "{#D7C9AB}✧ {#B8A07B}匠心巧制{#8B7355}·制造灵物"
+    - "{#B8A07B}▸ {#8B7355}工匠技艺{#D7C9AB}·创造无限可能"
+    - "{#8B7355}└─ {#D7C9AB}多方块结构{#B8A07B}·需正确搭建"
+  material_type: skull_url
+  material: http://textures.minecraft.net/texture/145c70e5e5a96bae45c6530ca83faf53231642cca06dff5677640ede978ce3b2
+KOMUTECH_L_DFKJQ_LKTQT:
+  lateInit: false
+  name: "{#E6D7FF}&l灵{#C8A2C8}&l矿{#9B7A9B}&l提{#6A4F6A}&l取{#5A4A5A}&l台"
+  lore:
+    - "{#E6D7FF}✦ {#C8A2C8}灵矿提取台{#9B7A9B}·汲取灵脉精华"
+    - "{#C8A2C8}│ {#9B7A9B}开采原矿{#6A4F6A}·提炼纯净灵石"
+    - "{#9B7A9B}└─ {#6A4F6A}灵能转化{#5A4A5A}·需多方块结构"
+  material_type: mc
+  material: grindstone
+KOMUTECH_L_DFKJQ_ZLT:
+  lateInit: false
+  name: "{#E6D6FF}&l注{#C8A8D8}&l灵{#AA8AB8}&l台"
+  lore:
+    - "{#D8BFD8}❖ {#BA9EBA}注灵台{#9C7D9C}·灵力注入"
+    - "{#D8BFD8}│ {#BA9EBA}为物品注入灵力{#9C7D9C}·提升品质"
+    - "{#D8BFD8}│ {#BA9EBA}灵力循环{#9C7D9C}·效果持续"
+    - "{#D8BFD8}└─ {#BA9EBA}结构要求{#9C7D9C}·需搭建多方块"  
+  material_type: mc
+  material: enchanting_table
+KOMUTECH_L_DFKJQ_LS:
+  lateInit: false
+  name: "{#dad4ec}&l✧{#dad4ec}&l儡{#e9dde5}&l·{#f3e7e9}&l肆{#f3e7e9}&l✧"
+  lore:
+    - "{#dad4ec}❖ {#e9dde5}儡肆{#f3e7e9}·灵傀交易·"
+    - "{#dad4ec}│ {#e9dde5}收残换新{#f3e7e9}·重焕灵韵"
+    - "{#dad4ec}│ {#e9dde5}万傀云集{#f3e7e9}·儡肆藏傀"
+    - "{#dad4ec}└─ {#e9dde5}结构要求{#f3e7e9}·需搭建多方块"
+  material_type: mc
+  material: chiseled_bookshelf
+
+##灵能炼器坊
+KOMUTECH_L_JQ_LNLQF:
+  lateInit: false
+  name: "{#FF4500}&l灵{#FF6347}&l能{#E9967A}&l炼{#CD5C5C}&l器{#B22222}&l坊"
+  lore:
+    - "{#FF4500}⟡ {#FF6347}炼器锻造{#E9967A}·{#CD5C5C}器承精魄{#B22222} ⟡"
+    - "{#FF4500}│ {#FF6347}灵蕴储存 &6⚡ {#CD5C5C}131400 {#B22222}J 容量"
+    - "{#FF4500}│ {#FF6347}器承流韵 &6⚡ {#CD5C5C}52000 {#B22222}J/s 通量"
+    - "{#FF4500}└─ {#FF6347}千锤百炼{#E9967A}·{#CD5C5C}器蕴灵华"
+  material_type: skull_url
+  material: http://textures.minecraft.net/texture/b81ef23ed7da7ee048a8c5998a01e0d3d5357d426a18ac9e9613a5dd5333ebd4
+KOMUTECH_L_JQ_FLHZT:
+  lateInit: false
+  name: "{#F5F0E1}&l符{#E6D5B8}&l箓{#D4B996}&l绘{#BA946F}&l制{#8B6E4E}&l台"
+  material_type: skull_url
+  material: http://textures.minecraft.net/texture/145c70e5e5a96bae45c6530ca83faf53231642cca06dff5677640ede978ce3b2
+  lore:
+    - "{#F5F0E1}🖌 {#E6D5B8}桃木为基 {#D4B996}· {#BA946F}灵玉镶边 {#F5F0E1}🖌"
+    - "{#E6D5B8}│ {#D4B996}案承天地灵韵 {#BA946F}· {#8B6E4E}墨染符箓真章 {#7A5F40}"
+    - "{#D4B996}│ {#BA946F}置空白符箓于上 {#8B6E4E}· {#7A5F40}引灵纹自笔尖生 {#6B5239}"
+    - "{#BA946F}│ {#8B6E4E}灵韵流转加持 {#7A5F40}· {#6B5239}绘专属秘符 {#5C4630}"
+    - "{#8B6E4E}│ {#7A5F40}需以灵墨为引 {#6B5239}· {#5C4630}辅以空白符箓 {#4D3927}"
+    - "{#7A5F40}└─ {#6B5239}修仙制符之基 {#5C4630}· {#4D3927}万符皆出于此 {#3E2F1E}"
+KOMUTECH_L_JQ_JZZXT:
+  lateInit: false
+  name: "{#F5F0E1}&l卷{#E6D5B8}&l轴{#D4B996}&l撰{#BA946F}&l写{#8B6E4E}&l台"
+  lore:
+    - "{#F5F0E1}📜 {#E6D5B8}墨染宣章 {#D4B996}· {#BA946F}灵韵入卷 {#F5F0E1}📜"
+    - "{#E6D5B8}│ {#D4B996}灵蕴深蓄 &6⚡ {#BA946F}131400 {#8B6E4E}J 容量 {#7A5F40}"
+    - "{#D4B996}│ {#BA946F}灵墨流韵 &6⚡ {#8B6E4E}52000 {#7A5F40}J/s 通量 {#6B5239}"
+    - "{#BA946F}│ {#8B6E4E}青竹为笔 {#7A5F40}· {#6B5239}灵泉为墨 {#5C4630}"
+    - "{#8B6E4E}└─ {#7A5F40}一卷定乾坤 {#6B5239}· {#5C4630}墨香凝灵章 {#4D3927}"
+  material_type: skull_url
+  material: http://textures.minecraft.net/texture/4f3144d72dad12a12e6dd295d13c8e983bc9697d61fd72af2d7c0a8e8f65140a
+KOMUTECH_L_JQ_LSZSY:
+  lateInit: false
+  name: "{#A7F3D0}炼{#6EE7B7}枢{#34D399}造{#10B981}生{#059669}仪"
+  lore:
+    - "{#A7F3D0}❀ {#6EE7B7}青焰锻灵骨 {#34D399}· {#10B981}玄枢织灵胎 {#059669}❀"
+    - "{#A7F3D0}│ {#6EE7B7}灵蕴储存 &6⚡ {#10B981}131400 {#059669}J 容量"
+    - "{#A7F3D0}│ {#6EE7B7}灵枢运转 &6⚡ {#10B981}52000 {#059669}J/s 通量"
+    - "{#A7F3D0}└─ {#6EE7B7}灵芽破土 {#34D399}· {#10B981}生息自来 {#059669}"
+  material_type: skull_base64
+  material: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjRiNTRmM2U2YTcwMTZhMTRlNzZlZWRjNTMwNDBmNDk2MDU4MWJhY2FjODE0ZmZiNTgxNmZhZTFhMTRiMDE4ZCJ9fX0=
+
+##法则承载器
+KOMUTECH_L_JQ_FZCZQ:
+  lateInit: false
+  name: '{#FFF8DC}&l法{#F0E68C}&l则{#B0C4DE}&l承{#778899}&l载{#2F4F4F}&l器'
+  lore:
+      - '{#FFF8DC}❖ {#F0E68C}法则承载器{#B0C4DE}·感悟凝聚'
+      - '{#FFF8DC}│ {#F0E68C}承载天地法则{#B0C4DE}·秩序容器'
+      - '{#FFF8DC}│ {#F0E68C}感悟转化枢纽{#B0C4DE}·连接虚实'
+      - '{#FFF8DC}└─ {#F0E68C}法则存储核心{#B0C4DE}·秩序永恒'
+      - '&7需按悟道要求放置！'
+  material_type: skull_url
+  material: http://textures.minecraft.net/texture/6b9c49ffdf4ce4c6f5f049efc8ca0e08b9b5bbf3c6a8783dfaaccad77dfc997a
+##万相制造仪
+KOMUTECH_L_WD_WXZZY:
+  lateInit: false
+  name: '{#ffecc2}▣{#ffdf9e}万{#ffd27a}相{#ffc556}制{#ffd27a}造{#ffdf9e}仪{#ffecc2}▣'
+  lore:
+    - "{#ffecc2}◇ {#ffdf9e}千机化形 {#ffecc2}◈ {#ffd27a}万象制造 {#ffecc2}◇"
+    - " {#ffdf9e}┝ {#ffd27a}聚天地造化之功 {#ffc556}· 铸万相法仪"
+    - " {#ffdf9e}┝ {#ffd27a}融万物法则之理 {#ffc556}· 成悟道神器"
+    - "{#ffd27a} ═══════ {#ffdf9e}灵能参数 {#ffd27a}═══════"
+    - "   {#ffc556}◇ 灵蕴存储: {#ffd27a}168000 {#ffc556}J"
+    - "   {#ffc556}◇ 灵枢通量: {#ffd27a}8800 {#ffc556}J/s"
+    - "   {#ffd27a}〖{#ffc556}万相工坊{#ffd27a}〗 {#ffdf9e}千机成·万物生"
+    - "   {#ffecc2}万相归元，制造天成"
+  material_type: mc
+  material: crafter
+
+##种植手册
+KOMUTECH_L_ZS_ZZCC:
+  lateInit: false
+  name: '{#98FB98}&l种{#90EE90}&l植{#7CFC00}&l产{#32CD32}&l出'
+  lore:
+  - '{#98FB98}❖ {#90EE90}种植产出'
+  - '{#98FB98}│ {#90EE90}种子种植成熟后获得产物'
+  - '{#90EE90}│ {#7CFC00}各产物具体种植方法'
+  - '{#7CFC00}└─ {#32CD32}详见种植手册'
+  material_type: mc
+  material: wheat_seeds
+  
+##击杀生物掉落
+KOMUTECH_L_ZS_JSSWDL:
+  lateInit: false
+  name: '{#FFE4E1}⚔{#FF6B6B}&l击{#DC143C}&l杀{#8B0000}&l生{#660000}&l物{#440000}&l掉{#220000}&l落{#FF6B6B}⚔'
+  lore:
+    - "{#FFE4E1}▸ {#FF6B6B}击杀指定目标生物 {#DC143C}· {#8B0000}触发专属掉落"
+    - "{#FF6B6B}▸ {#DC143C}成功击杀后 {#8B0000}· {#660000}可获得对应物品"
+  material_type: mc
+  material: iron_sword
+##挖掘方块掉落
+KOMUTECH_L_ZS_WJFKDL:
+  lateInit: false
+  name: '{#FFE4E1}⛏&l{#FF6B6B}挖掘方块掉落{#DC143C}⛏'
+  lore:
+    - "{#FFE4E1}▸ {#FF6B6B}挖掘指定目标方块 {#DC143C}· {#8B0000}触发专属掉落"
+    - "{#FF6B6B}▸ {#DC143C}成功挖掘后 {#8B0000}· {#660000}概率获得对应物品"
+  material_type: mc
+  material: iron_pickaxe
+##使用获取
+KOMUTECH_L_ZS_SYHQ:
+  lateInit: false
+  name: '{#FFF5E1}✦&l{#FFB74D}使用获取{#FF9800}✦'
+  lore:
+    - "{#FFB74D}│ {#FF9800}获取方式 {#F57C00}» {#E65100}右键使用触发"
+    - "{#FFB74D}▸ {#FF9800}使用成功后 {#F57C00}· {#E65100}获得对应物品"
+  material_type: mc
+  material: milk_bucket
+
+##多方快转换手册
+KOMUTECH_L_ZS_DFJZG:
+  lateInit: false
+  name: '&f&l多方快转换'
+  lore:
+    - '{#98FB98}❖ {#90EE90}转换方式说明'
+    - '{#98FB98}│ {#90EE90}通过搭建多方快结构进行转换'
+    - '{#90EE90}│ {#7CFC00}具体产物转换教程'
+    - '{#7CFC00}└─ {#32CD32}详见多方快转换手册'
+  material_type: mc
+  material: bricks

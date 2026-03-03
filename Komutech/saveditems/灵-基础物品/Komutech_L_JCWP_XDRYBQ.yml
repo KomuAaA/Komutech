@@ -1,0 +1,38 @@
+item:
+  ==: org.bukkit.inventory.ItemStack
+  v: 4189
+  type: WHITE_BANNER
+  meta:
+    ==: ItemMeta
+    meta-type: BANNER
+    display-name: '{"extra":[{"bold":true,"italic":false,"color":"#8B0000","text":"小"},
+     {"bold":true,"italic":false,"color":"#A52A2A","text":"岛"},
+     {"bold":true,"italic":false,"color":"#B22222","text":"人"},
+     {"bold":true,"italic":false,"color":"#CD5C5C","text":"诱"},
+     {"bold":true,"italic":false,"color":"#DC143C","text":"捕"},
+     {"bold":true,"italic":false,"color":"#FF6347","text":"器"}],"text":""}'
+    lore:
+    - '{"extra":[{"bold":false,"italic":false,"color":"#8B0000","text":"✦ "},
+      {"bold":false,"italic":false,"color":"#A52A2A","text":"异族之旗"},
+      {"bold":false,"italic":false,"color":"#B22222","text":" · "},
+      {"bold":false,"italic":false,"color":"#CD5C5C","text":"红⚪白底"}],"text":""}'
+    - '{"extra":[{"bold":false,"italic":false,"color":"#DC143C","text":"┃ "},
+      {"bold":false,"italic":false,"color":"#FF6347","text":"墨×覆其上"},
+      {"bold":false,"italic":false,"color":"#FF4500","text":" · "},
+      {"bold":false,"italic":false,"color":"#FF8C00","text":"效用遂知"}],"text":""}'
+    - '{"extra":[{"bold":false,"italic":false,"color":"#FFA500","text":"┃ "},
+      {"bold":false,"italic":false,"color":"#FFD700","text":"同族见之"},
+      {"bold":false,"italic":false,"color":"#EEE8AA","text":" · "},
+      {"bold":false,"italic":false,"color":"#F0E68C","text":"必怒而近前"}],"text":""}'
+    - '{"extra":[{"bold":false,"italic":false,"color":"#BDB76B","text":"┃ "},
+      {"bold":false,"italic":false,"color":"#9ACD32","text":"遂被当作"},
+      {"bold":false,"italic":false,"color":"#32CD32","text":" · "},
+      {"bold":false,"italic":false,"color":"#228B22","text":"诱捕之物"}],"text":""}'
+    Unbreakable: true
+    patterns:
+    - ==: Pattern
+      color: RED
+      pattern: minecraft:circle
+    - ==: Pattern
+      color: BLACK
+      pattern: minecraft:cross

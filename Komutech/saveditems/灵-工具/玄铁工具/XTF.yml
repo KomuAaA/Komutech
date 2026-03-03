@@ -1,0 +1,40 @@
+item:
+  ==: org.bukkit.inventory.ItemStack
+  v: 3955
+  type: NETHERITE_AXE
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    enchants:
+      DIG_SPEED: 8
+      DURABILITY: 15
+    Unbreakable: true
+    attribute-modifiers:
+      GENERIC_ATTACK_DAMAGE:     # 攻击伤害
+      - ==: org.bukkit.attribute.AttributeModifier
+        amount: 3.0              # ＋3点
+        name: GENERIC.ATTACK_DAMAGE
+        slot: HAND
+        uuid: 00004869-0000-0001-a002-a002a0000000
+        operation: 0
+      GENERIC_ATTACK_SPEED:     # 攻击速度
+      - ==: org.bukkit.attribute.AttributeModifier
+        amount: 0.03              # ＋3%
+        name: GENERIC.ATTACK_SPEED
+        slot: HAND
+        uuid: 00004869-0000-0001-a002-a002b0000000
+        operation: 1
+      minecraft:mining_efficiency: # 挖掘效率
+      - ==: org.bukkit.attribute.AttributeModifier
+        amount: 1.0  
+        name: minecraft:mining_efficiency
+        slot: HAND
+        uuid: 00004869-0000-0001-a002-a002c0000000
+        operation: 0
+      minecraft:block_interaction_range:  # 触及距离 +2格
+      - ==: org.bukkit.attribute.AttributeModifier
+        amount: 3.0
+        name: generic.block_interaction_range
+        slot: HAND
+        uuid: 00004869-0000-0001-a002-a002d0000000
+        operation: 0

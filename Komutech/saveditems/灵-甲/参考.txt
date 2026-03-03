@@ -1,0 +1,232 @@
+##1. 生命与防御类属性
+  GENERIC_MAX_HEALTH:               # 最大生命值（20点=10颗心）
+    - amount: 1.0                   # 增加1点生命值（半颗心）
+  GENERIC_KNOCKBACK_RESISTANCE:     # 击退抗性（0-1）
+    - amount: 0.1                   # 增加10%击退抗性
+  GENERIC_ARMOR:                    # 护甲值（每点提供4%伤害减免）
+    - amount: 1.0                   # 增加1点护甲
+  GENERIC_ARMOR_TOUGHNESS:          # 护甲韧性（减少高伤害穿透）
+    - amount: 1.0                   # 增加1点护甲韧性
+##2. 移动与机动类属性
+  GENERIC_MOVEMENT_SPEED:           # 移动速度（基础0.1）
+    - amount: 0.1                   # 增加100%移动速度
+  GENERIC_FLYING_SPEED:             # 飞行速度（创造模式）
+    - amount: 0.1                   # 增加飞行速度
+  GENERIC_STEP_HEIGHT:              # 步高（默认0.6）
+    - amount: 0.5                   # 增加步高
+##3. 攻击与战斗类属性
+  GENERIC_ATTACK_DAMAGE:            # 攻击伤害（基础1点）
+    - amount: 1.0                   # 增加1点攻击伤害
+  GENERIC_ATTACK_SPEED:             # 攻击速度（基础4点）
+    - amount: 1.0                   # 增加1点攻击速度
+  GENERIC_ATTACK_KNOCKBACK:         # 攻击击退（基础0点）
+    - amount: 1.0                   # 增加击退效果
+##4. 其他属性
+  GENERIC_LUCK:                     # 幸运值（影响战利品）
+    - amount: 1.0                   # 增加1点幸运值
+  GENERIC_FOLLOW_RANGE:             # 跟随范围（生物AI）
+    - amount: 1.0                   # 增加1点跟随距离
+##5. 方块与实体交互
+  GENERIC_BLOCK_INTERACTION_RANGE:  # 方块交互距离（默认4.5）
+    - amount: 1.0                   # 增加1格交互距离
+  GENERIC_ENTITY_INTERACTION_RANGE: # 实体交互距离（默认3.0）
+    - amount: 1.0                   # 增加1格实体交互距离
+##6. 重力与坠落
+  GENERIC_GRAVITY:                  # 重力（默认0.08）
+    - amount: 0.01                  # 略微增加重力
+  GENERIC_SAFE_FALL_DISTANCE:       # 安全坠落距离
+    - amount: 1.0                   # 增加1格安全坠落高度
+  GENERIC_FALL_DAMAGE_MULTIPLIER:   # 坠落伤害倍率（默认1.0）
+    - amount: 0.1                   # 增加10%坠落伤害
+##7. 坐骑相关属性
+  HORSE_JUMP_STRENGTH:              # 马匹跳跃力量（默认0.7）
+    - amount: 0.1                   # 增加跳跃力量
+##8. 僵尸相关属性
+  ZOMBIE_SPAWN_REINFORCEMENTS:     # 僵尸增援机会（默认0.0）
+    - amount: 0.1                   # 增加10%增援概率
+##9. 缩放与燃烧
+  GENERIC_SCALE:                    # 缩放比例（默认1.0）
+    - amount: 0.1                   # 增加10%大小
+  GENERIC_BURNING_TIME:             # 燃烧时间（秒）
+    - amount: 1.0                   # 增加1秒燃烧时间
+##10. 特殊抗性
+  GENERIC_EXPLOSION_KNOCKBACK_RESISTANCE: # 爆炸击退抗性
+    - amount: 0.1                   # 增加10%爆炸抗性
+各部位装备建议配置
+ ##头盔（HEAD）
+    GENERIC_MAX_HEALTH:              # 生命值（适合头盔）
+    GENERIC_ARMOR:                   # 护甲（保护头部）
+    GENERIC_ARMOR_TOUGHNESS:         # 韧性（抗爆头）
+    GENERIC_KNOCKBACK_RESISTANCE:    # 抗性（防止头部被击晕）
+ ##胸甲（CHEST）
+    GENERIC_MAX_HEALTH:              # 核心生命值
+    GENERIC_ARMOR:                   # 主要护甲（胸部防护）
+    GENERIC_KNOCKBACK_RESISTANCE:    # 抗性（防止被击退）
+    GENERIC_ATTACK_DAMAGE:           # 攻击力（胸部力量）
+ ##护腿（LEGS）
+    GENERIC_MOVEMENT_SPEED:          # 移动速度（腿部）
+    GENERIC_ARMOR:                   # 腿部护甲
+    GENERIC_STEP_HEIGHT:             # 步高（跨越障碍）
+ ##靴子（FEET）
+    GENERIC_MOVEMENT_SPEED:          # 移动速度（关键）
+    GENERIC_ARMOR:                   # 脚部护甲
+    GENERIC_STEP_HEIGHT:             # 步高
+    GENERIC_SAFE_FALL_DISTANCE:      # 坠落保护
+ ##主手武器（HAND）
+    GENERIC_ATTACK_DAMAGE:           # 攻击伤害   效率
+    GENERIC_ATTACK_SPEED:            # 攻击速度   冷却
+    GENERIC_ATTACK_KNOCKBACK:        # 击退效果
+    GENERIC_LUCK:                    # 战利品获取
+    Sweeping Damage Ratio             # 横扫
+ ##副手（OFF_HAND）
+    GENERIC_BLOCK_INTERACTION_RANGE: # 交互距离（盾牌）
+    GENERIC_ARMOR:                   # 额外护甲（副手盾牌）
+    GENERIC_KNOCKBACK_RESISTANCE:    # 持盾抗性
+
+操作类型（operation）
+  0 - ADD_NUMBER：直接增加固定值（如：+2生命值）
+
+  1 - ADD_SCALAR：基于基础值的百分比增加（如：+10%生命值）
+
+  2 - MULTIPLY_SCALAR_1：最终乘数（通常用于伤害计算）
+
+槽位（slot）选项
+  HAND：主手持握
+
+  OFF_HAND：副手持握
+
+  HEAD：头盔
+
+  CHEST：胸甲
+
+  LEGS：护腿
+
+  FEET：靴子
+
+  任何：任意槽位都生效
+
+##类型1
+  GENERIC_MAX_HEALTH - 最大生命值：增加玩家的最大生命值
+
+  GENERIC_KNOCKBACK_RESISTANCE - 击退抗性：减少被击退的距离
+
+  GENERIC_MOVEMENT_SPEED - 移动速度：增加玩家的移动速度
+
+  GENERIC_ATTACK_DAMAGE - 攻击伤害：增加近战攻击伤害
+
+  GENERIC_ATTACK_SPEED - 攻击速度：增加攻击速度
+
+  GENERIC_ARMOR - 护甲值：提供物理伤害减免
+
+  GENERIC_ARMOR_TOUGHNESS - 护甲韧性：减少高伤害对护甲效果的穿透
+
+  GENERIC_LUCK - 幸运：影响战利品掉落质量
+
+  HORSE_JUMP_STRENGTH - 马匹跳跃力量：骑马时增加跳跃高度
+
+  ZOMBIE_SPAWN_REINFORCEMENTS - 僵尸增援机会：影响僵尸召唤增援的概率（对玩家效果有限）
+
+  GENERIC_FOLLOW_RANGE - 跟随范围：影响生物发现和跟随玩家的距离（对玩家效果有限）
+attribute-modifiers:
+  # 最大生命值属性 - 头部装备
+  GENERIC_MAX_HEALTH:
+  - ==: org.bukkit.attribute.AttributeModifier
+    amount: 1.0  # 增加0.5颗心（1点生命值）
+    name: generic.maxHealth  # 属性名称：最大生命值
+    slot: HEAD  # 生效槽位：头部（需要装备在头盔槽位）
+    uuid: 00000001-0000-0002-0000-000300000004  # 唯一标识符
+    operation: 0  # 操作类型：0=加法（直接增加值）
+
+  # 击退抗性属性 - 头部装备
+  GENERIC_KNOCKBACK_RESISTANCE:
+  - ==: org.bukkit.attribute.AttributeModifier
+    amount: 1.0  # 增加100%击退抗性（完全免疫击退）
+    name: generic.knockbackResistance  # 属性名称：击退抗性
+    slot: HEAD  # 生效槽位：头部
+    uuid: 00000009-0000-000a-0000-000b0000000c
+    operation: 0  # 加法运算（直接增加固定值）
+
+  # 移动速度属性 - 头部装备
+  GENERIC_MOVEMENT_SPEED:
+  - ==: org.bukkit.attribute.AttributeModifier
+    amount: 1.0  # 增加移动速度（基础移动速度为0.1，增加后为0.2）
+    name: generic.movementSpeed  # 属性名称：移动速度
+    slot: HEAD  # 生效槽位：头部
+    uuid: 00000011-0000-0012-0000-001300000014
+    operation: 0  # 加法运算（直接增加固定值）
+
+  # 攻击伤害属性 - 头部装备
+  GENERIC_ATTACK_DAMAGE:
+  - ==: org.bukkit.attribute.AttributeModifier
+    amount: 1.0  # 增加1点攻击伤害（半颗心，约0.5颗心伤害）
+    name: generic.attackDamage  # 属性名称：攻击伤害
+    slot: HEAD  # 生效槽位：头部
+    uuid: 0000000d-0000-000e-0000-000f00000010
+    operation: 0  # 加法运算（直接增加固定值）
+
+  # 攻击速度属性 - 头部装备
+  GENERIC_ATTACK_SPEED:
+  - ==: org.bukkit.attribute.AttributeModifier
+    amount: 1.0  # 增加1点攻击速度（基础攻击速度为4，增加后为5）
+    name: generic.attackSpeed  # 属性名称：攻击速度
+    slot: HEAD  # 生效槽位：头部
+    uuid: 00000015-0000-0016-0000-001700000018
+    operation: 0  # 加法运算（直接增加固定值）
+
+  # 护甲值属性 - 头部装备
+  GENERIC_ARMOR:
+  - ==: org.bukkit.attribute.AttributeModifier
+    amount: 1.0  # 增加1点护甲值（提供4%物理伤害减免）
+    name: generic.armor  # 属性名称：护甲值
+    slot: HEAD  # 生效槽位：头部
+    uuid: 1000003d-0000-003e-0000-003f00000040
+    operation: 0  # 加法运算（直接增加固定值）
+
+  # 护甲韧性属性 - 头部装备
+  GENERIC_ARMOR_TOUGHNESS:
+  - ==: org.bukkit.attribute.AttributeModifier
+    amount: 1.0  # 增加1点护甲韧性（减少高伤害攻击的伤害穿透效果）
+    name: generic.armorToughness  # 属性名称：护甲韧性
+    slot: HEAD  # 生效槽位：头部
+    uuid: 10000045-0000-0046-0000-004700000048
+    operation: 0  # 加法运算（直接增加固定值）
+
+  # 幸运属性 - 头部装备
+  GENERIC_LUCK:
+  - ==: org.bukkit.attribute.AttributeModifier
+    amount: 1.0  # 增加1点幸运值（影响战利品掉落质量）
+    name: generic.luck  # 属性名称：幸运
+    slot: HEAD  # 生效槽位：头部
+    uuid: 00000019-0000-001a-0000-001b0000001c
+    operation: 0  # 加法运算（直接增加固定值）
+
+  # 马匹跳跃力量属性 - 头部装备（骑马时生效）
+  HORSE_JUMP_STRENGTH:
+  - ==: org.bukkit.attribute.AttributeModifier
+    amount: 1.0  # 增加马匹跳跃力量（基础值为0.7，增加后为1.7）
+    name: horse.jumpStrength  # 属性名称：马匹跳跃力量
+    slot: HEAD  # 生效槽位：头部（骑马时生效）
+    uuid: 0000001d-0000-001e-0000-001f00000020
+    operation: 0  # 加法运算（直接增加固定值）
+
+  # 僵尸增援机会属性 - 头部装备
+  ZOMBIE_SPAWN_REINFORCEMENTS:
+  - ==: org.bukkit.attribute.AttributeModifier
+    amount: 1.0  # 增加僵尸增援机会（影响僵尸召唤增援的概率）
+    name: zombie.spawnReinforcements  # 属性名称：僵尸增援机会
+    slot: HEAD  # 生效槽位：头部
+    uuid: 00000021-0000-0022-0000-002300000024
+    operation: 0  # 加法运算（直接增加固定值）
+
+  # 跟随范围属性 - 头部装备
+  GENERIC_FOLLOW_RANGE:
+  - ==: org.bukkit.attribute.AttributeModifier
+    amount: 1.0  # 增加1点跟随范围（影响生物发现和跟随玩家的距离）
+    name: generic.followRange  # 属性名称：跟随范围
+    slot: HEAD  # 生效槽位：头部
+    uuid: 00000025-0000-0026-0000-002700000028
+    operation: 0  # 加法运算（直接增加固定值）
+
+uuid：0-9，a-f ABCDEF
+00000007-0000-0008-0000-00090000000a
+00004869-0000-0000-A001-A001a0000000

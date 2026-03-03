@@ -1,0 +1,20 @@
+id: Komutech
+name: 口木科技
+depends: []
+pluginDepends:
+- Slimefun
+version: Release-1.0
+description: 口木科技
+authors:
+- Komu_A
+loadStartTexts:
+- "==================="
+- "口木科技开始加载"
+- "作者:Komu_A"
+- "感谢您~使用口木科技！"
+- "==================="
+enabledTexts:
+- "==================="
+- "加~载成功！"
+- "感谢您~使用口木科技！"
+- "==================="

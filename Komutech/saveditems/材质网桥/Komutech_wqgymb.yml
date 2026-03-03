@@ -1,0 +1,20 @@
+item:
+  ==: org.bukkit.inventory.ItemStack
+  v: 3465
+  type: warped_planks
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name:  '{"extra":[{"italic":false,
+     "color":"#87CEEB","text":"网桥"},{"italic":false,
+     "color":"#0E6251","text":"诡异木板"}],"text":""}'
+    lore:
+    - '{"text":""}'
+    - '{"extra":[{"bold":false,"italic":false,"color":"gray",
+     "text":"网桥用于连接不同的网络物品"}],"text":""}'
+    - '{"extra":[{"bold":false,"italic":false,"color":"gray",
+     "text":"来形成一个完整的网络"}],"text":""}'
+    - '{"extra":[{"bold":false,"italic":false,"color":"green",
+     "text":"机器"}],"text":""}'
+    PublicBukkitValues:
+      slimefun:slimefun_item: NTW_BRIDGE

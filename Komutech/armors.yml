@@ -1,0 +1,354 @@
+Komutech_L_J_布:
+  protection_types:
+    - 
+  fullSet: false
+  item_group: Komutech_L_J
+  helmet:
+    id: Komutech_L_J_布帽
+    material_type: saveditem
+    material: 灵-甲/布/BM
+    name: '{#FAF0E6}&l布{#E1C1A6}&l帽'
+    lore:
+      - '{#FAF0E6}✦ {#EEDDCC}布制头饰 {#E2CAB3}· {#D6B89A}日常遮护'
+      - '{#CAA681}┃ {#BE9468}帽檐轻便 {#B2824F}· {#A67036}遮阳挡尘'
+      - '{#9A5E1D}┃ {#8E4C04}透气舒适 {#823A00}· {#762800}佩戴轻松'
+      - '{#6A1600}┃ {#5E0400}劳作常备 {#520000}· {#460000}外出良伴'
+      - '{#3A0000}✦ {#2E0000}简朴实用 {#220000}· {#160000}轻便为上'
+      - '&f🍗&a饱和Ⅰ'
+    color: '255,239,213'
+    potion_effects:
+      - "saturation 0"    
+    recipe_type: ENHANCED_CRAFTING_TABLE
+    recipe:
+      1:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      2:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      3:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      4:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      6:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+  chestplate:
+    id: Komutech_L_J_布衣
+    material_type: saveditem
+    material: 灵-甲/布/BY
+    name: '{#FAF0E6}&l布{#E1C1A6}&l衣'
+    lore:
+      - '{#FAF0E6}✦ {#EFE0D0}布制衣衫 {#E5D0B9}· {#DABFA3}日常护体'
+      - '{#CFAF8D}┃ {#C59F76}布料柔软 {#BA8F60}· {#AF7E4A}贴身舒适'
+      - '{#A56E33}┃ {#9A5E1D}透气亲肤 {#8F4E05}· {#843E00}活动自如'
+      - '{#792E00}┃ {#6E1E00}日常穿着 {#631800}· {#581200}劳作必备'
+      - '{#4D0C00}✦ {#420600}简朴实用 {#370000}· {#2C0000}&l舒适为上'
+      - '&f🛡&a抗性提示Ⅰ'
+    color: '255,239,213'
+    potion_effects:
+      - "resistance 0"    
+    recipe_type: ENHANCED_CRAFTING_TABLE
+    recipe:
+      1:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      3:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      4:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      5:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      6:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      7:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      8:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      9:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+  leggings:
+    id: Komutech_L_J_布裤
+    material_type: saveditem
+    material: 灵-甲/布/BK
+    name: '{#FAF0E6}&l布{#E1C1A6}&l裤'
+    lore:
+      - '{#FAF0E6}✦ {#EFE0D0}布制衣物 {#E5D0B9}· {#DABFA3}日常护腿'
+      - '{#CFAF8D}┃ {#C59F76}布料柔软 {#BA8F60}· {#AF7E4A}穿着舒适'
+      - '{#A56E33}┃ {#9A5E1C}活动自如 {#8F4E05}· {#843E00}行动便利'
+      - '{#792E00}┃ {#6E1E00}日常之选 {#631800}· {#581200}劳作良伴'
+      - '{#4D0C00}✦ {#420600}简朴耐用 {#370000}· {#2C0000}&l实用为上'
+      - '&f🍀&a幸运Ⅰ'
+    color: '255,239,213'
+    potion_effects:
+      - "luck 0"    
+    recipe_type: ENHANCED_CRAFTING_TABLE
+    recipe:
+      1:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      2:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      3:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      4:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      6:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      7:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      9:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+  boots:
+    id: Komutech_L_J_布鞋
+    material_type: saveditem
+    material: 灵-甲/布/BX
+    color: '255,239,213'
+    name: '{#FAF0E6}&l布{#E1C1A6}&l鞋'
+    lore:
+      - '{#FAF0E6}✦ {#EFE0D0}布制足履 {#E5D0B9}· {#DABFA3}日常护足'
+      - '{#CFAF8D}┃ {#C59F76}鞋身轻巧 {#BA8F60}· {#AF7E4A}行走舒适'
+      - '{#A56E33}┃ {#9A5E1D}步履轻盈 {#8F4E05}· {#843E00}足底柔软'
+      - '{#792E00}┃ {#6E1E00}室内常穿 {#631800}· {#581200}居家良伴'
+      - '{#4D0C00}✦ {#420600}朴素实用 {#370000}· {#2C0000}&l舒适为先'
+      - '&f👠&a速度Ⅰ'
+    potion_effects:
+      - "speed 0"    
+    recipe_type: ENHANCED_CRAFTING_TABLE
+    recipe:
+      4:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      6:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      7:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+      9:
+        material_type: slimefun
+        material: Komutech_L_JCWP_B
+        amount: 1
+Komutech_L_J_玄铁:
+  protection_types:
+    - BEES
+  fullSet: true
+  item_group: Komutech_L_J
+  helmet:
+    id: Komutech_L_J_玄铁头盔
+    material_type: saveditem
+    material: 灵-甲/玄铁/XTTK
+    name: '{#696969}&l玄{#778899}&l铁{#87CEEB}&l头{#87CEEB}&l盔'
+    lore:
+      - '{#4682B4}✦ {#3D83A8}玄铁铸就 {#35859D}· {#2C8691}护首重盔'
+      - '{#238786}┃ {#1B897A}铁盔覆首 {#128A6F}· {#098B63}思绪清明'
+      - '{#058D77}┃ {#008B8B}防护天灵 {#00A0A0}· {#00B5B5}无惧风雨'
+      - '{#00CACA}┃ {#00DFDF}勇士之冠 {#00F4F4}· {#A0FFFF}智勇双全'
+      - '{#70DBDB}⏣ {#5F9EA0}一头在护 {#4E7E7F}· {#3D5F5F}&l万念皆安'
+      - '&f🍗&a饱和Ⅰ'
+      - '&f🐝&e蜜蜂毒针保护'
+    potion_effects:
+      - "saturation 0"    
+    recipe_type: KOMUTECH_L_DFKJQ_GJT
+    recipe:
+      1:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      2:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      3:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      4:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      5:
+        material_type: slimefun
+        material: Komutech_L_J_布帽
+        amount: 1
+      6:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+  chestplate:
+    id: Komutech_L_J_玄铁胸甲
+    material_type: saveditem
+    material: 灵-甲/玄铁/XTXJ
+    name: '{#696969}&l玄{#778899}&l铁{#87CEEB}&l胸{#87CEEB}&l甲'
+    lore:
+      - '{#4682B4}✦ {#3D83A8}玄铁铸就 {#35859D}· {#2C8691}护身重甲'
+      - '{#238786}┃ {#1B897A}铁甲护心 {#128A6F}· {#098B63}气吞山河'
+      - '{#058D77}┃ {#008B8B}守护要脉 {#00A0A0}· {#00B5B5}固若金汤'
+      - '{#00CACA}┃ {#00DFDF}勇士之铠 {#00F4F4}· {#A0FFFF}威武不屈'
+      - '{#70DBDB}⏣ {#5F9EA0}一甲在身 {#4E7E7F}· {#3D5F5F}&l百战不殆'
+      - '&f🛡&a抗性提示Ⅱ'
+      - '&f🐝&e蜜蜂毒针保护'
+    potion_effects:
+      - "resistance 1"    
+    recipe_type: KOMUTECH_L_DFKJQ_GJT
+    recipe:
+      1:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      2:
+        material_type: slimefun
+        material: Komutech_L_J_布衣
+        amount: 1
+      3:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      4:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      5:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      6:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      7:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      8:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      9:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+  leggings:
+    id: Komutech_L_J_玄铁护腿
+    material_type: saveditem
+    material: 灵-甲/玄铁/XTHT
+    name: '{#696969}&l玄{#778899}&l铁{#87CEEB}&l护{#87CEEB}&l腿'
+    lore:
+      - '{#4682B4}✦ {#3D83A8}玄铁铸就 {#35859D}· {#2C8691}护腿坚固'
+      - '{#238786}┃ {#1B897A}铁甲包覆 {#128A6F}· {#098B63}步履沉稳'
+      - '{#058D77}┃ {#008B8B}防护周全 {#00A0A0}· {#00B5B5}无惧前行'
+      - '{#00CACA}┃ {#00DFDF}勇士之装 {#00F4F4}· {#A0FFFF}征途之伴'
+      - '{#70DBDB}⏣ {#5F9EA0}一腿在护 {#4E7E7F}· {#3D5F5F}&l无畏前行'
+      - '&f🍀&a幸运Ⅲ'
+      - '&f🐝&e蜜蜂毒针保护'
+    potion_effects:
+      - "luck 2"    
+    recipe_type: KOMUTECH_L_DFKJQ_GJT
+    recipe:
+      1:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      2:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      3:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      4:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      5:
+        material_type: slimefun
+        material: Komutech_L_J_布裤
+        amount: 1
+      6:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      7:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      9:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+  boots:
+    id: Komutech_L_J_玄铁鞋子
+    material_type: saveditem
+    material: 灵-甲/玄铁/XTXZ
+    name: '{#696969}&l玄{#778899}&l铁{#87CEEB}&l靴{#87CEEB}&l子'
+    lore:
+      - '{#4682B4}✦ {#3D83A8}玄铁铸就 {#35859D}· {#2C8691}护足重靴'
+      - '{#238786}┃ {#1B897A}铁靴裹足 {#128A6F}· {#098B63}步履如飞'
+      - '{#058D77}┃ {#008B8B}守护足下 {#00A0A0}· {#00B5B5}踏遍山河'
+      - '{#00CACA}┃ {#00DFDF}勇士之履 {#00F4F4}· {#A0FFFF}征途之伴'
+      - '{#70DBDB}⏣ {#5F9EA0}一靴在足 {#4E7E7F}· {#3D5F5F}&l万里无忧'
+      - '&f👠&a速度Ⅰ'
+      - '&f🐝&e蜜蜂毒针保护'
+    potion_effects:
+      - "speed 0"    
+    recipe_type: KOMUTECH_L_DFKJQ_GJT
+    recipe:
+      5:
+        material_type: slimefun
+        material: Komutech_L_J_布鞋
+        amount: 1
+      4:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      6:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      7:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1
+      9:
+        material_type: slimefun
+        material: Komutech_L_KW_XT
+        amount: 1

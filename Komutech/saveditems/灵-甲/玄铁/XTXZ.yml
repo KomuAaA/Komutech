@@ -1,0 +1,62 @@
+item:
+  ==: org.bukkit.inventory.ItemStack
+  v: 3955
+  type: NETHERITE_BOOTS
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    enchants:
+      PROTECTION_ENVIRONMENTAL: 8
+      DURABILITY: 15
+    Unbreakable: true
+    attribute-modifiers:
+      # 最大生命值属性 - 脚部装备
+      GENERIC_MAX_HEALTH:
+      # 基础生命值增加（加法运算）- 脚部装备
+      - ==: org.bukkit.attribute.AttributeModifier
+        amount: 3.0  # 增加1颗心（2点生命值）
+        name: generic.maxHealth  # 属性名称：最大生命值
+        slot: FEET  # 生效槽位：脚部（需要装备在靴子槽位）
+        uuid: 00004869-0000-0000-a014-a014a0000000  # 唯一标识符
+        operation: 0  # 操作类型：0=加法（直接增加值）
+      # 百分比生命值增加（乘法运算）- 脚部装备
+      - ==: org.bukkit.attribute.AttributeModifier
+        amount: 0.03  # 增加1%最大生命值（基于基础值的百分比）
+        name: generic.maxHealth
+        slot: FEET  # 生效槽位：脚部
+        uuid: 00004869-0000-0000-a014-a014a0100000 
+        operation: 1  # 操作类型：1=乘法（基于基础值的百分比增加）
+      # 护甲值属性 - 脚部装备
+      GENERIC_ARMOR:
+      - ==: org.bukkit.attribute.AttributeModifier
+        amount: 3.0  # 增加1点护甲值
+        name: generic.armor  # 属性名称：护甲值
+        slot: FEET  # 生效槽位：脚部
+        uuid: 00004869-0000-0000-a014-a014b0000000 
+        operation: 0  # 加法运算（直接增加固定值）
+        # 护甲值说明：每点护甲提供4%伤害减免
+      # 护甲韧性属性 - 脚部装备
+      GENERIC_ARMOR_TOUGHNESS:
+      - ==: org.bukkit.attribute.AttributeModifier
+        amount: 3.0  # 增加1点护甲韧性（减少高伤害攻击的伤害穿透效果）
+        name: generic.armorToughness  # 属性名称：护甲韧性
+        slot: FEET  # 生效槽位：脚部
+        uuid: 00004869-0000-0000-a014-a014b0100000 
+        operation: 0  # 加法运算（直接增加固定值）
+        # 护甲韧性说明：减少高伤害攻击对护甲减免效果的穿透，使护甲在高伤害面前更有效
+      # 击退抗性属性 - 脚部装备
+      GENERIC_KNOCKBACK_RESISTANCE:
+      - ==: org.bukkit.attribute.AttributeModifier
+        amount: 0.3  # 增加10%击退抗性（0.0=无抗性，1.0=完全免疫击退）
+        name: generic.knockbackResistance  # 属性名称：击退抗性
+        slot: FEET  # 生效槽位：脚部
+        uuid: 00004869-0000-0000-a014-a014c0000000 
+        operation: 0  # 加法运算（直接增加固定值）
+      # 移动速度属性 - 脚部装备（特别适合靴子的属性）
+      GENERIC_MOVEMENT_SPEED:
+      - ==: org.bukkit.attribute.AttributeModifier
+        amount: 0.1  # 增加10%移动速度 基础移动速度为0.1
+        name: generic.movementSpeed  # 属性名称：移动速度
+        slot: FEET  # 生效槽位：脚部（特别适合靴子的属性）
+        uuid: 00004869-0000-0000-a014-a014d0000000 
+        operation: 1  # 操作类型：1=乘法（基于基础值的百分比增加）
