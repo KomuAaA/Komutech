@@ -1,18 +1,19 @@
 const plugin = org.bukkit.Bukkit.getPluginManager().getPlugin("RykenSlimefunCustomizer");
 
-// ========== 配置 ==========
 const CFG = {
     name: '§d§l游龙惊鸿诀',
     defaultLore: "§7未录取卷轴",
     unlockLore: "§a已录取卷轴：§d§l游龙惊鸿诀",
-    rayEnergyCost: 800,
+    baseEnergyCost: 5000,               // 基础灵力消耗
+    maxEnergyCost: 50000,                // 最大消耗（3倍）
+    costTargetIncrease: 2.5,            // 目标功德时消耗增加50%
     baseDamage: 18,
     profAddRange: [1, 10],
     cooldown: 3000,
     cooldownReduction: { per100: 3, max: 90 },
     levelMultiplier: { "黄":1, "玄":1.2, "地":1.5, "天":1.8 },
     profDamagePer100: 0.05,
-    meritEffects: { bonus:0.01, penalty:0.01, range:[1,18] },
+    meritEffects: { penalty:0.01, range:[1,18] },
     damageInterval: 8,
     damageRanges: { trail:4.0, projectile:6.0 },
     whiteList: ["VILLAGER","IRON_GOLEM","COW","PIG","SHEEP","CHICKEN","WOLF","CAT"],
@@ -29,13 +30,15 @@ const CFG = {
         launch: { duration:12, size:12, count:6, distance:24 },
         follow: { duration:200, size:12, count:2, distance:24 }
     },
-    maxMultiplier: 1314,
-    targetMerit: 5201314,
-    targetMultiplier: 520
+    baseMaxMultiplier: 1314,             // 黄级基础最大倍率
+    targetMerit: 5201314,                // 目标功德值
+    targetMultiplier: 520                 // 目标功德对应的倍率
 };
-CFG.meritCurveK = CFG.targetMerit * ((CFG.maxMultiplier-1)/(CFG.targetMultiplier-1)-1);
 
-// ========== 全局 ==========
+CFG.meritCurveK = CFG.targetMerit * ((CFG.baseMaxMultiplier-1)/(CFG.targetMultiplier-1)-1);
+const costMaxIncrease = CFG.maxEnergyCost/CFG.baseEnergyCost - 1; // 2.0
+CFG.costK = CFG.targetMerit * (costMaxIncrease/CFG.costTargetIncrease - 1);
+
 const cooldowns = new java.util.HashMap();
 const activeTasks = new java.util.HashMap();
 const skillCache = new java.util.HashMap();
@@ -48,7 +51,6 @@ const LivingEntity = Java.type('org.bukkit.entity.LivingEntity');
 const PotionEffect = Java.type('org.bukkit.potion.PotionEffect');
 const PotionEffectType = Java.type('org.bukkit.potion.PotionEffectType');
 
-// ========== 工具 ==========
 const updateLore = (item, keyword, newText) => {
     const meta = item.getItemMeta();
     if (!meta) return false;
@@ -92,21 +94,25 @@ const getItemInfo = item => {
 
 const getPotionType = name => PotionEffectType.getByName(name);
 
-// 预计算伤害并缓存
 const prepareDamage = (player, staff, book) => {
     const uuid = player.getUniqueId().toString();
     const staffInfo = getItemInfo(staff);
     const bookInfo = getItemInfo(book);
     const profBonus = 1 + Math.floor(bookInfo.prof/100) * CFG.profDamagePer100;
-    const meritMult = staffInfo.merit >= 0 ?
-        1 + (CFG.maxMultiplier-1) * (staffInfo.merit / (staffInfo.merit + CFG.meritCurveK)) :
-        Math.max(0.1, 1 - (Math.abs(staffInfo.merit)/100) * CFG.meritEffects.penalty);
-    const finalDamage = CFG.baseDamage * CFG.levelMultiplier[bookInfo.level] * profBonus * meritMult;
+    const levelBase = CFG.levelMultiplier[bookInfo.level] || 1.0;
+    const maxMulti = CFG.baseMaxMultiplier * levelBase * levelBase;
+    let meritMult;
+    if (staffInfo.merit >= 0) {
+        const gain = (maxMulti-1) * (staffInfo.merit / (staffInfo.merit + CFG.meritCurveK));
+        meritMult = 1 + gain;
+    } else {
+        meritMult = Math.max(0.1, 1 - (Math.abs(staffInfo.merit)/100) * CFG.meritEffects.penalty);
+    }
+    const finalDamage = CFG.baseDamage * meritMult * profBonus;
     skillCache.put(uuid, { staff, staffInfo, finalDamage, white:0, nonWhite:0 });
     return finalDamage;
 };
 
-// 功德结算并清理增益
 const settleMerit = (player) => {
     const uuid = player.getUniqueId().toString();
     const cache = skillCache.get(uuid);
@@ -122,18 +128,14 @@ const settleMerit = (player) => {
                                    : `§4✧ §c『§4游龙惊鸿诀§c』§4✧ §c损德败行！§6${change}功德`);
     }
     skillCache.remove(uuid);
-
-    // 移除增益效果
     ["RESISTANCE","STRENGTH","REGENERATION","ABSORPTION"].forEach(name => {
         const type = getPotionType(name);
         if (type) player.removePotionEffect(type);
     });
-
     const clearTaskId = clearTasks.remove(uuid);
     if (clearTaskId) Bukkit.getScheduler().cancelTask(clearTaskId);
 };
 
-// 伤害应用（附加虚弱V、缓慢V）
 const applyDamage = (player, center, multiplier, range, world) => {
     const uuid = player.getUniqueId().toString();
     const cache = skillCache.get(uuid);
@@ -152,13 +154,11 @@ const applyDamage = (player, center, multiplier, range, world) => {
     }
 };
 
-// 粒子颜色
 const getParticleColor = index => {
     const c = CFG.particles.colors[Math.min(index, CFG.particles.colors.length-1)];
     return Color.fromRGB(c.r, c.g, c.b);
 };
 
-// 龙尾位置计算
 const getTrailPos = (progress, time, center) => {
     const base = progress * Math.PI*8 + time * CFG.particles.trail.rotationSpeed;
     const rVar = Math.sin(time*0.7+progress*3)*0.4 + Math.sin(time*1.3+progress*5)*0.2;
@@ -175,7 +175,6 @@ const getViewPos = (player, dist) => {
     return eye.clone().add(dir.clone().multiply(dist));
 };
 
-// 发射阶段
 const createProjectile = (player, initialWorld) => {
     const uuid = player.getUniqueId().toString();
     const world = initialWorld;
@@ -222,7 +221,6 @@ const createProjectile = (player, initialWorld) => {
     activeTasks.put(uuid, task);
 };
 
-// 聚气阶段
 const createTrail = (player, staff, book) => {
     const uuid = player.getUniqueId().toString();
     const initialWorld = player.getWorld();
@@ -274,7 +272,6 @@ const createTrail = (player, staff, book) => {
     world.playSound(player.getLocation(), CFG.sounds.portal, 0.1, 1);
 };
 
-// ========== 主事件 ==========
 function onUse(event) {
     const p = event.getPlayer();
     const staff = p.getInventory().getItemInMainHand();
@@ -288,7 +285,6 @@ function onUse(event) {
     const staffInfo = getItemInfo(staff);
     const bookInfo = getItemInfo(book);
 
-    // 绑定
     if (!p.isSneaking()) {
         if (staffInfo.bindState !== CFG.unlockLore &&
             (staffInfo.bindState === CFG.defaultLore || staffInfo.bindState.startsWith("§a已录取卷轴"))) {
@@ -303,7 +299,6 @@ function onUse(event) {
         return;
     }
 
-    // 冷却
     const uuid = p.getUniqueId().toString();
     const now = Bukkit.getServer().getCurrentTick();
     const last = cooldowns.get(uuid) || 0;
@@ -315,12 +310,17 @@ function onUse(event) {
         return;
     }
 
-    if (staffInfo.energy < CFG.rayEnergyCost) {
-        p.sendMessage(`§4⚠ §c『§6游龙惊鸿诀§c』§4✖ §c灵力不足！需 §6${CFG.rayEnergyCost}`);
+    // 动态灵力消耗
+    let dynamicCost = CFG.baseEnergyCost;
+    if (staffInfo.merit > 0) {
+        const increase = costMaxIncrease * (staffInfo.merit / (staffInfo.merit + CFG.costK));
+        dynamicCost = Math.min(CFG.maxEnergyCost, Math.round(CFG.baseEnergyCost * (1 + increase)));
+    }
+    if (staffInfo.energy < dynamicCost) {
+        p.sendMessage(`§4⚠ §c『§6游龙惊鸿诀§c』§4✖ §c灵力不足！需 §6${dynamicCost}`);
         return;
     }
 
-    // 熟练度（释放时增加）
     if (bookInfo.prof < bookInfo.profMax) {
         const [min,max] = CFG.profAddRange;
         const add = Math.floor(Math.random() * (max-min+1)) + min;
@@ -330,10 +330,9 @@ function onUse(event) {
     }
 
     cooldowns.put(uuid, now + cd);
-    updateLore(staff, "灵力剩余", `§b灵力剩余：§6${Math.max(0, staffInfo.energy-CFG.rayEnergyCost)} §7/ §6${staffInfo.energyMax}`);
+    updateLore(staff, "灵力剩余", `§b灵力剩余：§6${Math.max(0, staffInfo.energy-dynamicCost)} §7/ §6${staffInfo.energyMax}`);
     p.getWorld().playSound(p.getLocation(), CFG.sounds.cast, 1, 1);
 
-    // === 添加玩家增益 ===
     const addEffect = (name, duration, amplifier) => {
         const type = getPotionType(name);
         if (type) p.addPotionEffect(new PotionEffect(type, duration, amplifier));
@@ -343,7 +342,6 @@ function onUse(event) {
     addEffect("REGENERATION", 3600, 4);
     addEffect("ABSORPTION", 3600, 4);
 
-    // 每秒清除负面效果
     const clearTaskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, () => {
         if (!p.isOnline() || p.isDead()) return;
         const negatives = ["SLOWNESS","MINING_FATIGUE","INSTANT_DAMAGE","NAUSEA","BLINDNESS",
@@ -357,6 +355,5 @@ function onUse(event) {
 
     prepareDamage(p, staff, book);
     createTrail(p, staff, book);
-
     p.sendMessage(`§6✦ §e龙吟撼九霄§6✦ §f唤龙魂破阵！ §7冷却: §b${(cd/20).toFixed(1)}秒`);
 }

@@ -6,6 +6,14 @@ Komutech_更新日志:
       material: pink_stained_glass_pane
     50-53:
       material: pink_stained_glass_pane
+Komutech_L_JQJC_演示:
+  name: "{#00FA9A}&kA{#2DFBAE}&l机{#5AFCC2}&l器{#86FDD7}&l教{#B3FEEB}&l程{#E0FFFF}&l演{#00FA9A}&l示{#E0FFFF}&kA"
+  slots:
+    45-48:
+      material: pink_stained_glass_pane
+    50-53:
+      material: pink_stained_glass_pane
+
 
 ##胶水提取器
 Komutech_JZ_JCJQ_jiaoshuitiquqi:
@@ -73,6 +81,49 @@ Komutech_JZ_JCJQ_jiaoshuitiquqi:
     50:
       material: orange_stained_glass_pane
       name: '&6输出'
+Komutech_JZ_JCJQ_JZTQQ:
+  title: '&b&l胶质提取器'
+  slots:
+    0-8:
+      material: white_stained_glass_pane
+    9-12:
+      name: '&9输入'
+      material: blue_stained_glass_pane
+    13:
+      material: white_stained_glass_pane
+    14-17:
+      name: '&6输出'
+      material: orange_stained_glass_pane
+    18:
+      name: '&9输入'
+      material: blue_stained_glass_pane
+    21:
+      name: '&9输入'
+      material: blue_stained_glass_pane
+    22:
+      material: white_stained_glass_pane
+      progressbar: true
+      progressBarItem:
+        material_type: mc
+        material: water_bucket
+    23:
+      name: '&6输出'
+      material: orange_stained_glass_pane
+    26:
+      name: '&6输出'
+      material: orange_stained_glass_pane
+    27-30:
+      name: '&9输入'
+      material: blue_stained_glass_pane
+    31:
+      material: white_stained_glass_pane
+    32-35:
+      name: '&6输出'
+      material: orange_stained_glass_pane
+    36-44:
+      material: white_stained_glass_pane
+
+
 ##网桥材质更换器
 Komutech_JZ_JCJQ_wqczghq:
   title: '&b&l网桥材质更换器'
@@ -465,6 +516,92 @@ Komutech_JZ_cznyljqscq:
     53:
       material: pink_stained_glass_pane
       name: '&c管理专用'
+##物品展台
+KOMUTECH_JZ_JCJQ_物品展台:
+  title: "&d&l物品展台"
+  script: "机器/物品展台"
+  slots:
+    0:
+      name: "&a向上移动"
+      material: ARROW
+    1:
+      name: "&a向左旋转"
+      material: GREEN_STAINED_GLASS_PANE
+    2:
+      name: "&a向前倾斜"
+      material: GREEN_STAINED_GLASS_PANE
+    3:
+      name: "&a向左翻滚"
+      material: GREEN_STAINED_GLASS_PANE
+    4:
+      name: "&7机器状态"
+      material: glow_item_frame
+    5:
+      name: " "
+      material: white_stained_glass_pane
+    6:
+      name: "&e发光开关"
+      material: GLOWSTONE_DUST
+    7:
+      name: " "
+      material: white_stained_glass_pane
+    8:
+      name: "&b重载信息"
+      material: structure_void
+    9:
+      name: "&b重置位置"
+      material: structure_void
+    10:
+      name: "&b重置偏航"
+      material: CLOCK
+    11:
+      name: "&b重置俯仰"
+      material: LEVER
+    12:
+      name: "&b重置翻滚"
+      material: REPEATER
+    14:
+      name: "&a&l注意!"
+      lore:
+      - '&f&l------怕某些人不看注释------'
+      - '&a展示物品拿走就不会展示了'
+      - '&a直接挖机器不会掉落展示物品'
+      - '&a把机器挖了展示物品依然在'
+      - '&a想要再次更改需再放置下来并把展示物品再放回来'
+      - '&a这样设计是为了去掉展台也能展示物品'
+      - '&a但凡事都有代价'
+      material: paper
+    15-17:
+      name: " "
+      material: white_stained_glass_pane
+    18:
+      name: "&c向下移动"
+      material: ARROW
+    19:
+      name: "&c向右旋转"
+      material: RED_STAINED_GLASS_PANE
+    20:
+      name: "&c向后倾斜"
+      material: RED_STAINED_GLASS_PANE
+    21:
+      name: "&c向右翻滚"
+      material: RED_STAINED_GLASS_PANE
+    22:
+      name: "&a开启投影"
+      material: LIME_STAINED_GLASS_PANE
+    23:
+      name: " "
+      material: white_stained_glass_pane
+    24:
+      name: "&b名称开关"
+      material: NAME_TAG
+    25:
+      name: " "
+      material: white_stained_glass_pane
+    26:
+      name: "&c关闭投影"
+      material: RED_STAINED_GLASS_PANE
+
 
 ##灵能工匠台
 Komutech_L_JQ_LNGJT:
@@ -874,7 +1011,7 @@ Komutech_L_JQ_LHDZY:
       material: black_stained_glass_pane
       name: '&d输出→'
 ##一芥乾坤
-Komutech_L_JQ_XPYJQK:
+KOMUTECH_L_JQ_下品一芥乾坤:
   title: '&6&l『&a下品&6&l』{#7FFFD4}&l一{#55FFAA}&l芥{#FFA500}&l乾{#8B0000}&l坤'
   slots:
     0-2:
@@ -937,7 +1074,7 @@ Komutech_L_JQ_XPYJQK:
     53:
       material: yellow_stained_glass_pane
       name: '&e输出'
-Komutech_L_JQ_ZPYJQK:
+KOMUTECH_L_JQ_中品一芥乾坤:
   title: '&6&l『&e中品&6&l』{#7FFFD4}&l一{#55FFAA}&l芥{#FFA500}&l乾{#8B0000}&l坤'
   slots:
     0-2:
@@ -1000,7 +1137,7 @@ Komutech_L_JQ_ZPYJQK:
     53:
       material: yellow_stained_glass_pane
       name: '&e输出'
-Komutech_L_JQ_SPYJQK:
+KOMUTECH_L_JQ_上品一芥乾坤:
   title: '&6&l『&3上品&6&l』{#7FFFD4}&l一{#55FFAA}&l芥{#FFA500}&l乾{#8B0000}&l坤'
   slots:
     0-2:
@@ -1063,7 +1200,7 @@ Komutech_L_JQ_SPYJQK:
     53:
       material: yellow_stained_glass_pane
       name: '&e输出'
-Komutech_L_JQ_JPYJQK:
+KOMUTECH_L_JQ_极品一芥乾坤:
   title: '&6&l『&c极品&6&l』{#7FFFD4}&l一{#55FFAA}&l芥{#FFA500}&l乾{#8B0000}&l坤'
   slots:
     0-2:
@@ -1126,6 +1263,39 @@ Komutech_L_JQ_JPYJQK:
     53:
       material: yellow_stained_glass_pane
       name: '&e输出'
+
+##琼华阁
+KOMUTECH_L_JQ_琼华阁:
+  title: '{#00FA9A}&kA{#2DFBAE}&l琼{#5AFCC2}&l华{#86FDD7}&l阁{#B3FEEB}&kA'
+  slots:
+    0-3:
+      material: orange_stained_glass_pane
+      name: '§6✨'
+    5-9:
+      material: orange_stained_glass_pane
+      name: '§6✨'
+    17-18:
+      material: orange_stained_glass_pane
+      name: '§6✨'
+    26-27:
+      material: orange_stained_glass_pane
+      name: '§6✨'
+    35-39:
+      material: orange_stained_glass_pane
+      name: '§6✨'
+    40:
+      material: orange_stained_glass_pane
+      name: '§6✨'
+      progressbar: true
+      progressBarItem:
+        material_type: mc
+        material: emerald
+    41-45:
+      material: orange_stained_glass_pane
+      name: '§6✨'
+    53:
+      material: orange_stained_glass_pane
+      name: '§6✨'
 
 Komutech_L_JQ_万相悟道仪:
   title: '{#a1c4fd}&l✦{#a7c9fc}&l›{#adcefb}&l万{#b3d3fa}&l相{#b9d8f9}&l悟{#bfddf8}&l道{#c5e2f7}&l仪{#cbe7f6}&l‹{#d1ecf5}&l✦{#c2e9fb}&l'
@@ -1241,7 +1411,7 @@ Komutech_L_JQ_万相破妄仪:
     45-53:
       material: white_stained_glass_pane
       name: '&b↑↑↑输出槽↑↑↑'
-Komutech_L_JQ_万相造化仪:
+Komutech_L_JQ_万相通明仪:
   title: '{#FFD700}&l✦{#FFCF00}&l›{#FFC700}&l万{#FFBF00}&l相{#FFB700}&l造{#FFAF00}&l化{#FFA700}&l仪{#FF9F00}&l‹{#FF9700}&l✦{#FFA500}&l'
   slots:
     0-2:
@@ -1279,6 +1449,45 @@ Komutech_L_JQ_万相造化仪:
     45-53:
       material: white_stained_glass_pane
       name: '&b↑↑↑输出槽↑↑↑'
+Komutech_L_JQ_万相元炁仪:
+  title: '{#FFD700}&l✦{#FFCF00}&l›{#FFC700}&l万{#FFBF00}&l相{#FFB700}&l元{#FFAF00}&l炁{#FFA700}&l仪{#FF9F00}&l‹{#FF9700}&l✦{#FFA500}&l'
+  slots:
+    0-2:
+      material: orange_stained_glass_pane
+      name: '&6模板槽位'
+    9:
+      material: orange_stained_glass_pane
+      name: '&6模板槽位'
+    11:
+      material: orange_stained_glass_pane
+      name: '&6模板槽位'
+    18-20:
+      material: orange_stained_glass_pane
+      name: '&6模板槽位'
+    21:
+      material: white_stained_glass_pane
+      name: '&b↑↑↑输入槽↑↑↑'
+      lore:
+      - '&6↓↓↓输出槽↓↓↓'
+    22:
+      material: clock
+      name: '&a&l提示'
+      lore:
+      - '&f模板越多速度越快产量越高哦~'
+      glow: true
+      progressbar: true
+      progressBarItem:
+        material_type: mc
+        material: compass
+    23-26:
+      material: white_stained_glass_pane
+      name: '&b↑↑↑输入槽↑↑↑'
+      lore:
+      - '&6↓↓↓输出槽↓↓↓'
+    45-53:
+      material: white_stained_glass_pane
+      name: '&b↑↑↑输出槽↑↑↑'
+
 
 ##悟道石法则承载器
 KOMUTECH_L_JQ_FZCZQ:
@@ -1295,6 +1504,10 @@ KOMUTECH_L_JQ_FZCZQ:
       name: '&f&l提示'
       lore:
       - '&f随机生成在下方'
+      progressbar: true
+      progressBarItem:
+        material_type: mc
+        material: compass
     5-8:
       material: pink_stained_glass_pane
       name: '&e请及时拿走法则'
@@ -1313,8 +1526,8 @@ KOMUTECH_L_JQ_FZCZQ:
       name: '&e请及时拿走法则'
       lore:
       - '&f5s不拿走会消失哦~'
-KOMUTECH_L_JQ_WXFZCZQ:
-  title: '{#FFB347}&l❖ {#FFB347}&l五{#FFC154}&l行{#FFCF62}&l法{#FFDD70}&l则{#FFEB7E}&l承{#FFDD70}&l载{#FFCF62}&l器 {#FFB347}&l❖'
+KOMUTECH_L_JQ_LXFZCZQ:
+  title: '{#FFB347}&l❖ {#FFB347}&l灵{#FFC154}&l曦{#FFCF62}&l法{#FFDD70}&l则{#FFEB7E}&l承{#FFDD70}&l载{#FFCF62}&l器 {#FFB347}&l❖'
   slots:
     5-8:
       material: yellow_stained_glass_pane
@@ -1340,6 +1553,10 @@ KOMUTECH_L_JQ_WXFZCZQ:
       lore:
       - '&a请按 金 木 水 火 土 的顺序'
       - '&a每排升序放1-5个'
+      progressbar: true
+      progressBarItem:
+        material_type: mc
+        material: compass
     26:
       material: yellow_stained_glass_pane
       name: '&f左侧为输入槽右侧为输出槽'
@@ -1364,6 +1581,42 @@ KOMUTECH_L_JQ_WXFZCZQ:
       lore:
       - '&a请按 金 木 水 火 土 的顺序'
       - '&a每排升序放1-5个'
+KOMUTECH_L_JQ_ZQFZCZQ:
+  title: '{#FFB347}&l❖ {#FFB347}&l祖{#FFC154}&l炁{#FFCF62}&l法{#FFDD70}&l则{#FFEB7E}&l承{#FFDD70}&l载{#FFCF62}&l器 {#FFB347}&l❖'
+  slots:
+    0-3:
+      material: pink_stained_glass_pane
+      name: '&e请及时拿走法则'
+      lore:
+      - '&f5s不拿走会消失哦~'
+    4:
+      material_type: skull_url
+      material: http://textures.minecraft.net/texture/6b9c49ffdf4ce4c6f5f049efc8ca0e08b9b5bbf3c6a8783dfaaccad77dfc997a
+      name: '&f&l提示'
+      lore:
+      - '&f随机生成在下方'
+      progressbar: true
+      progressBarItem:
+        material_type: mc
+        material: compass
+    5-8:
+      material: pink_stained_glass_pane
+      name: '&e请及时拿走法则'
+      lore:
+      - '&f5s不拿走会消失哦~'
+    45-48:
+      material: pink_stained_glass_pane
+      name: '&e请及时拿走法则'
+      lore:
+      - '&f5s不拿走会消失哦~'
+      progressBarItem:
+        material_type: skull_url
+        material: http://textures.minecraft.net/texture/6b9c49ffdf4ce4c6f5f049efc8ca0e08b9b5bbf3c6a8783dfaaccad77dfc997a
+    50-53:
+      material: pink_stained_glass_pane
+      name: '&e请及时拿走法则'
+      lore:
+      - '&f5s不拿走会消失哦~'
 
 ##万相制造仪
 KOMUTECH_L_WD_WXZZY:
@@ -1754,6 +2007,67 @@ KOMUTECH_L_GLY_赶流云_没想好:
       material: pink_stained_glass_pane
 
 
+ 
+##终极   萬衍儀
+KOMUTECH_L_ZJ_萬衍儀:
+  title: '{#00FA9A}&l-{#19FBA5}&l-{#32FBB0}&l-{#4BFCBC}&l✦ {#7CFDD2}&l✫{#95FDDD}&l·{#AEFEE9}&l萬{#C7FEF4}&l·{#E0FFFF}&l衍{#C7FEF4}&l·{#AEFEE9}&l儀{#95FDDD}&l·{#7CFDD2}&l✫ {#4BFCBC}&l✦{#32FBB0}&l-{#19FBA5}&l-{#00FA9A}&l-'
+  script: "L_机器/萬衍儀"
+  slots:
+    0-44:
+      name: " "
+      material: black_stained_glass_pane
+    45:
+      name: " "
+      material: white_stained_glass_pane
+    46:
+      name: " "
+      material: white_stained_glass_pane
+    47:
+      name: "§a按拼音整理"
+      material: HOPPER
+      lore: "§7点击将所有页物品按拼音排序"
+    48:
+      name: "§a上一页"
+      material: ARROW
+      lore: "§7点击切换到上一页"
+    50:
+      name: "§a下一页"
+      material: ARROW
+      lore: "§7点击切换到下一页"
+    51:
+      name: "§a搜索"
+      material: NAME_TAG
+      lore: "§7点击输入关键词搜索物品"
+    52:
+      name: " "
+      material: white_stained_glass_pane
+    53:
+      name: "§a加载存储"
+      material: item_frame
+      lore: "§7点击加载49号槽的萬象匱内容"
+      progressbar: true
+      material: glow_item_frame
+KOMUTECH_L_ZJ_終極合成台:
+  title: "{#1C1C1C}&l-{#3C3C3C}&l-{#5D5D5D}&l-{#7D7D7D}&l-{#9E9E9E}&l✦{#BEBEBE}&l✫{#DFDFDF}&l✬·{#FFFFFF}&l終極合成台·{#DFDFDF}&l✬{#BEBEBE}&l✫{#9E9E9E}&l✦{#7D7D7D}&l-{#5D5D5D}&l-{#3C3C3C}&l-{#1C1C1C}&l-"
+  script: "L_机器/終極合成台"
+  slots:
+    3-5:
+      name: "&f"
+      material: WHITE_STAINED_GLASS_PANE
+    12:
+      name: "&f"
+      material: WHITE_STAINED_GLASS_PANE
+    13:
+      name: "§e合成"
+      material: GREEN_STAINED_GLASS_PANE
+      lore:
+        - "§7点击合成"
+    14:
+      name: "&f"
+      material: WHITE_STAINED_GLASS_PANE
+    21-23:
+      name: "&f"
+      material: WHITE_STAINED_GLASS_PANE
 
 ##                    走云川-原版
 ##金元素展示

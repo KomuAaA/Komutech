@@ -153,16 +153,6 @@ KOMUTECH_L_DFKJQ_ZLT:
     - "{#D8BFD8}└─ {#BA9EBA}结构要求{#9C7D9C}·需搭建多方块"  
   material_type: mc
   material: enchanting_table
-KOMUTECH_L_DFKJQ_LS:
-  lateInit: false
-  name: "{#dad4ec}&l✧{#dad4ec}&l儡{#e9dde5}&l·{#f3e7e9}&l肆{#f3e7e9}&l✧"
-  lore:
-    - "{#dad4ec}❖ {#e9dde5}儡肆{#f3e7e9}·灵傀交易·"
-    - "{#dad4ec}│ {#e9dde5}收残换新{#f3e7e9}·重焕灵韵"
-    - "{#dad4ec}│ {#e9dde5}万傀云集{#f3e7e9}·儡肆藏傀"
-    - "{#dad4ec}└─ {#e9dde5}结构要求{#f3e7e9}·需搭建多方块"
-  material_type: mc
-  material: chiseled_bookshelf
 
 ##灵能炼器坊
 KOMUTECH_L_JQ_LNLQF:
@@ -288,3 +278,25 @@ KOMUTECH_L_ZS_DFJZG:
     - '{#7CFC00}└─ {#32CD32}详见多方快转换手册'
   material_type: mc
   material: bricks
+
+##琼华阁
+KOMUTECH_L_ZS_QHG:
+  lateInit: false
+  name: '{#00FA9A}&kA{#2DFBAE}&l琼{#5AFCC2}&l华{#86FDD7}&l阁{#B3FEEB}&kA'
+  lore:
+    - '{#00FA9A}❖ {#2DFBAE}打开琼华阁，选购所需物品 ❖'
+    - '{#00FA9A}❖ {#2DFBAE}点击分类查看物品，点击物品购买 ❖'
+    - '{#5AFCC2}价格已标注在物品描述中'
+  material_type: mc
+  material: bricks
+
+##终极合成台
+KOMUTECH_L_ZJ_ZJHCT:
+  lateInit: false
+  name: "{#1C1C1C}&l-{#3C3C3C}&l-{#5D5D5D}&l-{#7D7D7D}&l-{#9E9E9E}&l✦{#BEBEBE}&l✫{#DFDFDF}&l✬·{#FFFFFF}&l終極合成台·{#DFDFDF}&l✬{#BEBEBE}&l✫{#9E9E9E}&l✦{#7D7D7D}&l-{#5D5D5D}&l-{#3C3C3C}&l-{#1C1C1C}&l-"
+  lore:
+    - "&f    {#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l造 {#FFFFFF}&l化 {#FFFFFF}&l凝 {#D2D2D2}&l真 {#A4A4A4}&l✧{#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+    - "&f    {#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l萬 {#FFFFFF}&l化 {#FFFFFF}&l歸 {#D2D2D2}&l心 {#A4A4A4}&l✧{#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+    - "&f    {#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l道 {#FFFFFF}&l蘊 {#FFFFFF}&l天 {#D2D2D2}&l成 {#A4A4A4}&l✧{#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+  material_type: mc
+  material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42

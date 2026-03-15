@@ -625,7 +625,7 @@ Komutech_L_DFKJQ_GJT:
           material_type: slimefun
           material: Komutech_L_Q_烧火棍          
     ##一芥乾坤
-      Komutech_L_JQ_XPYJQK:
+      KOMUTECH_L_JQ_下品一芥乾坤:
         input:
           1:
             material_type: slimefun
@@ -665,8 +665,8 @@ Komutech_L_DFKJQ_GJT:
             amount: 1
         output:
           material_type: slimefun
-          material: Komutech_L_JQ_XPYJQK
-      Komutech_L_JQ_ZPYJQK:
+          material: KOMUTECH_L_JQ_下品一芥乾坤
+      KOMUTECH_L_JQ_中品一芥乾坤:
         input:
           1:
             material_type: slimefun
@@ -686,7 +686,7 @@ Komutech_L_DFKJQ_GJT:
             amount: 64
           5:
             material_type: slimefun
-            material: Komutech_L_JQ_XPYJQK
+            material: KOMUTECH_L_JQ_下品一芥乾坤
             amount: 1
           6:
             material_type: slimefun
@@ -706,8 +706,8 @@ Komutech_L_DFKJQ_GJT:
             amount: 1
         output:
           material_type: slimefun
-          material: Komutech_L_JQ_ZPYJQK          
-      Komutech_L_JQ_SPYJQK:
+          material: KOMUTECH_L_JQ_中品一芥乾坤          
+      KOMUTECH_L_JQ_上品一芥乾坤:
         input:
           1:
             material_type: slimefun
@@ -727,7 +727,7 @@ Komutech_L_DFKJQ_GJT:
             amount: 1
           5:
             material_type: slimefun
-            material: Komutech_L_JQ_ZPYJQK
+            material: KOMUTECH_L_JQ_中品一芥乾坤
             amount: 1
           6:
             material_type: slimefun
@@ -747,7 +747,7 @@ Komutech_L_DFKJQ_GJT:
             amount: 1
         output:
           material_type: slimefun
-          material: Komutech_L_JQ_SPYJQK          
+          material: KOMUTECH_L_JQ_上品一芥乾坤          
     ##悟道石
       KOMUTECH_L_WD_WDS:
         input:
@@ -833,7 +833,7 @@ Komutech_L_DFKJQ_GJT:
           material_type: slimefun
           material: KOMUTECH_L_WD_MWS          
     ##破妄石
-      KOMUTECH_L_WD_MWS:
+      KOMUTECH_L_WD_PWS:
         input:
           1:
             material_type: slimefun
@@ -873,7 +873,92 @@ Komutech_L_DFKJQ_GJT:
             amount: 4
         output:
           material_type: slimefun
-          material: KOMUTECH_L_WD_MWS          
+          material: KOMUTECH_L_WD_PWS          
+    ##通明石
+      KOMUTECH_L_WD_TMS:
+        input:
+          1:
+            material_type: slimefun
+            material: KOMUTECH_L_WD_WDS
+            amount: 1
+          2:
+            material_type: slimefun
+            material: KOMUTECH_L_WD_MWS
+            amount: 1
+          3:
+            material_type: slimefun
+            material: KOMUTECH_L_WD_WDS
+            amount: 1
+          4:
+            material_type: slimefun
+            material: KOMUTECH_L_WD_MWS
+            amount: 1
+          5:
+            material_type: slimefun
+            material: KOMUTECH_L_WD_PWS
+            amount: 1
+          6:
+            material_type: slimefun
+            material: KOMUTECH_L_WD_MWS
+            amount: 1
+          7:
+            material_type: slimefun
+            material: KOMUTECH_L_WD_WDS
+            amount: 1
+          8:
+            material_type: slimefun
+            material: KOMUTECH_L_WD_MWS
+            amount: 1
+          9:
+            material_type: slimefun
+            material: KOMUTECH_L_WD_WDS
+            amount: 1
+        output:
+          material_type: slimefun
+          material: KOMUTECH_L_WD_TMS          
+    ##元炁石
+      KOMUTECH_L_WD_YQS:
+        input:
+          1:
+            material_type: slimefun
+            material: Komutech_L_KW_ZJD
+            amount: 4
+          2:
+            material_type: slimefun
+            material: Komutech_L_KW_HTD
+            amount: 16
+          3:
+            material_type: slimefun
+            material: Komutech_L_KW_ZJD
+            amount: 4
+          4:
+            material_type: slimefun
+            material: Komutech_L_KW_HTD
+            amount: 16
+          5:
+            material_type: slimefun
+            material: KOMUTECH_L_WD_TMS
+            amount: 1
+          6:
+            material_type: slimefun
+            material: Komutech_L_KW_HTD
+            amount: 16
+          7:
+            material_type: slimefun
+            material: Komutech_L_KW_ZJD
+            amount: 4
+          8:
+            material_type: slimefun
+            material: Komutech_L_KW_HTD
+            amount: 16
+          9:
+            material_type: slimefun
+            material: Komutech_L_KW_ZJD
+            amount: 4
+        output:
+          material_type: slimefun
+          material: KOMUTECH_L_WD_YQS          
+
     ##轮回渡罪狱
       Komutech_L_JQ_LHDZY:
         input:
@@ -2077,6 +2162,135 @@ Komutech_L_DFKJQ_ZLT:
         output:
           material_type: slimefun
           material: KOMUTECH_L_WD_SLWDS          
+    ##五行通明石
+      KOMUTECH_L_WD_WXTMS:
+        input:
+          1:
+            material_type: slimefun
+            material: Komutech_L_KW_TLY
+            amount: 1
+          2:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_YSJYSFZ
+            amount: 1
+          3:
+            material_type: slimefun
+            material: Komutech_L_KW_TLY
+            amount: 1
+          4:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_YSMYSFZ
+            amount: 1
+          5:
+            material_type: slimefun
+            material: KOMUTECH_L_WD_TMS
+            amount: 1
+          6:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_YSSYSFZ
+            amount: 1
+          7:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_YSHYSFZ
+            amount: 1
+          8:
+            material_type: slimefun
+            material: Komutech_L_KW_LBY
+            amount: 1
+          9:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_YSTYSFZ
+            amount: 1
+        output:
+          material_type: slimefun
+          material: KOMUTECH_L_WD_WXTMS          
+    ##天象通明石
+      KOMUTECH_L_WD_TXTMS:
+        input:
+          1:
+            material_type: slimefun
+            material: Komutech_L_KW_TLY
+            amount: 1
+          2:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_XXBYSFZ
+            amount: 1
+          3:
+            material_type: slimefun
+            material: Komutech_L_KW_TLY
+            amount: 1
+          4:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_XXFYSFZ
+            amount: 1
+          5:
+            material_type: slimefun
+            material: KOMUTECH_L_WD_TMS
+            amount: 1
+          6:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_XXLYSFZ
+            amount: 1
+          7:
+            material_type: slimefun
+            material: Komutech_L_KW_LBY
+            amount: 1
+          8:
+            material_type: slimefun
+            material: Komutech_L_KW_YFY
+            amount: 1
+          9:
+            material_type: slimefun
+            material: Komutech_L_KW_LBY
+            amount: 1
+        output:
+          material_type: slimefun
+          material: KOMUTECH_L_WD_TXTMS          
+    ##造化通明石
+      KOMUTECH_L_WD_ZHTMS:
+        input:
+          1:
+            material_type: slimefun
+            material: Komutech_L_KW_TLY
+            amount: 1
+          2:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_XXJGFZ
+            amount: 1
+          3:
+            material_type: slimefun
+            material: Komutech_L_KW_TLY
+            amount: 1
+          4:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_XXLJFZ
+            amount: 1
+          5:
+            material_type: slimefun
+            material: KOMUTECH_L_WD_TMS
+            amount: 1
+          6:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_XXSYFZ
+            amount: 1
+          7:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_XXKJFZ
+            amount: 1
+          8:
+            material_type: slimefun
+            material: Komutech_L_KW_LBY
+            amount: 1
+          9:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_XXSLFZ
+            amount: 1
+        output:
+          material_type: slimefun
+          material: KOMUTECH_L_WD_ZHTMS          
+
+
+    
     ##飏风玉
       Komutech_L_KW_YFY:
         input:
@@ -2162,51 +2376,3 @@ Komutech_L_DFKJQ_ZLT:
           material_type: slimefun
           material: Komutech_L_KW_TLY          
 
-##灵-儡肆
-Komutech_L_DFKJQ_LS:
-  item_group: Komutech_L_DFKJQ
-  item:
-    name: "{#dad4ec}&l✧{#dad4ec}&l儡{#e9dde5}&l·{#f3e7e9}&l肆{#f3e7e9}&l✧"
-    material_type: mc
-    material: chiseled_bookshelf
-    lore: 
-      - "{#dad4ec}❖ {#e9dde5}儡肆{#f3e7e9}·灵傀交易·"
-      - "{#dad4ec}│ {#e9dde5}收残换新{#f3e7e9}·重焕灵韵"
-      - "{#dad4ec}│ {#e9dde5}万傀云集{#f3e7e9}·儡肆藏傀"
-      - "{#dad4ec}└─ {#e9dde5}结构要求{#f3e7e9}·需搭建多方块"
-  recipe:
-        4:
-          material: turtle_egg
-          lore:
-            - "&7放1个即可,放3个好看。"
-          amount: 3
-        5:
-          material: oak_pressure_plate
-        6:
-          material: sea_pickle
-          lore:
-            - "&7放1个即可,放4个好看。"
-          amount: 4
-        7:
-          material: chiseled_bookshelf
-        8:
-          material: dispenser
-        9:
-          material: barrel
-  work: 5
-  sound: ANCIENT_ALTAR_FINISH_SOUND
-  recipes:
-    ##昆仑奴
-      Komutech_L_SW_KLN:
-        input:
-          1:
-            material_type: slimefun
-            material: Komutech_L_DJ_SPLS
-            amount: 16
-          2:
-            material_type: slimefun
-            material: Komutech_L_KW_TXY
-            amount: 4
-        output:
-          material_type: slimefun
-          material: Komutech_L_SW_KLN

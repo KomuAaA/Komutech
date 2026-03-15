@@ -1,11 +1,12 @@
 const plugin = org.bukkit.Bukkit.getPluginManager().getPlugin("RykenSlimefunCustomizer");
 
-// ========== 配置 ==========
 const CFG = {
     name: '§d§l九霄环佩鸣',
     namePlain: '九宵环佩鸣',
     defaultLore: "§7未录取卷轴",
-    rayEnergyCost: 200,
+    baseEnergyCost: 1000,
+    maxEnergyCost: 10000,
+    costTargetIncrease: 2.5,
     baseDamage: 12,
     profAddRange: [1, 10],
     cooldown: 300,
@@ -13,11 +14,11 @@ const CFG = {
     maxDistance: 32,
     soundName: "entity.evoker.cast_spell",
     whiteList: ["VILLAGER","IRON_GOLEM","COW","PIG","SHEEP","CHICKEN","WOLF","CAT"],
-    meritEffects: { bonus:0.01, penalty:0.01, range:[1,12] },
+    meritEffects: { penalty:0.01, range:[1,12] },
     levelMultiplier: { "黄":1, "玄":1.2, "地":1.5, "天":1.8 },
     profDamagePer100: 0.05,
     damageDetectRange: 2,
-    maxMultiplier: 1314,
+    baseMaxMultiplier: 1314,
     targetMerit: 5201314,
     targetMultiplier: 520,
     effectDuration: 100,
@@ -25,19 +26,18 @@ const CFG = {
     nauseaAmplifier: 1
 };
 CFG.unlockLore = `§a已录取卷轴：${CFG.name}`;
-CFG.meritCurveK = CFG.targetMerit * ((CFG.maxMultiplier-1)/(CFG.targetMultiplier-1)-1);
+CFG.meritCurveK = CFG.targetMerit * ((CFG.baseMaxMultiplier-1)/(CFG.targetMultiplier-1)-1);
+const costMaxIncrease = CFG.maxEnergyCost/CFG.baseEnergyCost - 1;
+CFG.costK = CFG.targetMerit * (costMaxIncrease/CFG.costTargetIncrease - 1);
 
-// ========== Java类型导入 ==========
 const Bukkit = Java.type('org.bukkit.Bukkit');
 const Particle = Java.type('org.bukkit.Particle');
 const PotionEffectType = Java.type('org.bukkit.potion.PotionEffectType');
 const PotionEffect = Java.type('org.bukkit.potion.PotionEffect');
 
-// ========== 全局管理 ==========
 const cooldowns = new java.util.HashMap();
 const skillCache = new java.util.HashMap();
 
-// ========== 工具函数 ==========
 const updateLore = (item, keyword, newText) => {
     const meta = item.getItemMeta();
     if (!meta) return false;
@@ -81,7 +81,6 @@ const getItemInfo = item => {
 
 const cleanupCache = uuid => skillCache.remove(uuid);
 
-// ========== 声波粒子 ==========
 const spawnRayParticles = (world, start, dir) => {
     for (let i = 0; i <= CFG.maxDistance; i += 1) {
         const pos = start.clone().add(dir.clone().multiply(i));
@@ -89,7 +88,6 @@ const spawnRayParticles = (world, start, dir) => {
     }
 };
 
-// ========== 伤害检测 + 状态附加 ==========
 const rayDamageDetection = (player, start, dir, damage) => {
     const world = player.getWorld();
     const uuid = player.getUniqueId().toString();
@@ -118,7 +116,6 @@ const rayDamageDetection = (player, start, dir, damage) => {
     return entities.size() > 0;
 };
 
-// ========== 功德结算 ==========
 const settleMerit = (player, staff, staffInfo) => {
     const uuid = player.getUniqueId().toString();
     const cache = skillCache.get(uuid);
@@ -136,7 +133,6 @@ const settleMerit = (player, staff, staffInfo) => {
     skillCache.remove(uuid);
 };
 
-// ========== 主事件 ==========
 function onUse(event) {
     const p = event.getPlayer();
     const staff = p.getInventory().getItemInMainHand();
@@ -150,7 +146,6 @@ function onUse(event) {
     const staffInfo = getItemInfo(staff);
     const bookInfo = getItemInfo(book);
 
-    // 绑定卷轴（非潜行）
     if (!p.isSneaking()) {
         if (staffInfo.bindState !== CFG.unlockLore && 
             (staffInfo.bindState === CFG.defaultLore || staffInfo.bindState.startsWith("§a已录取卷轴"))) {
@@ -175,14 +170,18 @@ function onUse(event) {
         return;
     }
 
-    if (staffInfo.energy < CFG.rayEnergyCost) {
-        p.sendMessage(`§c⚠ §4[${CFG.namePlain}] 灵力不足！需 §6${CFG.rayEnergyCost}`);
+    let dynamicCost = CFG.baseEnergyCost;
+    if (staffInfo.merit > 0) {
+        const increase = costMaxIncrease * (staffInfo.merit / (staffInfo.merit + CFG.costK));
+        dynamicCost = Math.min(CFG.maxEnergyCost, Math.round(CFG.baseEnergyCost * (1 + increase)));
+    }
+    if (staffInfo.energy < dynamicCost) {
+        p.sendMessage(`§c⚠ §4[${CFG.namePlain}] 灵力不足！需 §6${dynamicCost}`);
         return;
     }
 
     cleanupCache(uuid);
 
-    // 熟练度（释放时增加）
     if (bookInfo.prof < bookInfo.profMax) {
         const add = Math.floor(Math.random() * (CFG.profAddRange[1]-CFG.profAddRange[0]+1)) + CFG.profAddRange[0];
         const newProf = Math.min(bookInfo.prof + add, bookInfo.profMax);
@@ -190,11 +189,17 @@ function onUse(event) {
             p.sendMessage(`§b熟练度+${add}`);
     }
 
-    const meritMult = staffInfo.merit >= 0 ?
-        1 + (CFG.maxMultiplier-1) * (staffInfo.merit / (staffInfo.merit + CFG.meritCurveK)) :
-        Math.max(0.1, 1 - (Math.abs(staffInfo.merit)/100) * CFG.meritEffects.penalty);
+    const levelBase = CFG.levelMultiplier[bookInfo.level] || 1.0;
+    const maxMulti = CFG.baseMaxMultiplier * levelBase * levelBase;
+    let meritMult;
+    if (staffInfo.merit >= 0) {
+        const gain = (maxMulti-1) * (staffInfo.merit / (staffInfo.merit + CFG.meritCurveK));
+        meritMult = 1 + gain;
+    } else {
+        meritMult = Math.max(0.1, 1 - (Math.abs(staffInfo.merit)/100) * CFG.meritEffects.penalty);
+    }
     const profBonus = 1 + Math.floor(bookInfo.prof/100) * CFG.profDamagePer100;
-    const damage = CFG.baseDamage * CFG.levelMultiplier[bookInfo.level] * profBonus * meritMult;
+    const damage = CFG.baseDamage * meritMult * profBonus;
 
     const world = p.getWorld();
     const eye = p.getEyeLocation();
@@ -204,11 +209,10 @@ function onUse(event) {
     spawnRayParticles(world, start, dir);
     const hasHit = rayDamageDetection(p, start, dir, damage);
 
-    updateLore(staff, "灵力剩余", `§b灵力剩余：§6${Math.max(0, staffInfo.energy-CFG.rayEnergyCost)} §7/ §6${staffInfo.energyMax}`);
+    updateLore(staff, "灵力剩余", `§b灵力剩余：§6${Math.max(0, staffInfo.energy-dynamicCost)} §7/ §6${staffInfo.energyMax}`);
     cooldowns.put(uuid, now);
     world.playSound(p.getLocation(), CFG.soundName, 1,1);
 
     settleMerit(p, staff, staffInfo);
-
     p.sendMessage(hasHit ? `§a[${CFG.namePlain}] 九霄环佩，音波激荡！` : `§7[${CFG.namePlain}] 音波穿透虚空，未击中目标`);
 }

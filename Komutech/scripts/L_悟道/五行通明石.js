@@ -6,8 +6,8 @@ const Random = Java.type('java.util.Random');
 
 // 配置
 const CONFIG = {
-    id: "KOMUTECH_L_WD_WXZHS",
-    southMachineId: "KOMUTECH_L_JQ_WXFZCZQ",
+    id: "KOMUTECH_L_WD_WXTMS",
+    southMachineId: "KOMUTECH_L_JQ_LXFZCZQ",
     time: 15000,
     interval: 3000,
     maxEmptyChecks: 5,

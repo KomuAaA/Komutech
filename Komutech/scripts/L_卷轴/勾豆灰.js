@@ -1,8 +1,11 @@
-// ========== 配置 ==========
+const plugin = org.bukkit.Bukkit.getPluginManager().getPlugin("RykenSlimefunCustomizer");
+
 const CFG = {
     defaultLore: "§7未录取卷轴",
     unlockLore: "§a已录取卷轴：§e勾豆灰",
-    rayEnergyCost: 50,
+    baseEnergyCost: 100,
+    maxEnergyCost: 1000,
+    costTargetIncrease: 2.5,
     baseDamage: 10,
     profAddMin: 1,
     profAddMax: 10,
@@ -13,22 +16,22 @@ const CFG = {
     particleInterval: 0.1,
     soundName: "entity.evoker.cast_spell",
     whiteList: ["VILLAGER","IRON_GOLEM","COW","PIG","SHEEP","CHICKEN","WOLF","CAT"],
-    meritBonus: 0.01,
     queDePenalty: 0.01,
     meritRange: { min:1, max:10 },
     levelMultiplier: { "黄":1, "玄":1.2, "地":1.5, "天":1.8 },
     profDamagePercentPer100: 0.05,
     particle: { startColor:{r:0,g:255,b:255}, endColor:{r:0,g:255,b:77}, size:5.0 },
-    maxMultiplier: 1314,
+    baseMaxMultiplier: 1314,
     targetMerit: 5201314,
     targetMultiplier: 520
 };
-CFG.meritCurveK = CFG.targetMerit * ((CFG.maxMultiplier-1)/(CFG.targetMultiplier-1)-1);
 
-// ========== 全局 ==========
+CFG.meritCurveK = CFG.targetMerit * ((CFG.baseMaxMultiplier-1)/(CFG.targetMultiplier-1)-1);
+const costMaxIncrease = CFG.maxEnergyCost/CFG.baseEnergyCost - 1;
+CFG.costK = CFG.targetMerit * (costMaxIncrease/CFG.costTargetIncrease - 1);
+
 const cooldownMap = new java.util.HashMap();
 
-// ========== 工具 ==========
 const findAndUpdateLore = (item, keyword, newText) => {
     const meta = item.getItemMeta();
     if (!meta) return false;
@@ -72,7 +75,6 @@ const getLoreInfo = item => {
     return res;
 };
 
-// ========== 主函数 ==========
 function onUse(event) {
     const p = event.getPlayer();
     const staff = p.getInventory().getItemInMainHand();
@@ -86,7 +88,6 @@ function onUse(event) {
     const staffInfo = getLoreInfo(staff);
     const bookInfo = getLoreInfo(book);
 
-    // 绑定
     if (!p.isSneaking()) {
         if (staffInfo.bindState !== CFG.unlockLore && 
             (staffInfo.bindState === CFG.defaultLore || staffInfo.bindState.startsWith("§a已录取卷轴"))) {
@@ -101,7 +102,6 @@ function onUse(event) {
         return;
     }
 
-    // 冷却
     const uuid = p.getUniqueId().toString();
     const now = org.bukkit.Bukkit.getServer().getCurrentTick();
     const last = cooldownMap.get(uuid) || 0;
@@ -112,19 +112,28 @@ function onUse(event) {
         return;
     }
 
-    if (staffInfo.energy < CFG.rayEnergyCost) {
-        p.sendMessage(`§c⚠ §4[勾豆灰] 灵力不足！需 §6${CFG.rayEnergyCost}`);
+    let dynamicCost = CFG.baseEnergyCost;
+    if (staffInfo.merit > 0) {
+        const increase = costMaxIncrease * (staffInfo.merit / (staffInfo.merit + CFG.costK));
+        dynamicCost = Math.min(CFG.maxEnergyCost, Math.round(CFG.baseEnergyCost * (1 + increase)));
+    }
+    if (staffInfo.energy < dynamicCost) {
+        p.sendMessage(`§c⚠ §4[勾豆灰] 灵力不足！需 §6${dynamicCost}`);
         return;
     }
 
-    // 伤害计算
-    const meritMult = staffInfo.merit >= 0 ?
-        1 + (CFG.maxMultiplier-1) * (staffInfo.merit / (staffInfo.merit + CFG.meritCurveK)) :
-        Math.max(0.1, 1 - (Math.abs(staffInfo.merit)/100) * CFG.queDePenalty);
+    const levelBase = CFG.levelMultiplier[bookInfo.level] || 1.0;
+    const maxMulti = CFG.baseMaxMultiplier * levelBase * levelBase;
+    let meritMult;
+    if (staffInfo.merit >= 0) {
+        const gain = (maxMulti-1) * (staffInfo.merit / (staffInfo.merit + CFG.meritCurveK));
+        meritMult = 1 + gain;
+    } else {
+        meritMult = Math.max(0.1, 1 - (Math.abs(staffInfo.merit)/100) * CFG.queDePenalty);
+    }
     const profBonus = 1 + Math.floor(bookInfo.prof/100) * CFG.profDamagePercentPer100;
-    const damage = CFG.baseDamage * CFG.levelMultiplier[bookInfo.level] * profBonus * meritMult;
+    const damage = CFG.baseDamage * meritMult * profBonus;
 
-    // 粒子效果
     const world = p.getWorld();
     const eye = p.getEyeLocation();
     const dir = eye.getDirection();
@@ -143,30 +152,25 @@ function onUse(event) {
             new (Java.type('org.bukkit.Particle$DustOptions'))(Color.fromRGB(r,g,b), CFG.particle.size));
     }
 
-    // 射线检测
     const ray = world.rayTrace(start, dir, CFG.maxDistance,
         Java.type('org.bukkit.FluidCollisionMode').NEVER, false, 0.1,
         e => e!==p && e instanceof org.bukkit.entity.LivingEntity && e.getType().name()!=="ARMOR_STAND");
 
-    // 扣除灵力、冷却、音效
-    findAndUpdateLore(staff, "灵力剩余", `§b灵力剩余：§6${Math.max(0, staffInfo.energy-CFG.rayEnergyCost)} §7/ §6${staffInfo.energyMax}`);
+    findAndUpdateLore(staff, "灵力剩余", `§b灵力剩余：§6${Math.max(0, staffInfo.energy-dynamicCost)} §7/ §6${staffInfo.energyMax}`);
     cooldownMap.put(uuid, now);
     world.playSound(p.getLocation(), CFG.soundName, 1,1);
 
     if (!ray?.getHitEntity()) return;
 
-    // 命中处理
     const entity = ray.getHitEntity();
     const type = entity.getType().name();
     const white = CFG.whiteList.includes(type);
     entity.damage(damage, p);
 
-    // 功德更新
     const change = Math.floor(Math.random() * (CFG.meritRange.max - CFG.meritRange.min + 1)) + CFG.meritRange.min;
     const newMerit = white ? staffInfo.merit - change : staffInfo.merit + change;
     findAndUpdateLore(staff, "德值", newMerit>=0 ? `§b功德值：§6${newMerit}` : `§c缺德值：§6${-newMerit}`);
 
-    // 熟练度（命中后增加）
     if (bookInfo.prof < bookInfo.profMax) {
         const add = Math.floor(Math.random() * (CFG.profAddMax - CFG.profAddMin + 1)) + CFG.profAddMin;
         const final = Math.min(bookInfo.prof + add, bookInfo.profMax);

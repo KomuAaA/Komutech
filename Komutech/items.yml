@@ -564,6 +564,28 @@ Komutech_L_JCWP_XDRYBQ:
       material_type: mc
       material: black_dye
       amount: 1
+##柬
+Komutech_L_JCWP_儡肆通行柬:
+  lateInit: false
+  item_group: Komutech_L_JCWP
+  placeable: true
+  item:
+    name: "{#dad4ec}&l✧{#dad4ec}&l儡{#e9dde5}&l肆{#f3e7e9}&l通{#e9dde5}&l行{#dad4ec}&l柬{#f3e7e9}&l✧"
+    lore:
+      - "{#dad4ec}❖ {#e9dde5}儡肆通行柬{#f3e7e9}·灵傀交易凭证"
+      - "{#dad4ec}│ {#e9dde5}持有此柬可进入儡肆{#f3e7e9}·参与灵傀交易"
+      - "{#dad4ec}│ {#e9dde5}万傀云集{#f3e7e9}·尽在此处"
+      - "{#dad4ec}└─ {#e9dde5}一柬仅限一人使用{#f3e7e9}·永久有效"
+    material_type: mc
+    material: ward_armor_trim_smithing_template
+    amount: 1
+  recipe_type: KOMUTECH_L_ZS_QHG
+  recipe:
+    5:
+      material_type: slimefun
+      material: KOMUTECH_L_ZW_QQWJQNCK
+      amount: 1
+
 ##墨水
 Komutech_L_JCWP_MS:
   lateInit: false
@@ -1293,6 +1315,88 @@ Komutech_L_DJ_JPLS:
       material_type: slimefun
       material: Komutech_L_DJ_功德券
       amount: 64
+
+Komutech_L_DJ_XPLJ:
+  lateInit: false
+  item_group: Komutech_L_DJ
+  item:
+    name: '&6&l『&a下品&6&l』{#00FFFF}&l灵{#25D5DA}&l晶'
+    lore:
+      - '{#98FB98}✦ {#32CD32}下品灵晶 {#228B22}·基础灵晶'
+      - '{#32CD32}▸ {#228B22}灵气初成凝聚 {#006400}·精纯易吸'
+      - '{#228B22}▸ {#006400}固态灵源 {#98FB98}·化气顺畅'
+      - '{#006400}└─ {#98FB98}入门级灵晶 {#32CD32}·修士常用'
+    material_type: mc
+    material: small_amethyst_bud
+    glow: true
+    amount: 1
+  placeable: true
+  recipe_type: KOMUTECH_L_JQ_SPYJQK
+  recipe:
+    5:
+      material_type: slimefun
+      material: KOMUTECH_L_ZW_QQWJQNCK
+Komutech_L_DJ_ZPLJ:
+  lateInit: false
+  item_group: Komutech_L_DJ
+  item:
+    name: '&6&l『&e中品&6&l』{#00FFFF}&l灵{#25D5DA}&l晶'
+    lore:
+      - '{#FFF8DC}✦ {#FFD700}中品灵晶 {#FFA500}·优质灵晶'
+      - '{#FFD700}▸ {#FFA500}灵气凝练饱满 {#FF8C00}·灵力绵长'
+      - '{#FFA500}▸ {#FF8C00}固态灵源 {#FFD700}·吸收无碍'
+      - '{#FF8C00}└─ {#FFD700}中等级灵晶 {#FFA500}·效果上佳'
+    material_type: mc
+    material: medium_amethyst_bud
+    glow: true
+    amount: 1
+  placeable: true
+  recipe_type: KOMUTECH_L_JQ_SPYJQK
+  recipe:
+    5:
+      material_type: slimefun
+      material: KOMUTECH_L_ZW_QQWJQNCK
+Komutech_L_DJ_SPLJ:
+  lateInit: false
+  item_group: Komutech_L_DJ
+  item:
+    name: '&6&l『&3上品&6&l』{#00FFFF}&l灵{#25D5DA}&l晶'
+    lore:
+      - '{#00FFFF}✦ {#20B2AA}上品灵晶 {#008B8B}·珍稀灵晶'
+      - '{#20B2AA}▸ {#008B8B}灵气浩瀚如渊 {#006666}·精纯至极'
+      - '{#008B8B}▸ {#006666}固态灵源 {#00FFFF}·化气无痕'
+      - '{#006666}└─ {#00FFFF}高等级灵晶 {#20B2AA}·修炼至宝'
+    material_type: mc
+    material: large_amethyst_bud
+    glow: true
+    amount: 1
+  placeable: true
+  recipe_type: KOMUTECH_L_JQ_SPYJQK
+  recipe:
+    5:
+      material_type: slimefun
+      material: KOMUTECH_L_ZW_QQWJQNCK
+Komutech_L_DJ_JPLJ:
+  lateInit: false
+  item_group: Komutech_L_DJ
+  item:
+    name: '&6&l『&c极品&6&l』{#00FFFF}&l灵{#25D5DA}&l晶'
+    lore:
+      - '{#FF4500}✦ {#FF1493}极品灵晶 {#C71585}·凝粹本源'
+      - '{#FF1493}▸ {#C71585}灵气浩瀚无垠 {#8B0000}·精纯无匹'
+      - '{#C71585}▸ {#8B0000}固态灵源 {#FF4500}·化气无痕'
+      - '{#8B0000}└─ {#FF4500}巅峰灵晶 {#FF1493}·大道之基'
+    material_type: mc
+    material: amethyst_cluster
+    glow: true
+    amount: 1
+  placeable: true
+  recipe_type: KOMUTECH_L_JQ_SPYJQK
+  recipe:
+    5:
+      material_type: slimefun
+      material: KOMUTECH_L_ZW_QQWJQNCK
+
 ##灵液
 Komutech_L_DJ_XPLY:
   lateInit: false
@@ -1758,7 +1862,7 @@ KOMUTECH_L_FZ_WZSYSFZ:
       - '{#4682B4}│ {#F0F8FF}完整明悟·大道已成'
       - '{#E0FFFF}└─ {#87CEEB}水之法则·已臻化境'
     material_type: mc
-    material: heart_of_the_sea
+    material: prismarine_crystals
     amount: 1
   recipe_type: KOMUTECH_L_JQ_FZCZQ
   recipe:
@@ -2358,7 +2462,7 @@ KOMUTECH_L_FZ_五行灵曦:
   recipe:
     5:
       material_type: slimefun
-      material: KOMUTECH_L_WD_ZHS
+      material: KOMUTECH_L_WD_TMS
 KOMUTECH_L_FZ_五行祖炁:
   lateInit: false
   item_group: Komutech_L_FZ
@@ -2386,40 +2490,40 @@ KOMUTECH_L_FZ_天象灵曦:
   lateInit: false
   item_group: Komutech_L_FZ
   item:
-    name: "{#74ebd5}&l❖✦·{#74ebd5}&l天{#67d2e5}&l象{#5bb7f5}&l灵{#67d2e5}&l曦{#74ebd5}&l·✦❖"
+    name: "{#a8edea}&l❖✦·{#a8edea}&l天{#d3e2e7}&l象{#fed6e3}&l灵{#d3e2e7}&l曦{#a8edea}&l·✦❖"
     lore:
-      - "{#74ebd5}『{#74ebd5}星{#67d2e5}河{#5bb7f5}荡{#67d2e5}漾{#74ebd5}·{#74ebd5}天{#5bb7f5}象{#67d2e5}初{#5bb7f5}生{#74ebd5}』"
-      - "{#74ebd5}✦ {#67d2e5}风雷激荡生万象 {#74ebd5}· {#5bb7f5}云雾飘渺蕴天机"
-      - "{#74ebd5}✦ {#67d2e5}霜雪凝华含清韵 {#74ebd5}· {#5bb7f5}天光初现照尘寰"
-      - "{#74ebd5}☯ {#67d2e5}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#74ebd5}☯"
-      - "{#74ebd5}❖ {#67d2e5}清辉凝天象 {#74ebd5}· {#5bb7f5}灵韵化风云"
-      - "{#74ebd5}❖ {#67d2e5}道基初奠日 {#74ebd5}· {#5bb7f5}微茫见天心"
-      - "{#74ebd5}『{#67d2e5}初窥门径·天象之始{#74ebd5}』"
+      - "{#a8edea}『{#a8edea}星{#d3e2e7}河{#fed6e3}荡{#d3e2e7}漾{#a8edea}·{#a8edea}天{#fed6e3}象{#d3e2e7}初{#fed6e3}生{#a8edea}』"
+      - "{#a8edea}✦ {#d3e2e7}风雷激荡生万象 {#a8edea}· {#fed6e3}云雾飘渺蕴天机"
+      - "{#a8edea}✦ {#d3e2e7}霜雪凝华含清韵 {#a8edea}· {#fed6e3}天光初现照尘寰"
+      - "{#a8edea}☯ {#d3e2e7}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#a8edea}☯"
+      - "{#a8edea}❖ {#d3e2e7}清辉凝天象 {#a8edea}· {#fed6e3}灵韵化风云"
+      - "{#a8edea}❖ {#d3e2e7}道基初奠日 {#a8edea}· {#fed6e3}微茫见天心"
+      - "{#a8edea}『{#d3e2e7}初窥门径·天象之始{#a8edea}』"
     material_type: mc
-    material: nether_star
+    material: heart_of_the_sea
     glow: true
     amount: 1
   recipe_type: KOMUTECH_L_JQ_FZCZQ
   recipe:
     5:
       material_type: slimefun
-      material: KOMUTECH_L_WD_ZHS
+      material: KOMUTECH_L_WD_TMS
 KOMUTECH_L_FZ_天象祖炁:
   lateInit: false
   item_group: Komutech_L_FZ
   item:
-    name: "{#4facfe}&l❀❈·{#4facfe}&l天{#37b6f5}&l象{#23a8f5}&l祖{#37b6f5}&l炁{#4facfe}&l·❈❀"
+    name: "{#fbc2eb}&l❀❈·{#fbc2eb}&l天{#d1c2ed}&l象{#a6c1ee}&l祖{#d1c2ed}&l炁{#fbc2eb}&l·❈❀"
     lore:
-      - "{#4facfe}『{#4facfe}苍{#37b6f5}穹{#23a8f5}定{#37b6f5}鼎{#4facfe}·{#4facfe}祖{#23a8f5}炁{#37b6f5}御{#23a8f5}天{#4facfe}』"
-      - "{#23a8f5}☯{#4facfe}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#23a8f5}☯"
-      - "{#4facfe}❈ {#37b6f5}执掌风雷惊天地 {#23a8f5}▸ {#37b6f5}统御云雪定乾坤"
-      - "{#4facfe}❈ {#37b6f5}天象无极归真意 {#23a8f5}▸ {#37b6f5}万化由心贯太虚"
-      - "{#23a8f5}☯{#4facfe}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#23a8f5}☯"
-      - "{#4facfe}❀ {#37b6f5}混元归一·大道圆满 {#23a8f5}❀"
-      - "{#4facfe}❀ {#37b6f5}祖炁御天·永恒不灭 {#23a8f5}❀"
-      - "{#4facfe}『 {#37b6f5}彻悟天道 {#23a8f5}· {#37b6f5}天象本源{#23a8f5} 』"
+      - "{#fbc2eb}『{#fbc2eb}苍{#d1c2ed}穹{#a6c1ee}定{#d1c2ed}鼎{#fbc2eb}·{#fbc2eb}祖{#a6c1ee}炁{#d1c2ed}御{#a6c1ee}天{#fbc2eb}』"
+      - "{#a6c1ee}☯{#fbc2eb}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#a6c1ee}☯"
+      - "{#fbc2eb}❈ {#d1c2ed}执掌风雷惊天地 {#a6c1ee}▸ {#d1c2ed}统御云雪定乾坤"
+      - "{#fbc2eb}❈ {#d1c2ed}天象无极归真意 {#a6c1ee}▸ {#d1c2ed}万化由心贯太虚"
+      - "{#a6c1ee}☯{#fbc2eb}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#a6c1ee}☯"
+      - "{#fbc2eb}❀ {#d1c2ed}混元归一·大道圆满 {#a6c1ee}❀"
+      - "{#fbc2eb}❀ {#d1c2ed}祖炁御天·永恒不灭 {#a6c1ee}❀"
+      - "{#fbc2eb}『 {#d1c2ed}彻悟天道 {#a6c1ee}· {#d1c2ed}天象本源{#a6c1ee} 』"
     material_type: mc
-    material: light_block
+    material: pearlescent_froglight
     glow: true
     amount: 1
   recipe_type: KOMUTECH_L_JQ_FZCZQ
@@ -2431,40 +2535,40 @@ KOMUTECH_L_FZ_造化灵曦:
   lateInit: false
   item_group: Komutech_L_FZ
   item:
-    name: "{#a8e063}&l❖✦·{#a8e063}&l造{#8cd163}&l化{#70c163}&l灵{#8cd163}&l曦{#a8e063}&l·✦❖"
+    name: "{#84fab0}&l❖✦·{#84fab0}&l造{#8ae7d2}&l化{#8fd3f4}&l灵{#8ae7d2}&l曦{#84fab0}&l·✦❖"
     lore:
-      - "{#a8e063}『{#a8e063}万{#8cd163}法{#70c163}初{#8cd163}生{#a8e063}·{#a8e063}造{#70c163}化{#8cd163}开{#70c163}天{#a8e063}』"
-      - "{#a8e063}✦ {#8cd163}机关通玄藏妙理 {#a8e063}· {#70c163}炼金化宝演神工"
-      - "{#a8e063}✦ {#8cd163}虚空挪移定空间 {#a8e063}· {#70c163}天音震彻破虚妄"
-      - "{#a8e063}☯ {#8cd163}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#a8e063}☯"
-      - "{#a8e063}❖ {#8cd163}灵曦孕万法 {#a8e063}· {#70c163}道韵始初生"
-      - "{#a8e063}❖ {#8cd163}一窍通玄理 {#a8e063}· {#70c163}万象自清明"
-      - "{#a8e063}『{#8cd163}初窥门径·造化之始{#a8e063}』"
+      - "{#84fab0}『{#84fab0}万{#8ae7d2}法{#8fd3f4}初{#8ae7d2}生{#84fab0}·{#84fab0}造{#8fd3f4}化{#8ae7d2}开{#8fd3f4}天{#84fab0}』"
+      - "{#84fab0}✦ {#8ae7d2}机关通玄藏妙理 {#84fab0}· {#8fd3f4}炼金化宝演神工"
+      - "{#84fab0}✦ {#8ae7d2}虚空挪移定空间 {#84fab0}· {#8fd3f4}天音震彻破虚妄"
+      - "{#84fab0}☯ {#8ae7d2}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#84fab0}☯"
+      - "{#84fab0}❖ {#8ae7d2}灵曦孕万法 {#84fab0}· {#8fd3f4}道韵始初生"
+      - "{#84fab0}❖ {#8ae7d2}一窍通玄理 {#84fab0}· {#8fd3f4}万象自清明"
+      - "{#84fab0}『{#8ae7d2}初窥门径·造化之始{#84fab0}』"
     material_type: mc
-    material: echo_shard
+    material: sea_pickle
     glow: true
     amount: 1
   recipe_type: KOMUTECH_L_JQ_FZCZQ
   recipe:
     5:
       material_type: slimefun
-      material: KOMUTECH_L_WD_ZHS
+      material: KOMUTECH_L_WD_TMS
 KOMUTECH_L_FZ_造化祖炁:
   lateInit: false
   item_group: Komutech_L_FZ
   item:
-    name: "{#4facfe}&l❀❈·{#4facfe}&l造{#38c7f5}&l化{#23a8f5}&l祖{#38c7f5}&l炁{#4facfe}&l·❈❀"
+    name: "{#43e97b}&l❀❈·{#43e97b}&l造{#3ef1a9}&l化{#38f9d7}&l祖{#3ef1a9}&l炁{#43e97b}&l·❈❀"
     lore:
-      - "{#4facfe}『{#4facfe}造{#38c7f5}物{#23a8f5}赋{#38c7f5}灵{#4facfe}·{#4facfe}万{#23a8f5}法{#38c7f5}归{#23a8f5}宗{#4facfe}』"
-      - "{#23a8f5}☯{#4facfe}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#23a8f5}☯"
-      - "{#4facfe}❈ {#38c7f5}机关通天掌造化 {#23a8f5}▸ {#38c7f5}炼金九转炼神胎"
-      - "{#4facfe}❈ {#38c7f5}空间无极随心转 {#23a8f5}▸ {#38c7f5}天音杀伐定轮回"
-      - "{#23a8f5}☯{#4facfe}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#23a8f5}☯"
-      - "{#4facfe}❀ {#38c7f5}混元归一·大道圆满 {#23a8f5}❀"
-      - "{#4facfe}❀ {#38c7f5}祖炁归真·永恒不灭 {#23a8f5}❀"
-      - "{#4facfe}『 {#38c7f5}彻悟本源 {#23a8f5}· {#38c7f5}造化大道{#23a8f5} 』"
+      - "{#43e97b}『{#43e97b}造{#3ef1a9}物{#38f9d7}赋{#3ef1a9}灵{#43e97b}·{#43e97b}万{#38f9d7}法{#3ef1a9}归{#38f9d7}宗{#43e97b}』"
+      - "{#38f9d7}☯{#43e97b}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#38f9d7}☯"
+      - "{#43e97b}❈ {#3ef1a9}机关通天掌造化 {#38f9d7}▸ {#3ef1a9}炼金九转炼神胎"
+      - "{#43e97b}❈ {#3ef1a9}空间无极随心转 {#38f9d7}▸ {#3ef1a9}天音杀伐定轮回"
+      - "{#38f9d7}☯{#43e97b}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#38f9d7}☯"
+      - "{#43e97b}❀ {#3ef1a9}混元归一·大道圆满 {#38f9d7}❀"
+      - "{#43e97b}❀ {#3ef1a9}祖炁归真·永恒不灭 {#38f9d7}❀"
+      - "{#43e97b}『 {#3ef1a9}彻悟本源 {#38f9d7}· {#3ef1a9}造化大道{#38f9d7} 』"
     material_type: mc
-    material: structure_block
+    material: chain_command_block
     glow: true
     amount: 1
   recipe_type: KOMUTECH_L_JQ_FZCZQ
@@ -2473,6 +2577,129 @@ KOMUTECH_L_FZ_造化祖炁:
       material_type: slimefun
       material: KOMUTECH_L_WD_PWS
 
+##终极
+KOMUTECH_L_ZJ_無:
+  lateInit: false
+  item_group: Komutech_L_ZJ
+  item:
+    name: "{#1C1C1C}&l-{#3C3C3C}&l-{#5D5D5D}&l-{#7D7D7D}&l-{#9E9E9E}&l✦{#BEBEBE}&l✫{#DFDFDF}&l✬·{#FFFFFF}&l無·{#DFDFDF}&l✬{#BEBEBE}&l✫{#9E9E9E}&l✦{#7D7D7D}&l-{#5D5D5D}&l-{#3C3C3C}&l-{#1C1C1C}&l-"
+    lore:
+      - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l叁 {#FFFFFF}&l炁 {#FFFFFF}&l歸 {#D2D2D2}&l壹 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+      - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l萬 {#FFFFFF}&l化 {#FFFFFF}&l本 {#D2D2D2}&l源 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+      - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l無 {#FFFFFF}&l中 {#FFFFFF}&l生 {#D2D2D2}&l有 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+      - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l造 {#FFFFFF}&l化 {#FFFFFF}&l天 {#D2D2D2}&l地 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"    
+    material_type: mc
+    material: nether_star
+    glow: true
+    amount: 1
+  recipe_type: KOMUTECH_L_ZJ_ZJHCT
+  recipe:
+    2:
+      name: "{#fc6076}&l❀❈·{#fc6076}&l五{#fd7a5f}&l行{#ff9a44}&l祖{#fd7a5f}&l炁{#fc6076}&l·❈❀"
+      lore:
+        - "{#fc6076}『{#fc6076}混{#fd7a5f}沌{#ff9a44}初{#fd7a5f}开{#fc6076}·{#fc6076}祖{#fd7a5f}炁{#ff9a44}归{#fd7a5f}元{#fc6076}』"
+        - "{#ff9a44}☯{#fc6076}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#ff9a44}☯"
+        - "{#fc6076}❈ {#fd7a5f}天地未分孕初气 {#ff9a44}▸ {#fd7a5f}五行万象演根源"
+        - "{#fc6076}❈ {#fd7a5f}圆满自足循天道 {#ff9a44}▸ {#fd7a5f}万法生克执枢机"
+        - "{#ff9a44}☯{#fc6076}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#ff9a44}☯"
+        - "{#fc6076}❀ {#fd7a5f}混元归一·大道圆满 {#ff9a44}❀"
+        - "{#fc6076}❀ {#fd7a5f}祖炁归真·永恒不竭 {#ff9a44}❀"
+        - "{#fc6076}『 {#fd7a5f}彻悟道韵 {#ff9a44}· {#fd7a5f}五行本源{#ff9a44} 』"
+        - "&8不会有人溯源了吧?"
+      material_type: mc
+      material: shroomlight
+      glow: true
+    5:
+      name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
+      lore:
+        - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
+        - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
+        - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
+        - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
+        - "&8不会有人溯源了吧?"
+      material_type: mc
+      material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+    7:
+      name: "{#fbc2eb}&l❀❈·{#fbc2eb}&l天{#d1c2ed}&l象{#a6c1ee}&l祖{#d1c2ed}&l炁{#fbc2eb}&l·❈❀"
+      lore:
+        - "{#fbc2eb}『{#fbc2eb}苍{#d1c2ed}穹{#a6c1ee}定{#d1c2ed}鼎{#fbc2eb}·{#fbc2eb}祖{#a6c1ee}炁{#d1c2ed}御{#a6c1ee}天{#fbc2eb}』"
+        - "{#a6c1ee}☯{#fbc2eb}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#a6c1ee}☯"
+        - "{#fbc2eb}❈ {#d1c2ed}执掌风雷惊天地 {#a6c1ee}▸ {#d1c2ed}统御云雪定乾坤"
+        - "{#fbc2eb}❈ {#d1c2ed}天象无极归真意 {#a6c1ee}▸ {#d1c2ed}万化由心贯太虚"
+        - "{#a6c1ee}☯{#fbc2eb}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#a6c1ee}☯"
+        - "{#fbc2eb}❀ {#d1c2ed}混元归一·大道圆满 {#a6c1ee}❀"
+        - "{#fbc2eb}❀ {#d1c2ed}祖炁御天·永恒不灭 {#a6c1ee}❀"
+        - "{#fbc2eb}『 {#d1c2ed}彻悟天道 {#a6c1ee}· {#d1c2ed}天象本源{#a6c1ee} 』"
+        - "&8不会有人溯源了吧?"
+      material_type: mc
+      material: pearlescent_froglight
+      glow: true
+    9:
+      name: "{#43e97b}&l❀❈·{#43e97b}&l造{#3ef1a9}&l化{#38f9d7}&l祖{#3ef1a9}&l炁{#43e97b}&l·❈❀"
+      lore:
+        - "{#43e97b}『{#43e97b}造{#3ef1a9}物{#38f9d7}赋{#3ef1a9}灵{#43e97b}·{#43e97b}万{#38f9d7}法{#3ef1a9}归{#38f9d7}宗{#43e97b}』"
+        - "{#38f9d7}☯{#43e97b}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#38f9d7}☯"
+        - "{#43e97b}❈ {#3ef1a9}机关通天掌造化 {#38f9d7}▸ {#3ef1a9}炼金九转炼神胎"
+        - "{#43e97b}❈ {#3ef1a9}空间无极随心转 {#38f9d7}▸ {#3ef1a9}天音杀伐定轮回"
+        - "{#38f9d7}☯{#43e97b}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#38f9d7}☯"
+        - "{#43e97b}❀ {#3ef1a9}混元归一·大道圆满 {#38f9d7}❀"
+        - "{#43e97b}❀ {#3ef1a9}祖炁归真·永恒不灭 {#38f9d7}❀"
+        - "{#43e97b}『 {#3ef1a9}彻悟本源 {#38f9d7}· {#3ef1a9}造化大道{#38f9d7} 』"
+        - "&8不会有人溯源了吧?"
+      material_type: mc
+      material: chain_command_block
+      glow: true
+##萬象匱
+KOMUTECH_L_ZJ_萬象匱:
+  lateInit: false
+  item_group: Komutech_L_ZJ
+  item:
+    name: "{#C0C0C0}&l-{#C8C8C8}&l-{#C8C8C8}&l-{#D0D0D0}&l✦{#D8D8D8}&l✫{#E0E0E0}&l·{#E8E8E8}&l萬{#F0F0F0}&l·{#FFFFFF}&l象{#F0F0F0}&l·{#E8E8E8}&l匱{#E0E0E0}&l·{#D8D8D8}&l✫{#D0D0D0}&l✦{#C8C8C8}&l-{#C8C8C8}&l-{#C0C0C0}&l-"
+    lore:
+      - "{#C0C0C0}&l&k0{#C8C8C8}&l&k0{#D0D0D0}&l&k0{#D8D8D8}&l萬{#E0E0E0}&l象{#E8E8E8}&l歸{#F0F0F0}&l一{#F8F8F8}&l·{#F0F0F0}&l貯{#E8E8E8}&l盡{#E0E0E0}&l萬{#D8D8D8}&l物{#D0D0D0}&l&k0{#C8C8C8}&l&k0{#C0C0C0}&l&k0"
+      - "{#C0C0C0}&l&k0{#C8C8C8}&l&k0{#D0D0D0}&l&k0{#D8D8D8}&l虛{#E0E0E0}&l空{#E8E8E8}&l之{#F0F0F0}&l界{#F8F8F8}&l·{#F0F0F0}&l萬{#E8E8E8}&l法{#E0E0E0}&l萬{#D8D8D8}&l象{#D0D0D0}&l&k0{#C8C8C8}&l&k0{#C0C0C0}&l&k0"
+    material_type: mc
+    material: book
+    glow: true
+    amount: 1
+  script: L_道具/萬象匱
+  recipe_type: KOMUTECH_L_ZJ_ZJHCT
+  recipe:
+    1:
+      material_type: mc
+      material: ender_chest
+    2:
+      material_type: mc
+      material: ender_chest
+    3:
+      material_type: mc
+      material: ender_chest
+    4:
+      material_type: mc
+      material: ender_chest
+    5:
+      name: "{#1C1C1C}&l-{#3C3C3C}&l-{#5D5D5D}&l-{#7D7D7D}&l-{#9E9E9E}&l✦{#BEBEBE}&l✫{#DFDFDF}&l✬·{#FFFFFF}&l無·{#DFDFDF}&l✬{#BEBEBE}&l✫{#9E9E9E}&l✦{#7D7D7D}&l-{#5D5D5D}&l-{#3C3C3C}&l-{#1C1C1C}&l-"
+      lore:
+        - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l叁 {#FFFFFF}&l炁 {#FFFFFF}&l歸 {#D2D2D2}&l壹 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+        - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l萬 {#FFFFFF}&l化 {#FFFFFF}&l本 {#D2D2D2}&l源 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+        - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l無 {#FFFFFF}&l中 {#FFFFFF}&l生 {#D2D2D2}&l有 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+        - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l造 {#FFFFFF}&l化 {#FFFFFF}&l天 {#D2D2D2}&l地 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"    
+        - "&8不会有人溯源了吧?"
+      material_type: mc
+      material: nether_star
+      glow: true
+    6:
+      material_type: mc
+      material: ender_chest
+    7:
+      material_type: mc
+      material: ender_chest
+    8:
+      material_type: mc
+      material: ender_chest
+    9:
+      material_type: mc
+      material: ender_chest
 
 ##灵-矿物
 Komutech_L_KW_LSYK:
@@ -2751,7 +2978,7 @@ Komutech_L_KW_HTD:
   recipe:
     5:
       material_type: slimefun
-      material: Komutech_L_KW_XTYK
+      material: Komutech_L_KW_HTYK
       amount: 1
 Komutech_L_KW_CYTD:
   lateInit: false
@@ -2771,7 +2998,7 @@ Komutech_L_KW_CYTD:
   recipe:
     5:
       material_type: slimefun
-      material: Komutech_L_KW_XTYK
+      material: Komutech_L_KW_CYTYK
       amount: 1
 Komutech_L_KW_ZJD:
   lateInit: false
@@ -2791,7 +3018,7 @@ Komutech_L_KW_ZJD:
   recipe:
     5:
       material_type: slimefun
-      material: Komutech_L_KW_XTYK
+      material: Komutech_L_KW_ZJYK
       amount: 1
 
 ##宝石
@@ -3235,6 +3462,112 @@ KOMUTECH_L_LZ_M:
       amount: 1
 
 ##灵-工具
+Komutech_L_GJ_口木科技指南:
+  lateInit: false
+  item_group: Komutech_L_GJ
+  item:
+    name: '{#00FA9A}&kA{#2DFBAE}&l口{#5AFCC2}&l木{#86FDD7}&l科{#B3FEEB}&l技{#E0FFFF}&l指{#00FA9A}&l南{#E0FFFF}&kA'
+    lore:
+      - '{#00FA9A}❖ {#2DFBAE}右键打开教程菜单，查看入门指南 ❖'
+      - '{#5AFCC2}还有机会获得神秘奖励哦~'
+    material_type: mc
+    material: knowledge_book
+    amount: 1
+    glow: true
+  script: L-菜单/口木科技指南
+  placeable: false
+  recipe_type: ENHANCED_CRAFTING_TABLE
+  recipe:
+    1:
+      material_type: mc
+      material: bamboo
+      amount: 1
+    2:
+      material_type: mc
+      material: bamboo
+      amount: 1
+    3:
+      material_type: mc
+      material: bamboo
+      amount: 1
+    4:
+      material_type: mc
+      material: bamboo
+      amount: 1
+    5:
+      material_type: slimefun
+      material: Komutech_L_DJ_XPLS
+      amount: 1
+    6:
+      material_type: mc
+      material: bamboo
+      amount: 1
+    7:
+      material_type: mc
+      material: bamboo
+      amount: 1
+    8:
+      material_type: mc
+      material: bamboo
+      amount: 1
+    9:
+      material_type: mc
+      material: bamboo
+      amount: 1
+Komutech_L_GJ_琼华卷:
+  lateInit: false
+  item_group: Komutech_L_GJ
+  item:
+    name: '{#00FA9A}&kA{#2DFBAE}&l琼{#5AFCC2}&l华{#86FDD7}&l卷{#B3FEEB}&kA'
+    lore:
+      - '{#00FA9A}❖ {#2DFBAE}右键打开琼华阁，选购所需物品 ❖'
+      - '{#00FA9A}❖ {#2DFBAE}点击分类查看物品，点击物品购买 ❖'
+      - '{#5AFCC2}价格已标注在物品描述中'
+    material_type: mc
+    material: flower_banner_pattern
+    amount: 1
+    glow: true
+  script: L-菜单/琼华阁
+  placeable: false
+  recipe_type: ENHANCED_CRAFTING_TABLE
+  recipe:
+    1:
+      material_type: slimefun
+      material: KOMUTECH_L_LZ_YG
+      amount: 1
+    2:
+      material_type: slimefun
+      material: Komutech_L_KW_XYY
+      amount: 1
+    3:
+      material_type: slimefun
+      material: KOMUTECH_L_LZ_YG
+      amount: 1
+    4:
+      material_type: slimefun
+      material: KOMUTECH_L_FZ_XXKJFZ
+      amount: 1
+    5:
+      material_type: slimefun
+      material: Komutech_L_JCWP_KBJZ
+      amount: 1
+    6:
+      material_type: slimefun
+      material: KOMUTECH_L_FZ_XXKJFZ
+      amount: 1
+    7:
+      material_type: slimefun
+      material: Komutech_L_JCWP_CZ
+      amount: 1
+    8:
+      material_type: slimefun
+      material: Komutech_L_JCWP_CZ
+      amount: 1
+    9:
+      material_type: slimefun
+      material: Komutech_L_JCWP_CZ
+      amount: 1
+
 Komutech_L_GJ_KCB:
   lateInit: false
   item_group: Komutech_L_GJ
@@ -3647,9 +3980,9 @@ Komutech_L_Q_灵杖教程:
       - '{#00FFFF}│ {#7FFFD4}▷ 功德获取：对敌方生物造成伤害 增加功德值'
       - '{#7FFFD4}│ {#00FFFF}▷ 缺德获取：对友方生物造成伤害 增加缺德值'
       - '{#00FFFF}│ {#7FFFD4}▷ 数值转换：功德值＜0 自动转为缺德值'
-      - '{#7FFFD4}│ {#00FFFF}▷ 数值波动：增减幅度与造成的伤害挂钩'
-      - '{#00FFFF}│ {#7FFFD4}▷ 功德增益：每{#FFD700}100{#7FFFD4}点功德值 提升{#FFD700}1%{#7FFFD4}基础伤害'
-      - '{#7FFFD4}│ {#00FFFF}▷ 伤害公式：(基础伤害×品阶倍率)×(功德/100)'
+      - '{#7FFFD4}│ {#00FFFF}▷ 数值波动：CD和消耗的灵力与功德值挂钩'
+      - '{#00FFFF}│ {#7FFFD4}▷ 功德增益：功德越高伤害越高，最高不会超过基础伤害×1314倍'
+      - '{#7FFFD4}│ {#00FFFF}▷ 伤害公式：不固定懒得写了'
       - '{#00FFFF}│ {#7FFFD4}▷ 品阶倍率：{#FFD700}1{#7FFFD4}/{#FFD700}1.2{#7FFFD4}/{#FFD700}1.5{#7FFFD4}/{#FFD700}1.8{#7FFFD4}（由低到高）'
       - '{#7FFFD4}└─ {#00FFFF}善用功德·灵杖威力方能极致'
     material_type: mc
@@ -3670,7 +4003,7 @@ Komutech_L_Q_烧火棍:
       - '{#CD853F}│ {#A0522D}残火裹棍身 {#8B4513}·随手拾荒得'
       - '{#A0522D}└─ {#8B4513}催动一次耗灵 {#696969}·灵气消耗 {#FFD700}「2点」'
       - "§7未录取卷轴" 
-      - "§b灵力剩余：§6100 §7/ §6100"
+      - "§b灵力剩余：§61000 §7/ §61000"
       - "§§b功德值：§60"
     material_type: mc
     material: stick
@@ -3703,7 +4036,7 @@ Komutech_L_Q_灵杖:
       - '{#40E0D0}│ {#48D1CC}引灵化线伤敌 {#5F9EA0}·粒子流光破空'
       - '{#48D1CC}└─ {#5F9EA0}催动一次耗灵 {#6495ED}·{#FFD700}「5点」灵气消耗'
       - "§7未录取卷轴" 
-      - "§b灵力剩余：§60 §7/ §65000"
+      - "§b灵力剩余：§60 §7/ §630000"
       - "§§b功德值：§60"
     material_type: mc
     material: bamboo
@@ -3728,7 +4061,7 @@ Komutech_L_Q_蜉蝣梦:
       - '{#AFEEEE}│ {#DDA0DD}轻泡浮空激射 {#E6E6FA}·非是幻梦是杀招'
       - '{#DDA0DD}└─ {#E6E6FA}引灵凝泡一次 {#F0F8FF}·耗灵 {#FFD700}「12点」'
       - "§7未录取卷轴" 
-      - "§b灵力剩余：§60 §7/ §610000"
+      - "§b灵力剩余：§60 §7/ §650000"
       - "§§b功德值：§60"
     material_type: mc
     material: ghast_tear
@@ -3754,7 +4087,7 @@ Komutech_L_Q_空引津:
       - '{#87CEEB}│ {#20B2AA}域锁半径 {#FFD700}「6格」 {#48D1CC}·闻声者皆陨'
       - '{#20B2AA}└─ {#48D1CC}催动无形一击 {#5F9EA0}·耗灵 {#FFD700}「35点」'
       - "§7未录取卷轴" 
-      - "§b灵力剩余：§60 §7/ §650000"
+      - "§b灵力剩余：§60 §7/ §6100000"
       - "§§b功德值：§60"
     material_type: mc
     material: echo_shard
@@ -3848,7 +4181,7 @@ Komutech_L_JZ_卷轴教程:
       - '{#F4A460}│ {#D2691E}▷ 绑定规则：卷轴仅可绑定灵杖'
       - '{#D2691E}│ {#F4A460}▷ 绑定操作：副手卷轴+主手灵杖 右键绑定'
       - '{#F4A460}│ {#D2691E}▷ 释放操作：绑定后副手持有 shift+右键释放'
-      - '{#D2691E}│ {#F4A460}▷ 伤害公式：(品阶倍率×基础值)×(熟练度/100×{#FFD700}0.05{#F4A460})'
+      - '{#D2691E}│ {#F4A460}▷ 伤害公式：不固定懒得写了,哦对消耗的灵力与功德值挂钩'
       - '{#F4A460}│ {#D2691E}▷ 品阶倍率：{#FFD700}1{#D2691E}/{#FFD700}1.2{#D2691E}/{#FFD700}1.5{#D2691E}/{#FFD700}1.8{#D2691E}（由低到高）'
       - '{#D2691E}│ {#F4A460}▷ 熟练度效果：每{#FFD700}100{#F4A460}点降{#FFD700}3%{#F4A460}冷却 · 上限{#FFD700}90%{#F4A460}'
       - '{#F4A460}│ {#D2691E}▷ 熟练度获取：每次造成伤害 随机增加'
@@ -3867,7 +4200,7 @@ Komutech_L_JZ_勾豆灰:
     lore:
       - "&6&l『&e&l黄阶&6&l』{#F4A460}&l卷{#D2691E}&l轴"
       - '{#DAA520}❖ {#FFD700}基础灵卷 {#C0C0C0}·古卷秘录 {#DAA520}❖'
-      - '{#FFD700}│ {#DAA520}灵卷威能 {#FF8C00}「10点」 {#C0C0C0}·启卷耗灵 {#FF8C00}「50点」'
+      - '{#FFD700}│ {#DAA520}灵卷威能 {#FF8C00}「10点」 {#C0C0C0}·启卷耗灵 {#FF8C00}「100点」'
       - '{#DAA520}│ {#C0C0C0}右键嵌杖 {#808080}·为主手灵杖附加卷轴'
       - '{#C0C0C0}└─ {#808080}一线灵芒破空 {#696969}·此卷轴为基础卷轴'
       - "&b熟练度：&60 &7/ &61000"
@@ -3893,7 +4226,7 @@ Komutech_L_JZ_九霄环佩鸣:
     lore:
       - "&6&l『&8&l玄阶&6&l』{#F4A460}&l卷{#D2691E}&l轴"
       - '{#DDA0DD}❖ {#E6E6FA}仙音灵卷 {#DA70D6}·环佩清鸣 {#DDA0DD}❖'
-      - '{#E6E6FA}│ {#DDA0DD}音浪贯空伤 {#FFD700}「12点」 {#DA70D6}·启卷耗灵 {#FFD700}「200点」'
+      - '{#E6E6FA}│ {#DDA0DD}音浪贯空伤 {#FFD700}「12点」 {#DA70D6}·启卷耗灵 {#FFD700}「1000点」'
       - '{#DDA0DD}│ {#DA70D6}右键嵌杖 {#BA55D3}·为主手灵杖附仙音'
       - '{#DA70D6}└─ {#BA55D3}环佩一响裂乾坤 {#9370DB}·音波过处尽摧敌'
       - "&b熟练度：&60 &7/ &62000"
@@ -3919,7 +4252,7 @@ Komutech_L_JZ_冰火两重天:
     lore:
       - "&6&l『&d&l地阶&6&l』{#F4A460}&l卷{#D2691E}&l轴"
       - '{#87CEEB}❖ {#E0FFFF}冰火{#B0E0E6}双煞{#87CEEB}卷 {#FFD700}·{#FF9500}寒炽{#FF6347}并济 {#0099FF}❖'
-      - '{#E0FFFF}│ {#B0E0E6}冰裂{#87CEEB}火灼{#0099FF}伤 {#FFD700}「30点」 {#FF9500}·{#FF6347}启卷{#FF4500}耗灵 {#FFD700}「500点」'
+      - '{#E0FFFF}│ {#B0E0E6}冰裂{#87CEEB}火灼{#0099FF}伤 {#FFD700}「30点」 {#FF9500}·{#FF6347}启卷{#FF4500}耗灵 {#FFD700}「3000点」'
       - '{#B0E0E6}│ {#87CEEB}右键{#0099FF}嵌杖 {#FF9500}·{#FF6347}为主手{#FF4500}灵杖{#FF3300}附冰火{#FF9500}双罡'
       - '{#87CEEB}│ {#0099FF}冰凝{#0066CC}三尺{#004080}封经络 {#FF9500}·{#FF6347}火焚{#FF4500}九寸{#FF3300}燎神魂'
       - '{#0099FF}└─ {#0066CC}寒焰{#004080}交织{#0099FF}破空去 {#FF9500}·{#FF6347}中者{#FF4500}同承{#FF3300}两极苦'
@@ -3936,27 +4269,33 @@ Komutech_L_JZ_冰火两重天:
       material_type: slimefun
       material: KOMUTECH_L_ZW_QQWJQNCK
       amount: 1
-
-##灵-天阶卷轴
-Komutech_L_JZ_五行必杀:
+Komutech_L_JZ_御龙护身决:
   lateInit: false
   item_group: Komutech_L_JZ
   item:
-    name: '&4&l五&6&l行&7&l必&8&l杀'
+    name: '{#FFD700}&l御{#FFA500}&l龙{#FF8C00}&l护{#FF7F50}&l身{#FF6347}&l决'
     lore:
-      - "&6&l『&4&l天阶&6&l』{#F4A460}&l卷{#D2691E}&l轴"
-      - '{#CD853F}❖ {#FFD700}五行显字符 {#CD853F}·测试道具 {#CD853F}❖'
-      - '{#FFD700}│ {#00FF00}使用显字 {#0000FF}·金木水火土'
-      - '{#00FF00}│ {#FF0000}无实战效果 {#CD853F}·仅作视觉演示'
-      - '{#0000FF}└─ {#FF4500}§l⚠ 暂为测试用·正式版待完善'
-      - "&b熟练度：&60 &7/ &610000"
+      - "&6&l『&d&l地阶&6&l』{#F4A460}&l卷{#D2691E}&l轴"
+      - '{#FFD700}❖ {#FFE4B5}龙魂护体{#FFD700}·{#FF8C00}御敌无形 {#FF4500}❖'
+      - '{#FFE4B5}│ {#FFD700}龙威{#FF8C00}缠绕{#FF7F50}伤 {#FF6347}「9点」 {#FF4500}·{#FF6347}启卷{#FF4500}耗灵 {#FFD700}「5000点」'
+      - '{#FF8C00}│ {#FF7F50}右键{#FF6347}嵌杖 {#FF4500}·{#FF6347}为主手{#FF4500}灵杖{#FF3300}附龙魂{#FF8C00}护身'
+      - '{#FFD700}│ {#FFE4B5}龙吟{#FF8C00}九霄{#FF7F50}化金鳞 {#FF4500}·{#FF6347}来敌{#FF4500}皆伤{#FF3300}十二秒'
+      - '{#FF8C00}└─ {#FF7F50}金光{#FF6347}旋绕{#FF4500}护真元 {#FF4500}·{#FF6347}龙魂{#FF4500}不灭{#FF3300}镇四方'
+      - "&b熟练度：&60 &7/ &65000"
     material_type: mc
     material: book
     glow: true
     amount: 1
-  script: L_卷轴/五行必杀
+  script: L_卷轴/御龙护身决
   placeable: false
-  recipe_type: NULL
+  recipe_type: KOMUTECH_L_JQ_JZZXT
+  recipe:
+    5:
+      material_type: slimefun
+      material: KOMUTECH_L_ZW_QQWJQNCK
+      amount: 1
+
+##灵-天阶卷轴
 Komutech_L_JZ_游龙惊鸿诀:
   lateInit: false
   item_group: Komutech_L_JZ
@@ -3965,7 +4304,7 @@ Komutech_L_JZ_游龙惊鸿诀:
     lore:
       - "&6&l『&4&l天阶&6&l』{#F4A460}&l卷{#D2691E}&l轴"
       - '{#DAA520}❖ {#FFD700}龙魂秘卷 {#CD853F}·圣威御敌 {#DAA520}❖'
-      - '{#FFD700}│ {#F4A460}龙威破敌伤 {#FF8C00}「18点」 {#CD853F}·引卷耗灵 {#FF8C00}「800点」'
+      - '{#FFD700}│ {#F4A460}龙威破敌伤 {#FF8C00}「18点」 {#CD853F}·引卷耗灵 {#FF8C00}「5000点」'
       - '{#F4A460}│ {#DAA520}右键嵌杖 {#CD853F}·为主手灵杖赋龙威'
       - '{#DAA520}│ {#CD853F}▷ 一重：龙魂缠体·御敌伤来犯'
       - '{#CD853F}│ {#B8860B}▷ 二重：龙魂冲霄·扫路径之敌'
@@ -3985,6 +4324,25 @@ Komutech_L_JZ_游龙惊鸿诀:
       material_type: slimefun
       material: KOMUTECH_L_ZW_QQWJQNCK
       amount: 1
+Komutech_L_JZ_五行必杀:
+  lateInit: false
+  item_group: Komutech_L_JZ
+  item:
+    name: '&4&l五&6&l行&7&l必&8&l杀'
+    lore:
+      - "&6&l『&4&l天阶&6&l』{#F4A460}&l卷{#D2691E}&l轴"
+      - '{#CD853F}❖ {#FFD700}五行显字符 {#CD853F}·测试道具 {#CD853F}❖'
+      - '{#FFD700}│ {#00FF00}使用显字 {#0000FF}·金木水火土'
+      - '{#00FF00}│ {#FF0000}无实战效果 {#CD853F}·仅作视觉演示'
+      - '{#0000FF}└─ {#FF4500}§l⚠ 暂为测试用·正式版待完善'
+      - "&b熟练度：&60 &7/ &610000"
+    material_type: mc
+    material: book
+    glow: true
+    amount: 1
+  script: L_卷轴/五行必杀
+  placeable: false
+  recipe_type: NULL
 
 ##灵-生物
 ##被束缚的小岛人
@@ -4048,7 +4406,7 @@ Komutech_L_SW_KLN:
     material_type: skull_url
     material: http://textures.minecraft.net/texture/c0e86a2809e9590d9dddf995ba443b6441a151f4c3deb78be358b000110c29a7
     amount: 1
-  recipe_type: KOMUTECH_L_DFKJQ_LS
+  recipe_type: KOMUTECH_L_ZS_QHG
   recipe:
     1:
       material_type: slimefun
@@ -4214,17 +4572,6 @@ Komutech_CDZW3:
     amount: 1
   placeable: false
   recipe_type: NULL
-Komutech_CDZW5:
-  lateInit: false
-  item_group: Komutech_CD5
-  item:
-    name: ' '
-    lore:
-    material_type: mc
-    material: magenta_stained_glass_pane
-    amount: 1
-  placeable: false
-  recipe_type: NULL
 Komutech_CDZW6:
   lateInit: false
   item_group: Komutech_CD6
@@ -4249,7 +4596,7 @@ Komutech_CDZW8:
   recipe_type: NULL
 Komutech_CDZW13:
   lateInit: false
-  item_group: Komutech_CD13
+  item_group: Komutech_XZLJ
   item:
     name: ' '
     lore:
@@ -4327,17 +4674,6 @@ Komutech_CDZW29:
 Komutech_CDZW30:
   lateInit: false
   item_group: Komutech_CD30
-  item:
-    name: ' '
-    lore:
-    material_type: mc
-    material: magenta_stained_glass_pane
-    amount: 1
-  placeable: false
-  recipe_type: NULL
-Komutech_CDZW31:
-  lateInit: false
-  item_group: Komutech_CD31
   item:
     name: ' '
     lore:
@@ -4588,6 +4924,18 @@ Komutech_CDZW67:
     amount: 1
   placeable: false
   recipe_type: NULL
+Komutech_CDZW68:
+  lateInit: false
+  item_group: Komutech_L_QHC
+  item:
+    name: ' '
+    lore:
+    material_type: mc
+    material: magenta_stained_glass_pane
+    amount: 1
+  placeable: false
+  recipe_type: NULL
+
 KOMUTECH_L_ZW_DFKZH:
   lateInit: false
   item_group: Komutech_CD1
@@ -4819,10 +5167,10 @@ Komutech_JZ_GJ_全息文字清除器:
   lateInit: false
   item_group: Komutech_JZ_GJ
   item:
-    name: '&b&l全息文字清除器'
+    name: "{#a1c4fd}&l全{#a7cafd}&l息{#acd4fc}&l文{#b2d7fc}&l字{#b7ddfc}&l清{#bde3fb}&l除{#c2e9fb}&l器"
     lore:
-      - '&f右键清除3格内的全息文字'
-      - '&f每次清除一个'
+      - "{#a1c4fd}&l右{#a4c7fd}&l键{#a7cbfd}&l清{#aacefc}&l除{#add1fc}&l3{#b0d5fc}&l格{#b3d8fc}&l内{#b6dcfc}&l的{#b9dffc}&l全{#bce2fb}&l息{#bfe6fb}&l文{#c2e9fb}&l字"
+      - "{#a1c4fd}&l每{#a8cbfd}&l次{#aed3fc}&l清{#b5dafc}&l除{#bbe2fb}&l一{#c2e9fb}&l个"
     material_type: mc
     material: bucket
     glow: true
@@ -4850,6 +5198,59 @@ Komutech_JZ_GJ_全息文字清除器:
     5:
       material_type: slimefun
       material: HOLOGRAM_PROJECTOR
+      amount: 1
+    6:
+      material_type: mc
+      material: water_bucket
+      amount: 1
+    7:
+      material_type: mc
+      material: water_bucket
+      amount: 1
+    8:
+      material_type: mc
+      material: water_bucket
+      amount: 1
+    9:
+      material_type: mc
+      material: water_bucket
+      amount: 1
+Komutech_JZ_GJ_展示物品清除器:
+  lateInit: false
+  item_group: Komutech_JZ_GJ
+  item:
+    name: "{#a1c4fd}&l展{#a7cafd}&l示{#acd4fc}&l物{#b2d7fc}&l品{#b7ddfc}&l清{#bde3fb}&l除{#c2e9fb}&l器"
+    lore:
+      - "{#a1c4fd}&l右{#a4c7fd}&l键{#a7cafd}&l清{#a9cdfd}&l除{#acd0fc}&l1{#afd3fc}&l0{#b2d7fc}&l格{#b4dafc}&l内{#b7ddfc}&l的{#bae0fc}&l全{#bde3fb}&l息{#bfe6fb}&l物{#c2e9fb}&l品"
+      - "{#a1c4fd}&l单{#a5c8fd}&l个{#a8ccfd}&l模{#acd0fc}&l式{#b0d4fc}&l每{#b3d8fc}&l次{#b7ddfc}&l清{#bbe1fb}&l除{#bee5fb}&l一{#c2e9fb}&l个"
+      - "{#a1c4fd}&l范{#a5c8fd}&l围{#a8ccfd}&l模{#acd0fc}&l式{#b0d4fc}&l每{#b3d8fc}&l次{#b7ddfc}&l清{#bbe1fb}&l除{#bee5fb}&l所{#c2e9fb}&l有"
+    material_type: mc
+    material: bucket
+    glow: true
+    amount: 1
+  script: 工具/展示物品清除器
+  placeable: false
+  recipe_type: ENHANCED_CRAFTING_TABLE
+  recipe:
+    1:
+      material_type: mc
+      material: water_bucket
+      amount: 1
+    2:
+      material_type: mc
+      material: water_bucket
+      amount: 1
+    3:
+      material_type: mc
+      material: water_bucket
+      amount: 1
+    4:
+      material_type: mc
+      material: water_bucket
+      amount: 1
+    5:
+      material_type: slimefun
+      material: KOMUTECH_JZ_JCJQ_物品展台
       amount: 1
     6:
       material_type: mc
@@ -4981,8 +5382,8 @@ Komutech_JZ_GJ_范围展示框修改器:
       - '{#e8f9f7}&l❖ {#d6f5f2}需用方位记录器先记录位置'
       - '{#f0fcfb}&l✦ {#e0f7f5}右键应用修改'
       - '{#e8f9f7}&l✧ {#d6f5f2}蹲下右键切换功能'
-      - '{#e0f7f5}&l❀ {#c1eeec}拆除模式下展示框将进入背包'
-      - '{#d6f5f2}&l✿ {#b1e9e7}拆除模式下展示物品掉落地面'
+      - '{#e0f7f5}&l❀ {#c1eeec}拆除模式下展示框不会掉落'
+      - '{#d6f5f2}&l✿ {#b1e9e7}拆除模式下展示物不会掉落'
     material_type: mc
     material: nether_star
     glow: true

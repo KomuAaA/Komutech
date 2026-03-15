@@ -1,6 +1,5 @@
 const plugin = org.bukkit.Bukkit.getPluginManager().getPlugin("RykenSlimefunCustomizer");
 
-// ========== Java类型导入 ==========
 const EquipmentSlot = Java.type('org.bukkit.inventory.EquipmentSlot');
 const FluidCollisionMode = Java.type('org.bukkit.FluidCollisionMode');
 const Particle = Java.type('org.bukkit.Particle');
@@ -9,204 +8,165 @@ const Color = Java.type('org.bukkit.Color');
 const Bukkit = Java.type('org.bukkit.Bukkit');
 const LivingEntity = Java.type('org.bukkit.entity.LivingEntity');
 
-// ========== 核心配置 ==========
 const CFG = {
-    cooldown: 20,                          // 冷却时间（刻）
-    baseDamage: 5.0,                        // 基础伤害
-    energyCost: 5,                           // 灵力消耗
-    maxDistance: 15,                         // 射线最大距离
-    particleInterval: 0.1,                    // 粒子间隔（方块）
-    soundName: "entity.evoker.cast_spell",    // 施法音效
+    baseDamage: 5.0,                    // 基础伤害
+    baseCooldown: 100,                   // 基础冷却5秒（100刻）
+    minCooldown: 16,                      // 最小冷却0.8秒（16刻）
+    cdTargetReduction: 0.5,               // 目标功德时冷却缩减50%
+    baseEnergyCost: 5,                    // 基础灵力消耗
+    maxEnergyCost: 15,                     // 最大消耗（基础×3）
+    costTargetIncrease: 0.5,               // 目标功德时消耗增加50%
+    maxDistance: 15,                       // 射线最大距离
+    particleInterval: 0.1,                  // 粒子间隔
+    soundName: "entity.evoker.cast_spell",
     whiteList: ["VILLAGER", "IRON_GOLEM", "COW", "PIG", "SHEEP", "CHICKEN", "WOLF", "CAT"],
-    meritEffects: {                            // 功德影响
-        bonus: 0.01,
-        penalty: 0.01,
-        range: [1, 10]
-    },
-    levelMultiplier: { "黄": 1.0, "玄": 1.2, "地": 1.5, "天": 1.8 },
-
-    // === 伤害倍率软上限 ===
-    maxMultiplier: 1314,
-    targetMerit: 5201314,
-    targetMultiplier: 520
+    meritEffects: { penalty: 0.01, range: [1,10] },
+    levelMultiplier: { "黄":1.0, "玄":1.2, "地":1.5, "天":1.8 },
+    baseMaxMultiplier: 521,                 // 黄级基础最大倍率
+    targetMerit: 1314520,                   // 目标功德值
+    targetMultiplier: 99                     // 目标功德对应的倍率
 };
 
-// 自动计算曲线常数 K
-CFG.meritCurveK = CFG.targetMerit * ((CFG.maxMultiplier - 1) / (CFG.targetMultiplier - 1) - 1);
+CFG.meritCurveK = CFG.targetMerit * ((CFG.baseMaxMultiplier-1)/(CFG.targetMultiplier-1)-1);
+const cdMaxReduction = 1 - CFG.minCooldown/CFG.baseCooldown;
+CFG.cdK = CFG.targetMerit * (cdMaxReduction/CFG.cdTargetReduction - 1);
+const costMaxIncrease = CFG.maxEnergyCost/CFG.baseEnergyCost - 1;
+CFG.costK = CFG.targetMerit * (costMaxIncrease/CFG.costTargetIncrease - 1);
 
-// ========== 全局管理 ==========
 const cooldowns = new java.util.HashMap();
 const skillCache = new java.util.HashMap();
 
-// ========== 核心函数 ==========
-const getItemInfo = (item) => {
-    if (!item || item.getAmount() !== 1) return null;
+function getItemInfo(item) {
+    if (!item || item.getAmount()!==1) return null;
     const meta = item.getItemMeta();
     const lore = meta?.getLore() || [];
-    const info = { level: "黄", energy: { cur: 0, max: 1000 }, merit: 0 };
-
-    lore.forEach((line, i) => {
+    const info = { level:"黄", energy:{cur:0,max:1000}, merit:0, meta, lore };
+    lore.forEach((line,i)=>{
         if (!line) return;
-        if (i === 0) {
-            if (line.includes("天")) info.level = "天";
-            else if (line.includes("地")) info.level = "地";
-            else if (line.includes("玄")) info.level = "玄";
+        if (i===0) {
+            if (line.includes("天")) info.level="天";
+            else if (line.includes("地")) info.level="地";
+            else if (line.includes("玄")) info.level="玄";
         }
         const nums = line.match(/§6(-?\d+)/g);
         if (!nums) return;
-
         if (line.includes("灵力剩余")) {
-            info.energy.cur = parseInt(nums[0].replace('§6', '')) || 0;
-            info.energy.max = parseInt(nums[1]?.replace('§6', '') || 1000);
+            info.energy.cur = parseInt(nums[0].replace('§6',''))||0;
+            info.energy.max = parseInt(nums[1]?.replace('§6','')||1000);
         } else if (line.includes("德值")) {
-            const num = parseInt(nums[0].replace('§6', '')) || 0;
+            const num = parseInt(nums[0].replace('§6',''))||0;
             info.merit = line.includes("缺德值") ? -num : num;
         }
     });
-    return { ...info, meta, lore };
-};
+    return info;
+}
 
-const updateLore = (meta, lore, energy, merit) => {
-    const newLore = lore.map(line => {
+function updateLore(meta, lore, energy, merit) {
+    const newLore = lore.map(line=>{
         if (!line) return line;
-        if (line.includes("灵力剩余")) {
+        if (line.includes("灵力剩余"))
             return `§b灵力剩余：§6${energy.cur} §7/ §6${energy.max}`;
-        }
-        if (line.includes("功德值") || line.includes("缺德值")) {
-            return merit >= 0 ?
-                `§b功德值：§6${Math.round(merit)}` :
-                `§c缺德值：§6${Math.round(Math.abs(merit))}`;
-        }
+        if (line.includes("功德值")||line.includes("缺德值"))
+            return merit>=0 ? `§b功德值：§6${Math.round(merit)}` : `§c缺德值：§6${Math.round(Math.abs(merit))}`;
         return line;
     });
     meta.setLore(newLore);
     return newLore;
-};
+}
 
-const cleanupPlayerCache = (playerUuid) => {
-    return skillCache.remove(playerUuid) !== null;
-};
+function cleanupPlayerCache(uuid) { return skillCache.remove(uuid)!==null; }
 
-const createRayParticles = (world, startLoc, direction) => {
-    const startColor = Color.fromRGB(0, 255, 255);
-    const endColor = Color.fromRGB(0, 255, 77);
-    const dirX = direction.getX(), dirY = direction.getY(), dirZ = direction.getZ();
-    const startX = startLoc.getX(), startY = startLoc.getY(), startZ = startLoc.getZ();
-
-    for (let d = 0; d <= CFG.maxDistance; d += CFG.particleInterval) {
-        const progress = d / CFG.maxDistance;
-        const r = Math.round(startColor.getRed() + (endColor.getRed() - startColor.getRed()) * progress);
-        const g = Math.round(startColor.getGreen() + (endColor.getGreen() - startColor.getGreen()) * progress);
-        const b = Math.round(startColor.getBlue() + (endColor.getBlue() - startColor.getBlue()) * progress);
-
-        world.spawnParticle(Particle.DUST,
-            startX + dirX * d,
-            startY + dirY * d,
-            startZ + dirZ * d,
-            1, 0, 0, 0, 0, new DustOptions(Color.fromRGB(r, g, b), 1.0));
+function createRayParticles(world, startLoc, dir) {
+    const startColor = Color.fromRGB(0,255,255), endColor = Color.fromRGB(0,255,77);
+    const dirX=dir.getX(), dirY=dir.getY(), dirZ=dir.getZ();
+    const startX=startLoc.getX(), startY=startLoc.getY(), startZ=startLoc.getZ();
+    for (let d=0; d<=CFG.maxDistance; d+=CFG.particleInterval) {
+        const p = d/CFG.maxDistance;
+        const r = Math.round(startColor.getRed()+(endColor.getRed()-startColor.getRed())*p);
+        const g = Math.round(startColor.getGreen()+(endColor.getGreen()-startColor.getGreen())*p);
+        const b = Math.round(startColor.getBlue()+(endColor.getBlue()-startColor.getBlue())*p);
+        world.spawnParticle(Particle.DUST, startX+dirX*d, startY+dirY*d, startZ+dirZ*d,
+            1,0,0,0,0, new DustOptions(Color.fromRGB(r,g,b),1.0));
     }
-};
+}
 
-const rayTraceEntity = (world, startLoc, direction, player) => {
-    const hitEntity = world.rayTrace(
-        startLoc,
-        direction,
-        CFG.maxDistance,
-        FluidCollisionMode.NEVER,
-        false,
-        0.1,
-        entity => entity !== player &&
-                 entity instanceof LivingEntity &&
-                 entity.getType().name() !== "ARMOR_STAND"
-    );
-    return hitEntity ? hitEntity.getHitEntity() : null;
-};
+function rayTraceEntity(world, startLoc, dir, player) {
+    const hit = world.rayTrace(startLoc, dir, CFG.maxDistance, FluidCollisionMode.NEVER, false, 0.1,
+        e => e!==player && e instanceof LivingEntity && e.getType().name()!=="ARMOR_STAND");
+    return hit ? hit.getHitEntity() : null;
+}
 
-// ========== 主事件 ==========
 function onUse(event) {
     const player = event.getPlayer();
-    if (event.getHand() !== EquipmentSlot.HAND) return;
-
+    if (event.getHand()!==EquipmentSlot.HAND) return;
     const staff = player.getInventory().getItemInMainHand();
     if (!staff?.getItemMeta()) return;
 
     const uuid = player.getUniqueId().toString();
     const now = Bukkit.getServer().getCurrentTick();
-    const lastUse = cooldowns.get(uuid) || 0;
+    const lastUse = cooldowns.get(uuid)||0;
+    const itemInfo = getItemInfo(staff);
+    if (!itemInfo) return;
+    let { level, energy, merit, meta, lore } = itemInfo;
 
-    if (now - lastUse < CFG.cooldown) {
-        player.sendMessage(`§c✖ 技能冷却中！剩余 §6${((CFG.cooldown - (now - lastUse)) * 0.05).toFixed(1)} §c秒`);
+    // 动态冷却
+    let dynamicCooldown = CFG.baseCooldown;
+    if (merit>0) {
+        const reduction = cdMaxReduction * (merit/(merit+CFG.cdK));
+        dynamicCooldown = Math.max(CFG.minCooldown, Math.round(CFG.baseCooldown*(1-reduction)));
+    }
+    if (now - lastUse < dynamicCooldown) {
+        player.sendMessage(`§c✖ 技能冷却中！剩余 §6${((dynamicCooldown-(now-lastUse))*0.05).toFixed(1)} §c秒`);
         return;
     }
 
-    const itemInfo = getItemInfo(staff);
-    if (!itemInfo) return;
-
-    const { level, energy, merit, meta, lore } = itemInfo;
-
-    if (energy.cur < CFG.energyCost) {
-        player.sendMessage(`§c⚠ 灵力不足！当前 §6${energy.cur}§7/§6${energy.max} §c，需 §6${CFG.energyCost} §c点方可催动`);
+    // 动态灵力消耗
+    let dynamicCost = CFG.baseEnergyCost;
+    if (merit>0) {
+        const increase = costMaxIncrease * (merit/(merit+CFG.costK));
+        dynamicCost = Math.min(CFG.maxEnergyCost, Math.round(CFG.baseEnergyCost*(1+increase)));
+    }
+    if (energy.cur < dynamicCost) {
+        player.sendMessage(`§c⚠ 灵力不足！当前 §6${energy.cur}§7/§6${energy.max} §c，需 §6${dynamicCost} §c点方可催动`);
         return;
     }
 
     cleanupPlayerCache(uuid);
 
-    // 伤害计算
-    let meritMultiplier;
-    if (merit >= 0) {
-        const limitGain = CFG.maxMultiplier - 1;
-        const cappedGain = limitGain * (merit / (merit + CFG.meritCurveK));
-        meritMultiplier = 1 + cappedGain;
+    // 伤害计算（方案D）
+    const levelBase = CFG.levelMultiplier[level]||1.0;
+    const maxMulti = CFG.baseMaxMultiplier * levelBase * levelBase;
+    let meritMult;
+    if (merit>=0) {
+        const gain = (maxMulti-1) * (merit/(merit+CFG.meritCurveK));
+        meritMult = 1 + gain;
     } else {
-        meritMultiplier = Math.max(0.1, 1 - (Math.abs(merit) / 100) * CFG.meritEffects.penalty);
+        meritMult = Math.max(0.1, 1 - (Math.abs(merit)/100)*CFG.meritEffects.penalty);
     }
-    const finalDamage = CFG.baseDamage * meritMultiplier * (CFG.levelMultiplier[level] || 1.0);
+    const finalDamage = CFG.baseDamage * meritMult;
 
-    // 扣除灵力
-    energy.cur -= CFG.energyCost;
+    energy.cur -= dynamicCost;
     const updatedLore = updateLore(meta, lore, energy, merit);
     staff.setItemMeta(meta);
-
     cooldowns.put(uuid, now);
 
     const world = player.getWorld();
     world.playSound(player.getLocation(), CFG.soundName, 1.0, 1.0);
-
     const eyeLoc = player.getEyeLocation();
     const dir = eyeLoc.getDirection();
-    const startLoc = eyeLoc.clone().add(dir);
-
-    createRayParticles(world, startLoc, dir);
-    const hitEntity = rayTraceEntity(world, startLoc, dir, player);
-
-    if (!hitEntity) return;
-
-    const entityType = hitEntity.getType().name();
-    const isWhiteList = CFG.whiteList.includes(entityType);
-    hitEntity.damage(finalDamage, player);
-
-    const change = Math.floor(Math.random() * (CFG.meritEffects.range[1] - CFG.meritEffects.range[0] + 1)) + CFG.meritEffects.range[0];
-    const newMerit = isWhiteList ? merit - change : merit + change;
-
-    const meritText = newMerit >= 0 ?
-        `§b功德值：§6${Math.round(newMerit)}` :
-        `§c缺德值：§6${Math.round(Math.abs(newMerit))}`;
-
-    const finalLore = updatedLore.map(line =>
-        line && (line.includes("功德值") || line.includes("缺德值")) ? meritText : line
-    );
-
-    meta.setLore(finalLore);
-    staff.setItemMeta(meta);
-
-    player.sendMessage(isWhiteList ?
-        `§c攻击§6${entityType}§c，扣除§6${change}§c点功德！` :
-        `§a攻击§6${entityType}§a，获得§6${change}§a点功德！`);
-
-    skillCache.put(uuid, {
-        hitEntity: hitEntity,
-        damage: finalDamage,
-        meritChange: isWhiteList ? -change : change,
-        timestamp: now
-    });
+    createRayParticles(world, eyeLoc.clone().add(dir), dir);
+    const hit = rayTraceEntity(world, eyeLoc.clone().add(dir), dir, player);
+    if (hit) {
+        const type = hit.getType().name();
+        const white = CFG.whiteList.includes(type);
+        hit.damage(finalDamage, player);
+        const change = Math.floor(Math.random()*(CFG.meritEffects.range[1]-CFG.meritEffects.range[0]+1))+CFG.meritEffects.range[0];
+        const newMerit = white ? merit - change : merit + change;
+        const meritText = newMerit>=0 ? `§b功德值：§6${Math.round(newMerit)}` : `§c缺德值：§6${Math.round(Math.abs(newMerit))}`;
+        const finalLore = updatedLore.map(l=> l && (l.includes("功德值")||l.includes("缺德值")) ? meritText : l);
+        meta.setLore(finalLore);
+        staff.setItemMeta(meta);
+        player.sendMessage(white ? `§c攻击§6${type}§c，扣除§6${change}§c点功德！` : `§a攻击§6${type}§a，获得§6${change}§a点功德！`);
+        skillCache.put(uuid, { hitEntity:hit, damage:finalDamage, meritChange:white?-change:change, timestamp:now });
+    }
 }

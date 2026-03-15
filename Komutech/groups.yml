@@ -44,19 +44,19 @@ Komutech_GXRZ:
     material_type: mc
     material: globe_banner_pattern
     glow: true
-    name: '&6&l更新日志'
+    name: '{#00FA9A}&kA{#2DFBAE}&l更{#5AFCC2}&l新{#86FDD7}&l日{#B3FEEB}&l志{#E0FFFF}&kA'
   parent: Komutech
   tier: 4
   actions:
   - "display_slimefunitem KOMUTECH_更新日志"
-Komutech_CD5:
+Komutech_L_ZJ:
   lateInit: false
-  type: button
+  type: sub
   item:
     material_type: mc
-    material: light_gray_stained_glass_pane
-    glow: false
-    name: ' '
+    material: nether_star
+    name: '{#B85C3A}&l-{#C46C4A}&l&k0{#D07C5A}&l✦{#DC8C6A}&l {#E89C7A}&l✫{#F4AC8A}&l {#FFBC9A}&l·{#FFCCAA}&l終{#FFFFFF}&l·{#FFCCAA}&l極{#FFBC9A}&l·{#F4AC8A}&l {#E89C7A}&l✫{#DC8C6A}&l {#D07C5A}&l✦{#C46C4A}&l&k0{#B85C3A}&l-'
+    glow: true
   parent: Komutech
   tier: 5
 Komutech_CD6:
@@ -127,16 +127,18 @@ Komutech_JZ_GJ:
     name: '{#00FA9A}&kA{#2DFBAE}&l口{#5AFCC2}&l木{#86FDD7}&l科{#B3FEEB}&l技{#E0FFFF}&kA &7- {#FFFACD}&l工{#FFDAB9}&l具'
   parent: Komutech
   tier: 12
-Komutech_CD13:
+Komutech_XZLJ:
   lateInit: false
   type: button
   item:
     material_type: mc
     material: white_stained_glass_pane
-    glow: false
-    name: '&f&l第一页'
+    glow: true
+    name: '{#00FA9A}&kA{#2DFBAE}&l下{#5AFCC2}&l载{#86FDD7}&l链{#B3FEEB}&l接{#E0FFFF}&kA'
   parent: Komutech
   tier: 13
+  actions:
+  - "link https://github.com/KomuAaA/Komutech"
 Komutech_L_JCWP:
   lateInit: false
   type: sub
@@ -218,10 +220,12 @@ Komutech_CD22:
   item:
     material_type: mc
     material: white_stained_glass_pane
-    glow: false
-    name: '&f&l第一页'
+    glow: true
+    name: '{#00FA9A}&kA{#2DFBAE}&l口{#5AFCC2}&l木{#86FDD7}&l科{#B3FEEB}&l技{#E0FFFF}&l指{#00FA9A}&l南{#E0FFFF}&kA'
   parent: Komutech
   tier: 22
+  actions:
+  - "script L-菜单/口木科技指南"
 Komutech_L_KW:
   lateInit: false
   type: sub
@@ -302,15 +306,17 @@ Komutech_CD30:
     name: ' '
   parent: Komutech
   tier: 30
-Komutech_CD31:
+Komutech_L_JQJC:
   lateInit: false
   type: button
   item:
     material_type: mc
     material: white_stained_glass_pane
-    glow: false
-    name: '&f&l第一页'
+    glow: true
+    name: '{#00FA9A}&kA{#2DFBAE}&l机{#5AFCC2}&l器{#86FDD7}&l教{#B3FEEB}&l程{#E0FFFF}&l演{#00FA9A}&l示{#E0FFFF}&kA'
   parent: Komutech
+  actions:
+  - "display_slimefunitem KOMUTECH_L_JQJC_演示"
   tier: 31
 Komutech_L_DFKJQ:
   lateInit: false
@@ -664,3 +670,16 @@ Komutech_CD67:
     name: '&f&l第二页'
   parent: Komutech
   tier: 67
+##琼华阁
+Komutech_L_QHC:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: flower_banner_pattern
+    name: '{#00FA9A}&kA{#2DFBAE}&l琼{#5AFCC2}&l华{#86FDD7}&l册{#B3FEEB}&kA'
+    glow: true
+  parent: Komutech
+  tier: 68
+  actions:
+  - "script L-菜单/琼华阁"

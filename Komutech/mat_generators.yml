@@ -21397,6 +21397,7 @@ Komutech_L_ZYC2_走云川_镁锭5:
      material: MAGNESIUM_INGOT
      amount: 64
 
+
 ##材质方块生成器
 Komutech_JZ_czwqscq_mt:
   lateInit: true
