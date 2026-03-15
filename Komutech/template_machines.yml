@@ -317,6 +317,85 @@ KOMUTECH_L_JQ_中品一芥乾坤:
             material_type: slimefun
             material: Komutech_L_KW_PP
             amount: 1
+     ##五色玉
+      '五色玉':
+        seconds: 5
+        chooseOne: true
+        input:
+          1:
+            material_type: slimefun
+            material: Komutech_L_GJ_KCB
+            amount: 1
+            noConsume: true
+          2:
+            material_type: slimefun
+            material: Komutech_L_GJ_玉錾
+            amount: 1
+          3:
+            material_type: mc
+            material: calcite
+            amount: 16
+        output:
+          1:
+            chance: 5
+            material_type: slimefun
+            material: Komutech_L_KW_JYY
+            amount: 1
+          2:
+            chance: 5
+            material_type: slimefun
+            material: Komutech_L_KW_ZMY
+            amount: 1
+          3:
+            chance: 5
+            material_type: slimefun
+            material: Komutech_L_KW_LSY
+            amount: 1
+          4:
+            chance: 5
+            material_type: slimefun
+            material: Komutech_L_KW_YHY
+            amount: 1
+          5:
+            chance: 5
+            material_type: slimefun
+            material: Komutech_L_KW_YTY
+            amount: 1
+          6:
+            chance: 5
+            material_type: slimefun
+            material: Komutech_L_KW_LBY
+            amount: 1
+          7:
+            chance: 5
+            material_type: slimefun
+            material: Komutech_L_KW_YFY
+            amount: 1
+          8:
+            chance: 5
+            material_type: slimefun
+            material: Komutech_L_KW_TLY
+            amount: 1
+          9:
+            chance: 5
+            material_type: slimefun
+            material: Komutech_L_KW_SJY
+            amount: 1
+          10:
+            chance: 5
+            material_type: slimefun
+            material: Komutech_L_KW_TXY
+            amount: 1
+          11:
+            chance: 5
+            material_type: slimefun
+            material: Komutech_L_KW_XLY
+            amount: 1
+          12:
+            chance: 5
+            material_type: slimefun
+            material: Komutech_L_KW_XYY
+            amount: 1
      ##檀木
       'Komutech_L_JCWP_TM':
         seconds: 15
