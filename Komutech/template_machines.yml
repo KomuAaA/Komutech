@@ -331,6 +331,7 @@ KOMUTECH_L_JQ_中品一芥乾坤:
             material_type: slimefun
             material: Komutech_L_GJ_玉錾
             amount: 1
+            noConsume: true
           3:
             material_type: mc
             material: calcite
@@ -624,22 +625,22 @@ KOMUTECH_L_JQ_上品一芥乾坤:
           1:
             chance: 53
             material_type: slimefun
-            material: Komutech_L_JCWP_QLR
+            material: Komutech_L_DJ_XPLJ
             amount: 1
           2:
             chance: 32
             material_type: slimefun
-            material: Komutech_L_JCWP_YLS
+            material: Komutech_L_DJ_ZPLJ
             amount: 1
           3:
             chance: 15
             material_type: slimefun
-            material: Komutech_L_JCWP_YLS
+            material: Komutech_L_DJ_SPLJ
             amount: 1
           4:
             chance: 5
             material_type: slimefun
-            material: Komutech_L_JCWP_YLS
+            material: Komutech_L_DJ_JPLJ
             amount: 1
 ##极品一芥乾坤
 KOMUTECH_L_JQ_极品一芥乾坤:
