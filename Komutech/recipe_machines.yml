@@ -1499,7 +1499,7 @@ Komutech_L_JQ_LNGJT:
           material: KOMUTECH_L_FZ_YSJYSFZ
           amount: 64
         4:
-          material_type: mc
+          material_type: slimefun
           material: KOMUTECH_L_FZ_YSMYSFZ
           amount: 64
         5:

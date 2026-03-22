@@ -1,16 +1,14 @@
-const NamespacedKey = Java.type('org.bukkit.NamespacedKey');
 const Material = Java.type('org.bukkit.Material');
 const Bukkit = Java.type('org.bukkit.Bukkit');
 const ItemStack = Java.type('org.bukkit.inventory.ItemStack');
 const SlimefunItem = Java.type('io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem');
-const PersistentDataAPI = Java.type('io.github.bakedlibs.dough.data.persistent.PersistentDataAPI');
 const FixedMetadataValue = Java.type('org.bukkit.metadata.FixedMetadataValue');
 const plugin = Java.type('org.lins.mmmjjkx.rykenslimefuncustomizer.RykenSlimefunCustomizer').INSTANCE;
-
-// ---------- 可更改配置 ----------
-const NS = "komutech";
-const PAGES_INDEX_KEY = new NamespacedKey(NS, "pages_index");
-const PAGE_KEY_PREFIX = "wxg_";
+const File = Java.type('java.io.File');
+const Files = Java.type('java.nio.file.Files');
+const Paths = Java.type('java.nio.file.Paths');
+const StandardCharsets = Java.type('java.nio.charset.StandardCharsets');
+const DATA_DIR = new File("plugins/RykenSlimefunCustomizer/addon_configs/Komutech/WXG");
 const STORAGE_ID = "KOMUTECH_L_ZJ_萬象匱";
 const SEARCH_ITEM_ID = "MAGIC_EXPANSION_ITEM_NAME_TAG";
 const PAGE_SIZE = 54;
@@ -20,12 +18,37 @@ const PREV_SLOT = 48;
 const NEXT_SLOT = 50;
 const SORT_SLOT = 47;
 const SEARCH_SLOT = 51;
-
 const ZH_SORTER = new Intl.Collator('zh-CN', { sensitivity: 'base' });
-
 const FILLER_TEMPLATE = createItem("BLACK_STAINED_GLASS_PANE", " ", null);
 const DISABLED_TEMPLATE = createItem("GRAY_STAINED_GLASS_PANE", "§8", null);
-
+function initStorageFolder() { if (!DATA_DIR.exists()) DATA_DIR.mkdirs(); }
+function getStorageName(item) {
+    if (!item || !item.hasItemMeta()) return null;
+    const lore = item.getItemMeta().getLore();
+    if (!lore) return null;
+    for (let line of lore) if (line.startsWith("§7┃ 存储标识: §f")) return line.substring("§7┃ 存储标识: §f".length);
+    return null;
+}
+function getFileName(playerName, storageName) {
+    if (!storageName) return null;
+    const safe = storageName.replace(/[\\/:*?"<>|]/g, '_');
+    return playerName + "_" + safe + ".json";
+}
+function readData(item, playerName) {
+    let name = getStorageName(item);
+    if (!name) return { pages:{ "1": new Array(PAGE_SIZE).fill(null) }, unamed: true };
+    const path = Paths.get(DATA_DIR.getAbsolutePath(), getFileName(playerName, name));
+    try {
+        if (!Files.exists(path)) return { pages:{ "1": new Array(PAGE_SIZE).fill(null) } };
+        return JSON.parse(Files.readString(path, StandardCharsets.UTF_8));
+    } catch(e) { return { pages:{ "1": new Array(PAGE_SIZE).fill(null) } }; }
+}
+function writeData(item, data, playerName) {
+    let name = getStorageName(item);
+    if (!name) return;
+    const path = Paths.get(DATA_DIR.getAbsolutePath(), getFileName(playerName, name));
+    try { initStorageFolder(); Files.writeString(path, JSON.stringify(data), StandardCharsets.UTF_8); } catch(e) {}
+}
 function serialize(item) {
     if (!item || item.getType() === Material.AIR) return null;
     let sf = SlimefunItem.getByItem(item);
@@ -43,31 +66,6 @@ function deserialize(json) {
         return mat ? new ItemStack(mat, d.amount || 1) : null;
     } catch(e) { return null; }
 }
-
-function pageKey(p) { return new NamespacedKey(NS, PAGE_KEY_PREFIX + p); }
-function readData(item) {
-    let meta = item.getItemMeta();
-    let arr = PersistentDataAPI.getIntArray(meta, PAGES_INDEX_KEY);
-    if (!arr || arr.length === 0) return { pages:{ "1": new Array(PAGE_SIZE).fill(null) } };
-    let pages = {};
-    for (let i=0; i<arr.length; i++) {
-        let p = arr[i].toString(), json = PersistentDataAPI.getString(meta, pageKey(p));
-        pages[p] = json ? JSON.parse(json) : new Array(PAGE_SIZE).fill(null);
-    }
-    return { pages };
-}
-function writeData(item, data) {
-    let meta = item.getItemMeta();
-    let pages = data.pages;
-    let pageNumbers = Object.keys(pages).map(Number).sort((a,b)=>a-b);
-    let intArray = Java.type('int[]');
-    let pagesArray = new intArray(pageNumbers.length);
-    for (let i=0; i<pageNumbers.length; i++) pagesArray[i] = pageNumbers[i];
-    PersistentDataAPI.setIntArray(meta, PAGES_INDEX_KEY, pagesArray);
-    for (let p in pages) PersistentDataAPI.setString(meta, pageKey(p), JSON.stringify(pages[p]));
-    item.setItemMeta(meta);
-}
-
 function getPage(data, p) { return data?.pages?.[p] || null; }
 function searchText(item) {
     let t = [item.getType().name().toLowerCase()];
@@ -117,7 +115,6 @@ function search(data, kw) {
     }
     return res;
 }
-
 function createItem(mat, name, lore) {
     let it = new ItemStack(Material[mat]);
     let meta = it.getItemMeta();
@@ -126,7 +123,6 @@ function createItem(mat, name, lore) {
     it.setItemMeta(meta);
     return it;
 }
-
 function fillGUI(inv, data, page, mode, sData, kw) {
     if (!data?.pages) data = { pages:{ "1": new Array(PAGE_SIZE).fill(null) } };
     let display = mode === "search" ? sData : data;
@@ -141,9 +137,8 @@ function fillGUI(inv, data, page, mode, sData, kw) {
     if (mode === "normal") inv.setItem(SEARCH_SLOT, createItem("NAME_TAG", "§a搜索", "§7点击使用搜索道具"));
     else inv.setItem(SEARCH_SLOT, createItem("NAME_TAG", "§a搜索 (关键词: " + kw + ")", "§7点击使用搜索道具"));
 }
-
 function isStorageItem(item) { return item?.getType() !== Material.AIR && SlimefunItem.getByItem(item)?.getId() === STORAGE_ID; }
-function getStorageData(inv) { let it = inv.getItem(INPUT_SLOT); return isStorageItem(it) ? readData(it) : null; }
+function getStorageData(inv, player) { let it = inv.getItem(INPUT_SLOT); return isStorageItem(it) ? readData(it, player) : null; }
 function findSearchItem(p) {
     for (let it of p.getInventory().getContents()) {
         if (!it || it.getType() === Material.AIR) continue;
@@ -154,9 +149,7 @@ function findSearchItem(p) {
     }
     return null;
 }
-
 let openPlayers = new java.util.HashMap();
-
 function saveState(p, h) {
     p.setMetadata("wx_mode", new FixedMetadataValue(plugin, h.mode));
     if (h.mode === "search") {
@@ -167,7 +160,6 @@ function saveState(p, h) {
         if (p.hasMetadata("wx_keyword")) p.removeMetadata("wx_keyword", plugin);
     }
 }
-
 function loadState(p, loaded) {
     let mode = p.hasMetadata("wx_mode") ? p.getMetadata("wx_mode").get(0).asString() : "normal";
     let kw = p.hasMetadata("wx_keyword") ? p.getMetadata("wx_keyword").get(0).asString() : "";
@@ -175,21 +167,21 @@ function loadState(p, loaded) {
     if (mode === "normal" && p.hasMetadata("wx_page")) page = p.getMetadata("wx_page").get(0).asString();
     ["wx_page","wx_mode","wx_keyword"].forEach(k => p.removeMetadata(k, plugin));
     let sData = null;
-    if (mode === "search" && kw && loaded) {
+    if (mode === "search" && kw && loaded && !loaded.unamed) {
         sData = search(loaded, kw);
         if (!sData.pages[1]?.[0]) { mode = "normal"; kw = ""; sData = null; }
         page = "1";
     } else if (mode === "search") { mode = "normal"; kw = ""; }
     return { page, mode, sData, kw };
 }
-
 function onOpen(p) {
     let top = p.getOpenInventory().getTopInventory();
-    let loaded = getStorageData(top);
-    if (!loaded) {
+    let loaded = getStorageData(top, p.getName());
+    if (!loaded || loaded.unamed) {
         for (let i=0; i<45; i++) top.setItem(i, FILLER_TEMPLATE.clone());
         top.setItem(SEARCH_SLOT, createItem("NAME_TAG", "§a搜索", "§7点击使用搜索道具"));
         openPlayers.put(p, { page:"1", mode:"normal", sData:null, kw:"", loaded:null });
+        if (loaded && loaded.unamed) p.sendMessage("§c萬象匱未命名，无法加载数据。");
         return;
     }
     let st = loadState(p, loaded);
@@ -204,7 +196,8 @@ function onClick(p, slot, item, act) {
     let top = p.getOpenInventory().getTopInventory();
     let h = openPlayers.get(p);
     if (!h) {
-        let loaded = getStorageData(top);
+        let loaded = getStorageData(top, p.getName());
+        if (!loaded || loaded.unamed) { p.sendMessage("§c请先在49号槽放入已命名的萬象匱"); return; }
         let st = loadState(p, loaded);
         h = { page:st.page, mode:st.mode, sData:st.sData, kw:st.kw, loaded };
         openPlayers.put(p, h);
@@ -213,8 +206,8 @@ function onClick(p, slot, item, act) {
     if (slot === INPUT_SLOT) return;
     if (slot >= 45 && slot < 54) {
         if (slot === LOAD_BUTTON) {
-            let data = getStorageData(top);
-            if (!data) { p.sendMessage("§c请在49号槽放入萬象匱"); return; }
+            let data = getStorageData(top, p.getName());
+            if (!data || data.unamed) { p.sendMessage("§c请在49号槽放入已命名的萬象匱"); return; }
             h.loaded = data; h.mode = "normal"; h.sData = null; h.kw = ""; h.page = "1";
             fillGUI(top, data, "1", "normal", null, "");
             p.sendMessage("§a已加载萬象匱内容");
@@ -231,6 +224,7 @@ function onClick(p, slot, item, act) {
         } else if (slot === SORT_SLOT && mode === "normal") {
             let nd = sortAll(h.loaded);
             h.loaded = nd;
+            writeData(top.getItem(INPUT_SLOT), nd, p.getName());
             h.page = nd.pages[cur]?.slice(0,45).some(v=>v) ? cur : "1";
             fillGUI(top, nd, h.page, "normal", null, "");
             p.sendMessage("§a整理完成！");

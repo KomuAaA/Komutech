@@ -237,7 +237,7 @@ KOMUTECH_L_JQ_ZQFZCZQ:
       amount: 1
     2:
       material_type: slimefun
-      material: Komutech_L_KW_SJY
+      material: KOMUTECH_L_FZ_XXJYSFZ
       amount: 1
     3:
       material_type: slimefun
@@ -245,27 +245,27 @@ KOMUTECH_L_JQ_ZQFZCZQ:
       amount: 1
     4:
       material_type: slimefun
-      material: Komutech_L_KW_SJY
+      material: KOMUTECH_L_FZ_XXMYSFZ
       amount: 1
     5:
-      material_type: mc
-      material: shulker_box
+      material_type: slimefun
+      material: KOMUTECH_L_JQ_LXFZCZQ
       amount: 1
     6:
       material_type: slimefun
-      material: Komutech_L_KW_SJY
+      material: KOMUTECH_L_FZ_XXSYSFZ
       amount: 1
     7:
       material_type: slimefun
-      material: Komutech_L_KW_TLY
+      material: KOMUTECH_L_FZ_XXHYSFZ
       amount: 1
     8:
       material_type: slimefun
-      material: Komutech_L_KW_SJY
+      material: Komutech_L_KW_XYY
       amount: 1
     9:
       material_type: slimefun
-      material: Komutech_L_KW_TLY
+      material: KOMUTECH_L_FZ_XXTYSFZ
       amount: 1
 
 
@@ -1337,7 +1337,7 @@ KOMUTECH_L_WD_ZHTMS:
       amount: 1
     2:
       material_type: slimefun
-      material: KOMUTECH_L_FZ_YSJYSFZ
+      material: KOMUTECH_L_FZ_XXJGFZ
       amount: 1
     3:
       material_type: slimefun
@@ -1345,7 +1345,7 @@ KOMUTECH_L_WD_ZHTMS:
       amount: 1
     4:
       material_type: slimefun
-      material: KOMUTECH_L_FZ_YSMYSFZ
+      material: KOMUTECH_L_FZ_XXLJFZ
       amount: 1
     5:
       material_type: slimefun
@@ -1353,11 +1353,11 @@ KOMUTECH_L_WD_ZHTMS:
       amount: 1
     6:
       material_type: slimefun
-      material: KOMUTECH_L_FZ_YSSYSFZ
+      material: KOMUTECH_L_FZ_XXSYFZ
       amount: 1
     7:
       material_type: slimefun
-      material: KOMUTECH_L_FZ_YSHYSFZ
+      material: KOMUTECH_L_FZ_XXKJFZ
       amount: 1
     8:
       material_type: slimefun
@@ -1365,7 +1365,7 @@ KOMUTECH_L_WD_ZHTMS:
       amount: 1
     9:
       material_type: slimefun
-      material: KOMUTECH_L_FZ_YSTYSFZ
+      material: KOMUTECH_L_FZ_XXSLFZ
       amount: 1
 
 

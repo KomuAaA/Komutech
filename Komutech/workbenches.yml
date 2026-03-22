@@ -233,6 +233,34 @@ Komutech_更新日志:
             material: paper
             amount: 1
             slot: 11
+          13:
+            name: "&f3.16"
+            lore:
+            - '&a&l=====口木科技=====.'
+            - '&f1.无。'
+            - '&a&l=====灵=====.'
+            - '&f1.添加了玉石的自动化配方'
+            - '&f2.简化了部分配方'
+            - '&a&l==========.'
+            material_type: mc
+            material: paper
+            amount: 1
+            slot: 12
+          14:
+            name: "&f3.22"
+            lore:
+            - '&a&l=====口木科技=====.'
+            - '&f1.优化了展示物品清除器，可以将名字一并清除。'
+            - '&a&l=====灵=====.'
+            - '&f1.修复了部分物品的配方错误'
+            - '&f2.将萬象匱的数据存储改为外部增强安全性'
+            - '&f3.萬象匱可自定义名称'
+            - '&f4.每个玩家每个名字的萬象匱数据独立'
+            - '&a&l==========.'
+            material_type: mc
+            material: paper
+            amount: 1
+            slot: 13
         output:
          1:
             name: "&f&l第一页"
