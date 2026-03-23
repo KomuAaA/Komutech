@@ -18,9 +18,19 @@ const STORAGE_ID = "KOMUTECH_L_ZJ_萬象匱";
 const TITLE = "§f§l萬象匱";
 const PAGE_SIZE = 54;
 const SLOT = { PREV:48, NEXT:50, CLOSE:49, SORT:47, SEARCH:51, BACK:45 };
-const BLACKLIST = [STORAGE_ID, "KOMUTECH_L_ZJ_萬衍儀", "KOMUTECH_L_ZJ_無"];
 const ZH_SORTER = new Intl.Collator('zh-CN', { sensitivity: 'base' });
+const COLOR_REGEX = /§./g;
+const DEFAULT_BLACKLIST = [STORAGE_ID, "KOMUTECH_L_ZJ_萬衍儀", "KOMUTECH_L_ZJ_無"];
 function initStorageFolder() { if (!DATA_DIR.exists()) DATA_DIR.mkdirs(); }
+function createEmptyPage() { return new Array(PAGE_SIZE).fill(null); }
+function createEmptyData() { return { pages: { "1": createEmptyPage() } }; }
+function getBlacklist() {
+    try {
+        let list = getAddonConfig().getStringList("L_ZJ_WXG_BAN");
+        if (list && list.size() > 0) { let arr = []; for (let i=0; i<list.size(); i++) arr.push(list.get(i)); return arr; }
+    } catch(e) {}
+    return DEFAULT_BLACKLIST;
+}
 function getStorageName(item) {
     if (!item || !item.hasItemMeta()) return null;
     const lore = item.getItemMeta().getLore();
@@ -41,14 +51,22 @@ function getFileName(playerName, storageName) {
     const safe = storageName.replace(/[\\/:*?"<>|]/g, '_');
     return playerName + "_" + safe + ".json";
 }
+function countPlayerStorages(playerName) {
+    if (!DATA_DIR.exists()) return 0;
+    const files = DATA_DIR.listFiles();
+    if (!files) return 0;
+    let count = 0;
+    for (let file of files) if (file.isFile() && file.getName().endsWith(".json") && file.getName().startsWith(playerName + "_")) count++;
+    return count;
+}
 function readData(item, playerName) {
     let name = getStorageName(item);
-    if (!name) return { pages:{ "1": new Array(PAGE_SIZE).fill(null) }, unamed: true };
+    if (!name) return { ...createEmptyData(), unamed: true };
     const path = Paths.get(DATA_DIR.getAbsolutePath(), getFileName(playerName, name));
     try {
-        if (!Files.exists(path)) return { pages:{ "1": new Array(PAGE_SIZE).fill(null) } };
+        if (!Files.exists(path)) return createEmptyData();
         return JSON.parse(Files.readString(path, StandardCharsets.UTF_8));
-    } catch(e) { return { pages:{ "1": new Array(PAGE_SIZE).fill(null) } }; }
+    } catch(e) { return createEmptyData(); }
 }
 function writeData(item, data, playerName) {
     let name = getStorageName(item);
@@ -73,7 +91,6 @@ function deserialize(json) {
         return mat ? new ItemStack(mat,1) : null;
     } catch(e) { return null; }
 }
-function getPage(data, p) { return data.pages[p] || null; }
 function exists(data, item) {
     let s = serialize(item);
     if (!s) return false;
@@ -91,14 +108,14 @@ function findEmpty(data) {
 function searchText(item) {
     let t = [item.getType().name().toLowerCase()];
     let meta = item.getItemMeta();
-    if (meta.hasDisplayName()) t.push(meta.getDisplayName().replace(/§./g,'').toLowerCase());
+    if (meta.hasDisplayName()) t.push(meta.getDisplayName().replace(COLOR_REGEX,'').toLowerCase());
     let sf = SlimefunItem.getByItem(item);
     if (sf) t.push(sf.getId().toLowerCase());
     return Array.from(new Set(t)).join(' ');
 }
 function sortName(item) {
     let n = item.getItemMeta().getDisplayName();
-    return (n || item.getType().name()).replace(/§./g,'');
+    return (n || item.getType().name()).replace(COLOR_REGEX,'');
 }
 function sortAll(data) {
     let items = [];
@@ -110,7 +127,7 @@ function sortAll(data) {
     let newPages = {}, idx=0;
     for (let i=0; i<items.length; i++) {
         let page = Math.floor(idx/45)+1;
-        if (!newPages[page]) newPages[page] = new Array(PAGE_SIZE).fill(null);
+        if (!newPages[page]) newPages[page] = createEmptyPage();
         newPages[page][idx%45] = items[i].ser;
         idx++;
     }
@@ -130,7 +147,7 @@ function search(data, kw) {
     let res = { pages:{} }, idx=0;
     for (let i=0; i<matched.length; i++) {
         let page = Math.floor(idx/45)+1;
-        if (!res.pages[page]) res.pages[page] = new Array(PAGE_SIZE).fill(null);
+        if (!res.pages[page]) res.pages[page] = createEmptyPage();
         res.pages[page][idx%45] = matched[i].ser;
         idx++;
     }
@@ -144,22 +161,17 @@ function createItem(mat, name, lore) {
     it.setItemMeta(meta);
     return it;
 }
-function buildGUI(item, page, player, mode="normal", searchData=null, kw="") {
-    let data = mode==="search" ? searchData : readData(item, player);
-    if (data.unamed) {
-        let inv = Bukkit.createInventory(null, PAGE_SIZE, "§c物品未命名");
-        inv.setItem(22, createItem("PAPER", "§e请先蹲下右键为物品命名", ["§7蹲下+右键此物品，然后在聊天栏输入名称"]));
-        return inv;
-    }
-    if (!data.pages) data = { pages:{ "1":new Array(PAGE_SIZE).fill(null) } };
+function buildGUI(item, data, page, player, mode="normal", searchData=null, kw="") {
+    let displayData = mode === "search" ? searchData : data;
+    if (!displayData || !displayData.pages) displayData = createEmptyData();
     let title = TITLE + (mode==="search" ? ` §7- 搜索 "${kw}" 第 ${page} 页` : ` §7- 第 ${page} 页`);
     let inv = Bukkit.createInventory(null, PAGE_SIZE, title);
-    let pg = getPage(data, page);
+    let pg = displayData.pages[page];
     if (pg) for (let i=0; i<45; i++) inv.setItem(i, pg[i] ? deserialize(pg[i]) : null);
     let prev = (parseInt(page)-1).toString();
-    inv.setItem(SLOT.PREV, (parseInt(page)>1 && data.pages[prev]) ? createItem("ARROW","§a上一页","§7点击切换到第 "+prev+" 页") : createItem("GRAY_STAINED_GLASS_PANE","§8无上一页",null));
+    inv.setItem(SLOT.PREV, (parseInt(page)>1 && displayData.pages[prev]) ? createItem("ARROW","§a上一页","§7点击切换到第 "+prev+" 页") : createItem("GRAY_STAINED_GLASS_PANE","§8无上一页",null));
     let next = (parseInt(page)+1).toString();
-    inv.setItem(SLOT.NEXT, data.pages[next] ? createItem("ARROW","§a下一页","§7点击切换到第 "+next+" 页") : createItem("GRAY_STAINED_GLASS_PANE","§8无下一页",null));
+    inv.setItem(SLOT.NEXT, displayData.pages[next] ? createItem("ARROW","§a下一页","§7点击切换到第 "+next+" 页") : createItem("GRAY_STAINED_GLASS_PANE","§8无下一页",null));
     inv.setItem(SLOT.CLOSE, createItem("BARRIER","§c关闭","§7关闭存储界面"));
     if (mode==="normal") {
         inv.setItem(SLOT.SORT, createItem("HOPPER","§a按拼音整理","§7点击将所有页物品按拼音排序"));
@@ -218,30 +230,30 @@ function registerListener() {
         if (clk===top && slot>=45 && slot<54) {
             if (slot===SLOT.PREV && data.pages[(parseInt(cur)-1).toString()]) {
                 turning.add(p); h.page = (parseInt(cur)-1).toString();
-                p.openInventory(buildGUI(storage, h.page, p.getName(), mode, sData, kw));
+                p.openInventory(buildGUI(storage, data, h.page, p.getName(), mode, sData, kw));
             } else if (slot===SLOT.NEXT && data.pages[(parseInt(cur)+1).toString()]) {
                 turning.add(p); h.page = (parseInt(cur)+1).toString();
-                p.openInventory(buildGUI(storage, h.page, p.getName(), mode, sData, kw));
+                p.openInventory(buildGUI(storage, data, h.page, p.getName(), mode, sData, kw));
             } else if (slot===SLOT.CLOSE) p.closeInventory();
             else if (mode==="normal" && slot===SLOT.SORT) {
                 turning.add(p);
                 let nd = sortAll(readData(storage, p.getName()));
                 writeData(storage, nd, p.getName());
                 h.page = nd.pages[cur] && nd.pages[cur].slice(0,45).some(v=>v) ? cur : "1";
-                p.openInventory(buildGUI(storage, h.page, p.getName(), "normal"));
+                p.openInventory(buildGUI(storage, nd, h.page, p.getName(), "normal"));
                 turning.remove(p); p.sendMessage("§a整理完成！");
             } else if (mode==="normal" && slot===SLOT.SEARCH) {
                 p.sendMessage("§a请先手动关闭当前界面，然后在聊天栏输入关键词（输入 cancel 取消）:");
                 awaiting.add(p);
             } else if (mode==="search" && slot===SLOT.BACK) {
                 turning.add(p); h.mode="normal"; h.searchData=null; h.keyword=""; h.page="1";
-                p.openInventory(buildGUI(storage, "1", p.getName(), "normal"));
+                p.openInventory(buildGUI(storage, readData(storage, p.getName()), "1", p.getName(), "normal"));
                 turning.remove(p);
             }
             return;
         }
         if (clk===top && slot>=0 && slot<45) {
-            let pg = getPage(data, cur);
+            let pg = data.pages[cur];
             if (!pg || !pg[slot]) return;
             if (p.getInventory().firstEmpty()===-1) { p.sendMessage("§c背包已满"); return; }
             let stored = deserialize(pg[slot]);
@@ -256,7 +268,7 @@ function registerListener() {
                 writeData(storage, orig, p.getName());
                 pg[slot]=null; top.setItem(slot,null); p.getInventory().addItem(stored);
             } else {
-                pg[slot]=null; data.pages[cur]=pg; writeData(storage, data, p.getName());
+                pg[slot]=null; writeData(storage, data, p.getName());
                 p.getInventory().addItem(stored); top.setItem(slot,null);
             }
             return;
@@ -265,23 +277,36 @@ function registerListener() {
             let it = e.getCurrentItem();
             if (!it || it.getType()===Material.AIR) return;
             let sf = SlimefunItem.getByItem(it), id = sf ? sf.getId() : null;
-            if (id && BLACKLIST.includes(id)) { p.sendMessage("§c不能存入此物品"); return; }
+            let blacklist = getBlacklist();
+            if (id && blacklist.includes(id)) { p.sendMessage("§c不能存入此物品"); return; }
             if (exists(data, it)) { p.sendMessage("§c该物品已存在"); return; }
             let empty = findEmpty(data);
+            let name = getStorageName(storage);
+            let filePath = Paths.get(DATA_DIR.getAbsolutePath(), getFileName(p.getName(), name));
+            let fileExists = Files.exists(filePath);
+            if (!fileExists) {
+                let maxLimit = getAddonConfig().getInt("L_ZJ_WXG_CCmax", 5);
+                let currentCount = countPlayerStorages(p.getName());
+                if (currentCount >= maxLimit) {
+                    p.sendMessage("§c你已达到最大存储数量（" + maxLimit + "个），无法创建新的存储。");
+                    return;
+                }
+                writeData(storage, data, p.getName());
+            }
             if (!empty) {
                 let pages = Object.keys(data.pages).map(Number).sort((a,b)=>a-b);
                 let np = (pages.length+1).toString();
-                data.pages[np] = new Array(PAGE_SIZE).fill(null);
+                data.pages[np] = createEmptyPage();
                 empty = { page: np, slot:0 };
             }
             let ser = serialize(it);
             if (!ser) { p.sendMessage("§c无法存储"); return; }
-            let pg = getPage(data, empty.page) || new Array(PAGE_SIZE).fill(null);
+            let pg = data.pages[empty.page] || createEmptyPage();
             pg[empty.slot] = ser; data.pages[empty.page] = pg; writeData(storage, data, p.getName());
             if (it.getAmount()>1) it.setAmount(it.getAmount()-1); else it.setAmount(0);
             if (empty.page !== cur) {
                 turning.add(p); h.page = empty.page;
-                p.openInventory(buildGUI(storage, empty.page, p.getName(), "normal"));
+                p.openInventory(buildGUI(storage, data, empty.page, p.getName(), "normal"));
                 turning.remove(p);
             } else top.setItem(empty.slot, deserialize(ser));
         }
@@ -312,11 +337,11 @@ function registerListener() {
                     if (!res.pages[1] || !res.pages[1][0]) {
                         p.sendMessage("§c没有找到匹配的物品。");
                         h.mode="normal"; h.searchData=null; h.keyword=""; h.page="1";
-                        turning.add(p); p.openInventory(buildGUI(cur, "1", p.getName(), "normal"));
+                        turning.add(p); p.openInventory(buildGUI(cur, orig, "1", p.getName(), "normal"));
                         turning.remove(p);
                     } else {
                         h.mode="search"; h.searchData=res; h.keyword=input; h.page="1";
-                        turning.add(p); p.openInventory(buildGUI(cur, "1", p.getName(), "search", res, input));
+                        turning.add(p); p.openInventory(buildGUI(cur, orig, "1", p.getName(), "search", res, input));
                         turning.remove(p);
                         let cnt = Object.values(res.pages).flat().filter(v=>v).length;
                         p.sendMessage("§a找到 " + cnt + " 个物品。");
@@ -356,11 +381,8 @@ function onUse(e) {
                 setStorageName(it, input);
                 p.sendMessage("§a已设置存储名称: §f" + input);
                 let data = readData(it, p.getName());
-                if (!data.pages || Object.keys(data.pages).length===0) {
-                    data = { pages:{ "1": new Array(PAGE_SIZE).fill(null) } };
-                    writeData(it, data, p.getName());
-                }
-                p.openInventory(buildGUI(it, "1", p.getName(), "normal"));
+                if (!data.pages || Object.keys(data.pages).length===0) data = createEmptyData();
+                p.openInventory(buildGUI(it, data, "1", p.getName(), "normal"));
                 openPlayers.put(p, { item:it, page:"1", mode:"normal", searchData:null, keyword:"" });
                 ensure();
             }
@@ -372,10 +394,9 @@ function onUse(e) {
     let data = readData(it, p.getName());
     if (data.unamed) { p.sendMessage("§c物品命名无效，请重新蹲下右键命名。"); return; }
     if (!data.pages || Object.keys(data.pages).length===0) {
-        data = { pages:{ "1": new Array(PAGE_SIZE).fill(null) } };
-        writeData(it, data, p.getName());
+        data = createEmptyData();
     }
-    p.openInventory(buildGUI(it, "1", p.getName(), "normal"));
+    p.openInventory(buildGUI(it, data, "1", p.getName(), "normal"));
     openPlayers.put(p, { item:it, page:"1", mode:"normal", searchData:null, keyword:"" });
     ensure();
 }

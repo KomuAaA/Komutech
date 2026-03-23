@@ -1,0 +1,8 @@
+# 每位玩家可拥有的最大存储数量
+L_ZJ_WXG_CCmax: 5
+# 禁止存入的物品ID列表
+L_ZJ_WXG_BAN:
+- KOMUTECH_L_ZJ_萬衍儀
+- KOMUTECH_L_ZJ_萬象匱
+# 萬象匱全局数据清除密码
+L_ZJ_WXG_MM: "0108"

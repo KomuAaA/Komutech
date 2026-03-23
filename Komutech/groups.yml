@@ -683,3 +683,15 @@ Komutech_L_QHC:
   tier: 68
   actions:
   - "script L-菜单/琼华阁"
+Komutech_L_ZJ_WXGPZ:
+  lateInit: false
+  type: button
+  item:
+    name: '{#00FA9A}&kA{#2DFBAE}&l萬{#5AFCC2}&l象{#86FDD7}&l匱{#B3FEEB}&kA'
+    material_type: mc
+    material: knowledge_book
+    glow: true
+  parent: Komutech
+  tier: 69
+  actions:
+  - "script L-菜单/萬象匱配置"

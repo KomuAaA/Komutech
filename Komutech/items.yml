@@ -4935,10 +4935,21 @@ Komutech_CDZW68:
     amount: 1
   placeable: false
   recipe_type: NULL
+Komutech_L_ZJ_WXGPZZW:
+  lateInit: false
+  item_group: Komutech_L_ZJ_WXGPZ
+  item:
+    name: ' '
+    lore:
+    material_type: mc
+    material: magenta_stained_glass_pane
+    amount: 1
+  placeable: false
+  recipe_type: NULL
 
 KOMUTECH_L_ZW_DFKZH:
   lateInit: false
-  item_group: Komutech_CD1
+  item_group: Komutech_GXRZ
   item: 
     name: '{#87CEEB}&l多{#4169E1}&l方{#0000FF}&l快{#9370DB}&l结{#8A2BE2}&l构{#9400D3}&l转{#8B008B}&l换'
     lore:
@@ -4969,7 +4980,7 @@ KOMUTECH_L_ZW_CDZZJC:
     material: paper
 KOMUTECH_L_ZW_ZW1:
   lateInit: false
-  item_group: Komutech_CD1
+  item_group: Komutech_GXRZ
   item: 
     name: '&f&l占位'
     lore:
@@ -4979,7 +4990,7 @@ KOMUTECH_L_ZW_ZW1:
     material: paper
 KOMUTECH_L_ZW_ZW2:
   lateInit: false
-  item_group: Komutech_CD1
+  item_group: Komutech_GXRZ
   item: 
     name: '&f&l占位'
     lore:
@@ -4989,7 +5000,7 @@ KOMUTECH_L_ZW_ZW2:
     material: paper
 KOMUTECH_L_ZW_ZW3:
   lateInit: false
-  item_group: Komutech_CD1
+  item_group: Komutech_GXRZ
   item: 
     name: '&f&l占位'
     lore:
@@ -4999,7 +5010,7 @@ KOMUTECH_L_ZW_ZW3:
     material: paper
 KOMUTECH_L_ZW_ZW4:
   lateInit: false
-  item_group: Komutech_CD1
+  item_group: Komutech_GXRZ
   item: 
     name: '&f&l占位'
     lore:
@@ -5009,7 +5020,7 @@ KOMUTECH_L_ZW_ZW4:
     material: paper
 KOMUTECH_L_ZW_ZW5:
   lateInit: false
-  item_group: Komutech_CD1
+  item_group: Komutech_GXRZ
   item: 
     name: '&f&l占位'
     lore:
@@ -5019,7 +5030,7 @@ KOMUTECH_L_ZW_ZW5:
     material: paper
 KOMUTECH_L_ZW_QQWJQNCK:
   lateInit: false
-  item_group: Komutech_CD1
+  item_group: Komutech_GXRZ
   item: 
     name: '&f&l请前往机器内查看'
     glow: true
