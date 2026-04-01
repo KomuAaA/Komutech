@@ -237,7 +237,14 @@ function getTrailPos(center, trailId, time) {
  let y = center.getY() + 2.0 + height;
  return new Location(center.getWorld(), x, y, z);
 }
+let synthesizing = new java.util.HashSet();
 function startEffect(p, coreLoc, procLoc) {
+ let key = procLoc.getWorld().getName() + "," + procLoc.getX() + "," + procLoc.getY() + "," + procLoc.getZ();
+ if (synthesizing.contains(key)) {
+  p.sendMessage("§c机器正在合成中，请稍后再试！");
+  return;
+ }
+ synthesizing.add(key);
  let world = coreLoc.getWorld();
  let originalTime = world.getTime();
  let originalStorm = world.hasStorm();
@@ -321,6 +328,7 @@ function startEffect(p, coreLoc, procLoc) {
   if (p.isOnline()) {
    finalCraft(p, procLoc, StorageCacheUtils.getMenu(procLoc));
   }
+  synthesizing.remove(key);
  }, 340 + 20);
 }
 function onOpen(p,i,l) {}
@@ -342,6 +350,11 @@ function onClick(p,s,i,a) {
  }
  let menu = StorageCacheUtils.getMenu(procLoc);
  if (!preCheck(p, procLoc, menu)) return true;
+ let key = procLoc.getWorld().getName() + "," + procLoc.getX() + "," + procLoc.getY() + "," + procLoc.getZ();
+ if (synthesizing.contains(key)) {
+  p.sendMessage("§c机器正在合成中，请稍后再试！");
+  return true;
+ }
  p.closeInventory();
  startEffect(p, coreLoc, procLoc);
  return true;

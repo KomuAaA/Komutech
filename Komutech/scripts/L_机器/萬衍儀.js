@@ -76,6 +76,7 @@ function searchText(item) {
     return Array.from(new Set(t)).join(' ');
 }
 function sortName(item) {
+    if (!item) return "§c无效物品";
     let n = item.getItemMeta().getDisplayName();
     return (n || item.getType().name()).replace(/§./g,'');
 }
@@ -83,7 +84,10 @@ function sortAll(data) {
     let items = [];
     for (let p in data.pages) for (let i=0; i<data.pages[p].length; i++) {
         let ser = data.pages[p][i];
-        if (ser) items.push({ ser, name:sortName(deserialize(ser)) });
+        if (!ser) continue;
+        let item = deserialize(ser);
+        if (!item) continue;
+        items.push({ ser, name:sortName(item) });
     }
     items.sort((a,b)=>ZH_SORTER.compare(a.name,b.name));
     let newPages = {}, idx=0;
@@ -103,7 +107,8 @@ function search(data, kw) {
         let ser = data.pages[p][i];
         if (!ser) continue;
         let item = deserialize(ser);
-        if (item && searchText(item).includes(kw)) matched.push({ ser, name:sortName(item) });
+        if (!item) continue;
+        if (searchText(item).includes(kw)) matched.push({ ser, name:sortName(item) });
     }
     matched.sort((a,b)=>ZH_SORTER.compare(a.name,b.name));
     let res = { pages:{} }, idx=0;
@@ -127,7 +132,11 @@ function fillGUI(inv, data, page, mode, sData, kw) {
     if (!data?.pages) data = { pages:{ "1": new Array(PAGE_SIZE).fill(null) } };
     let display = mode === "search" ? sData : data;
     let pg = getPage(display, page);
-    for (let i=0; i<45; i++) inv.setItem(i, pg?.[i] ? deserialize(pg[i]) : FILLER_TEMPLATE.clone());
+    for (let i=0; i<45; i++) {
+        let ser = pg?.[i];
+        let item = ser ? deserialize(ser) : null;
+        inv.setItem(i, item ? item : FILLER_TEMPLATE.clone());
+    }
     let prev = (parseInt(page)-1).toString();
     if (parseInt(page) > 1 && display.pages[prev]) inv.setItem(PREV_SLOT, createItem("ARROW", "§a上一页", "§7点击切换到第 " + prev + " 页"));
     else inv.setItem(PREV_SLOT, DISABLED_TEMPLATE.clone());

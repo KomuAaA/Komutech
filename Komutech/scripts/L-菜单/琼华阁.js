@@ -11,7 +11,9 @@ const BORDER_SLOTS = [0,1,2,3,4,5,6,7,8,9,17,18,26,27,35,36,44,45,46,47,48,50,51
 
 const ITEMS = {
     jichucailiao: [
+        { id: 'KOMUTECH_L_JCWP_琼华阁通行柬1', lines: ['§f---§a§l点击购买§f---', '§a•需：64 中品灵石 + 4 功德券', '§7-64×KOMUTECH_L_DJ_ZPLS', '§7-4×KOMUTECH_L_DJ_功德券'] },
         { id: 'KOMUTECH_L_JCWP_SC', lines: ['§f---§a§l点击购买§f---', '§a•需：16 下品灵石', '§7-16×KOMUTECH_L_DJ_XPLS'] },
+        { id: 'KOMUTECH_L_JCWP_SYM', lines: ['§f---§a§l点击购买§f---', '§a•需：4 下品灵石', '§7-4×KOMUTECH_L_DJ_XPLS'] },
         { id: 'KOMUTECH_L_GJ_KCB', lines: ['§f---§a§l点击购买§f---', '§a•需：8 下品灵石', '§7-8×KOMUTECH_L_DJ_XPLS'] }
     ],
     lingzhizhongzi: [

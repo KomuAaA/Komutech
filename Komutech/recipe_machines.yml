@@ -3349,6 +3349,10 @@ Komutech_L_JQ_LHDZY:
     material_type: skull_base64
     material: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTcwNTdhMDUzNGQyYTVjYzM1NTJkMDk4MjAxMTY4ODNiN2E2Y2ExMzhlMWRhMTkyYjFmNmU1MDcwMWZmNzdkZSJ9fX0=
   speed: 1
+  capacity: 133441
+  energyPerCraft: 657
+  input: [12, 13, 14, 21, 22, 23, 30, 31, 32, 39, 40, 41]
+  output: [0, 1, 7, 8, 9, 10, 16, 17, 18, 19, 25, 26, 27, 28, 34, 35, 36, 37, 43, 44, 45, 46, 52, 53]
   recipe_type: KOMUTECH_L_DFKJQ_GJT
   recipe:
     1:
@@ -3387,8 +3391,6 @@ Komutech_L_JQ_LHDZY:
       material_type: slimefun
       material: KOMUTECH_L_FZ_YSSLFZ
       amount: 32
-  capacity: 133441
-  energyPerCraft: 657
   recipes:
     ##被束缚的小岛人
     'Komutech_L_SW_BSFDXDR':
@@ -3443,8 +3445,6 @@ Komutech_L_JQ_LHDZY:
           material_type: slimefun
           material: Komutech_L_SW_XHDKLN
           amount: 1
-  input: [0, 1, 7, 8, 9, 10, 16, 17, 18, 19, 25, 26, 27, 28, 34, 35, 36, 37, 43, 44, 45, 46, 52, 53]
-  output: [12, 13, 14, 21, 22, 23, 30, 31, 32, 39, 40, 41]
 
 ##百工寮
 Komutech_L_JQ_BGL:

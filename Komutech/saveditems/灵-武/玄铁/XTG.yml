@@ -1,0 +1,21 @@
+item:
+  ==: org.bukkit.inventory.ItemStack
+  v: 3955
+  type: BOW
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    enchants:
+      minecraft:power: 15      # 力量 15
+      ARROW_INFINITE: 1        # 无限 I
+      DURABILITY: 15           # 耐久 XV
+    repair-cost: 1
+    Unbreakable: true
+    attribute-modifiers:
+      GENERIC_MOVEMENT_SPEED:   # 移动速度
+      - ==: org.bukkit.attribute.AttributeModifier
+        amount: 0.05              # +5% 基础移速
+        name: generic.movementSpeed
+        slot: HAND
+        uuid: 10004869-0000-0001-a001-a001a0000001
+        operation: 0

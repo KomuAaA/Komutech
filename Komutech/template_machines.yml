@@ -16,7 +16,7 @@ KOMUTECH_L_JQ_下品一芥乾坤:
   templateSlot: 10
   fasterIfMoreTemplates: false
   moreOutputIfMoreTemplates: false
-  input: [3,4,5,6,7,10,12,13,14,15,16]
+  input: [3,4,5,6,7,12,13,14,15,16,10]
   output: [28,29,30,31,32,33,34,37,38,39,40,41,42,43,46,47,48,49,50,51,52]
   recipe_type: KOMUTECH_L_DFKJQ_GJT
   recipe:
@@ -176,7 +176,7 @@ KOMUTECH_L_JQ_中品一芥乾坤:
   templateSlot: 10
   fasterIfMoreTemplates: false
   moreOutputIfMoreTemplates: false
-  input: [3,4,5,6,7,10,12,13,14,15,16]
+  input: [3,4,5,6,7,12,13,14,15,16,10]
   output: [28,29,30,31,32,33,34,37,38,39,40,41,42,43,46,47,48,49,50,51,52]
   recipe_type: KOMUTECH_L_DFKJQ_GJT
   recipe:
@@ -660,7 +660,7 @@ KOMUTECH_L_JQ_极品一芥乾坤:
   templateSlot: 10
   fasterIfMoreTemplates: false
   moreOutputIfMoreTemplates: false
-  input: [3,4,5,6,7,10,12,13,14,15,16]
+  input: [3,4,5,6,7,12,13,14,15,16,10]
   output: [28,29,30,31,32,33,34,37,38,39,40,41,42,43,46,47,48,49,50,51,52]
   recipe_type: NULL
   recipes:
@@ -731,6 +731,55 @@ KOMUTECH_L_JQ_琼华阁:
       material: Komutech_L_KW_ZJD
       amount: 1
   recipes:
+    KOMUTECH_L_JCWP_琼华阁通行柬1:
+      '松烟墨':
+        seconds: 0
+        input:
+          1:
+            material_type: slimefun
+            material: Komutech_L_DJ_XPLS
+            amount: 4
+          2:
+            material_type: slimefun
+            material: KOMUTECH_L_LZ_SM
+            amount: 1
+        output:
+          1:
+            material_type: slimefun
+            material: KOMUTECH_L_JCWP_SYM
+            amount: 1
+      '丝绸':
+        seconds: 0
+        input:
+          1:
+            material_type: slimefun
+            material: Komutech_L_DJ_XPLS
+            amount: 16
+          2:
+            material_type: slimefun
+            material: Komutech_L_JCWP_B
+            amount: 1
+        output:
+          1:
+            material_type: slimefun
+            material: Komutech_L_JCWP_SC
+            amount: 1
+      '开采包':
+        seconds: 0
+        input:
+          1:
+            material_type: slimefun
+            material: Komutech_L_DJ_XPLS
+            amount: 8
+          2:
+            material_type: mc
+            material: netherite_ingot
+            amount: 9
+        output:
+          1:
+            material_type: slimefun
+            material: Komutech_L_GJ_KCB
+            amount: 1
    ##儡肆
     KOMUTECH_L_JCWP_儡肆通行柬:
       '昆仑奴':
@@ -780,8 +829,17 @@ Komutech_L_JQ_万相悟道仪:
       material_type: slimefun
       material: Komutech_L_DJ_JPLS
     2:
-      material_type: slimefun
-      material: Komutech_L_DJ_蕴灵身
+      name: "{#accbee}✦ {#9bbdee}蕴{#cde0f7}灵{#e7f0fd}身 {#accbee}✦"
+      material_type: mc
+      material: white_banner
+      lore:
+        - "{#accbee}◇ {#cde0f7}精血融坯，神魂寄形 {#accbee}◇"
+        - " {#9bbdee}› {#cde0f7}承血脉共生之契，心神同频"
+        - " {#9bbdee}› {#cde0f7}赋灵韵成器之姿，身外有身"
+        - "{#cde0f7} §8┅┅┅┅┅┅┅┅┅┅┅┅┅"
+        - "   {#cde0f7}【{#e7f0fd}已启灵{#cde0f7}】 {#9bbdee}同源分身，共息同魂"
+        - "   {#accbee}如影随形，一念即通明"
+        - "&4&l注意！！！&a此道具要绑定玩家才能参与合成，谁合成绑定谁。"
     3:
       material_type: slimefun
       material: Komutech_L_DJ_JPLS

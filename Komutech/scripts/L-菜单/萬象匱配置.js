@@ -32,7 +32,15 @@ function getAllPlayers() {
     const files = DATA_DIR.listFiles();
     if (!files) return [];
     const players = new java.util.HashSet();
-    for (let file of files) if (file.isFile() && file.getName().endsWith(".json")) players.add(file.getName().split("_")[0]);
+    for (let file of files) {
+        if (file.isFile() && file.getName().endsWith(".json")) {
+            const name = file.getName();
+            const lastUnderscore = name.lastIndexOf('_');
+            if (lastUnderscore !== -1) {
+                players.add(name.substring(0, lastUnderscore));
+            }
+        }
+    }
     return Array.from(players);
 }
 function getPlayerStorages(playerName) {
@@ -40,18 +48,20 @@ function getPlayerStorages(playerName) {
     const files = DATA_DIR.listFiles();
     if (!files) return [];
     const storages = [];
+    const prefix = playerName + "_";
     for (let file of files) {
-        if (file.isFile() && file.getName().endsWith(".json") && file.getName().startsWith(playerName + "_")) {
-            const name = file.getName().substring(playerName.length + 1, file.getName().length - 5);
-            storages.push({ name, file });
+        const fileName = file.getName();
+        if (file.isFile() && fileName.endsWith(".json") && fileName.startsWith(prefix)) {
+            const storageName = fileName.substring(prefix.length, fileName.length - 5);
+            storages.push({ name: storageName, file });
         }
     }
     return storages;
 }
-function deleteStorage(file) { try { file.delete(); return true; } catch(e) { return false; } }
-function renameStorage(file, oldName, newName, playerName) {
-    const newFilePath = DATA_DIR.getAbsolutePath() + File.separator + playerName + "_" + newName + ".json";
-    const newFile = new File(newFilePath);
+function deleteFile(file) { try { file.delete(); return true; } catch(e) { return false; } }
+function renameFile(file, oldName, newName, player) {
+    const newPath = DATA_DIR.getAbsolutePath() + File.separator + player + "_" + newName + ".json";
+    const newFile = new File(newPath);
     if (newFile.exists()) return false;
     try { Files.move(file.toPath(), newFile.toPath()); return true; } catch(e) { return false; }
 }
@@ -88,26 +98,38 @@ function buildPlayerMenu(player) {
 }
 function buildAdminList(page = 1) {
     const players = getAllPlayers();
-    const totalPages = Math.max(1, Math.ceil(players.length / 34));
-    const start = (page - 1) * 34;
-    const end = Math.min(start + 34, players.length);
-    const pagePlayers = players.slice(start, end);
+    const total = Math.max(1, Math.ceil(players.length / 28));
+    const start = (page - 1) * 28;
+    const pagePlayers = players.slice(start, start + 28);
     const inv = Bukkit.createInventory(null, 54, ADMIN_TITLE);
     applyBorder(inv);
     inv.setItem(MODE_SLOT, createItem("COMPASS", "§a切换模式", ["§7点击切换到玩家模式"]));
-    inv.setItem(INFO_SLOT, createItem("PAPER", "§6管理员面板", ["§7总玩家数: " + players.length, "§7第 " + page + "/" + totalPages + " 页"]));
+    inv.setItem(INFO_SLOT, createItem("PAPER", "§6管理员面板", ["§7总玩家数: " + players.length, "§7第 " + page + "/" + total + " 页"]));
     inv.setItem(53, createItem("TNT", "§c清空所有数据", ["§7删除全部存储文件", "§c§l不可逆！"]));
-    let slot = 10;
-    for (let i = 0; i < pagePlayers.length; i++) {
-        inv.setItem(slot, createItem("PLAYER_HEAD", "§e" + pagePlayers[i], ["§7点击查看存储列表"]));
-        slot++;
-        if ((slot - 9) % 9 === 0) slot += 2;
-        if (slot > 43) break;
+    const rows = [10, 19, 28, 37];
+    let idx = 0;
+    for (let r of rows) {
+        for (let c = 0; c < 7; c++) {
+            if (idx >= pagePlayers.length) break;
+            inv.setItem(r + c, createItem("PLAYER_HEAD", "§e" + pagePlayers[idx], ["§7点击查看存储列表"]));
+            idx++;
+        }
+        if (idx >= pagePlayers.length) break;
     }
     if (page > 1) inv.setItem(48, createItem("ARROW", "§a上一页", ["§7第 " + (page - 1) + " 页"]));
-    if (page < totalPages) inv.setItem(50, createItem("ARROW", "§a下一页", ["§7第 " + (page + 1) + " 页"]));
+    if (page < total) inv.setItem(50, createItem("ARROW", "§a下一页", ["§7第 " + (page + 1) + " 页"]));
     inv.setItem(49, createItem("BARRIER", "§c关闭", ["§7关闭菜单"]));
-    return { inv, page, totalPages, players };
+    const slotMap = new java.util.HashMap();
+    idx = 0;
+    for (let r of rows) {
+        for (let c = 0; c < 7; c++) {
+            if (idx >= pagePlayers.length) break;
+            slotMap.put(r + c, pagePlayers[idx]);
+            idx++;
+        }
+        if (idx >= pagePlayers.length) break;
+    }
+    return { inv, page, total, slotMap };
 }
 function buildStorageList(playerName) {
     const storages = getPlayerStorages(playerName);
@@ -145,38 +167,23 @@ function deserialize(json) {
         return mat ? new ItemStack(mat,1) : null;
     } catch(e) { return null; }
 }
-function createEmptyPage() { return new Array(45).fill(null); }
-function createEmptyData() { return { pages: { "1": createEmptyPage() } }; }
-function buildStorageView(playerName, storageName, page = 1, mode = "normal", searchData = null, kw = "") {
-    const file = new File(DATA_DIR.getAbsolutePath() + File.separator + playerName + "_" + storageName + ".json");
-    let data;
+function emptyPage() { return new Array(45).fill(null); }
+function emptyData() { return { pages: { "1": emptyPage() }, meta: { page: "1", mode: "normal", kw: "" } }; }
+function loadData(player, storage) {
+    const path = Paths.get(DATA_DIR.getAbsolutePath(), player + "_" + storage + ".json");
     try {
-        const json = Files.readString(file.toPath(), StandardCharsets.UTF_8);
-        data = JSON.parse(json);
-    } catch(e) { data = createEmptyData(); }
-    const inv = Bukkit.createInventory(null, 54, STORAGE_VIEW_TITLE + storageName);
-    const border = createItem("BLACK_STAINED_GLASS_PANE", "§8", null);
-    for (let i = 45; i < 54; i++) inv.setItem(i, border.clone());
-    let displayData = mode === "search" ? searchData : data;
-    const pages = Object.keys(displayData.pages).map(Number).sort((a,b)=>a-b);
-    const currentPage = pages.includes(page) ? page : (pages[0] || 1);
-    const currentPageData = displayData.pages[currentPage] || [];
-    for (let i = 0; i < 45; i++) {
-        const ser = currentPageData[i];
-        if (ser) {
-            const item = deserialize(ser);
-            if (item) inv.setItem(i, item);
-        }
-    }
-    inv.setItem(48, createItem("ARROW", "§a上一页", ["§7上一页"]));
-    inv.setItem(49, createItem("ARROW", "§a返回", ["§7返回存储列表"]));
-    inv.setItem(50, createItem("ARROW", "§a下一页", ["§7下一页"]));
-    inv.setItem(SORT_SLOT, createItem("HOPPER", "§a按拼音整理", ["§7点击整理物品"]));
-    inv.setItem(SEARCH_SLOT, createItem("NAME_TAG", "§a搜索", ["§7点击输入关键词搜索"]));
-    if (mode === "search") inv.setItem(BACK_BUTTON_SLOT, createItem("ARROW", "§a返回", ["§7返回正常浏览"]));
-    return { inv, data, playerName, storageName, currentPage, mode, searchData, kw };
+        if (!Files.exists(path)) return emptyData();
+        let data = JSON.parse(Files.readString(path, StandardCharsets.UTF_8));
+        if (!data.meta) data.meta = { page: "1", mode: "normal", kw: "" };
+        return data;
+    } catch(e) { return emptyData(); }
+}
+function saveData(player, storage, data) {
+    const path = Paths.get(DATA_DIR.getAbsolutePath(), player + "_" + storage + ".json");
+    try { initStorageFolder(); Files.writeString(path, JSON.stringify(data), StandardCharsets.UTF_8); } catch(e) {}
 }
 function sortName(item) {
+    if (!item) return "无效物品";
     let n = item.getItemMeta().getDisplayName();
     return (n || item.getType().name()).replace(COLOR_REGEX,'');
 }
@@ -184,18 +191,21 @@ function sortAll(data) {
     let items = [];
     for (let p in data.pages) for (let i=0; i<data.pages[p].length; i++) {
         let ser = data.pages[p][i];
-        if (ser) items.push({ ser, name:sortName(deserialize(ser)) });
+        if (!ser) continue;
+        let it = deserialize(ser);
+        if (!it) continue;
+        items.push({ ser, name:sortName(it) });
     }
-    const ZH_SORTER = new Intl.Collator('zh-CN', { sensitivity: 'base' });
-    items.sort((a,b)=>ZH_SORTER.compare(a.name,b.name));
+    items.sort((a,b)=>new Intl.Collator('zh-CN').compare(a.name,b.name));
     let newPages = {}, idx=0;
     for (let i=0; i<items.length; i++) {
         let page = Math.floor(idx/45)+1;
-        if (!newPages[page]) newPages[page] = new Array(45).fill(null);
+        if (!newPages[page]) newPages[page] = emptyPage();
         newPages[page][idx%45] = items[i].ser;
         idx++;
     }
     data.pages = newPages;
+    data.meta = { page: "1", mode: "normal", kw: "" };
     return data;
 }
 function searchText(item) {
@@ -212,13 +222,15 @@ function searchInData(data, kw) {
     for (let p in data.pages) for (let i=0; i<data.pages[p].length; i++) {
         let ser = data.pages[p][i];
         if (!ser) continue;
-        let item = deserialize(ser);
-        if (item && searchText(item).includes(kw)) matched.push(ser);
+        let it = deserialize(ser);
+        if (!it) continue;
+        if (searchText(it).includes(kw)) matched.push(ser);
     }
-    let res = { pages: {} }, idx=0;
+    let res = { pages: {}, meta: { page: "1", mode: "search", kw: kw } };
+    let idx=0;
     for (let i=0; i<matched.length; i++) {
         let page = Math.floor(idx/45)+1;
-        if (!res.pages[page]) res.pages[page] = new Array(45).fill(null);
+        if (!res.pages[page]) res.pages[page] = emptyPage();
         res.pages[page][idx%45] = matched[i];
         idx++;
     }
@@ -231,7 +243,7 @@ function findEmptySlot(data) {
         for (let i=0; i<45; i++) if (!page[i]) return { page:p.toString(), slot:i };
     }
     let newPage = (pages.length+1).toString();
-    data.pages[newPage] = new Array(45).fill(null);
+    data.pages[newPage] = emptyPage();
     return { page: newPage, slot:0 };
 }
 function existsInData(data, item) {
@@ -240,23 +252,50 @@ function existsInData(data, item) {
     for (let p in data.pages) if (data.pages[p].includes(s)) return true;
     return false;
 }
-function storeItem(data, item) {
+function storeInData(data, item) {
     if (existsInData(data, item)) return { success: false, reason: "物品已存在" };
     let empty = findEmptySlot(data);
     let ser = serialize(item);
     if (!ser) return { success: false, reason: "无法序列化" };
     data.pages[empty.page][empty.slot] = ser;
-    return { success: true, page: empty.page, slot: empty.slot };
+    return { success: true, page: empty.page };
+}
+function buildStorageView(player, storage, page = 1, mode = "normal", searchData = null, kw = "") {
+    let data = loadData(player, storage);
+    const finalPage = page !== undefined ? page : data.meta.page;
+    const finalMode = mode !== undefined ? mode : data.meta.mode;
+    const finalKw = kw !== undefined ? kw : data.meta.kw;
+    const inv = Bukkit.createInventory(null, 54, STORAGE_VIEW_TITLE + storage);
+    const border = createItem("BLACK_STAINED_GLASS_PANE", "§8", null);
+    for (let i = 45; i < 54; i++) inv.setItem(i, border.clone());
+    let display = finalMode === "search" ? searchData : data;
+    const pages = Object.keys(display.pages).map(Number).sort((a,b)=>a-b);
+    const curPage = pages.includes(finalPage) ? finalPage : (pages[0] || 1);
+    const curData = display.pages[curPage] || [];
+    for (let i = 0; i < 45; i++) {
+        const ser = curData[i];
+        if (ser) {
+            const it = deserialize(ser);
+            if (it) inv.setItem(i, it);
+        }
+    }
+    inv.setItem(48, createItem("ARROW", "§a上一页", ["§7上一页"]));
+    inv.setItem(49, createItem("ARROW", "§a返回", ["§7返回存储列表"]));
+    inv.setItem(50, createItem("ARROW", "§a下一页", ["§7下一页"]));
+    inv.setItem(SORT_SLOT, createItem("HOPPER", "§a按拼音整理", ["§7点击整理物品"]));
+    inv.setItem(SEARCH_SLOT, createItem("NAME_TAG", "§a搜索", ["§7点击输入关键词搜索"]));
+    if (finalMode === "search") inv.setItem(BACK_BUTTON_SLOT, createItem("ARROW", "§a返回", ["§7返回正常浏览"]));
+    return { inv, data, player, storage, curPage, mode: finalMode, searchData, kw: finalKw };
 }
 let openPlayers = new java.util.HashMap();
 let registered = false;
-let searchingPlayers = new java.util.HashSet();
+let awaitingSearch = new java.util.HashSet();
 function ensureListener() {
     if (registered) return;
-    if (plugin.komutech_data_manager) {
-        ClickEvent.getHandlerList().unregister(plugin.komutech_data_manager);
-        CloseEvent.getHandlerList().unregister(plugin.komutech_data_manager);
-        plugin.komutech_data_manager = null;
+    if (plugin.komutech_l_zj_wxgpzcd) {
+        ClickEvent.getHandlerList().unregister(plugin.komutech_l_zj_wxgpzcd);
+        CloseEvent.getHandlerList().unregister(plugin.komutech_l_zj_wxgpzcd);
+        plugin.komutech_l_zj_wxgpzcd = null;
     }
     const L = Java.extend(Listener, {});
     const listener = new L();
@@ -279,14 +318,14 @@ function ensureListener() {
                 if (row === 2 && col >= 1 && col <= 7) {
                     const idx = col - 1;
                     if (state.storages && idx < state.storages.length) {
-                        const storageName = state.storages[idx].name;
-                        p.sendMessage("§c确定要删除存储 §e" + storageName + "§c 吗？请输入 §6确认删除 §c以确认:");
+                        const name = state.storages[idx].name;
+                        p.sendMessage("§c确定要删除存储 §e" + name + "§c 吗？请输入 §6确认删除 §c以确认:");
                         getChatInput(p, new (Java.extend(Consumer, {
-                            accept: function(input) {
+                            accept: function(inp) {
                                 if (!p.isOnline()) return;
-                                if (input === "确认删除") {
-                                    deleteStorage(state.storages[idx].file);
-                                    p.sendMessage("§a已删除存储 " + storageName);
+                                if (inp === "确认删除") {
+                                    deleteFile(state.storages[idx].file);
+                                    p.sendMessage("§a已删除存储 " + name);
                                     openPlayerMenu(p);
                                 } else p.sendMessage("§c删除已取消");
                             }
@@ -295,20 +334,19 @@ function ensureListener() {
                 } else if (row === 3 && col >= 1 && col <= 7) {
                     const idx = col - 1;
                     if (state.storages && idx < state.storages.length) {
-                        const oldName = state.storages[idx].name;
-                        p.sendMessage("§a请输入新的存储名（当前: " + oldName + "），输入 cancel 取消:");
+                        const old = state.storages[idx].name;
+                        p.sendMessage("§a请输入新的存储名（当前: " + old + "），输入 cancel 取消:");
                         getChatInput(p, new (Java.extend(Consumer, {
-                            accept: function(input) {
+                            accept: function(inp) {
                                 if (!p.isOnline()) return;
-                                if (input.toLowerCase() === "cancel") { p.sendMessage("§c已取消重命名"); return; }
-                                if (!input || input.trim() === "") { p.sendMessage("§c名称不能为空"); return; }
-                                if (/[\\/:*?"<>|]/.test(input)) { p.sendMessage("§c名称不能包含 \\ / : * ? \" < > | 等字符"); return; }
-                                const newName = input;
-                                const playerName = p.getName();
-                                const newFilePath = DATA_DIR.getAbsolutePath() + File.separator + playerName + "_" + newName + ".json";
-                                const newFile = new File(newFilePath);
-                                if (newFile.exists()) { p.sendMessage("§c已存在同名存储"); return; }
-                                if (renameStorage(state.storages[idx].file, oldName, newName, playerName)) {
+                                if (inp.toLowerCase() === "cancel") { p.sendMessage("§c已取消重命名"); return; }
+                                if (!inp || inp.trim() === "") { p.sendMessage("§c名称不能为空"); return; }
+                                if (/[\\/:*?"<>|]/.test(inp)) { p.sendMessage("§c名称不能包含 \\ / : * ? \" < > | 等字符"); return; }
+                                const newName = inp;
+                                const player = p.getName();
+                                const newPath = DATA_DIR.getAbsolutePath() + File.separator + player + "_" + newName + ".json";
+                                if (new File(newPath).exists()) { p.sendMessage("§c已存在同名存储"); return; }
+                                if (renameFile(state.storages[idx].file, old, newName, player)) {
                                     p.sendMessage("§a已重命名为 " + newName);
                                     openPlayerMenu(p);
                                 } else p.sendMessage("§c重命名失败");
@@ -322,12 +360,12 @@ function ensureListener() {
                 if (slot === MODE_SLOT) { openPlayerMenu(p); return; }
                 if (slot === BACK_SLOT) { p.closeInventory(); return; }
                 if (slot === 53) {
-                    const password = getAddonConfig().getString("L_ZJ_WXG_MM", "0108");
+                    const pass = getAddonConfig().getString("L_ZJ_WXG_MM", "0108");
                     p.sendMessage("§c确定要清空所有存储数据吗？此操作不可逆。请输入密码以确认:");
                     getChatInput(p, new (Java.extend(Consumer, {
-                        accept: function(input) {
+                        accept: function(inp) {
                             if (!p.isOnline()) return;
-                            if (input === password) {
+                            if (inp === pass) {
                                 const files = DATA_DIR.listFiles();
                                 if (files) for (let f of files) if (f.isFile() && f.getName().endsWith(".json")) f.delete();
                                 p.sendMessage("§a已清空所有存储数据");
@@ -338,14 +376,10 @@ function ensureListener() {
                     return;
                 }
                 if (slot === 48 && state.page > 1) { openAdminList(p, state.page - 1); return; }
-                if (slot === 50 && state.page < state.totalPages) { openAdminList(p, state.page + 1); return; }
-                const row = Math.floor(slot / 9);
-                const col = slot % 9;
-                if (row === 1 && col >= 1 && col <= 7) {
-                    const idx = col - 1;
-                    const players = getAllPlayers();
-                    const pagePlayers = players.slice((state.page - 1) * 34, (state.page - 1) * 34 + 34);
-                    if (idx < pagePlayers.length) openStorageList(p, pagePlayers[idx]);
+                if (slot === 50 && state.page < state.total) { openAdminList(p, state.page + 1); return; }
+                if (state.slotMap && state.slotMap.containsKey(slot)) {
+                    openStorageList(p, state.slotMap.get(slot));
+                    return;
                 }
                 return;
             }
@@ -355,9 +389,9 @@ function ensureListener() {
                 if (slot === 53) {
                     p.sendMessage("§c确定要删除玩家 §e" + state.playerName + "§c 的所有存储吗？请输入 §6确认删除 §c以确认:");
                     getChatInput(p, new (Java.extend(Consumer, {
-                        accept: function(input) {
+                        accept: function(inp) {
                             if (!p.isOnline()) return;
-                            if (input === "确认删除") {
+                            if (inp === "确认删除") {
                                 const storages = getPlayerStorages(state.playerName);
                                 storages.forEach(s => s.file.delete());
                                 p.sendMessage("§a已删除玩家 " + state.playerName + " 的所有存储");
@@ -371,18 +405,20 @@ function ensureListener() {
                 const col = slot % 9;
                 if (row === 1 && col >= 1 && col <= 7) {
                     const idx = col - 1;
-                    if (state.storages && idx < state.storages.length) openStorageView(p, state.playerName, state.storages[idx].name);
+                    if (state.storages && idx < state.storages.length) {
+                        openStorageView(p, state.playerName, state.storages[idx].name);
+                    }
                 } else if (row === 2 && col >= 1 && col <= 7) {
                     const idx = col - 1;
                     if (state.storages && idx < state.storages.length) {
-                        const storageName = state.storages[idx].name;
-                        p.sendMessage("§c确定要删除存储 §e" + storageName + "§c 吗？请输入 §6确认删除 §c以确认:");
+                        const name = state.storages[idx].name;
+                        p.sendMessage("§c确定要删除存储 §e" + name + "§c 吗？请输入 §6确认删除 §c以确认:");
                         getChatInput(p, new (Java.extend(Consumer, {
-                            accept: function(input) {
+                            accept: function(inp) {
                                 if (!p.isOnline()) return;
-                                if (input === "确认删除") {
-                                    deleteStorage(state.storages[idx].file);
-                                    p.sendMessage("§a已删除存储 " + storageName);
+                                if (inp === "确认删除") {
+                                    deleteFile(state.storages[idx].file);
+                                    p.sendMessage("§a已删除存储 " + name);
                                     openStorageList(p, state.playerName);
                                 } else p.sendMessage("§c删除已取消");
                             }
@@ -393,96 +429,106 @@ function ensureListener() {
             }
             if (title.startsWith(STORAGE_VIEW_TITLE)) {
                 const top = e.getView().getTopInventory();
-                const clickedInv = e.getClickedInventory();
+                const clicked = e.getClickedInventory();
+                const path = DATA_DIR.getAbsolutePath() + File.separator + state.player + "_" + state.storage + ".json";
+                const file = new File(path);
                 if (slot === BACK_BUTTON_SLOT && state.mode === "search") {
-                    const newInv = buildStorageView(state.playerName, state.storageName, 1, "normal", null, "");
-                    openMenu(p, newInv.inv, { ...newInv, mode: "normal", searchData: null, kw: "", currentPage: 1 });
+                    let data = loadData(state.player, state.storage);
+                    data.meta = { page: "1", mode: "normal", kw: "" };
+                    saveData(state.player, state.storage, data);
+                    const v = buildStorageView(state.player, state.storage, 1, "normal", null, "");
+                    openMenu(p, v.inv, { ...v, data: data, mode: "normal", searchData: null, kw: "", currentPage: 1 });
                 } else if (slot === 48 && state.currentPage > 1) {
-                    const newInv = buildStorageView(state.playerName, state.storageName, state.currentPage - 1, state.mode, state.searchData, state.kw);
-                    openMenu(p, newInv.inv, { ...newInv, currentPage: state.currentPage - 1 });
+                    let data = loadData(state.player, state.storage);
+                    data.meta.page = (state.currentPage - 1).toString();
+                    saveData(state.player, state.storage, data);
+                    const v = buildStorageView(state.player, state.storage, state.currentPage - 1, state.mode, state.searchData, state.kw);
+                    openMenu(p, v.inv, { ...v, data: data, currentPage: state.currentPage - 1 });
                 } else if (slot === 49) {
-                    openStorageList(p, state.playerName);
+                    openStorageList(p, state.player);
                 } else if (slot === 50) {
-                    const pages = Object.keys(state.data.pages).map(Number).sort((a,b)=>a-b);
-                    if (state.currentPage < pages.length) {
-                        const newInv = buildStorageView(state.playerName, state.storageName, state.currentPage + 1, state.mode, state.searchData, state.kw);
-                        openMenu(p, newInv.inv, { ...newInv, currentPage: state.currentPage + 1 });
-                    }
+                    let data = loadData(state.player, state.storage);
+                    data.meta.page = (state.currentPage + 1).toString();
+                    saveData(state.player, state.storage, data);
+                    const v = buildStorageView(state.player, state.storage, state.currentPage + 1, state.mode, state.searchData, state.kw);
+                    openMenu(p, v.inv, { ...v, data: data, currentPage: state.currentPage + 1 });
                 } else if (slot === SORT_SLOT && state.mode === "normal") {
-                    let nd = sortAll(state.data);
-                    const file = new File(DATA_DIR.getAbsolutePath() + File.separator + state.playerName + "_" + state.storageName + ".json");
-                    try { Files.writeString(file.toPath(), JSON.stringify(nd), StandardCharsets.UTF_8); } catch(e) {}
-                    const newInv = buildStorageView(state.playerName, state.storageName, 1, "normal", null, "");
-                    openMenu(p, newInv.inv, { ...newInv, data: nd, currentPage: 1 });
+                    let data = loadData(state.player, state.storage);
+                    let nd = sortAll(data);
+                    saveData(state.player, state.storage, nd);
+                    const v = buildStorageView(state.player, state.storage, 1, "normal", null, "");
+                    openMenu(p, v.inv, { ...v, data: nd, currentPage: 1 });
                     p.sendMessage("§a整理完成！");
                 } else if (slot === SEARCH_SLOT) {
-                    if (searchingPlayers.contains(p)) return;
-                    searchingPlayers.add(p);
+                    if (awaitingSearch.contains(p)) return;
+                    awaitingSearch.add(p);
                     p.sendMessage("§a请在聊天栏输入搜索关键词，输入 cancel 取消:");
                     getChatInput(p, new (Java.extend(Consumer, {
-                        accept: function(input) {
-                            searchingPlayers.remove(p);
+                        accept: function(inp) {
+                            awaitingSearch.remove(p);
                             if (!p.isOnline()) return;
-                            if (input.toLowerCase() === "cancel") { p.sendMessage("§c已取消搜索"); return; }
-                            if (!input.trim()) { p.sendMessage("§c关键词不能为空"); return; }
-                            const res = searchInData(state.data, input);
+                            if (inp.toLowerCase() === "cancel") { p.sendMessage("§c已取消搜索"); return; }
+                            if (!inp.trim()) { p.sendMessage("§c关键词不能为空"); return; }
+                            let data = loadData(state.player, state.storage);
+                            const res = searchInData(data, inp);
                             if (!res.pages[1] || !res.pages[1][0]) { p.sendMessage("§c没有找到匹配的物品"); return; }
-                            const newInv = buildStorageView(state.playerName, state.storageName, 1, "search", res, input);
-                            openMenu(p, newInv.inv, { ...newInv, mode: "search", searchData: res, kw: input, currentPage: 1 });
+                            data.meta = { page: "1", mode: "search", kw: inp };
+                            saveData(state.player, state.storage, data);
+                            const v = buildStorageView(state.player, state.storage, 1, "search", res, inp);
+                            openMenu(p, v.inv, { ...v, data: data, mode: "search", searchData: res, kw: inp, currentPage: 1 });
                             let cnt = Object.values(res.pages).flat().filter(v=>v).length;
                             p.sendMessage("§a找到 " + cnt + " 个物品");
                         }
                     })));
-                } else if (slot >= 0 && slot < 45 && clickedInv === top) {
+                } else if (slot >= 0 && slot < 45 && clicked === top) {
                     const item = e.getCurrentItem();
                     if (item && item.getType() !== Material.AIR) {
                         if (p.getInventory().firstEmpty() === -1) {
                             p.sendMessage("§c背包已满");
                         } else {
                             p.getInventory().addItem(item.clone());
+                            let data = loadData(state.player, state.storage);
                             const page = state.currentPage;
                             const idx = slot;
                             if (state.mode === "search") {
                                 let ser = state.searchData.pages[page][idx];
                                 if (ser) {
-                                    for (let pp in state.data.pages) {
-                                        let arr = state.data.pages[pp];
+                                    for (let pp in data.pages) {
+                                        let arr = data.pages[pp];
                                         let pos = arr.indexOf(ser);
                                         if (pos !== -1) { arr[pos] = null; break; }
                                     }
                                     state.searchData.pages[page][idx] = null;
                                 }
                             } else {
-                                if (state.data.pages[page] && state.data.pages[page][idx]) state.data.pages[page][idx] = null;
+                                if (data.pages[page] && data.pages[page][idx]) data.pages[page][idx] = null;
                             }
-                            const file = new File(DATA_DIR.getAbsolutePath() + File.separator + state.playerName + "_" + state.storageName + ".json");
-                            try { Files.writeString(file.toPath(), JSON.stringify(state.data), StandardCharsets.UTF_8); } catch(e) {}
+                            saveData(state.player, state.storage, data);
                             p.sendMessage("§a已取出物品");
-                            let newInv = (state.mode === "search") ?
-                                buildStorageView(state.playerName, state.storageName, state.currentPage, "search", state.searchData, state.kw) :
-                                buildStorageView(state.playerName, state.storageName, state.currentPage, "normal", null, "");
-                            openMenu(p, newInv.inv, { ...newInv, currentPage: state.currentPage });
+                            let v = (state.mode === "search") ?
+                                buildStorageView(state.player, state.storage, state.currentPage, "search", state.searchData, state.kw) :
+                                buildStorageView(state.player, state.storage, state.currentPage, "normal", null, "");
+                            openMenu(p, v.inv, { ...v, data: data, currentPage: state.currentPage });
                         }
                     }
-                } else if (slot >= 0 && slot < 45 && clickedInv !== top && state.mode === "normal") {
-                    const handItem = e.getCurrentItem();
-                    if (handItem && handItem.getType() !== Material.AIR) {
-                        let sf = SlimefunItem.getByItem(handItem);
+                } else if (slot >= 0 && slot < 45 && clicked !== top && state.mode === "normal") {
+                    const hand = e.getCurrentItem();
+                    if (hand && hand.getType() !== Material.AIR) {
+                        let sf = SlimefunItem.getByItem(hand);
                         let id = sf ? sf.getId() : null;
                         if (id && ["KOMUTECH_L_ZJ_萬象匱", "KOMUTECH_L_ZJ_萬衍儀", "KOMUTECH_L_ZJ_無"].includes(id)) {
                             p.sendMessage("§c不能存入此物品");
                             return;
                         }
-                        let dataCopy = JSON.parse(JSON.stringify(state.data));
-                        let result = storeItem(dataCopy, handItem);
+                        let data = loadData(state.player, state.storage);
+                        let result = storeInData(data, hand);
                         if (!result.success) { p.sendMessage("§c存入失败: " + result.reason); return; }
-                        const file = new File(DATA_DIR.getAbsolutePath() + File.separator + state.playerName + "_" + state.storageName + ".json");
-                        try { Files.writeString(file.toPath(), JSON.stringify(dataCopy), StandardCharsets.UTF_8); } catch(e) { p.sendMessage("§c保存失败"); return; }
-                        if (handItem.getAmount() > 1) handItem.setAmount(handItem.getAmount() - 1);
+                        saveData(state.player, state.storage, data);
+                        if (hand.getAmount() > 1) hand.setAmount(hand.getAmount() - 1);
                         else e.getClickedInventory().setItem(e.getSlot(), null);
                         p.sendMessage("§a已存入物品");
-                        const newInv = buildStorageView(state.playerName, state.storageName, parseInt(result.page), state.mode, state.searchData, state.kw);
-                        openMenu(p, newInv.inv, { ...newInv, data: dataCopy, currentPage: parseInt(result.page) });
+                        const v = buildStorageView(state.player, state.storage, parseInt(result.page), state.mode, state.searchData, state.kw);
+                        openMenu(p, v.inv, { ...v, data: data, currentPage: parseInt(result.page) });
                     }
                 }
                 return;
@@ -493,16 +539,16 @@ function ensureListener() {
         try {
             const p = e.getPlayer();
             openPlayers.remove(p);
-            searchingPlayers.remove(p);
+            awaitingSearch.remove(p);
             if (openPlayers.isEmpty()) {
                 ClickEvent.getHandlerList().unregister(listener);
                 CloseEvent.getHandlerList().unregister(listener);
-                plugin.komutech_data_manager = null;
+                plugin.komutech_l_zj_wxgpzcd = null;
                 registered = false;
             }
         } catch (err) {}
     }, plugin);
-    plugin.komutech_data_manager = listener;
+    plugin.komutech_l_zj_wxgpzcd = listener;
     registered = true;
 }
 function openMenu(p, inv, data = null) {
@@ -514,22 +560,23 @@ function openPlayerMenu(p) {
     const { inv, storages } = buildPlayerMenu(p);
     openMenu(p, inv, { storages });
 }
+
 function openAdminList(p, page) {
     if (!p.isOp() && p.getName() !== "Komu_A") {
         p.sendMessage("§c你没有权限使用管理员模式");
         openPlayerMenu(p);
         return;
     }
-    const { inv, page: currentPage, totalPages, players } = buildAdminList(page);
-    openMenu(p, inv, { page: currentPage, totalPages, players });
+    const { inv, page: cur, total, slotMap } = buildAdminList(page);
+    openMenu(p, inv, { page: cur, total, slotMap });
 }
 function openStorageList(p, playerName) {
     const { inv, storages, playerName: name } = buildStorageList(playerName);
     openMenu(p, inv, { storages, playerName: name });
 }
-function openStorageView(p, playerName, storageName, page = 1) {
-    const { inv, data, currentPage, mode, searchData, kw } = buildStorageView(playerName, storageName, page);
-    openMenu(p, inv, { data, playerName, storageName, currentPage, mode, searchData, kw });
+function openStorageView(p, player, storage, page = 1) {
+    const { inv, data, curPage, mode, searchData, kw } = buildStorageView(player, storage, page);
+    openMenu(p, inv, { data, player, storage, currentPage: curPage, mode, searchData, kw });
 }
 function onButtonGroupClick(player, slot, clickedItem, clickAction, guideMode) {
     try { openPlayerMenu(player); return true; } catch (err) { player.sendMessage("§c无法打开数据管理菜单"); return false; }

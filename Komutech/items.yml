@@ -375,11 +375,11 @@ Komutech_L_JCWP_SC:
     material: http://textures.minecraft.net/texture/35a047aa45c425a273698b0e877eaabd375b8bb783946a0aa31ec2006c99c94
     amount: 1
   placeable: false
-  recipe_type: NULL
+  recipe_type: KOMUTECH_L_ZS_QHG
   recipe:
     5:
       material_type: slimefun
-      material: Komutech_L_SW_RZXDR
+      material: KOMUTECH_L_ZW_QQWJQNCK
       amount: 1
 Komutech_L_JCWP_B:
   lateInit: false
@@ -575,7 +575,7 @@ Komutech_L_JCWP_儡肆通行柬:
       - "{#dad4ec}❖ {#e9dde5}儡肆通行柬{#f3e7e9}·灵傀交易凭证"
       - "{#dad4ec}│ {#e9dde5}持有此柬可进入儡肆{#f3e7e9}·参与灵傀交易"
       - "{#dad4ec}│ {#e9dde5}万傀云集{#f3e7e9}·尽在此处"
-      - "{#dad4ec}└─ {#e9dde5}一柬仅限一人使用{#f3e7e9}·永久有效"
+      - "{#dad4ec}└─ {#e9dde5}此柬为通行证{#f3e7e9}·模板"
     material_type: mc
     material: ward_armor_trim_smithing_template
     amount: 1
@@ -585,6 +585,27 @@ Komutech_L_JCWP_儡肆通行柬:
       material_type: slimefun
       material: KOMUTECH_L_ZW_QQWJQNCK
       amount: 1
+Komutech_L_JCWP_琼华阁通行柬1:
+  lateInit: false
+  item_group: Komutech_L_JCWP
+  placeable: true
+  item:
+    name: "{#f6d365}&l✧{#f7ce6d}&l琼{#f8d976}&l华{#f9e27e}&l阁{#faec87}&l通{#fbf58f}&l行{#fcff98}&l柬{#fdf8a0}&l✧{#fef2a9}&l"
+    lore:
+      - "{#f6d365}&l❖ {#f7ce6d}&l琼{#f8d976}&l华{#f9e27e}&l阁{#faec87}&l通{#fbf58f}&l行{#fcff98}&l柬{#fdf8a0}&l·{#fef2a9}&l基{#fff1b1}&l础{#ffefba}&l物{#ffeec2}&l品{#ffeccb}&l凭{#feebd3}&l证{#fee9dc}&l {#fee8e4}&l❖"
+      - "{#f6d365}&l│ {#f7ce6d}&l持{#f8d976}&l此{#f9e27e}&l柬{#faec87}&l可{#fbf58f}&l入{#fcff98}&l琼{#fdf8a0}&l华{#fef2a9}&l阁{#fff1b1}&l·{#ffefba}&l品{#ffeecc}&l鉴{#ffeccb}&l天{#feebd3}&l下{#fee9dc}&l奇{#fee8e4}&l珍{#fee7ed}&l {#fee5f5}&l│"
+      - "{#f6d365}&l│ {#f7ce6d}&l珍{#f8d976}&l宝{#f9e27e}&l云{#faec87}&l集{#fbf58f}&l·{#fcff98}&l尽{#fdf8a0}&l在{#fef2a9}&l此{#fff1b1}&l处{#ffefba}&l {#ffeecc}&l│"
+      - "{#f6d365}&l└─ {#f7ce6d}&l此{#f8d976}&l柬{#f9e27e}&l为{#faec87}&l通{#fbf58f}&l行{#fcff98}&l证{#fdf8a0}&l·{#fef2a9}&l模{#fff1b1}&l板{#ffefba}&l {#ffeecc}&l└─"    
+    material_type: mc
+    material: prize_pottery_sherd
+    amount: 1
+  recipe_type: KOMUTECH_L_ZS_QHG
+  recipe:
+    5:
+      material_type: slimefun
+      material: KOMUTECH_L_ZW_QQWJQNCK
+      amount: 1
+
 
 ##墨水
 Komutech_L_JCWP_MS:
@@ -3963,6 +3984,48 @@ Komutech_L_W_玄铁剑:
       material_type: slimefun
       material: KOMUTECH_L_LZ_YG
       amount: 1
+Komutech_L_W_玄铁弓:
+  lateInit: false
+  item_group: Komutech_L_W
+  item:
+    name: '{#696969}&l玄{#778899}&l铁{#87CEEB}&l弓'
+    lore:
+      - '{#4682B4}✦ {#3D83A8}玄铁铸就 {#35859D}· {#2C8691}锋芒暗藏'
+      - '{#238786}┃ {#1B897A}剑身沉黑 {#128A6F}· {#098B63}冷光流转'
+      - '{#008B8B}┃ {#00A0A0}重剑无锋 {#00B5B5}· {#00CACA}大巧不工'
+      - '{#00DFDF}┃ {#00F4F4}千年玄铁 {#00FFFF}· {#A0FFFF}百炼成钢'
+      - '{#70DBDB}⚔ {#5F9EA0}剑出如龙 {#4E7E7F}· {#3D5F5F}&l势不可挡'    
+    material_type: saveditem
+    material: 灵-武/玄铁/XTG
+    amount: 1
+  placeable: true
+  recipe_type: KOMUTECH_L_DFKJQ_GJT
+  recipe:
+    2:
+      material_type: slimefun
+      material: Komutech_L_KW_XT
+      amount: 1
+    3:
+      material_type: slimefun
+      material: KOMUTECH_L_LZ_YG
+      amount: 1
+    4:
+      material_type: mc
+      material: BOW
+      amount: 1
+    5:
+      material_type: slimefun
+      material: KOMUTECH_L_LZ_YG
+      amount: 1
+    8:
+      material_type: slimefun
+      material: Komutech_L_KW_XT
+      amount: 1
+    9:
+      material_type: slimefun
+      material: KOMUTECH_L_LZ_YG
+      amount: 1
+
 
 ##灵-器
 Komutech_L_Q_灵杖教程:
@@ -4347,7 +4410,7 @@ Komutech_L_JZ_五行必杀:
 ##灵-生物
 ##被束缚的小岛人
 Komutech_L_SW_BSFDXDR:
-  lateInit: false
+  lateInit: true
   item_group: Komutech_L_SW
   item:
     name: '{#F5F5F5}&l被{#EAEAEA}&l束{#E0E0E0}&l缚{#D5D5D5}&l的{#CACACA}&l小{#C0C0C0}&l岛{#B5B5B5}&l人'

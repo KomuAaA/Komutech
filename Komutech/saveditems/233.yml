@@ -1,0 +1,10 @@
+item:
+  ==: org.bukkit.inventory.ItemStack
+  v: 4189
+  type: BOW
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    enchants:
+      minecraft:power: 5
+    repair-cost: 1

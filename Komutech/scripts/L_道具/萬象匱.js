@@ -23,7 +23,7 @@ const COLOR_REGEX = /§./g;
 const DEFAULT_BLACKLIST = [STORAGE_ID, "KOMUTECH_L_ZJ_萬衍儀", "KOMUTECH_L_ZJ_無"];
 function initStorageFolder() { if (!DATA_DIR.exists()) DATA_DIR.mkdirs(); }
 function createEmptyPage() { return new Array(PAGE_SIZE).fill(null); }
-function createEmptyData() { return { pages: { "1": createEmptyPage() } }; }
+function createEmptyData() { return { pages: { "1": createEmptyPage() }, meta: { page: "1", mode: "normal", kw: "" } }; }
 function getBlacklist() {
     try {
         let list = getAddonConfig().getStringList("L_ZJ_WXG_BAN");
@@ -59,19 +59,17 @@ function countPlayerStorages(playerName) {
     for (let file of files) if (file.isFile() && file.getName().endsWith(".json") && file.getName().startsWith(playerName + "_")) count++;
     return count;
 }
-function readData(item, playerName) {
-    let name = getStorageName(item);
-    if (!name) return { ...createEmptyData(), unamed: true };
-    const path = Paths.get(DATA_DIR.getAbsolutePath(), getFileName(playerName, name));
+function readData(playerName, storageName) {
+    const path = Paths.get(DATA_DIR.getAbsolutePath(), getFileName(playerName, storageName));
     try {
         if (!Files.exists(path)) return createEmptyData();
-        return JSON.parse(Files.readString(path, StandardCharsets.UTF_8));
+        let data = JSON.parse(Files.readString(path, StandardCharsets.UTF_8));
+        if (!data.meta) data.meta = { page: "1", mode: "normal", kw: "" };
+        return data;
     } catch(e) { return createEmptyData(); }
 }
-function writeData(item, data, playerName) {
-    let name = getStorageName(item);
-    if (!name) return;
-    const path = Paths.get(DATA_DIR.getAbsolutePath(), getFileName(playerName, name));
+function writeData(playerName, storageName, data) {
+    const path = Paths.get(DATA_DIR.getAbsolutePath(), getFileName(playerName, storageName));
     try { initStorageFolder(); Files.writeString(path, JSON.stringify(data), StandardCharsets.UTF_8); } catch(e) {}
 }
 function serialize(item) {
@@ -114,6 +112,7 @@ function searchText(item) {
     return Array.from(new Set(t)).join(' ');
 }
 function sortName(item) {
+    if (!item) return "§c无效物品";
     let n = item.getItemMeta().getDisplayName();
     return (n || item.getType().name()).replace(COLOR_REGEX,'');
 }
@@ -121,7 +120,10 @@ function sortAll(data) {
     let items = [];
     for (let p in data.pages) for (let i=0; i<data.pages[p].length; i++) {
         let ser = data.pages[p][i];
-        if (ser) items.push({ ser, name:sortName(deserialize(ser)) });
+        if (!ser) continue;
+        let item = deserialize(ser);
+        if (!item) continue;
+        items.push({ ser, name:sortName(item) });
     }
     items.sort((a,b)=>ZH_SORTER.compare(a.name,b.name));
     let newPages = {}, idx=0;
@@ -132,6 +134,7 @@ function sortAll(data) {
         idx++;
     }
     data.pages = newPages;
+    data.meta = { page: "1", mode: "normal", kw: "" };
     return data;
 }
 function search(data, kw) {
@@ -141,10 +144,12 @@ function search(data, kw) {
         let ser = data.pages[p][i];
         if (!ser) continue;
         let item = deserialize(ser);
-        if (item && searchText(item).includes(kw)) matched.push({ ser, name:sortName(item) });
+        if (!item) continue;
+        if (searchText(item).includes(kw)) matched.push({ ser, name:sortName(item) });
     }
     matched.sort((a,b)=>ZH_SORTER.compare(a.name,b.name));
-    let res = { pages:{} }, idx=0;
+    let res = { pages: {}, meta: { page: "1", mode: "search", kw: kw } };
+    let idx=0;
     for (let i=0; i<matched.length; i++) {
         let page = Math.floor(idx/45)+1;
         if (!res.pages[page]) res.pages[page] = createEmptyPage();
@@ -161,13 +166,17 @@ function createItem(mat, name, lore) {
     it.setItemMeta(meta);
     return it;
 }
-function buildGUI(item, data, page, player, mode="normal", searchData=null, kw="") {
+function buildGUI(playerName, storageName, data, page, mode, searchData, kw) {
     let displayData = mode === "search" ? searchData : data;
     if (!displayData || !displayData.pages) displayData = createEmptyData();
     let title = TITLE + (mode==="search" ? ` §7- 搜索 "${kw}" 第 ${page} 页` : ` §7- 第 ${page} 页`);
     let inv = Bukkit.createInventory(null, PAGE_SIZE, title);
     let pg = displayData.pages[page];
-    if (pg) for (let i=0; i<45; i++) inv.setItem(i, pg[i] ? deserialize(pg[i]) : null);
+    if (pg) for (let i=0; i<45; i++) {
+        let ser = pg[i];
+        let itm = ser ? deserialize(ser) : null;
+        inv.setItem(i, itm ? itm : null);
+    }
     let prev = (parseInt(page)-1).toString();
     inv.setItem(SLOT.PREV, (parseInt(page)>1 && displayData.pages[prev]) ? createItem("ARROW","§a上一页","§7点击切换到第 "+prev+" 页") : createItem("GRAY_STAINED_GLASS_PANE","§8无上一页",null));
     let next = (parseInt(page)+1).toString();
@@ -212,42 +221,54 @@ function registerListener() {
         if (!openPlayers.containsKey(p) || !e.getView().getTitle().startsWith(TITLE)) return;
         e.setCancelled(true);
         let h = openPlayers.get(p);
-        let storage = h.item;
-        if (!storage || storage.getType()===Material.AIR) {
+        let storageItem = h.item;
+        if (!storageItem || storageItem.getType()===Material.AIR) {
             let hand = p.getInventory().getItemInMainHand();
             let sf = SlimefunItem.getByItem(hand);
             if (hand.getType()!==Material.AIR && sf && sf.getId()===STORAGE_ID) {
-                storage = hand; h.item = hand;
+                storageItem = hand; h.item = hand;
             } else {
                 p.sendMessage("§c存储道具已丢失，界面关闭。"); p.closeInventory(); return;
             }
         }
         let mode = h.mode || "normal", sData = h.searchData || null, kw = h.keyword || "", cur = h.page;
-        let data = mode==="search" ? sData : readData(storage, p.getName());
+        let storageName = getStorageName(storageItem);
+        if (!storageName) { p.closeInventory(); p.sendMessage("§c物品未命名，请先蹲下右键命名。"); return; }
+        let data = mode==="search" ? sData : readData(p.getName(), storageName);
         if (!data || (!data.pages && !data.unamed)) { p.closeInventory(); return; }
-        if (data.unamed) { p.closeInventory(); p.sendMessage("§c物品未命名，请先蹲下右键命名。"); return; }
+        if (data.unamed) { p.closeInventory(); p.sendMessage("§c存储数据损坏，请重新命名。"); return; }
         let slot = e.getSlot(), clk = e.getClickedInventory(), top = e.getView().getTopInventory();
         if (clk===top && slot>=45 && slot<54) {
             if (slot===SLOT.PREV && data.pages[(parseInt(cur)-1).toString()]) {
                 turning.add(p); h.page = (parseInt(cur)-1).toString();
-                p.openInventory(buildGUI(storage, data, h.page, p.getName(), mode, sData, kw));
+                data.meta.page = h.page;
+                writeData(p.getName(), storageName, data);
+                p.openInventory(buildGUI(p.getName(), storageName, data, h.page, mode, sData, kw));
             } else if (slot===SLOT.NEXT && data.pages[(parseInt(cur)+1).toString()]) {
                 turning.add(p); h.page = (parseInt(cur)+1).toString();
-                p.openInventory(buildGUI(storage, data, h.page, p.getName(), mode, sData, kw));
+                data.meta.page = h.page;
+                writeData(p.getName(), storageName, data);
+                p.openInventory(buildGUI(p.getName(), storageName, data, h.page, mode, sData, kw));
             } else if (slot===SLOT.CLOSE) p.closeInventory();
             else if (mode==="normal" && slot===SLOT.SORT) {
                 turning.add(p);
-                let nd = sortAll(readData(storage, p.getName()));
-                writeData(storage, nd, p.getName());
-                h.page = nd.pages[cur] && nd.pages[cur].slice(0,45).some(v=>v) ? cur : "1";
-                p.openInventory(buildGUI(storage, nd, h.page, p.getName(), "normal"));
+                let nd = sortAll(readData(p.getName(), storageName));
+                writeData(p.getName(), storageName, nd);
+                h.page = nd.meta.page;
+                h.mode = nd.meta.mode;
+                h.searchData = null; h.keyword = "";
+                p.openInventory(buildGUI(p.getName(), storageName, nd, nd.meta.page, "normal", null, ""));
                 turning.remove(p); p.sendMessage("§a整理完成！");
             } else if (mode==="normal" && slot===SLOT.SEARCH) {
                 p.sendMessage("§a请先手动关闭当前界面，然后在聊天栏输入关键词（输入 cancel 取消）:");
                 awaiting.add(p);
             } else if (mode==="search" && slot===SLOT.BACK) {
-                turning.add(p); h.mode="normal"; h.searchData=null; h.keyword=""; h.page="1";
-                p.openInventory(buildGUI(storage, readData(storage, p.getName()), "1", p.getName(), "normal"));
+                turning.add(p);
+                let orig = readData(p.getName(), storageName);
+                orig.meta = { page: "1", mode: "normal", kw: "" };
+                writeData(p.getName(), storageName, orig);
+                h.mode = "normal"; h.searchData = null; h.keyword = ""; h.page = "1";
+                p.openInventory(buildGUI(p.getName(), storageName, orig, "1", "normal", null, ""));
                 turning.remove(p);
             }
             return;
@@ -258,17 +279,17 @@ function registerListener() {
             if (p.getInventory().firstEmpty()===-1) { p.sendMessage("§c背包已满"); return; }
             let stored = deserialize(pg[slot]);
             if (!stored) {
-                pg[slot]=null; if (mode==="normal") writeData(storage, data, p.getName());
+                pg[slot]=null; if (mode==="normal") writeData(p.getName(), storageName, data);
                 top.setItem(slot,null); return;
             }
             if (mode==="search") {
-                let orig = readData(storage, p.getName());
+                let orig = readData(p.getName(), storageName);
                 for (let pp in orig.pages) for (let i=0; i<orig.pages[pp].length; i++)
                     if (orig.pages[pp][i]===pg[slot]) { orig.pages[pp][i]=null; break; }
-                writeData(storage, orig, p.getName());
+                writeData(p.getName(), storageName, orig);
                 pg[slot]=null; top.setItem(slot,null); p.getInventory().addItem(stored);
             } else {
-                pg[slot]=null; writeData(storage, data, p.getName());
+                pg[slot]=null; writeData(p.getName(), storageName, data);
                 p.getInventory().addItem(stored); top.setItem(slot,null);
             }
             return;
@@ -281,9 +302,7 @@ function registerListener() {
             if (id && blacklist.includes(id)) { p.sendMessage("§c不能存入此物品"); return; }
             if (exists(data, it)) { p.sendMessage("§c该物品已存在"); return; }
             let empty = findEmpty(data);
-            let name = getStorageName(storage);
-            let filePath = Paths.get(DATA_DIR.getAbsolutePath(), getFileName(p.getName(), name));
-            let fileExists = Files.exists(filePath);
+            let fileExists = Files.exists(Paths.get(DATA_DIR.getAbsolutePath(), getFileName(p.getName(), storageName)));
             if (!fileExists) {
                 let maxLimit = getAddonConfig().getInt("L_ZJ_WXG_CCmax", 5);
                 let currentCount = countPlayerStorages(p.getName());
@@ -291,7 +310,7 @@ function registerListener() {
                     p.sendMessage("§c你已达到最大存储数量（" + maxLimit + "个），无法创建新的存储。");
                     return;
                 }
-                writeData(storage, data, p.getName());
+                writeData(p.getName(), storageName, data);
             }
             if (!empty) {
                 let pages = Object.keys(data.pages).map(Number).sort((a,b)=>a-b);
@@ -302,11 +321,13 @@ function registerListener() {
             let ser = serialize(it);
             if (!ser) { p.sendMessage("§c无法存储"); return; }
             let pg = data.pages[empty.page] || createEmptyPage();
-            pg[empty.slot] = ser; data.pages[empty.page] = pg; writeData(storage, data, p.getName());
+            pg[empty.slot] = ser; data.pages[empty.page] = pg; writeData(p.getName(), storageName, data);
             if (it.getAmount()>1) it.setAmount(it.getAmount()-1); else it.setAmount(0);
             if (empty.page !== cur) {
                 turning.add(p); h.page = empty.page;
-                p.openInventory(buildGUI(storage, data, empty.page, p.getName(), "normal"));
+                data.meta.page = h.page;
+                writeData(p.getName(), storageName, data);
+                p.openInventory(buildGUI(p.getName(), storageName, data, h.page, mode, sData, kw));
                 turning.remove(p);
             } else top.setItem(empty.slot, deserialize(ser));
         }
@@ -324,12 +345,16 @@ function registerListener() {
             awaiting.remove(p);
             let storage = findStorage(p);
             if (!storage) { openPlayers.remove(p); return; }
+            let storageName = getStorageName(storage);
+            if (!storageName) { openPlayers.remove(p); return; }
             getChatInput(p, new (Java.extend(Consumer, {
                 accept: function(input) {
                     if (input.toLowerCase()==="cancel") { openPlayers.remove(p); return; }
                     let cur = findStorage(p);
                     if (!cur) { p.sendMessage("§c存储道具已丢失"); openPlayers.remove(p); return; }
-                    let orig = readData(cur, p.getName());
+                    let curName = getStorageName(cur);
+                    if (!curName) { openPlayers.remove(p); return; }
+                    let orig = readData(p.getName(), curName);
                     if (!orig || orig.unamed) { openPlayers.remove(p); return; }
                     let res = search(orig, input);
                     let h = openPlayers.get(p) || { item:cur, page:"1", mode:"normal", searchData:null, keyword:"" };
@@ -337,11 +362,15 @@ function registerListener() {
                     if (!res.pages[1] || !res.pages[1][0]) {
                         p.sendMessage("§c没有找到匹配的物品。");
                         h.mode="normal"; h.searchData=null; h.keyword=""; h.page="1";
-                        turning.add(p); p.openInventory(buildGUI(cur, orig, "1", p.getName(), "normal"));
+                        orig.meta = { page: "1", mode: "normal", kw: "" };
+                        writeData(p.getName(), curName, orig);
+                        turning.add(p); p.openInventory(buildGUI(p.getName(), curName, orig, "1", "normal", null, ""));
                         turning.remove(p);
                     } else {
                         h.mode="search"; h.searchData=res; h.keyword=input; h.page="1";
-                        turning.add(p); p.openInventory(buildGUI(cur, orig, "1", p.getName(), "search", res, input));
+                        orig.meta = { page: "1", mode: "search", kw: input };
+                        writeData(p.getName(), curName, orig);
+                        turning.add(p); p.openInventory(buildGUI(p.getName(), curName, orig, "1", "search", res, input));
                         turning.remove(p);
                         let cnt = Object.values(res.pages).flat().filter(v=>v).length;
                         p.sendMessage("§a找到 " + cnt + " 个物品。");
@@ -349,7 +378,20 @@ function registerListener() {
                     openPlayers.put(p, h);
                 }
             })));
-        } else openPlayers.remove(p);
+        } else {
+            let h = openPlayers.get(p);
+            if (h && h.item) {
+                let storageName = getStorageName(h.item);
+                if (storageName) {
+                    let data = readData(p.getName(), storageName);
+                    if (data && !data.unamed) {
+                        data.meta = { page: h.page, mode: h.mode, kw: h.keyword || "" };
+                        writeData(p.getName(), storageName, data);
+                    }
+                }
+            }
+            openPlayers.remove(p);
+        }
         if (openPlayers.isEmpty()) {
             ClickEvent.getHandlerList().unregister(lis);
             DragEvent.getHandlerList().unregister(lis);
@@ -376,13 +418,15 @@ function onUse(e) {
                 namingPlayers.remove(p);
                 if (!p.isOnline()) return;
                 if (input.toLowerCase() === "cancel") { p.sendMessage("§c已取消命名。"); return; }
-                if (!input || input.trim() === "") { p.sendMessage("§c名称不能为空。"); return; }
-                if (/[\\/:*?"<>|]/.test(input)) { p.sendMessage("§c名称不能包含 \\ / : * ? \" < > | 等字符。"); return; }
+                if (!input || input.trim() === "") { p.sendMessage("§c名称不能为空"); return; }
+                if (/[\\/:*?"<>|]/.test(input)) { p.sendMessage("§c名称不能包含 \\ / : * ? \" < > | 等字符"); return; }
                 setStorageName(it, input);
                 p.sendMessage("§a已设置存储名称: §f" + input);
-                let data = readData(it, p.getName());
+                let storageName = getStorageName(it);
+                let data = readData(p.getName(), storageName);
                 if (!data.pages || Object.keys(data.pages).length===0) data = createEmptyData();
-                p.openInventory(buildGUI(it, data, "1", p.getName(), "normal"));
+                writeData(p.getName(), storageName, data);
+                p.openInventory(buildGUI(p.getName(), storageName, data, "1", "normal", null, ""));
                 openPlayers.put(p, { item:it, page:"1", mode:"normal", searchData:null, keyword:"" });
                 ensure();
             }
@@ -391,13 +435,26 @@ function onUse(e) {
     }
     let name = getStorageName(it);
     if (!name) { p.sendMessage("§c此物品尚未命名，请蹲下右键为它命名。"); return; }
-    let data = readData(it, p.getName());
-    if (data.unamed) { p.sendMessage("§c物品命名无效，请重新蹲下右键命名。"); return; }
+    let data = readData(p.getName(), name);
+    if (data.unamed) { p.sendMessage("§c存储数据损坏，请重新蹲下右键命名。"); return; }
     if (!data.pages || Object.keys(data.pages).length===0) {
         data = createEmptyData();
+        writeData(p.getName(), name, data);
     }
-    p.openInventory(buildGUI(it, data, "1", p.getName(), "normal"));
-    openPlayers.put(p, { item:it, page:"1", mode:"normal", searchData:null, keyword:"" });
+    let page = data.meta.page || "1";
+    let mode = data.meta.mode || "normal";
+    let kw = data.meta.kw || "";
+    let searchData = null;
+    if (mode === "search" && kw) {
+        searchData = search(data, kw);
+        if (!searchData.pages[1] || !searchData.pages[1][0]) {
+            mode = "normal"; kw = ""; searchData = null; page = "1";
+            data.meta = { page: "1", mode: "normal", kw: "" };
+            writeData(p.getName(), name, data);
+        }
+    }
+    p.openInventory(buildGUI(p.getName(), name, data, page, mode, searchData, kw));
+    openPlayers.put(p, { item:it, page:page, mode:mode, searchData:searchData, keyword:kw });
     ensure();
 }
 if (plugin.komutech_l_zj_wxggui) {
