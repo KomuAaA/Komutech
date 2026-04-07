@@ -295,6 +295,18 @@ Komutech_更新日志:
             material: paper
             amount: 1
             slot: 15
+          17:
+            name: "&f4.7"
+            lore:
+            - '&a&l=====口木科技=====.'
+            - '&f1.大更前最后一小更。'
+            - '&a&l=====灵=====.'
+            - '&f1.记不清了优化了好多问题'
+            - '&a&l==========.'
+            material_type: mc
+            material: paper
+            amount: 1
+            slot: 16
 
         output:
          1:
@@ -5589,6 +5601,487 @@ Komutech_L_JQJC_演示:
             glow: true
             amount: 36
             slot: 44
+
+    ##终极 合成
+      無:
+        input:
+          1:
+            name: "{#1C1C1C}&l-{#3C3C3C}&l-{#5D5D5D}&l-{#7D7D7D}&l-{#9E9E9E}&l✦{#BEBEBE}&l✫{#DFDFDF}&l✬·{#FFFFFF}&l終極合成台·{#DFDFDF}&l✬{#BEBEBE}&l✫{#9E9E9E}&l✦{#7D7D7D}&l-{#5D5D5D}&l-{#3C3C3C}&l-{#1C1C1C}&l-"
+            lore:
+              - "&f    {#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l造 {#FFFFFF}&l化 {#FFFFFF}&l凝 {#D2D2D2}&l真 {#A4A4A4}&l✧{#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "&f    {#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l萬 {#FFFFFF}&l化 {#FFFFFF}&l歸 {#D2D2D2}&l心 {#A4A4A4}&l✧{#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "&f    {#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l道 {#FFFFFF}&l蘊 {#FFFFFF}&l天 {#D2D2D2}&l成 {#A4A4A4}&l✧{#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#1C1C1C}&l-{#3C3C3C}&l-{#5D5D5D}&l-{#7D7D7D}&l-{#9E9E9E}&l✦{#BEBEBE}&l✫{#DFDFDF}&l✬·{#FFFFFF}&l無·{#DFDFDF}&l✬{#BEBEBE}&l✫{#9E9E9E}&l✦{#7D7D7D}&l-{#5D5D5D}&l-{#3C3C3C}&l-{#1C1C1C}&l-"
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            amount: 1
+            slot: 49
+        output:
+          1: 
+            name: "{#fc6076}&l❀❈·{#fc6076}&l五{#fd7a5f}&l行{#ff9a44}&l祖{#fd7a5f}&l炁{#fc6076}&l·❈❀"
+            lore:
+              - "{#fc6076}『{#fc6076}混{#fd7a5f}沌{#ff9a44}初{#fd7a5f}开{#fc6076}·{#fc6076}祖{#fd7a5f}炁{#ff9a44}归{#fd7a5f}元{#fc6076}』"
+              - "{#ff9a44}☯{#fc6076}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#ff9a44}☯"
+              - "{#fc6076}❈ {#fd7a5f}天地未分孕初气 {#ff9a44}▸ {#fd7a5f}五行万象演根源"
+              - "{#fc6076}❈ {#fd7a5f}圆满自足循天道 {#ff9a44}▸ {#fd7a5f}万法生克执枢机"
+              - "{#ff9a44}☯{#fc6076}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#ff9a44}☯"
+              - "{#fc6076}❀ {#fd7a5f}混元归一·大道圆满 {#ff9a44}❀"
+              - "{#fc6076}❀ {#fd7a5f}祖炁归真·永恒不竭 {#ff9a44}❀"
+              - "{#fc6076}『 {#fd7a5f}彻悟道韵 {#ff9a44}· {#fd7a5f}五行本源{#ff9a44} 』"
+              - "&8不会有人溯源了吧?"
+            material_type: mc
+            material: shroomlight
+            glow: true
+            amount: 1
+            slot: 10
+          2: 
+            name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
+            lore:
+              - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
+              - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
+              - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
+              - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
+              - "&8不会有人溯源了吧?"
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            glow: true
+            amount: 1
+            slot: 19
+          3: 
+            name: "{#fbc2eb}&l❀❈·{#fbc2eb}&l天{#d1c2ed}&l象{#a6c1ee}&l祖{#d1c2ed}&l炁{#fbc2eb}&l·❈❀"
+            lore:
+              - "{#fbc2eb}『{#fbc2eb}苍{#d1c2ed}穹{#a6c1ee}定{#d1c2ed}鼎{#fbc2eb}·{#fbc2eb}祖{#a6c1ee}炁{#d1c2ed}御{#a6c1ee}天{#fbc2eb}』"
+              - "{#a6c1ee}☯{#fbc2eb}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#a6c1ee}☯"
+              - "{#fbc2eb}❈ {#d1c2ed}执掌风雷惊天地 {#a6c1ee}▸ {#d1c2ed}统御云雪定乾坤"
+              - "{#fbc2eb}❈ {#d1c2ed}天象无极归真意 {#a6c1ee}▸ {#d1c2ed}万化由心贯太虚"
+              - "{#a6c1ee}☯{#fbc2eb}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#a6c1ee}☯"
+              - "{#fbc2eb}❀ {#d1c2ed}混元归一·大道圆满 {#a6c1ee}❀"
+              - "{#fbc2eb}❀ {#d1c2ed}祖炁御天·永恒不灭 {#a6c1ee}❀"
+              - "{#fbc2eb}『 {#d1c2ed}彻悟天道 {#a6c1ee}· {#d1c2ed}天象本源{#a6c1ee} 』"
+              - "&8不会有人溯源了吧?"
+            material_type: mc
+            material: pearlescent_froglight
+            glow: true
+            amount: 1
+            slot: 27
+          4: 
+            name: "{#43e97b}&l❀❈·{#43e97b}&l造{#3ef1a9}&l化{#38f9d7}&l祖{#3ef1a9}&l炁{#43e97b}&l·❈❀"
+            lore:
+              - "{#43e97b}『{#43e97b}造{#3ef1a9}物{#38f9d7}赋{#3ef1a9}灵{#43e97b}·{#43e97b}万{#38f9d7}法{#3ef1a9}归{#38f9d7}宗{#43e97b}』"
+              - "{#38f9d7}☯{#43e97b}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#38f9d7}☯"
+              - "{#43e97b}❈ {#3ef1a9}机关通天掌造化 {#38f9d7}▸ {#3ef1a9}炼金九转炼神胎"
+              - "{#43e97b}❈ {#3ef1a9}空间无极随心转 {#38f9d7}▸ {#3ef1a9}天音杀伐定轮回"
+              - "{#38f9d7}☯{#43e97b}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#38f9d7}☯"
+              - "{#43e97b}❀ {#3ef1a9}混元归一·大道圆满 {#38f9d7}❀"
+              - "{#43e97b}❀ {#3ef1a9}祖炁归真·永恒不灭 {#38f9d7}❀"
+              - "{#43e97b}『 {#3ef1a9}彻悟本源 {#38f9d7}· {#3ef1a9}造化大道{#38f9d7} 』"
+              - "&8不会有人溯源了吧?"
+            material_type: mc
+            material: chain_command_block
+            glow: true
+            amount: 1
+            slot: 29
+          5: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 12
+          6: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 13
+          7: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 14
+          8: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 21
+          9: 
+            name: '&a合成'
+            material_type: mc
+            material: lime_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 22
+          10: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 23
+          11: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 30
+          12: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 31
+          13: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 32
+          14: 
+            name: "{#1C1C1C}&l-{#3C3C3C}&l-{#5D5D5D}&l-{#7D7D7D}&l-{#9E9E9E}&l✦{#BEBEBE}&l✫{#DFDFDF}&l✬·{#FFFFFF}&l無·{#DFDFDF}&l✬{#BEBEBE}&l✫{#9E9E9E}&l✦{#7D7D7D}&l-{#5D5D5D}&l-{#3C3C3C}&l-{#1C1C1C}&l-"
+            lore:
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l叁 {#FFFFFF}&l炁 {#FFFFFF}&l歸 {#D2D2D2}&l壹 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l萬 {#FFFFFF}&l化 {#FFFFFF}&l本 {#D2D2D2}&l源 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l無 {#FFFFFF}&l中 {#FFFFFF}&l生 {#D2D2D2}&l有 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l造 {#FFFFFF}&l化 {#FFFFFF}&l天 {#D2D2D2}&l地 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"    
+            material_type: mc
+            material: nether_star
+            glow: true
+            amount: 1
+            slot: 25
+      萬象匱:
+        input:
+          1:
+            name: "{#1C1C1C}&l-{#3C3C3C}&l-{#5D5D5D}&l-{#7D7D7D}&l-{#9E9E9E}&l✦{#BEBEBE}&l✫{#DFDFDF}&l✬·{#FFFFFF}&l終極合成台·{#DFDFDF}&l✬{#BEBEBE}&l✫{#9E9E9E}&l✦{#7D7D7D}&l-{#5D5D5D}&l-{#3C3C3C}&l-{#1C1C1C}&l-"
+            lore:
+              - "&f    {#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l造 {#FFFFFF}&l化 {#FFFFFF}&l凝 {#D2D2D2}&l真 {#A4A4A4}&l✧{#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "&f    {#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l萬 {#FFFFFF}&l化 {#FFFFFF}&l歸 {#D2D2D2}&l心 {#A4A4A4}&l✧{#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "&f    {#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l道 {#FFFFFF}&l蘊 {#FFFFFF}&l天 {#D2D2D2}&l成 {#A4A4A4}&l✧{#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#C0C0C0}&l-{#C8C8C8}&l-{#C8C8C8}&l-{#D0D0D0}&l✦{#D8D8D8}&l✫{#E0E0E0}&l·{#E8E8E8}&l萬{#F0F0F0}&l·{#FFFFFF}&l象{#F0F0F0}&l·{#E8E8E8}&l匱{#E0E0E0}&l·{#D8D8D8}&l✫{#D0D0D0}&l✦{#C8C8C8}&l-{#C8C8C8}&l-{#C0C0C0}&l-"
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            amount: 1
+            slot: 49
+        output:
+          1: 
+            material_type: mc
+            material: ender_chest
+            amount: 1
+            slot: 9
+          2: 
+            material_type: mc
+            material: ender_chest
+            amount: 1
+            slot: 10
+          3: 
+            material_type: mc
+            material: ender_chest
+            amount: 1
+            slot: 11
+          4: 
+            material_type: mc
+            material: ender_chest
+            amount: 1
+            slot: 18
+          5: 
+            name: "{#1C1C1C}&l-{#3C3C3C}&l-{#5D5D5D}&l-{#7D7D7D}&l-{#9E9E9E}&l✦{#BEBEBE}&l✫{#DFDFDF}&l✬·{#FFFFFF}&l無·{#DFDFDF}&l✬{#BEBEBE}&l✫{#9E9E9E}&l✦{#7D7D7D}&l-{#5D5D5D}&l-{#3C3C3C}&l-{#1C1C1C}&l-"
+            lore:
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l叁 {#FFFFFF}&l炁 {#FFFFFF}&l歸 {#D2D2D2}&l壹 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l萬 {#FFFFFF}&l化 {#FFFFFF}&l本 {#D2D2D2}&l源 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l無 {#FFFFFF}&l中 {#FFFFFF}&l生 {#D2D2D2}&l有 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l造 {#FFFFFF}&l化 {#FFFFFF}&l天 {#D2D2D2}&l地 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"    
+            material_type: mc
+            material: nether_star
+            glow: true
+            amount: 1
+            slot: 19
+          6: 
+            material_type: mc
+            material: ender_chest
+            amount: 1
+            slot: 20
+          7: 
+            material_type: mc
+            material: ender_chest
+            amount: 1
+            slot: 27
+          8: 
+            material_type: mc
+            material: ender_chest
+            amount: 1
+            slot: 28
+          9: 
+            material_type: mc
+            material: ender_chest
+            amount: 1
+            slot: 29
+          10: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 12
+          11: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 13
+          12: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 14
+          13: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 21
+          14: 
+            name: '&a合成'
+            material_type: mc
+            material: lime_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 22
+          15: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 23
+          16: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 30
+          17: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 31
+          18: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 32
+          19: 
+            name: "{#C0C0C0}&l-{#C8C8C8}&l-{#C8C8C8}&l-{#D0D0D0}&l✦{#D8D8D8}&l✫{#E0E0E0}&l·{#E8E8E8}&l萬{#F0F0F0}&l·{#FFFFFF}&l象{#F0F0F0}&l·{#E8E8E8}&l匱{#E0E0E0}&l·{#D8D8D8}&l✫{#D0D0D0}&l✦{#C8C8C8}&l-{#C8C8C8}&l-{#C0C0C0}&l-"
+            lore:
+              - "{#C0C0C0}&l&k0{#C8C8C8}&l&k0{#D0D0D0}&l&k0{#D8D8D8}&l萬{#E0E0E0}&l象{#E8E8E8}&l歸{#F0F0F0}&l一{#F8F8F8}&l·{#F0F0F0}&l貯{#E8E8E8}&l盡{#E0E0E0}&l萬{#D8D8D8}&l物{#D0D0D0}&l&k0{#C8C8C8}&l&k0{#C0C0C0}&l&k0"
+              - "{#C0C0C0}&l&k0{#C8C8C8}&l&k0{#D0D0D0}&l&k0{#D8D8D8}&l虛{#E0E0E0}&l空{#E8E8E8}&l之{#F0F0F0}&l界{#F8F8F8}&l·{#F0F0F0}&l萬{#E8E8E8}&l法{#E0E0E0}&l萬{#D8D8D8}&l象{#D0D0D0}&l&k0{#C8C8C8}&l&k0{#C0C0C0}&l&k0"
+            material_type: mc
+            material: book
+            glow: true
+            amount: 1
+            slot: 25
+      萬衍儀:
+        input:
+          1:
+            name: "{#1C1C1C}&l-{#3C3C3C}&l-{#5D5D5D}&l-{#7D7D7D}&l-{#9E9E9E}&l✦{#BEBEBE}&l✫{#DFDFDF}&l✬·{#FFFFFF}&l終極合成台·{#DFDFDF}&l✬{#BEBEBE}&l✫{#9E9E9E}&l✦{#7D7D7D}&l-{#5D5D5D}&l-{#3C3C3C}&l-{#1C1C1C}&l-"
+            lore:
+              - "&f    {#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l造 {#FFFFFF}&l化 {#FFFFFF}&l凝 {#D2D2D2}&l真 {#A4A4A4}&l✧{#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "&f    {#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l萬 {#FFFFFF}&l化 {#FFFFFF}&l歸 {#D2D2D2}&l心 {#A4A4A4}&l✧{#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "&f    {#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l道 {#FFFFFF}&l蘊 {#FFFFFF}&l天 {#D2D2D2}&l成 {#A4A4A4}&l✧{#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#00FA9A}&l-{#19FBA5}&l-{#32FBB0}&l-{#4BFCBC}&l✦ {#7CFDD2}&l✫{#95FDDD}&l·{#AEFEE9}&l萬{#C7FEF4}&l·{#E0FFFF}&l衍{#C7FEF4}&l·{#AEFEE9}&l儀{#95FDDD}&l·{#7CFDD2}&l✫ {#4BFCBC}&l✦{#32FBB0}&l-{#19FBA5}&l-{#00FA9A}&l-"
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            amount: 1
+            slot: 49
+        output:
+          1: 
+            name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
+            lore:
+              - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
+              - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
+              - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
+              - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            amount: 1
+            slot: 9
+          2: 
+            name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
+            lore:
+              - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
+              - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
+              - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
+              - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            amount: 1
+            slot: 10
+          3: 
+            name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
+            lore:
+              - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
+              - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
+              - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
+              - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            amount: 1
+            slot: 11
+          4: 
+            name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
+            lore:
+              - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
+              - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
+              - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
+              - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            amount: 1
+            slot: 18
+          5: 
+            name: "{#1C1C1C}&l-{#3C3C3C}&l-{#5D5D5D}&l-{#7D7D7D}&l-{#9E9E9E}&l✦{#BEBEBE}&l✫{#DFDFDF}&l✬·{#FFFFFF}&l無·{#DFDFDF}&l✬{#BEBEBE}&l✫{#9E9E9E}&l✦{#7D7D7D}&l-{#5D5D5D}&l-{#3C3C3C}&l-{#1C1C1C}&l-"
+            lore:
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l叁 {#FFFFFF}&l炁 {#FFFFFF}&l歸 {#D2D2D2}&l壹 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l萬 {#FFFFFF}&l化 {#FFFFFF}&l本 {#D2D2D2}&l源 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l無 {#FFFFFF}&l中 {#FFFFFF}&l生 {#D2D2D2}&l有 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l造 {#FFFFFF}&l化 {#FFFFFF}&l天 {#D2D2D2}&l地 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"    
+            material_type: mc
+            material: nether_star
+            glow: true
+            amount: 1
+            slot: 19
+          6: 
+            name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
+            lore:
+              - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
+              - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
+              - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
+              - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            amount: 1
+            slot: 20
+          7: 
+            name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
+            lore:
+              - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
+              - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
+              - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
+              - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            amount: 1
+            slot: 27
+          8: 
+            name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
+            lore:
+              - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
+              - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
+              - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
+              - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            amount: 1
+            slot: 28
+          9: 
+            name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
+            lore:
+              - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
+              - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
+              - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
+              - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            amount: 1
+            slot: 29
+          10: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 12
+          11: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 13
+          12: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 14
+          13: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 21
+          14: 
+            name: '&a合成'
+            material_type: mc
+            material: lime_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 22
+          15: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 23
+          16: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 30
+          17: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 31
+          18: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 32
+          19: 
+            name: "{#00FA9A}&l-{#19FBA5}&l-{#32FBB0}&l-{#4BFCBC}&l✦ {#7CFDD2}&l✫{#95FDDD}&l·{#AEFEE9}&l萬{#C7FEF4}&l·{#E0FFFF}&l衍{#C7FEF4}&l·{#AEFEE9}&l儀{#95FDDD}&l·{#7CFDD2}&l✫ {#4BFCBC}&l✦{#32FBB0}&l-{#19FBA5}&l-{#00FA9A}&l-"
+            lore:
+              - "{#00FA9A}&l&k0{#19FBA5}&l&k0{#32FBB0}&l&k0{#4BFCBC}&l-{#64FCC7}&l✧{#7CFDD2}&l·{#95FDDD}&l悟{#AEFEE9}&l貫{#E0FFFF}&l天{#E0FFFF}&l地{#AEFEE9}&l法{#95FDDD}&l則{#7CFDD2}&l·{#64FCC7}&l✧{#4BFCBC}&l-{#32FBB0}&l&k0{#19FBA5}&l&k0{#00FA9A}&l&k0"
+              - "{#00FA9A}&l&k0{#19FBA5}&l&k0{#32FBB0}&l&k0{#4BFCBC}&l-{#64FCC7}&l✧{#7CFDD2}&l·{#95FDDD}&l衍{#AEFEE9}&l化{#E0FFFF}&l世{#E0FFFF}&l間{#AEFEE9}&l萬{#95FDDD}&l物{#7CFDD2}&l·{#64FCC7}&l✧{#4BFCBC}&l-{#32FBB0}&l&k0{#19FBA5}&l&k0{#00FA9A}&l&k0"        
+            material_type: mc
+            material: beacon
+            glow: true
+            amount: 1
+            slot: 25
 
 
 

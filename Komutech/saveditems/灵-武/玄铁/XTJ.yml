@@ -31,10 +31,10 @@ item:
         slot: HAND
         uuid: 10004869-0000-0001-a001-a001c0000000
         operation: 0
-      minecraft:block_interaction_range:  # 触及距离 +2格
+      minecraft:entity_interaction_range:  # 实体触及距离 +2格
       - ==: org.bukkit.attribute.AttributeModifier
         amount: 3.0
-        name: generic.block_interaction_range
+        name: generic.entity_interaction_range
         slot: HAND
-        uuid: 10004869-0000-0001-a001-a001d0000000
+        uuid: 10004869-0000-0001-a001-a001d0000001  
         operation: 0

@@ -1,4 +1,13 @@
-const CATEGORIES = [
+const KOMUTECH_ZN_Bukkit = Java.type('org.bukkit.Bukkit');
+const KOMUTECH_ZN_Material = Java.type('org.bukkit.Material');
+const KOMUTECH_ZN_ItemStack = Java.type('org.bukkit.inventory.ItemStack');
+const KOMUTECH_ZN_ClickEvent = Java.type('org.bukkit.event.inventory.InventoryClickEvent');
+const KOMUTECH_ZN_CloseEvent = Java.type('org.bukkit.event.inventory.InventoryCloseEvent');
+const KOMUTECH_ZN_EventPriority = Java.type('org.bukkit.event.EventPriority');
+const KOMUTECH_ZN_plugin = Java.type('org.lins.mmmjjkx.rykenslimefuncustomizer.RykenSlimefunCustomizer').INSTANCE;
+const KOMUTECH_ZN_SlimefunItem = Java.type('io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem');
+const KOMUTECH_ZN_Listener = Java.type('org.bukkit.event.Listener');
+const KOMUTECH_ZN_CATEGORIES = [
     { id: 'rumen', name: '§a✦ 入门篇', lore: '§e灵石获取与基础开采', icon: 'AMETHYST_CLUSTER', slot: 10 },
     { id: 'shenwu', name: '§b✦ 深悟篇', lore: '§e法则的获取与进阶', icon: 'ENDER_PEARL', slot: 11 },
     { id: 'dacheng', name: '§6✦ 大成篇', lore: '§e身外身的获取', icon: 'ENDER_EYE', slot: 12 },
@@ -6,26 +15,22 @@ const CATEGORIES = [
     { id: 'lingzhang', name: '§d✦ 灵杖篇', lore: '§e灵杖的使用方法', icon: 'BLAZE_ROD', slot: 14 },
     { id: 'juanzhou', name: '§5✦ 卷轴篇', lore: '§e卷轴的使用方法', icon: 'BOOK', slot: 15 }
 ];
-
-const REWARD_CHANCE = {
-    'KOMUTECH_L_LZ_YG': 30,
-    'KOMUTECH_L_DJ_XPLS': 30,
-    'KOMUTECH_L_GJ_印物笺': 1
-};
-
-const GENERATE_REWARD_CHANCE = 50;
-const REWARD_SLOTS = [19,20,21,22,23,24,25,28,29,30,31,32,33,34,37,38,39,40,41,42,43];
-const INFO_SLOT = 4;
-const INFO_ITEM = {
+const KOMUTECH_ZN_REWARDS = [
+    { id: 'KOMUTECH_L_LZ_YG', chance: 30 },
+    { id: 'KOMUTECH_L_DJ_XPLS', chance: 30 },
+    { id: 'KOMUTECH_L_GJ_印物笺', chance: 1 }
+];
+const KOMUTECH_ZN_REWARD_SLOTS = [19,20,21,22,23,24,25,28,29,30,31,32,33,34,37,38,39,40,41,42,43];
+const KOMUTECH_ZN_INFO_SLOT = 4;
+const KOMUTECH_ZN_INFO_ITEM = {
     material: 'PAINTING', name: '§a§l口木科技教程说明',
     lore: ['§f点击上方分类查看教程', '§f点击下方随机奖励物品', '§f即可获得惊喜！']
 };
-const MAIN_TITLE = '§b§l✨ 口木科技教程 ✨';
-const SUB_PRE = '§b§l✨ ';
-const SUB_SUF = ' ✨';
-const BORDER_SLOTS = [0,1,2,3,4,5,6,7,8,9,17,18,26,27,35,36,44,45,46,47,48,50,51,52,53];
-
-const TIPS = {
+const KOMUTECH_ZN_MAIN_TITLE = '§b§l✨ 口木科技教程 ✨';
+const KOMUTECH_ZN_SUB_PRE = '§b§l✨ ';
+const KOMUTECH_ZN_SUB_SUF = ' ✨';
+const KOMUTECH_ZN_BORDER_SLOTS = [0,1,2,3,4,5,6,7,8,9,17,18,26,27,35,36,44,45,46,47,48,50,51,52,53];
+const KOMUTECH_ZN_TIPS = {
     rumen: [
         { name: '§6灵石获取', icon: 'AMETHYST_SHARD', lore: ['§7• 灵脉宝窟/矿井开采灵石原矿获得下品灵石', '§7• 灵矿提取台处理原矿，灵能提炼器转换', '§7• 上品/极品需功德券辅助合成'] },
         { name: '§6矿物获取', icon: 'IRON_INGOT', lore: ['§7• 灵石原矿开采', '§7• 矿石原胚/杂矿概率获得', '§7• 玄铁、寒铁等由原胚在灵能提取器随机产出'] },
@@ -65,151 +70,138 @@ const TIPS = {
         { name: '§6卷轴获取', icon: 'WRITABLE_BOOK', lore: ['§7• 黄阶：勾豆灰', '§7• 玄阶：九霄环佩鸣', '§7• 地阶：冰火两重天', '§7• 天阶：游龙惊鸿诀（均卷轴撰写台合成）'] }
     ]
 };
-
-const Bukkit = Java.type('org.bukkit.Bukkit');
-const Material = Java.type('org.bukkit.Material');
-const ItemStack = Java.type('org.bukkit.inventory.ItemStack');
-const InventoryClickEvent = Java.type('org.bukkit.event.inventory.InventoryClickEvent');
-const InventoryCloseEvent = Java.type('org.bukkit.event.inventory.InventoryCloseEvent');
-const EventPriority = Java.type('org.bukkit.event.EventPriority');
-const plugin = Java.type('org.lins.mmmjjkx.rykenslimefuncustomizer.RykenSlimefunCustomizer').INSTANCE;
-const SlimefunItem = Java.type('io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem');
-const Listener = Java.type('org.bukkit.event.Listener');
-
-// 工具函数
-function item(mat, name, lore) {
-    const it = new ItemStack(Material.getMaterial(mat));
+function KOMUTECH_ZN_item(mat, name, lore) {
+    const it = new KOMUTECH_ZN_ItemStack(KOMUTECH_ZN_Material.getMaterial(mat));
     const meta = it.getItemMeta();
     meta.setDisplayName(name);
     if (lore) meta.setLore(Array.isArray(lore) ? lore : [lore]);
     it.setItemMeta(meta);
     return it;
 }
-function borderItem() { return item('PINK_STAINED_GLASS_PANE', '§d✨'); }
-function applyBorder(inv) { const b = borderItem(); BORDER_SLOTS.forEach(s => inv.setItem(s, b.clone())); }
-
-function giveRandomReward(p) {
+function KOMUTECH_ZN_borderItem() { return KOMUTECH_ZN_item('PINK_STAINED_GLASS_PANE', '§d✨'); }
+function KOMUTECH_ZN_applyBorder(inv) { const b = KOMUTECH_ZN_borderItem(); KOMUTECH_ZN_BORDER_SLOTS.forEach(s => inv.setItem(s, b.clone())); }
+function KOMUTECH_ZN_giveRandomReward(p) {
     const rand = Math.random() * 100;
     let cum = 0;
-    for (const [id, chance] of Object.entries(REWARD_CHANCE)) {
-        cum += chance;
+    for (let r of KOMUTECH_ZN_REWARDS) {
+        cum += r.chance;
         if (rand < cum) {
-            const sf = SlimefunItem.getById(id);
+            const sf = KOMUTECH_ZN_SlimefunItem.getById(r.id);
             if (sf) {
                 const reward = sf.getItem().clone();
                 p.getWorld().dropItemNaturally(p.getLocation(), reward);
-                p.sendMessage('§a获得奖励: ' + (reward.getItemMeta().getDisplayName() || id));
-            } else p.sendMessage('§c奖励无效');
+                p.sendMessage('§a获得奖励: ' + (reward.getItemMeta().getDisplayName() || r.id));
+            } else p.sendMessage('§c奖励物品无效，请联系管理');
             return;
         }
     }
     p.sendMessage('§f🎉倒霉🥚，你成功避开了奖励。');
 }
-
-function buildMainMenu() {
-    const inv = Bukkit.createInventory(null, 54, MAIN_TITLE);
-    applyBorder(inv);
-    CATEGORIES.forEach(c => inv.setItem(c.slot, item(c.icon, c.name, [c.lore, '', '§a点击查看'])));
-    inv.setItem(INFO_SLOT, item(INFO_ITEM.material, INFO_ITEM.name, INFO_ITEM.lore));
-    if (Math.random() * 100 < GENERATE_REWARD_CHANCE) {
-        const slot = REWARD_SLOTS[Math.floor(Math.random() * REWARD_SLOTS.length)];
-        inv.setItem(slot, item('ENDER_CHEST', '§e✨ 神秘奖励 ✨', ['§7点击随机获得奖励']));
+function KOMUTECH_ZN_buildMainMenu() {
+    const inv = KOMUTECH_ZN_Bukkit.createInventory(null, 54, KOMUTECH_ZN_MAIN_TITLE);
+    KOMUTECH_ZN_applyBorder(inv);
+    KOMUTECH_ZN_CATEGORIES.forEach(c => inv.setItem(c.slot, KOMUTECH_ZN_item(c.icon, c.name, [c.lore, '', '§a点击查看'])));
+    inv.setItem(KOMUTECH_ZN_INFO_SLOT, KOMUTECH_ZN_item(KOMUTECH_ZN_INFO_ITEM.material, KOMUTECH_ZN_INFO_ITEM.name, KOMUTECH_ZN_INFO_ITEM.lore));
+    if (Math.random() * 100 < 50) {
+        const slot = KOMUTECH_ZN_REWARD_SLOTS[Math.floor(Math.random() * KOMUTECH_ZN_REWARD_SLOTS.length)];
+        inv.setItem(slot, KOMUTECH_ZN_item('ENDER_CHEST', '§e✨ 神秘奖励 ✨', ['§7点击随机获得奖励']));
     }
-    inv.setItem(49, item('BARRIER', '§c关闭', '§7关闭菜单'));
+    inv.setItem(49, KOMUTECH_ZN_item('BARRIER', '§c关闭', '§7关闭菜单'));
     return inv;
 }
-
-function catMenu(cid) {
-    const cat = CATEGORIES.find(c => c.id === cid);
+function KOMUTECH_ZN_catMenu(cid) {
+    const cat = KOMUTECH_ZN_CATEGORIES.find(c => c.id === cid);
     if (!cat) return null;
-    const tips = TIPS[cid];
+    const tips = KOMUTECH_ZN_TIPS[cid];
     if (!tips || !tips.length) return null;
-    const inv = Bukkit.createInventory(null, 54, SUB_PRE + cat.name + SUB_SUF);
-    applyBorder(inv);
-    inv.setItem(4, item('PAPER', '§6' + cat.name + '说明', ['§7点击条目查看详情', '§e共' + tips.length + '个知识点']));
+    const inv = KOMUTECH_ZN_Bukkit.createInventory(null, 54, KOMUTECH_ZN_SUB_PRE + cat.name + KOMUTECH_ZN_SUB_SUF);
+    KOMUTECH_ZN_applyBorder(inv);
+    inv.setItem(4, KOMUTECH_ZN_item('PAPER', '§6' + cat.name + '说明', ['§7点击条目查看详情', '§e共' + tips.length + '个知识点']));
     let slot = 10;
-    tips.forEach(tip => {
-        if (slot > 43) return;
-        inv.setItem(slot, item(tip.icon || 'PAPER', tip.name, tip.lore));
+    for (let tip of tips) {
+        if (slot > 43) break;
+        inv.setItem(slot, KOMUTECH_ZN_item(tip.icon || 'PAPER', tip.name, tip.lore));
         slot++;
         if ((slot - 9) % 9 === 0) slot += 2;
-    });
-    inv.setItem(49, item('ARROW', '§a返回', '§7返回主菜单'));
+    }
+    inv.setItem(49, KOMUTECH_ZN_item('ARROW', '§a返回', '§7返回主菜单'));
     return inv;
 }
-
-const openPlayers = new java.util.HashSet();
-let registered = false;
-
-function ensureListener() {
-    if (registered) return;
-    // 如果已有旧监听器，先取消
-    if (plugin.komutech_gj_znui) {
-        InventoryClickEvent.getHandlerList().unregister(plugin.komutech_gj_znui);
-        InventoryCloseEvent.getHandlerList().unregister(plugin.komutech_gj_znui);
-        plugin.komutech_gj_znui = null;
+let KOMUTECH_ZN_openPlayers = new java.util.HashSet();
+let KOMUTECH_ZN_registered = false;
+let KOMUTECH_ZN_listener = null;
+function KOMUTECH_ZN_registerListener() {
+    if (KOMUTECH_ZN_registered && KOMUTECH_ZN_listener) return;
+    if (KOMUTECH_ZN_plugin.komutech_gj_znui) {
+        try {
+            KOMUTECH_ZN_ClickEvent.getHandlerList().unregister(KOMUTECH_ZN_plugin.komutech_gj_znui);
+            KOMUTECH_ZN_CloseEvent.getHandlerList().unregister(KOMUTECH_ZN_plugin.komutech_gj_znui);
+        } catch(e) {
+            if (e.message && e.message.includes("Context is already closed")) return;
+            print("注销旧监听器错误: " + e);
+        }
+        KOMUTECH_ZN_plugin.komutech_gj_znui = null;
     }
-    const L = Java.extend(Listener, {});
+    const L = Java.extend(KOMUTECH_ZN_Listener, {});
     const listener = new L();
-
-    Bukkit.getPluginManager().registerEvent(InventoryClickEvent, listener, EventPriority.NORMAL, (l, e) => {
+    KOMUTECH_ZN_plugin.komutech_gj_znui = listener;
+    KOMUTECH_ZN_listener = listener;
+    KOMUTECH_ZN_Bukkit.getPluginManager().registerEvent(KOMUTECH_ZN_ClickEvent, listener, KOMUTECH_ZN_EventPriority.NORMAL, (l, e) => {
         try {
             const p = e.getWhoClicked();
-            if (!openPlayers.contains(p)) return;
+            if (!KOMUTECH_ZN_openPlayers.contains(p)) return;
             const title = e.getInventory().getTitle();
-            if (title !== MAIN_TITLE && !title.startsWith(SUB_PRE)) return;
+            if (title !== KOMUTECH_ZN_MAIN_TITLE && !title.startsWith(KOMUTECH_ZN_SUB_PRE)) return;
             e.setCancelled(true);
             const inv = e.getInventory();
             const slot = e.getSlot();
             const it = e.getCurrentItem();
-            if (!it || it.getType() === Material.AIR) return;
-
-            if (title === MAIN_TITLE) {
-                const cat = CATEGORIES.find(c => c.slot === slot && it.getItemMeta().getDisplayName() === c.name);
-                if (cat) { openCat(p, cat.id); return; }
+            if (!it || it.getType() === KOMUTECH_ZN_Material.AIR) return;
+            if (title === KOMUTECH_ZN_MAIN_TITLE) {
+                const cat = KOMUTECH_ZN_CATEGORIES.find(c => c.slot === slot && it.getItemMeta().getDisplayName() === c.name);
+                if (cat) { KOMUTECH_ZN_openCat(p, cat.id); return; }
                 const disp = it.getItemMeta().getDisplayName();
-                if (disp === '§e✨ 神秘奖励 ✨') { giveRandomReward(p); inv.setItem(slot, null); return; }
+                if (disp === '§e✨ 神秘奖励 ✨') { KOMUTECH_ZN_giveRandomReward(p); inv.setItem(slot, null); return; }
                 if (slot === 49 && disp === '§c关闭') { p.closeInventory(); return; }
             } else {
-                if (slot === 49 && it.getItemMeta().getDisplayName() === '§a返回') openMain(p);
+                if (slot === 49 && it.getItemMeta().getDisplayName() === '§a返回') KOMUTECH_ZN_openMain(p);
             }
-        } catch (err) {}
-    }, plugin);
-
-    Bukkit.getPluginManager().registerEvent(InventoryCloseEvent, listener, EventPriority.NORMAL, (l, e) => {
+        } catch (err) { print("教程菜单点击错误: " + err); }
+    }, KOMUTECH_ZN_plugin);
+    KOMUTECH_ZN_Bukkit.getPluginManager().registerEvent(KOMUTECH_ZN_CloseEvent, listener, KOMUTECH_ZN_EventPriority.NORMAL, (l, e) => {
         try {
             const p = e.getPlayer();
-            openPlayers.remove(p);
-            if (openPlayers.isEmpty()) {
-                InventoryClickEvent.getHandlerList().unregister(listener);
-                InventoryCloseEvent.getHandlerList().unregister(listener);
-                plugin.komutech_gj_znui = null;
-                registered = false;
+            KOMUTECH_ZN_openPlayers.remove(p);
+            if (KOMUTECH_ZN_openPlayers.isEmpty()) {
+                try {
+                    KOMUTECH_ZN_ClickEvent.getHandlerList().unregister(listener);
+                    KOMUTECH_ZN_CloseEvent.getHandlerList().unregister(listener);
+                } catch(ex) {
+                    if (ex.message && ex.message.includes("Context is already closed")) return;
+                    print("注销监听器错误: " + ex);
+                }
+                KOMUTECH_ZN_plugin.komutech_gj_znui = null;
+                KOMUTECH_ZN_registered = false;
+                KOMUTECH_ZN_listener = null;
             }
         } catch (err) {}
-    }, plugin);
-
-    plugin.komutech_gj_znui = listener;
-    registered = true;
+    }, KOMUTECH_ZN_plugin);
+    KOMUTECH_ZN_registered = true;
 }
-
-function openMenu(p, inv) {
-    p.openInventory(inv);
-    openPlayers.add(p);
-    ensureListener();
+function KOMUTECH_ZN_ensureListener() { if (!KOMUTECH_ZN_registered) KOMUTECH_ZN_registerListener(); }
+function KOMUTECH_ZN_openMenu(p, inv) { p.openInventory(inv); KOMUTECH_ZN_openPlayers.add(p); KOMUTECH_ZN_ensureListener(); }
+function KOMUTECH_ZN_openMain(p) { KOMUTECH_ZN_openMenu(p, KOMUTECH_ZN_buildMainMenu()); }
+function KOMUTECH_ZN_openCat(p, id) {
+    const menu = KOMUTECH_ZN_catMenu(id);
+    menu ? KOMUTECH_ZN_openMenu(p, menu) : p.sendMessage('§c该分类暂无内容。');
 }
-function openMain(p) { openMenu(p, buildMainMenu()); }
-function openCat(p, id) {
-    const menu = catMenu(id);
-    menu ? openMenu(p, menu) : p.sendMessage('§c该分类暂无内容。');
+function KOMUTECH_ZN_onButtonGroupClick(player, slot, clickedItem, clickAction, guideMode) {
+    try { KOMUTECH_ZN_openMain(player); return true; } catch (err) { player.sendMessage('§c无法打开教程菜单，请联系管理。'); return false; }
 }
-
-function onButtonGroupClick(player, slot, clickedItem, clickAction, guideMode) {
-    try { openMain(player); return true; } catch (err) { player.sendMessage('§c无法打开教程菜单，请联系管理。'); return false; }
-}
-
-function onUse(e) {
+function KOMUTECH_ZN_onUse(e) {
     const p = e.getPlayer();
-    try { openMain(p); } catch (err) { p.sendMessage('§c无法打开教程菜单，请联系管理。'); }
+    try { KOMUTECH_ZN_openMain(p); } catch (err) { p.sendMessage('§c无法打开教程菜单，请联系管理。'); }
     return false;
 }
+function onButtonGroupClick(player, slot, clickedItem, clickAction, guideMode) { return KOMUTECH_ZN_onButtonGroupClick(player, slot, clickedItem, clickAction, guideMode); }
+function onUse(e) { KOMUTECH_ZN_onUse(e); }

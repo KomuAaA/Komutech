@@ -3490,97 +3490,9 @@ KOMUTECH_L_ZJ_萬衍儀:
   output: [49]
   recipe_type: KOMUTECH_L_ZJ_ZJHCT
   recipe:
-    1:
-      name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
-      lore:
-        - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
-        - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
-        - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
-        - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
-        - "&8不会有人溯源了吧?"
-      material_type: mc
-      material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
-    2:
-      name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
-      lore:
-        - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
-        - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
-        - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
-        - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
-        - "&8不会有人溯源了吧?"
-      material_type: mc
-      material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
-    3:
-      name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
-      lore:
-        - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
-        - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
-        - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
-        - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
-        - "&8不会有人溯源了吧?"
-      material_type: mc
-      material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
-    4:
-      name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
-      lore:
-        - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
-        - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
-        - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
-        - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
-        - "&8不会有人溯源了吧?"
-      material_type: mc
-      material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
     5:
-      name: "{#1C1C1C}&l-{#3C3C3C}&l-{#5D5D5D}&l-{#7D7D7D}&l-{#9E9E9E}&l✦{#BEBEBE}&l✫{#DFDFDF}&l✬·{#FFFFFF}&l無·{#DFDFDF}&l✬{#BEBEBE}&l✫{#9E9E9E}&l✦{#7D7D7D}&l-{#5D5D5D}&l-{#3C3C3C}&l-{#1C1C1C}&l-"
-      lore:
-        - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l叁 {#FFFFFF}&l炁 {#FFFFFF}&l歸 {#D2D2D2}&l壹 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
-        - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l萬 {#FFFFFF}&l化 {#FFFFFF}&l本 {#D2D2D2}&l源 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
-        - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l無 {#FFFFFF}&l中 {#FFFFFF}&l生 {#D2D2D2}&l有 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
-        - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l造 {#FFFFFF}&l化 {#FFFFFF}&l天 {#D2D2D2}&l地 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"    
-        - "&8不会有人溯源了吧?"
-      material_type: mc
-      material: nether_star
-      glow: true
-    6:
-      name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
-      lore:
-        - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
-        - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
-        - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
-        - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
-        - "&8不会有人溯源了吧?"
-      material_type: mc
-      material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
-    7:
-      name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
-      lore:
-        - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
-        - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
-        - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
-        - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
-        - "&8不会有人溯源了吧?"
-      material_type: mc
-      material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
-    8:
-      name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
-      lore:
-        - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
-        - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
-        - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
-        - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
-        - "&8不会有人溯源了吧?"
-      material_type: mc
-      material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
-    9:
-      name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
-      lore:
-        - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
-        - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
-        - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
-        - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
-        - "&8不会有人溯源了吧?"
-      material_type: mc
-      material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+      material_type: slimefun
+      material: KOMUTECH_L_ZW_QQWJQNCK
   recipes:
    ##儡肆
     KOMUTECH_L_ZJ_萬象匱:
