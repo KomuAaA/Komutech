@@ -307,7 +307,52 @@ Komutech_更新日志:
             material: paper
             amount: 1
             slot: 16
-
+          18:
+            name: "&f5.4"
+            lore:
+            - '&a&l=====口木科技=====.'
+            - '&f1.更的跨度长记不得了只写重要的了。'
+            - '&a&l=====灵=====.'
+            - '&f1.引入修为系统'
+            - '&f2.加入玩家属性菜单'
+            - '&f -属性菜单显示玩家的各种属性，修为'
+            - '&f -可在突破时获取点数，消耗点数来提示各个属性'
+            - '&f -左键增加属性，右键渐少(不可减少至保存初始)'
+            - '&f -血量，攻击力，防御力，速度，分别提升玩家生命，防御，移速，攻击力'
+            - '&f -灵识需金丹期解锁，提升玩家触及范围，包括方块和生物'
+            - '&f -属性菜单添加完成属性后需点击确认添加方可应用'
+            - '&f -属性菜单添加的属性可自由关闭移除'
+            - '&f3.加入属性重置菜单'
+            - '&f -玩家属性出错可前往重置所有属性'
+            - '&f4.修养栏位，其中有多方块机器鉴灵石'
+            - '&f -鉴灵石用于检测玩家灵根等属性步入修仙'
+            - '&a&l==========.'
+            material_type: mc
+            material: paper
+            amount: 1
+            slot: 17
+          19:
+            name: "&f5.4"
+            lore:
+            - '&a&l=====口木科技=====.'
+            - '&f1.太长了分开写'
+            - '&a&l=====灵=====.'
+            - '&f5.引入蒲团等修炼机器'
+            - '&f -玩家放置这系列机器后可开启修炼'
+            - '&f -右键机器打开菜单点击修炼即可开始修炼'
+            - '&f -当玩家灵气值达到此阶段上限可继续修炼/突破'
+            - '&f -继续修炼增加稳固值提升突破概率'
+            - '&f -修为越强突破会接受雷劫洗礼'
+            - '&f6.加入口木科技快捷配方查找'
+            - '&f -此界面可快捷查找物品配方可搜素'
+            - '&f7.同步灵杖卷轴等适配修仙系统'
+            - '&f8.优化部分灵杖卷轴表现并添加新灵杖'
+            - '&f9.我之前画的各种大饼会陆续实现'
+            - '&a&l==========.'
+            material_type: mc
+            material: paper
+            amount: 1
+            slot: 18
         output:
          1:
             name: "&f&l第一页"
@@ -618,9 +663,9 @@ KOMUTECH_L_JQ_LNLQF:
             amount: 1
             slot: 38
           15:
-            material_type: mc
-            material: jukebox
-            amount: 64
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_造化灵曦
+            amount: 1
             slot: 45
           16:
             material_type: slimefun
@@ -713,6 +758,175 @@ KOMUTECH_L_JQ_LNLQF:
             material: Komutech_L_Q_空引津
             amount: 1
             slot: 26
+    ##花葬
+      KOMUTECH_L_Q_花葬:
+        input:
+          1:
+            material_type: slimefun
+            material: Komutech_L_KW_TXY
+            amount: 1
+            slot: 4
+          2:
+            material_type: slimefun
+            material: KOMUTECH_L_ZJ_無
+            amount: 1
+            slot: 5
+          3:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_造化灵曦
+            amount: 1
+            slot: 12
+          4:
+            material_type: slimefun
+            material: Komutech_L_DJ_JPLS
+            amount: 64
+            slot: 13
+          5:
+            material_type: slimefun
+            material: Komutech_L_KW_TXY
+            amount: 1
+            slot: 14
+          6:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_五行灵曦
+            amount: 1
+            slot: 20
+          7:
+            material_type: slimefun
+            material: Komutech_L_Q_灵杖
+            amount: 1
+            slot: 21
+          8:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_造化灵曦
+            amount: 1
+            slot: 22
+          9:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_天象灵曦
+            amount: 1
+            slot: 28
+          10:
+            material_type: slimefun
+            material: Komutech_L_Q_灵杖
+            amount: 1
+            slot: 29
+          11:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_五行灵曦
+            amount: 1
+            slot: 30
+          12:
+            material_type: slimefun
+            material: Komutech_L_KW_LSY
+            amount: 1
+            slot: 36
+          13:
+            material_type: slimefun
+            material: Komutech_L_DJ_JPLS
+            amount: 64
+            slot: 37
+          14:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_天象灵曦
+            amount: 1
+            slot: 38
+          15:
+            material_type: slimefun
+            material: Komutech_L_Q_蜉蝣梦
+            amount: 1
+            slot: 45
+          16:
+            material_type: slimefun
+            material: Komutech_L_KW_LSY
+            amount: 1
+            slot: 46
+          17:
+            material_type: mc
+            material: dandelion
+            amount: 64
+            slot: 0
+          18:
+            material_type: mc
+            material: poppy
+            amount: 64
+            slot: 1
+          19:
+            material_type: mc
+            material: blue_orchid
+            amount: 64
+            slot: 2
+          20:
+            material_type: mc
+            material: allium
+            amount: 64
+            slot: 9
+          21:
+            material_type: mc
+            material: azure_bluet
+            amount: 64
+            slot: 10
+          22:
+            material_type: mc
+            material: red_tulip
+            amount: 64
+            slot: 11
+          23:
+            material_type: mc
+            material: orange_tulip
+            amount: 64
+            slot: 18
+          24:
+            material_type: mc
+            material: white_tulip
+            amount: 64
+            slot: 19
+          25:
+            material_type: mc
+            material: pink_tulip
+            amount: 64
+            slot: 31
+          26:
+            material_type: mc
+            material: oxeye_daisy
+            amount: 64
+            slot: 32
+          27:
+            material_type: mc
+            material: cornflower
+            amount: 64
+            slot: 39
+          28:
+            material_type: mc
+            material: lily_of_the_valley
+            amount: 64
+            slot: 40
+          29:
+            material_type: mc
+            material: wither_rose
+            amount: 64
+            slot: 41
+          30:
+            material_type: mc
+            material: torchflower
+            amount: 64
+            slot: 48
+          31:
+            material_type: mc
+            material: rose_bush
+            amount: 64
+            slot: 49
+          32:
+            material_type: mc
+            material: lilac
+            amount: 64
+            slot: 50        
+        output:
+          1:
+              material_type: slimefun
+              material: KOMUTECH_L_Q_花葬
+              amount: 1
+              slot: 26
 
 ##符箓绘制台
 KOMUTECH_L_JQ_FLHZT:
@@ -3162,8 +3376,8 @@ KOMUTECH_L_WD_WXZZY:
             slot: 49
 
 ##                    教程机器
-Komutech_L_JQJC_演示:
-  item_group: Komutech_L_JQJC
+KOMUTECH_L_PF_演示:
+  item_group: Komutech_L_PF
   item:
     name: "{#00FA9A}&kA{#2DFBAE}&l机{#5AFCC2}&l器{#86FDD7}&l教{#B3FEEB}&l程{#E0FFFF}&l演{#00FA9A}&l示{#E0FFFF}&kA"
     material_type: mc
@@ -6083,7 +6297,2274 @@ Komutech_L_JQJC_演示:
             amount: 1
             slot: 25
 
+KOMUTECH_L_PF_法则合成演示:
+  item_group: Komutech_L_PF
+  item:
+    name: "{#00FA9A}&kA{#2DFBAE}&l法{#5AFCC2}&l则{#86FDD7}&l合{#B3FEEB}&l成{#E0FFFF}&l演{#00FA9A}&l示{#E0FFFF}&kA"
+    material_type: mc
+    material: beacon
+  recipe_type: NULL
+  input: [0,1,2,3,4,5,6,7,8, 9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44]
+  output: [49]
+  capacity: 131400
+  energyPerCraft: 26000
+  click: 53
+  recipes:
+    ##一丝法则
+      KOMUTECH_L_FZ_YSJYSFZ:
+        input:
+          1: 
+            name: '&f提示'
+            lore:
+              - '&f悟道石检测条件的范围为5×5'
+            material_type: mc
+            material: paper
+            amount: 1
+            slot: 0 
+          2: 
+            name: '&f提示'
+            lore:
+              - '&f悟道时间约为15s'
+              - '&f悟道成功玩家需尽快拿走法则'
+            material_type: mc
+            material: paper
+            amount: 1
+            slot: 1
+          3: 
+            name: '&f提示'
+            lore:
+              - '&f悟道成功玩家需尽快拿走法则'
+            material_type: mc
+            material: paper
+            amount: 1
+            slot: 2
+        output:
+          1:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_YSJYSFZ
+            amount: 1
+            slot: 49
+    ##些许法则
+      KOMUTECH_L_FZ_XXJYSFZ:
+        input:
+          1: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 1
+            slot: 9 
+          2: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 2
+            slot: 10 
+          3: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 3
+            slot: 11 
+          4: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 4
+            slot: 12
+          5: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 5
+            slot: 13 
+          6: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 6
+            slot: 14 
+          7: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 7
+            slot: 15
+          8: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 8
+            slot: 16
+          9: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 9
+            slot: 17
+          10: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 10
+            slot: 18
+          11: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 11
+            slot: 19
+          12: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 12
+            slot: 20
+          13: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 13
+            slot: 21
+          14: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 14
+            slot: 22
+          15: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 15
+            slot: 23
+          16: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 16
+            slot: 24
+          17: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 17
+            slot: 25
+          18: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 18
+            slot: 26
+          19: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 19
+            slot: 27
+          20: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 20
+            slot: 28
+          21: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 21
+            slot: 29
+          22: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 22
+            slot: 30
+          23: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 23
+            slot: 31
+          24: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 24
+            slot: 32
+          25: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 25
+            slot: 33
+          26: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 26
+            slot: 34
+          27: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 27
+            slot: 35
+          28: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 28
+            slot: 36
+          29: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 29
+            slot: 37
+          30: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 30
+            slot: 38
+          31: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 31
+            slot: 39
+          32: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 32
+            slot: 40
+          33: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 33
+            slot: 41
+          34: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 34
+            slot: 42
+          35: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 35
+            slot: 43
+          36: 
+            name: '{#FFFACD}&l一{#FAFAD2}&l丝{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·初悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}五行循环·金居其西'
+              - '{#BBDEFB}│ {#FFF3E0}锋锐肃杀·刚健自强'
+              - '{#FFFACD}│ {#FAFAD2}一丝明悟·可筑道基'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: gold_nugget
+            amount: 36
+            slot: 44
+        output:
+          1:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_XXJYSFZ
+            amount: 1
+            slot: 49
+    ##完整法则
+      KOMUTECH_L_FZ_YSJYSFZ:
+        input:
+          1: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 1
+            slot: 9
+          2: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 2
+            slot: 10
+          3: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 3
+            slot: 11
+          4: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 4
+            slot: 12
+          5: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 5
+            slot: 13
+          6: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 6
+            slot: 14
+          7: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 7
+            slot: 15
+          8: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 8
+            slot: 16
+          9: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 9
+            slot: 17
+          10: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 10
+            slot: 18
+          11: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 11
+            slot: 19
+          12: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 12
+            slot: 20
+          13: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 13
+            slot: 21
+          14: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 14
+            slot: 22
+          15: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 15
+            slot: 23
+          16: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 16
+            slot: 24
+          17: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 17
+            slot: 25
+          18: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 18
+            slot: 26
+          19: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 19
+            slot: 27
+          20: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 20
+            slot: 28
+          21: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 21
+            slot: 29
+          22: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 22
+            slot: 30
+          23: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 23
+            slot: 31
+          24: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 24
+            slot: 32
+          25: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 25
+            slot: 33
+          26: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 26
+            slot: 34
+          27: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 27
+            slot: 35
+          28: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 28
+            slot: 36
+          29: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 29
+            slot: 37
+          30: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 30
+            slot: 38
+          31: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 31
+            slot: 39
+          32: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 32
+            slot: 40
+          33: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 33
+            slot: 41
+          34: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 34
+            slot: 42
+          35: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 35
+            slot: 43
+          36: 
+            name: '{#FFFACD}&l些{#FAFAD2}&l许{#FFD700}&l金{#D3D3D3}&l元{#A9A9A9}&l素{#BBDEFB}&l法{#FFF3E0}&l则'
+            lore:
+              - '{#FFFACD}❖ {#FAFAD2}金之法则·深悟 {#FFD700}❖'
+              - '{#D3D3D3}│ {#A9A9A9}西方之极·金气凝聚'
+              - '{#BBDEFB}│ {#FFF3E0}锋芒毕露·刚猛无俦'
+              - '{#FFFACD}│ {#FAFAD2}些许明悟·道基渐固'
+              - '{#FFD700}└─ {#D3D3D3}集多成册·可窥大道'
+            material_type: mc
+            material: yellow_dye
+            amount: 36
+            slot: 44
+        output:
+          1:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_WZJYSFZ
+            amount: 1
+            slot: 49
+    ##灵曦法则
+      KOMUTECH_L_FZ_五行灵曦:
+        input:
+          1: 
+            name: '{#FFD700}&l完{#FFEC8B}&l整{#FFFACD}&l金{#FAFAD2}&l元{#FFD700}&l素{#FFEC8B}&l法{#FFFACD}&l则'
+            lore:
+              - '{#FFD700}❖ {#FFEC8B}金之法则·完悟 {#FFFACD}❖'
+              - '{#FAFAD2}│ {#FFD700}西方肃杀·刚健至极'
+              - '{#FFEC8B}│ {#FFFACD}锋芒内敛·无坚不摧'
+              - '{#FFD700}│ {#FFEC8B}完整明悟·大道已成'
+              - '{#FFFACD}└─ {#FAFAD2}金之法则·已臻化境'
+            material_type: mc
+            material: gold_ingot
+            amount: 1
+            slot: 0
+          2: 
+            name: '{#FFD700}&l完{#FFEC8B}&l整{#FFFACD}&l金{#FAFAD2}&l元{#FFD700}&l素{#FFEC8B}&l法{#FFFACD}&l则'
+            lore:
+              - '{#FFD700}❖ {#FFEC8B}金之法则·完悟 {#FFFACD}❖'
+              - '{#FAFAD2}│ {#FFD700}西方肃杀·刚健至极'
+              - '{#FFEC8B}│ {#FFFACD}锋芒内敛·无坚不摧'
+              - '{#FFD700}│ {#FFEC8B}完整明悟·大道已成'
+              - '{#FFFACD}└─ {#FAFAD2}金之法则·已臻化境'
+            material_type: mc
+            material: gold_ingot
+            amount: 2
+            slot: 1
+          3: 
+            name: '{#FFD700}&l完{#FFEC8B}&l整{#FFFACD}&l金{#FAFAD2}&l元{#FFD700}&l素{#FFEC8B}&l法{#FFFACD}&l则'
+            lore:
+              - '{#FFD700}❖ {#FFEC8B}金之法则·完悟 {#FFFACD}❖'
+              - '{#FAFAD2}│ {#FFD700}西方肃杀·刚健至极'
+              - '{#FFEC8B}│ {#FFFACD}锋芒内敛·无坚不摧'
+              - '{#FFD700}│ {#FFEC8B}完整明悟·大道已成'
+              - '{#FFFACD}└─ {#FAFAD2}金之法则·已臻化境'
+            material_type: mc
+            material: gold_ingot
+            amount: 3
+            slot: 2
+          4: 
+            name: '{#FFD700}&l完{#FFEC8B}&l整{#FFFACD}&l金{#FAFAD2}&l元{#FFD700}&l素{#FFEC8B}&l法{#FFFACD}&l则'
+            lore:
+              - '{#FFD700}❖ {#FFEC8B}金之法则·完悟 {#FFFACD}❖'
+              - '{#FAFAD2}│ {#FFD700}西方肃杀·刚健至极'
+              - '{#FFEC8B}│ {#FFFACD}锋芒内敛·无坚不摧'
+              - '{#FFD700}│ {#FFEC8B}完整明悟·大道已成'
+              - '{#FFFACD}└─ {#FAFAD2}金之法则·已臻化境'
+            material_type: mc
+            material: gold_ingot
+            amount: 4
+            slot: 3
+          5: 
+            name: '{#FFD700}&l完{#FFEC8B}&l整{#FFFACD}&l金{#FAFAD2}&l元{#FFD700}&l素{#FFEC8B}&l法{#FFFACD}&l则'
+            lore:
+              - '{#FFD700}❖ {#FFEC8B}金之法则·完悟 {#FFFACD}❖'
+              - '{#FAFAD2}│ {#FFD700}西方肃杀·刚健至极'
+              - '{#FFEC8B}│ {#FFFACD}锋芒内敛·无坚不摧'
+              - '{#FFD700}│ {#FFEC8B}完整明悟·大道已成'
+              - '{#FFFACD}└─ {#FAFAD2}金之法则·已臻化境'
+            material_type: mc
+            material: gold_ingot
+            amount: 5
+            slot: 4
+          6: 
+            name: '{#32CD32}&l完{#228B22}&l整{#006400}&l木{#98FB98}&l元{#90EE90}&l素{#32CD32}&l法{#228B22}&l则'
+            lore:
+              - '{#32CD32}❖ {#228B22}木之法则·完悟 {#006400}❖'
+              - '{#98FB98}│ {#90EE90}东方生机·万物荣发'
+              - '{#32CD32}│ {#228B22}生生不息·轮回圆满'
+              - '{#006400}│ {#98FB98}完整明悟·大道已成'
+              - '{#90EE90}└─ {#32CD32}木之法则·已臻化境'
+            material_type: mc
+            material: emerald
+            amount: 1
+            slot: 9
+          7: 
+            name: '{#32CD32}&l完{#228B22}&l整{#006400}&l木{#98FB98}&l元{#90EE90}&l素{#32CD32}&l法{#228B22}&l则'
+            lore:
+              - '{#32CD32}❖ {#228B22}木之法则·完悟 {#006400}❖'
+              - '{#98FB98}│ {#90EE90}东方生机·万物荣发'
+              - '{#32CD32}│ {#228B22}生生不息·轮回圆满'
+              - '{#006400}│ {#98FB98}完整明悟·大道已成'
+              - '{#90EE90}└─ {#32CD32}木之法则·已臻化境'
+            material_type: mc
+            material: emerald
+            amount: 2
+            slot: 10
+          8: 
+            name: '{#32CD32}&l完{#228B22}&l整{#006400}&l木{#98FB98}&l元{#90EE90}&l素{#32CD32}&l法{#228B22}&l则'
+            lore:
+              - '{#32CD32}❖ {#228B22}木之法则·完悟 {#006400}❖'
+              - '{#98FB98}│ {#90EE90}东方生机·万物荣发'
+              - '{#32CD32}│ {#228B22}生生不息·轮回圆满'
+              - '{#006400}│ {#98FB98}完整明悟·大道已成'
+              - '{#90EE90}└─ {#32CD32}木之法则·已臻化境'
+            material_type: mc
+            material: emerald
+            amount: 3
+            slot: 11
+          9: 
+            name: '{#32CD32}&l完{#228B22}&l整{#006400}&l木{#98FB98}&l元{#90EE90}&l素{#32CD32}&l法{#228B22}&l则'
+            lore:
+              - '{#32CD32}❖ {#228B22}木之法则·完悟 {#006400}❖'
+              - '{#98FB98}│ {#90EE90}东方生机·万物荣发'
+              - '{#32CD32}│ {#228B22}生生不息·轮回圆满'
+              - '{#006400}│ {#98FB98}完整明悟·大道已成'
+              - '{#90EE90}└─ {#32CD32}木之法则·已臻化境'
+            material_type: mc
+            material: emerald
+            amount: 4
+            slot: 12
+          10: 
+            name: '{#32CD32}&l完{#228B22}&l整{#006400}&l木{#98FB98}&l元{#90EE90}&l素{#32CD32}&l法{#228B22}&l则'
+            lore:
+              - '{#32CD32}❖ {#228B22}木之法则·完悟 {#006400}❖'
+              - '{#98FB98}│ {#90EE90}东方生机·万物荣发'
+              - '{#32CD32}│ {#228B22}生生不息·轮回圆满'
+              - '{#006400}│ {#98FB98}完整明悟·大道已成'
+              - '{#90EE90}└─ {#32CD32}木之法则·已臻化境'
+            material_type: mc
+            material: emerald
+            amount: 5
+            slot: 13
+          11: 
+            name: '{#87CEEB}&l完{#00BFFF}&l整{#4682B4}&l水{#F0F8FF}&l元{#E0FFFF}&l素{#87CEEB}&l法{#00BFFF}&l则'
+            lore:
+              - '{#87CEEB}❖ {#00BFFF}水之法则·完悟 {#4682B4}❖'
+              - '{#F0F8FF}│ {#E0FFFF}北方润泽·海纳百川'
+              - '{#87CEEB}│ {#00BFFF}柔能克刚·无形无相'
+              - '{#4682B4}│ {#F0F8FF}完整明悟·大道已成'
+              - '{#E0FFFF}└─ {#87CEEB}水之法则·已臻化境'
+            material_type: mc
+            material: heart_of_the_sea
+            amount: 1
+            slot: 18
+          12: 
+            name: '{#87CEEB}&l完{#00BFFF}&l整{#4682B4}&l水{#F0F8FF}&l元{#E0FFFF}&l素{#87CEEB}&l法{#00BFFF}&l则'
+            lore:
+              - '{#87CEEB}❖ {#00BFFF}水之法则·完悟 {#4682B4}❖'
+              - '{#F0F8FF}│ {#E0FFFF}北方润泽·海纳百川'
+              - '{#87CEEB}│ {#00BFFF}柔能克刚·无形无相'
+              - '{#4682B4}│ {#F0F8FF}完整明悟·大道已成'
+              - '{#E0FFFF}└─ {#87CEEB}水之法则·已臻化境'
+            material_type: mc
+            material: heart_of_the_sea
+            amount: 2
+            slot: 19
+          13: 
+            name: '{#87CEEB}&l完{#00BFFF}&l整{#4682B4}&l水{#F0F8FF}&l元{#E0FFFF}&l素{#87CEEB}&l法{#00BFFF}&l则'
+            lore:
+              - '{#87CEEB}❖ {#00BFFF}水之法则·完悟 {#4682B4}❖'
+              - '{#F0F8FF}│ {#E0FFFF}北方润泽·海纳百川'
+              - '{#87CEEB}│ {#00BFFF}柔能克刚·无形无相'
+              - '{#4682B4}│ {#F0F8FF}完整明悟·大道已成'
+              - '{#E0FFFF}└─ {#87CEEB}水之法则·已臻化境'
+            material_type: mc
+            material: heart_of_the_sea
+            amount: 3
+            slot: 20
+          14: 
+            name: '{#87CEEB}&l完{#00BFFF}&l整{#4682B4}&l水{#F0F8FF}&l元{#E0FFFF}&l素{#87CEEB}&l法{#00BFFF}&l则'
+            lore:
+              - '{#87CEEB}❖ {#00BFFF}水之法则·完悟 {#4682B4}❖'
+              - '{#F0F8FF}│ {#E0FFFF}北方润泽·海纳百川'
+              - '{#87CEEB}│ {#00BFFF}柔能克刚·无形无相'
+              - '{#4682B4}│ {#F0F8FF}完整明悟·大道已成'
+              - '{#E0FFFF}└─ {#87CEEB}水之法则·已臻化境'
+            material_type: mc
+            material: heart_of_the_sea
+            amount: 4
+            slot: 21
+          15: 
+            name: '{#87CEEB}&l完{#00BFFF}&l整{#4682B4}&l水{#F0F8FF}&l元{#E0FFFF}&l素{#87CEEB}&l法{#00BFFF}&l则'
+            lore:
+              - '{#87CEEB}❖ {#00BFFF}水之法则·完悟 {#4682B4}❖'
+              - '{#F0F8FF}│ {#E0FFFF}北方润泽·海纳百川'
+              - '{#87CEEB}│ {#00BFFF}柔能克刚·无形无相'
+              - '{#4682B4}│ {#F0F8FF}完整明悟·大道已成'
+              - '{#E0FFFF}└─ {#87CEEB}水之法则·已臻化境'
+            material_type: mc
+            material: heart_of_the_sea
+            amount: 5
+            slot: 22
+          16: 
+            name: '{#FF4500}&l完{#FF6347}&l整{#FF7F50}&l火{#FF7043}&l元{#FF8A65}&l素{#FF4500}&l法{#FF6347}&l则'
+            lore:
+              - '{#FF4500}❖ {#FF6347}火之法则·完悟 {#FF7F50}❖'
+              - '{#FF7043}│ {#FF8A65}南方炽烈·焚天煮海'
+              - '{#FF4500}│ {#FF6347}光明永耀·创生毁灭'
+              - '{#FF7F50}│ {#FF7043}完整明悟·大道已成'
+              - '{#FF8A65}└─ {#FF4500}火之法则·已臻化境'
+            material_type: mc
+            material: fire_charge
+            amount: 1
+            slot: 27
+          17: 
+            name: '{#FF4500}&l完{#FF6347}&l整{#FF7F50}&l火{#FF7043}&l元{#FF8A65}&l素{#FF4500}&l法{#FF6347}&l则'
+            lore:
+              - '{#FF4500}❖ {#FF6347}火之法则·完悟 {#FF7F50}❖'
+              - '{#FF7043}│ {#FF8A65}南方炽烈·焚天煮海'
+              - '{#FF4500}│ {#FF6347}光明永耀·创生毁灭'
+              - '{#FF7F50}│ {#FF7043}完整明悟·大道已成'
+              - '{#FF8A65}└─ {#FF4500}火之法则·已臻化境'
+            material_type: mc
+            material: fire_charge
+            amount: 2
+            slot: 28
+          18: 
+            name: '{#FF4500}&l完{#FF6347}&l整{#FF7F50}&l火{#FF7043}&l元{#FF8A65}&l素{#FF4500}&l法{#FF6347}&l则'
+            lore:
+              - '{#FF4500}❖ {#FF6347}火之法则·完悟 {#FF7F50}❖'
+              - '{#FF7043}│ {#FF8A65}南方炽烈·焚天煮海'
+              - '{#FF4500}│ {#FF6347}光明永耀·创生毁灭'
+              - '{#FF7F50}│ {#FF7043}完整明悟·大道已成'
+              - '{#FF8A65}└─ {#FF4500}火之法则·已臻化境'
+            material_type: mc
+            material: fire_charge
+            amount: 3
+            slot: 29
+          19: 
+            name: '{#FF4500}&l完{#FF6347}&l整{#FF7F50}&l火{#FF7043}&l元{#FF8A65}&l素{#FF4500}&l法{#FF6347}&l则'
+            lore:
+              - '{#FF4500}❖ {#FF6347}火之法则·完悟 {#FF7F50}❖'
+              - '{#FF7043}│ {#FF8A65}南方炽烈·焚天煮海'
+              - '{#FF4500}│ {#FF6347}光明永耀·创生毁灭'
+              - '{#FF7F50}│ {#FF7043}完整明悟·大道已成'
+              - '{#FF8A65}└─ {#FF4500}火之法则·已臻化境'
+            material_type: mc
+            material: fire_charge
+            amount: 4
+            slot: 30
+          20: 
+            name: '{#FF4500}&l完{#FF6347}&l整{#FF7F50}&l火{#FF7043}&l元{#FF8A65}&l素{#FF4500}&l法{#FF6347}&l则'
+            lore:
+              - '{#FF4500}❖ {#FF6347}火之法则·完悟 {#FF7F50}❖'
+              - '{#FF7043}│ {#FF8A65}南方炽烈·焚天煮海'
+              - '{#FF4500}│ {#FF6347}光明永耀·创生毁灭'
+              - '{#FF7F50}│ {#FF7043}完整明悟·大道已成'
+              - '{#FF8A65}└─ {#FF4500}火之法则·已臻化境'
+            material_type: mc
+            material: fire_charge
+            amount: 5
+            slot: 31
+          21: 
+            name: '{#8B4513}&l完{#A0522D}&l整{#654321}&l土{#F5DEB3}&l元{#DEB887}&l素{#8B4513}&l法{#A0522D}&l则'
+            lore:
+              - '{#8B4513}❖ {#A0522D}土之法则·完悟 {#654321}❖'
+              - '{#F5DEB3}│ {#DEB887}中央厚德·承载天地'
+              - '{#8B4513}│ {#A0522D}大地为母·孕育众生'
+              - '{#654321}│ {#F5DEB3}完整明悟·大道已成'
+              - '{#DEB887}└─ {#8B4513}土之法则·已臻化境'
+            material_type: mc
+            material: netherite_scrap
+            amount: 1
+            slot: 36
+          22: 
+            name: '{#8B4513}&l完{#A0522D}&l整{#654321}&l土{#F5DEB3}&l元{#DEB887}&l素{#8B4513}&l法{#A0522D}&l则'
+            lore:
+              - '{#8B4513}❖ {#A0522D}土之法则·完悟 {#654321}❖'
+              - '{#F5DEB3}│ {#DEB887}中央厚德·承载天地'
+              - '{#8B4513}│ {#A0522D}大地为母·孕育众生'
+              - '{#654321}│ {#F5DEB3}完整明悟·大道已成'
+              - '{#DEB887}└─ {#8B4513}土之法则·已臻化境'
+            material_type: mc
+            material: netherite_scrap
+            amount: 2
+            slot: 37
+          23: 
+            name: '{#8B4513}&l完{#A0522D}&l整{#654321}&l土{#F5DEB3}&l元{#DEB887}&l素{#8B4513}&l法{#A0522D}&l则'
+            lore:
+              - '{#8B4513}❖ {#A0522D}土之法则·完悟 {#654321}❖'
+              - '{#F5DEB3}│ {#DEB887}中央厚德·承载天地'
+              - '{#8B4513}│ {#A0522D}大地为母·孕育众生'
+              - '{#654321}│ {#F5DEB3}完整明悟·大道已成'
+              - '{#DEB887}└─ {#8B4513}土之法则·已臻化境'
+            material_type: mc
+            material: netherite_scrap
+            amount: 3
+            slot: 38
+          24: 
+            name: '{#8B4513}&l完{#A0522D}&l整{#654321}&l土{#F5DEB3}&l元{#DEB887}&l素{#8B4513}&l法{#A0522D}&l则'
+            lore:
+              - '{#8B4513}❖ {#A0522D}土之法则·完悟 {#654321}❖'
+              - '{#F5DEB3}│ {#DEB887}中央厚德·承载天地'
+              - '{#8B4513}│ {#A0522D}大地为母·孕育众生'
+              - '{#654321}│ {#F5DEB3}完整明悟·大道已成'
+              - '{#DEB887}└─ {#8B4513}土之法则·已臻化境'
+            material_type: mc
+            material: netherite_scrap
+            amount: 4
+            slot: 39
+          25: 
+            name: '{#8B4513}&l完{#A0522D}&l整{#654321}&l土{#F5DEB3}&l元{#DEB887}&l素{#8B4513}&l法{#A0522D}&l则'
+            lore:
+              - '{#8B4513}❖ {#A0522D}土之法则·完悟 {#654321}❖'
+              - '{#F5DEB3}│ {#DEB887}中央厚德·承载天地'
+              - '{#8B4513}│ {#A0522D}大地为母·孕育众生'
+              - '{#654321}│ {#F5DEB3}完整明悟·大道已成'
+              - '{#DEB887}└─ {#8B4513}土之法则·已臻化境'
+            material_type: mc
+            material: netherite_scrap
+            amount: 5
+            slot: 40
+        output:
+          1:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_五行灵曦
+            amount: 1
+            slot: 49
+    ##祖炁法则
+      KOMUTECH_L_FZ_五行祖炁:
+        input:
+          1: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 1
+            slot: 9
+          2: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 2
+            slot: 10
+          3: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 3
+            slot: 11
+          4: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 4
+            slot: 12
+          5: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 5
+            slot: 13
+          6: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 6
+            slot: 14
+          7: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 7
+            slot: 15
+          8: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 8
+            slot: 16
+          9: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 9
+            slot: 17
+          10: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 10
+            slot: 18
+          11: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 11
+            slot: 19
+          12: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 12
+            slot: 20
+          13: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 13
+            slot: 21
+          14: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 14
+            slot: 22
+          15: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 15
+            slot: 23
+          16: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 16
+            slot: 24
+          17: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 17
+            slot: 25
+          18: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 18
+            slot: 26
+          19: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 19
+            slot: 27
+          20: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 20
+            slot: 28
+          21: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 21
+            slot: 29
+          22: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 22
+            slot: 30
+          23: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 23
+            slot: 31
+          24: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 24
+            slot: 32
+          25: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 25
+            slot: 33
+          26: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 26
+            slot: 34
+          27: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 27
+            slot: 35
+          28: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 28
+            slot: 36
+          29: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 29
+            slot: 37
+          30: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 30
+            slot: 38
+          31: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 31
+            slot: 39
+          32: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 32
+            slot: 40
+          33: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 33
+            slot: 41
+          34: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 34
+            slot: 42
+          35: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 35
+            slot: 43
+          36: 
+            name: "{#f6d365}&l❖✦·{#f6d365}&l五{#f8b975}&l行{#fda085}&l灵{#f8b975}&l曦{#f6d365}&l·✦❖"
+            lore:
+              - "{#f6d365}『{#f6d365}晨{#f8b975}曦{#fda085}初{#f8b975}醒{#f6d365}·{#f6d365}五{#fda085}行{#f8b975}灵{#fda085}韵{#f8b975}生{#f6d365}』"
+              - "{#f6d365}✦ {#f8b975}破晓天光沐晨露 {#f6d365}· {#fda085}紫气东来蕴灵机"
+              - "{#f6d365}✦ {#f8b975}五行流转藏真意 {#f6d365}· {#fda085}曦光朦胧照道途"
+              - "{#f6d365}☯ {#f8b975}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ {#f6d365}☯"
+              - "{#f6d365}❖ {#f8b975}清浅如朝露 {#f6d365}· {#fda085}澄澈似山泉"
+              - "{#f6d365}❖ {#f8b975}道韵初凝时 {#f6d365}· {#fda085}脆弱待造化"
+              - "{#f6d365}『{#f8b975}初窥门径·五行之始{#f6d365}』"
+            material_type: mc
+            material: magma_cream
+            glow: true
+            amount: 36
+            slot: 44
+        output:
+          1:
+            material_type: slimefun
+            material: KOMUTECH_L_FZ_五行祖炁
+            amount: 1
+            slot: 49
 
+
+
+
+KOMUTECH_L_PF_终极合成演示:
+  item_group: Komutech_L_PF
+  item:
+    name: "{#00FA9A}&kA{#2DFBAE}&l终{#5AFCC2}&l极{#86FDD7}&l合{#B3FEEB}&l成{#E0FFFF}&l演{#00FA9A}&l示{#E0FFFF}&kA"
+    material_type: mc
+    material: beacon
+  recipe_type: NULL
+  input: [0,1,2,3,4,5,6,7,8, 9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44]
+  output: [49]
+  capacity: 131400
+  energyPerCraft: 26000
+  click: 53
+  recipes:
+    ##無
+      KOMUTECH_L_ZJ_無:
+        input:
+          1: 
+            name: "{#fc6076}&l❀❈·{#fc6076}&l五{#fd7a5f}&l行{#ff9a44}&l祖{#fd7a5f}&l炁{#fc6076}&l·❈❀"
+            lore:
+              - "{#fc6076}『{#fc6076}混{#fd7a5f}沌{#ff9a44}初{#fd7a5f}开{#fc6076}·{#fc6076}祖{#fd7a5f}炁{#ff9a44}归{#fd7a5f}元{#fc6076}』"
+              - "{#ff9a44}☯{#fc6076}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#ff9a44}☯"
+              - "{#fc6076}❈ {#fd7a5f}天地未分孕初气 {#ff9a44}▸ {#fd7a5f}五行万象演根源"
+              - "{#fc6076}❈ {#fd7a5f}圆满自足循天道 {#ff9a44}▸ {#fd7a5f}万法生克执枢机"
+              - "{#ff9a44}☯{#fc6076}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#ff9a44}☯"
+              - "{#fc6076}❀ {#fd7a5f}混元归一·大道圆满 {#ff9a44}❀"
+              - "{#fc6076}❀ {#fd7a5f}祖炁归真·永恒不竭 {#ff9a44}❀"
+              - "{#fc6076}『 {#fd7a5f}彻悟道韵 {#ff9a44}· {#fd7a5f}五行本源{#ff9a44} 』"
+              - "&8不会有人溯源了吧?"
+            material_type: mc
+            material: shroomlight
+            glow: true
+            amount: 1
+            slot: 10
+          2: 
+            name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
+            lore:
+              - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
+              - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
+              - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
+              - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
+              - "&8不会有人溯源了吧?"
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            glow: true
+            amount: 1
+            slot: 19
+          3: 
+            name: "{#fbc2eb}&l❀❈·{#fbc2eb}&l天{#d1c2ed}&l象{#a6c1ee}&l祖{#d1c2ed}&l炁{#fbc2eb}&l·❈❀"
+            lore:
+              - "{#fbc2eb}『{#fbc2eb}苍{#d1c2ed}穹{#a6c1ee}定{#d1c2ed}鼎{#fbc2eb}·{#fbc2eb}祖{#a6c1ee}炁{#d1c2ed}御{#a6c1ee}天{#fbc2eb}』"
+              - "{#a6c1ee}☯{#fbc2eb}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#a6c1ee}☯"
+              - "{#fbc2eb}❈ {#d1c2ed}执掌风雷惊天地 {#a6c1ee}▸ {#d1c2ed}统御云雪定乾坤"
+              - "{#fbc2eb}❈ {#d1c2ed}天象无极归真意 {#a6c1ee}▸ {#d1c2ed}万化由心贯太虚"
+              - "{#a6c1ee}☯{#fbc2eb}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#a6c1ee}☯"
+              - "{#fbc2eb}❀ {#d1c2ed}混元归一·大道圆满 {#a6c1ee}❀"
+              - "{#fbc2eb}❀ {#d1c2ed}祖炁御天·永恒不灭 {#a6c1ee}❀"
+              - "{#fbc2eb}『 {#d1c2ed}彻悟天道 {#a6c1ee}· {#d1c2ed}天象本源{#a6c1ee} 』"
+              - "&8不会有人溯源了吧?"
+            material_type: mc
+            material: pearlescent_froglight
+            glow: true
+            amount: 1
+            slot: 27
+          4: 
+            name: "{#43e97b}&l❀❈·{#43e97b}&l造{#3ef1a9}&l化{#38f9d7}&l祖{#3ef1a9}&l炁{#43e97b}&l·❈❀"
+            lore:
+              - "{#43e97b}『{#43e97b}造{#3ef1a9}物{#38f9d7}赋{#3ef1a9}灵{#43e97b}·{#43e97b}万{#38f9d7}法{#3ef1a9}归{#38f9d7}宗{#43e97b}』"
+              - "{#38f9d7}☯{#43e97b}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#38f9d7}☯"
+              - "{#43e97b}❈ {#3ef1a9}机关通天掌造化 {#38f9d7}▸ {#3ef1a9}炼金九转炼神胎"
+              - "{#43e97b}❈ {#3ef1a9}空间无极随心转 {#38f9d7}▸ {#3ef1a9}天音杀伐定轮回"
+              - "{#38f9d7}☯{#43e97b}▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬{#38f9d7}☯"
+              - "{#43e97b}❀ {#3ef1a9}混元归一·大道圆满 {#38f9d7}❀"
+              - "{#43e97b}❀ {#3ef1a9}祖炁归真·永恒不灭 {#38f9d7}❀"
+              - "{#43e97b}『 {#3ef1a9}彻悟本源 {#38f9d7}· {#3ef1a9}造化大道{#38f9d7} 』"
+              - "&8不会有人溯源了吧?"
+            material_type: mc
+            material: chain_command_block
+            glow: true
+            amount: 1
+            slot: 29
+          5: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 12
+          6: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 13
+          7: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 14
+          8: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 21
+          9: 
+            name: '&a合成'
+            material_type: mc
+            material: lime_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 22
+          10: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 23
+          11: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 30
+          12: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 31
+          13: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 32
+          14: 
+            name: "{#1C1C1C}&l-{#3C3C3C}&l-{#5D5D5D}&l-{#7D7D7D}&l-{#9E9E9E}&l✦{#BEBEBE}&l✫{#DFDFDF}&l✬·{#FFFFFF}&l無·{#DFDFDF}&l✬{#BEBEBE}&l✫{#9E9E9E}&l✦{#7D7D7D}&l-{#5D5D5D}&l-{#3C3C3C}&l-{#1C1C1C}&l-"
+            lore:
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l叁 {#FFFFFF}&l炁 {#FFFFFF}&l歸 {#D2D2D2}&l壹 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l萬 {#FFFFFF}&l化 {#FFFFFF}&l本 {#D2D2D2}&l源 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l無 {#FFFFFF}&l中 {#FFFFFF}&l生 {#D2D2D2}&l有 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l造 {#FFFFFF}&l化 {#FFFFFF}&l天 {#D2D2D2}&l地 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"    
+            material_type: mc
+            material: nether_star
+            glow: true
+            amount: 1
+            slot: 25
+        output:
+          1:
+            material_type: slimefun
+            material: KOMUTECH_L_ZJ_無
+            amount: 1
+            slot: 49
+    ##萬象匱
+      KOMUTECH_L_ZJ_萬象匱:
+        input:
+          1: 
+            material_type: mc
+            material: ender_chest
+            amount: 1
+            slot: 9
+          2: 
+            material_type: mc
+            material: ender_chest
+            amount: 1
+            slot: 10
+          3: 
+            material_type: mc
+            material: ender_chest
+            amount: 1
+            slot: 11
+          4: 
+            material_type: mc
+            material: ender_chest
+            amount: 1
+            slot: 18
+          5: 
+            name: "{#1C1C1C}&l-{#3C3C3C}&l-{#5D5D5D}&l-{#7D7D7D}&l-{#9E9E9E}&l✦{#BEBEBE}&l✫{#DFDFDF}&l✬·{#FFFFFF}&l無·{#DFDFDF}&l✬{#BEBEBE}&l✫{#9E9E9E}&l✦{#7D7D7D}&l-{#5D5D5D}&l-{#3C3C3C}&l-{#1C1C1C}&l-"
+            lore:
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l叁 {#FFFFFF}&l炁 {#FFFFFF}&l歸 {#D2D2D2}&l壹 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l萬 {#FFFFFF}&l化 {#FFFFFF}&l本 {#D2D2D2}&l源 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l無 {#FFFFFF}&l中 {#FFFFFF}&l生 {#D2D2D2}&l有 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l造 {#FFFFFF}&l化 {#FFFFFF}&l天 {#D2D2D2}&l地 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"    
+            material_type: mc
+            material: nether_star
+            glow: true
+            amount: 1
+            slot: 19
+          6: 
+            material_type: mc
+            material: ender_chest
+            amount: 1
+            slot: 20
+          7: 
+            material_type: mc
+            material: ender_chest
+            amount: 1
+            slot: 27
+          8: 
+            material_type: mc
+            material: ender_chest
+            amount: 1
+            slot: 28
+          9: 
+            material_type: mc
+            material: ender_chest
+            amount: 1
+            slot: 29
+          10: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 12
+          11: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 13
+          12: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 14
+          13: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 21
+          14: 
+            name: '&a合成'
+            material_type: mc
+            material: lime_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 22
+          15: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 23
+          16: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 30
+          17: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 31
+          18: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 32
+          19: 
+            name: "{#C0C0C0}&l-{#C8C8C8}&l-{#C8C8C8}&l-{#D0D0D0}&l✦{#D8D8D8}&l✫{#E0E0E0}&l·{#E8E8E8}&l萬{#F0F0F0}&l·{#FFFFFF}&l象{#F0F0F0}&l·{#E8E8E8}&l匱{#E0E0E0}&l·{#D8D8D8}&l✫{#D0D0D0}&l✦{#C8C8C8}&l-{#C8C8C8}&l-{#C0C0C0}&l-"
+            lore:
+              - "{#C0C0C0}&l&k0{#C8C8C8}&l&k0{#D0D0D0}&l&k0{#D8D8D8}&l萬{#E0E0E0}&l象{#E8E8E8}&l歸{#F0F0F0}&l一{#F8F8F8}&l·{#F0F0F0}&l貯{#E8E8E8}&l盡{#E0E0E0}&l萬{#D8D8D8}&l物{#D0D0D0}&l&k0{#C8C8C8}&l&k0{#C0C0C0}&l&k0"
+              - "{#C0C0C0}&l&k0{#C8C8C8}&l&k0{#D0D0D0}&l&k0{#D8D8D8}&l虛{#E0E0E0}&l空{#E8E8E8}&l之{#F0F0F0}&l界{#F8F8F8}&l·{#F0F0F0}&l萬{#E8E8E8}&l法{#E0E0E0}&l萬{#D8D8D8}&l象{#D0D0D0}&l&k0{#C8C8C8}&l&k0{#C0C0C0}&l&k0"
+            material_type: mc
+            material: book
+            glow: true
+            amount: 1
+            slot: 25
+        output:
+          1:
+            material_type: slimefun
+            material: KOMUTECH_L_ZJ_萬象匱
+            amount: 1
+            slot: 49
+    ##萬衍儀
+      KOMUTECH_L_ZJ_萬衍儀:
+        input:
+          1: 
+            name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
+            lore:
+              - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
+              - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
+              - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
+              - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            amount: 1
+            slot: 9
+          2: 
+            name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
+            lore:
+              - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
+              - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
+              - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
+              - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            amount: 1
+            slot: 10
+          3: 
+            name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
+            lore:
+              - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
+              - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
+              - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
+              - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            amount: 1
+            slot: 11
+          4: 
+            name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
+            lore:
+              - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
+              - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
+              - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
+              - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            amount: 1
+            slot: 18
+          5: 
+            name: "{#1C1C1C}&l-{#3C3C3C}&l-{#5D5D5D}&l-{#7D7D7D}&l-{#9E9E9E}&l✦{#BEBEBE}&l✫{#DFDFDF}&l✬·{#FFFFFF}&l無·{#DFDFDF}&l✬{#BEBEBE}&l✫{#9E9E9E}&l✦{#7D7D7D}&l-{#5D5D5D}&l-{#3C3C3C}&l-{#1C1C1C}&l-"
+            lore:
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l叁 {#FFFFFF}&l炁 {#FFFFFF}&l歸 {#D2D2D2}&l壹 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l萬 {#FFFFFF}&l化 {#FFFFFF}&l本 {#D2D2D2}&l源 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l無 {#FFFFFF}&l中 {#FFFFFF}&l生 {#D2D2D2}&l有 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"
+              - "{#1C1C1C}&l&k0{#494949}&l&k0{#777777}&l&k0{#A4A4A4}&l✧ {#D2D2D2}&l造 {#FFFFFF}&l化 {#FFFFFF}&l天 {#D2D2D2}&l地 {#A4A4A4}&l✧ {#777777}&l&k0{#494949}&l&k0{#1C1C1C}&l&k0"    
+            material_type: mc
+            material: nether_star
+            glow: true
+            amount: 1
+            slot: 19
+          6: 
+            name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
+            lore:
+              - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
+              - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
+              - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
+              - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            amount: 1
+            slot: 20
+          7: 
+            name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
+            lore:
+              - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
+              - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
+              - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
+              - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            amount: 1
+            slot: 27
+          8: 
+            name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
+            lore:
+              - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
+              - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
+              - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
+              - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            amount: 1
+            slot: 28
+          9: 
+            name: '{#00FA9A}&l❀·{#2DFBAE}&l灵{#5AFCC2}&l作{#86FDD7}&l者{#B3FEEB}&l·❀'
+            lore:
+              - '{#2DFBAE}❖{#5AFCC2}   灵   {#86FDD7}❖'
+              - '{#5AFCC2}│{#86FDD7} 作者 {#B3FEEB}· Komu_A'
+              - '{#86FDD7}│{#B3FEEB} 目前进度 {#E0FFFF}· 进行中'
+              - '{#B3FEEB}└─{#E0FFFF} 联系方式 {#00FA9A}· QQ:2819696145'
+            material_type: mc
+            material: 2a06b7ef30db3cd6a869e015e59913e4dfc9212688c281fab18b1f2938fc9f42
+            amount: 1
+            slot: 29
+          10: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 12
+          11: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 13
+          12: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 14
+          13: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 21
+          14: 
+            name: '&a合成'
+            material_type: mc
+            material: lime_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 22
+          15: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 23
+          16: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 30
+          17: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 31
+          18: 
+            name: '&f'
+            material_type: mc
+            material: white_stained_glass_pane
+            glow: true
+            amount: 1
+            slot: 32
+          19: 
+            name: "{#00FA9A}&l-{#19FBA5}&l-{#32FBB0}&l-{#4BFCBC}&l✦ {#7CFDD2}&l✫{#95FDDD}&l·{#AEFEE9}&l萬{#C7FEF4}&l·{#E0FFFF}&l衍{#C7FEF4}&l·{#AEFEE9}&l儀{#95FDDD}&l·{#7CFDD2}&l✫ {#4BFCBC}&l✦{#32FBB0}&l-{#19FBA5}&l-{#00FA9A}&l-"
+            lore:
+              - "{#00FA9A}&l&k0{#19FBA5}&l&k0{#32FBB0}&l&k0{#4BFCBC}&l-{#64FCC7}&l✧{#7CFDD2}&l·{#95FDDD}&l悟{#AEFEE9}&l貫{#E0FFFF}&l天{#E0FFFF}&l地{#AEFEE9}&l法{#95FDDD}&l則{#7CFDD2}&l·{#64FCC7}&l✧{#4BFCBC}&l-{#32FBB0}&l&k0{#19FBA5}&l&k0{#00FA9A}&l&k0"
+              - "{#00FA9A}&l&k0{#19FBA5}&l&k0{#32FBB0}&l&k0{#4BFCBC}&l-{#64FCC7}&l✧{#7CFDD2}&l·{#95FDDD}&l衍{#AEFEE9}&l化{#E0FFFF}&l世{#E0FFFF}&l間{#AEFEE9}&l萬{#95FDDD}&l物{#7CFDD2}&l·{#64FCC7}&l✧{#4BFCBC}&l-{#32FBB0}&l&k0{#19FBA5}&l&k0{#00FA9A}&l&k0"        
+            material_type: mc
+            material: beacon
+            glow: true
+            amount: 1
+            slot: 25
+        output:
+          1:
+            material_type: slimefun
+            material: KOMUTECH_L_ZJ_萬衍儀
+            amount: 1
+            slot: 49
 
 ##                    走云川-原版
 #金元素展示

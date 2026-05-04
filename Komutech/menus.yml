@@ -6,13 +6,29 @@ Komutech_更新日志:
       material: pink_stained_glass_pane
     50-53:
       material: pink_stained_glass_pane
-Komutech_L_JQJC_演示:
+KOMUTECH_L_PF_演示:
   name: "{#00FA9A}&kA{#2DFBAE}&l机{#5AFCC2}&l器{#86FDD7}&l教{#B3FEEB}&l程{#E0FFFF}&l演{#00FA9A}&l示{#E0FFFF}&kA"
   slots:
     45-48:
       material: pink_stained_glass_pane
     50-53:
       material: pink_stained_glass_pane
+KOMUTECH_L_PF_法则合成演示:
+  name: "{#00FA9A}&kA{#2DFBAE}&l法{#5AFCC2}&l则{#86FDD7}&l合{#B3FEEB}&l成{#E0FFFF}&l演{#00FA9A}&l示{#E0FFFF}&kA"
+  slots:
+    45-48:
+      material: pink_stained_glass_pane
+    50-53:
+      material: pink_stained_glass_pane
+
+KOMUTECH_L_PF_终极合成演示:
+  name: "{#00FA9A}&kA{#2DFBAE}&l终{#5AFCC2}&l极{#86FDD7}&l合{#B3FEEB}&l成{#E0FFFF}&l演{#00FA9A}&l示{#E0FFFF}&kA"
+  slots:
+    45-48:
+      material: pink_stained_glass_pane
+    50-53:
+      material: pink_stained_glass_pane
+
 
 
 ##胶水提取器

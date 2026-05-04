@@ -6,3 +6,14 @@ L_ZJ_WXG_BAN:
 - KOMUTECH_L_ZJ_萬象匱
 # 萬象匱全局数据清除密码
 L_ZJ_WXG_MM: "0108"
+# 管理员删除密码
+KOMUTECH_WJSX_MM: "0108"
+
+# 属性成长系数
+KOMUTECH_WJSX_SXCZZ:
+  血量: 3.0
+  攻击力: 1.0
+  防御力: 1.0
+  速度: 0.1
+  灵识: 0.01
+  灵力: 0.1

@@ -16,9 +16,10 @@ const KOMUTECH_ZN_CATEGORIES = [
     { id: 'juanzhou', name: '§5✦ 卷轴篇', lore: '§e卷轴的使用方法', icon: 'BOOK', slot: 15 }
 ];
 const KOMUTECH_ZN_REWARDS = [
-    { id: 'KOMUTECH_L_LZ_YG', chance: 30 },
-    { id: 'KOMUTECH_L_DJ_XPLS', chance: 30 },
-    { id: 'KOMUTECH_L_GJ_印物笺', chance: 1 }
+    { id: 'KOMUTECH_L_LZ_YG', chance: 40 },
+    { id: 'KOMUTECH_L_DJ_XPLS', chance: 40 },
+    { id: 'KOMUTECH_L_DJ_擇靈珠', chance: 1 },
+    { id: 'KOMUTECH_L_GJ_印物笺', chance: 5 }
 ];
 const KOMUTECH_ZN_REWARD_SLOTS = [19,20,21,22,23,24,25,28,29,30,31,32,33,34,37,38,39,40,41,42,43];
 const KOMUTECH_ZN_INFO_SLOT = 4;

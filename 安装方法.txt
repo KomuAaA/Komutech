@@ -1,0 +1,4 @@
+此附属作者为口木 QQ：2819696145
+addon_configs文件夹放入server\plugins\RykenSlimefunCustomizer 文件夹下
+Komutech 文件夹放入\server\plugins\RykenSlimefunCustomizer\addons 文件夹下即可
+addon_configs文件夹中的Komutech 为口木科技配置文件，不可缺少！！！

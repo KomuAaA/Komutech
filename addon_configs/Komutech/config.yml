@@ -1,0 +1,13 @@
+L_ZJ_WXG_CCmax: 5
+L_ZJ_WXG_BAN:
+- KOMUTECH_L_ZJ_萬衍儀
+- KOMUTECH_L_ZJ_萬象匱
+L_ZJ_WXG_MM: '0108'
+KOMUTECH_WJSX_MM: '0108'
+KOMUTECH_WJSX_SXCZZ:
+  血量: 3.0
+  攻击力: 1.0
+  防御力: 1.0
+  速度: 0.1
+  灵识: 0.01
+  灵力: 0.1

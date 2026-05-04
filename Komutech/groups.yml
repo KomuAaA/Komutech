@@ -89,17 +89,18 @@ Komutech_CD8:
     name: ' '
   parent: Komutech
   tier: 8
-Komutech_L_GL:
+Komutech_L_WJSX:
   lateInit: false
-  type: sub
+  type: button
   item:
     material_type: mc
-    material: structure_void
-    glow: true
-    name: '&b&l灵 &7- {#FF00FF}&l管{#D80080}&l理{#B20060}&l物{#8B0000}&l品'
+    material: player_head
+    name: '{#00FA9A}&kA{#2DFBAE}&l玩{#5AFCC2}&l家{#86FDD7}&l属{#B3FEEB}&l性{#E0FFFF}&kA'
     glow: true
   parent: Komutech
   tier: 9
+  actions:
+  - "script L-菜单/玩家属性"
 Komutech_JZ_JCWP:
   lateInit: false
   type: sub
@@ -306,18 +307,18 @@ Komutech_CD30:
     name: ' '
   parent: Komutech
   tier: 30
-Komutech_L_JQJC:
+Komutech_L_PF:
   lateInit: false
   type: button
   item:
     material_type: mc
     material: white_stained_glass_pane
     glow: true
-    name: '{#00FA9A}&kA{#2DFBAE}&l机{#5AFCC2}&l器{#86FDD7}&l教{#B3FEEB}&l程{#E0FFFF}&l演{#00FA9A}&l示{#E0FFFF}&kA'
+    name: '{#00FA9A}&kA{#2DFBAE}&l快{#5AFCC2}&l捷{#86FDD7}&l配{#B3FEEB}&l方{#E0FFFF}&l查{#00FA9A}&l找{#E0FFFF}&kA'
   parent: Komutech
-  actions:
-  - "display_slimefunitem KOMUTECH_L_JQJC_演示"
   tier: 31
+  actions:
+  - "script L-菜单/口木科技便捷配方"
 Komutech_L_DFKJQ:
   lateInit: false
   type: sub
@@ -347,14 +348,14 @@ Komutech_L_LD:
     name: '&b&l灵 &7- {#00BFFF}&l灵{#1E90FF}&l电'
   parent: Komutech
   tier: 34
-Komutech_CD35:
+Komutech_L_X:
   lateInit: false
-  type: button
+  type: sub
   item:
     material_type: mc
-    material: light_gray_stained_glass_pane
+    material: lantern
     glow: false
-    name: ' '
+    name: '{#22c575}&kA{#40d488}&l修{#5eead4}&l炼&kA'  
   parent: Komutech
   tier: 35
 Komutech_CD36:
@@ -397,16 +398,18 @@ Komutech_JZ_DJR:
     name: '{#00FA9A}&kA{#2DFBAE}&l口{#5AFCC2}&l木{#86FDD7}&l科{#B3FEEB}&l技{#E0FFFF}&kA &7- &a&l&m待加入'
   parent: Komutech
   tier: 39
-Komutech_CD40:
+Komutech_SXCZCD:
   lateInit: false
   type: button
   item:
     material_type: mc
     material: white_stained_glass_pane
-    glow: false
-    name: '&f&l第二页'
+    glow: true
+    name: '{#00FA9A}&kA{#2DFBAE}&l属{#5AFCC2}&l性{#86FDD7}&l重{#B3FEEB}&l置{#E0FFFF}&l菜{#00FA9A}&l单{#E0FFFF}&kA'    
   parent: Komutech
   tier: 40
+  actions:
+  - "script L-菜单/属性重置菜单"  
 Komutech_L_JZ:
   lateInit: false
   type: sub
@@ -695,3 +698,34 @@ Komutech_L_ZJ_WXGPZ:
   tier: 69
   actions:
   - "script L-菜单/萬象匱配置"
+Komutech_CD70:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 70
+Komutech_CD71:
+  lateInit: false
+  type: button
+  item:
+    material_type: mc
+    material: light_gray_stained_glass_pane
+    glow: false
+    name: ' '
+  parent: Komutech
+  tier: 71
+Komutech_L_GL:
+  lateInit: false
+  type: sub
+  item:
+    material_type: mc
+    material: structure_void
+    glow: true
+    name: '&b&l灵 &7- {#FF00FF}&l管{#D80080}&l理{#B20060}&l物{#8B0000}&l品'
+    glow: true
+  parent: Komutech
+  tier: 72

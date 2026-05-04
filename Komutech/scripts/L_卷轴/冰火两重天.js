@@ -1,39 +1,8 @@
-const plugin = org.bukkit.Bukkit.getPluginManager().getPlugin("RykenSlimefunCustomizer");
-
-const CFG = {
-    name: '§c§l冰§b§l火§f§l两§6§l重§e§l天',
-    namePlain: '冰火两重天',
-    defaultLore: "§7未录取卷轴",
-    baseEnergyCost: 3000,
-    maxEnergyCost: 30000,
-    costTargetIncrease: 2.5,
-    baseDamage: 30,
-    profAddRange: [1, 10],
-    cooldown: 600,
-    cooldownReduction: { per100: 3, max: 90 },
-    maxDistance: 32,
-    particleInterval: 0.1,
-    spiralRadius: 1.5,
-    fireParticle: { startColor: {r:1,g:0.2,b:0}, endColor: {r:1,g:0.8,b:0}, size:5 },
-    snowParticle: { startColor: {r:0.8,g:0.9,b:1}, endColor: {r:0.5,g:0.7,b:1}, size:5 },
-    soundName: "entity.evoker.cast_spell",
-    whiteList: ["VILLAGER","IRON_GOLEM","COW","PIG","SHEEP","CHICKEN","WOLF","CAT"],
-    meritEffects: { penalty:0.01, range:[1,10] },
-    levelMultiplier: { "黄":1, "玄":1.2, "地":1.5, "天":1.8 },
-    profDamagePer100: 0.05,
-    damageDetectRange: 2,
-    baseMaxMultiplier: 1314,
-    targetMerit: 5201314,
-    targetMultiplier: 520,
-    fireDuration: 100,
-    slowDuration: 100,
-    slowAmplifier: 0
-};
-CFG.unlockLore = `§a已录取卷轴：${CFG.name}`;
-CFG.meritCurveK = CFG.targetMerit * ((CFG.baseMaxMultiplier-1)/(CFG.targetMultiplier-1)-1);
-const costMaxIncrease = CFG.maxEnergyCost/CFG.baseEnergyCost - 1;
-CFG.costK = CFG.targetMerit * (costMaxIncrease/CFG.costTargetIncrease - 1);
-
+(function() {
+const Files = Java.type('java.nio.file.Files');
+const Paths = Java.type('java.nio.file.Paths');
+const StandardCharsets = Java.type('java.nio.charset.StandardCharsets');
+const File = Java.type('java.io.File');
 const Bukkit = Java.type('org.bukkit.Bukkit');
 const Particle = Java.type('org.bukkit.Particle');
 const Color = Java.type('org.bukkit.Color');
@@ -41,215 +10,206 @@ const DustTransition = Java.type('org.bukkit.Particle$DustTransition');
 const Vector = Java.type('org.bukkit.util.Vector');
 const PotionEffectType = Java.type('org.bukkit.potion.PotionEffectType');
 const PotionEffect = Java.type('org.bukkit.potion.PotionEffect');
-
-const cooldowns = new java.util.HashMap();
-const skillCache = new java.util.HashMap();
-
-const updateLore = (item, keyword, newText) => {
-    const meta = item.getItemMeta();
-    if (!meta) return false;
-    const lore = meta.getLore() || [];
-    for (let i = 0; i < lore.length; i++) {
-        if (lore[i]?.includes(keyword)) {
-            lore[i] = newText;
-            meta.setLore(lore);
-            item.setItemMeta(meta);
-            return true;
-        }
-    }
-    return false;
-};
-
-const getItemInfo = item => {
-    const meta = item.getItemMeta();
-    const lore = meta?.getLore() || [];
-    const info = { level:"黄", energy:0, energyMax:2000, merit:0, bindState:"", prof:0, profMax:0 };
-    lore.forEach(line => {
-        if (!line) return;
-        if (line.includes("天")) info.level = "天";
-        else if (line.includes("地")) info.level = "地";
-        else if (line.includes("玄")) info.level = "玄";
-        if (line.includes("卷轴")) info.bindState = line;
-        const nums = line.match(/§6(-?\d+)/g);
-        if (!nums) return;
-        if (line.includes("灵力剩余")) {
-            info.energy = parseInt(nums[0].replace('§6','')) || 0;
-            info.energyMax = parseInt(nums[1]?.replace('§6','') || 2000);
-        } else if (line.includes("德值")) {
-            const num = parseInt(nums[0].replace('§6','')) || 0;
-            info.merit = line.includes("缺德值") ? -num : num;
-        } else if (line.includes("熟练度")) {
-            info.prof = parseInt(nums[0].replace('§6','')) || 0;
-            info.profMax = parseInt(nums[1]?.replace('§6','') || 0);
-        }
-    });
-    return info;
-};
-
-const cleanupCache = uuid => skillCache.remove(uuid);
-
-const createColor = rgb => Color.fromRGB(Math.floor(rgb.r*255), Math.floor(rgb.g*255), Math.floor(rgb.b*255));
-const createParticleData = c => new DustTransition(createColor(c.startColor), createColor(c.endColor), c.size);
-
-const generateSpiralBeam = (world, start, dir) => {
-    const fireData = createParticleData(CFG.fireParticle);
-    const snowData = createParticleData(CFG.snowParticle);
-
-    let up = new Vector(0,1,0);
-    let right = dir.clone().crossProduct(up).normalize();
-    if (right.lengthSquared() < 0.01) {
-        up = new Vector(1,0,0);
-        right = dir.clone().crossProduct(up).normalize();
-    }
-    let upLocal = right.clone().crossProduct(dir).normalize();
-
-    for (let d = 0; d <= CFG.maxDistance; d += CFG.particleInterval*0.8) {
-        const loc = start.clone().add(dir.clone().multiply(d));
-        const t = d / CFG.maxDistance;
-        const radius = CFG.spiralRadius * (0.5 + t * 1.5);
-        const angle1 = d * 0.8;
-        const angle2 = d * 1.5;
-
-        const offset1 = right.clone().multiply(Math.sin(angle1)*radius).add(upLocal.clone().multiply(Math.cos(angle1)*radius));
-        world.spawnParticle(Particle.DUST_COLOR_TRANSITION, loc.clone().add(offset1), 2, 0.1,0.1,0.1,0, fireData);
-
-        const offset2 = right.clone().multiply(Math.sin(angle1+Math.PI/2)*radius*0.8).add(upLocal.clone().multiply(Math.cos(angle1+Math.PI/2)*radius*0.8));
-        world.spawnParticle(Particle.DUST_COLOR_TRANSITION, loc.clone().add(offset2), 2, 0.1,0.1,0.1,0, snowData);
-
-        const offset3 = right.clone().multiply(Math.sin(angle2)*radius*0.5).add(upLocal.clone().multiply(Math.cos(angle2)*radius*0.5));
-        world.spawnParticle(Particle.FLAME, loc.clone().add(offset3), 1, 0.1,0.1,0.1, 0.1, null);
-        const offset3s = right.clone().multiply(Math.sin(angle2+0.3)*radius*0.5).add(upLocal.clone().multiply(Math.cos(angle2+0.3)*radius*0.5));
-        world.spawnParticle(Particle.SNOWFLAKE, loc.clone().add(offset3s), 1, 0.1,0.1,0.1, 0.1, null);
-
-        if (d % 2 === 0) world.spawnParticle(Particle.CRIT, loc, 3, 0.2,0.2,0.2, 0.1, null);
-    }
-};
-
-const spiralBeamDamage = (player, start, dir, damage) => {
-    const world = player.getWorld();
+const LivingEntity = Java.type('org.bukkit.entity.LivingEntity');
+const Player = Java.type('org.bukkit.entity.Player');
+const ChatMessageType = Java.type('net.md_5.bungee.api.ChatMessageType');
+const TextComponent = Java.type('net.md_5.bungee.api.chat.TextComponent');
+const plugin = Bukkit.getPluginManager().getPlugin("RykenSlimefunCustomizer");
+globalThis.KOMUTECH = globalThis.KOMUTECH || {};
+globalThis.KOMUTECH.卷轴冷却 = globalThis.KOMUTECH.卷轴冷却 || new java.util.HashMap();
+const KOMUTECH_L_JZ_BHLCT_CONFIG_PATH = "plugins/RykenSlimefunCustomizer/addon_configs/Komutech/卷轴属性.json";
+const KOMUTECH_L_JZ_BHLCT_SKILL_ID = "冰火两重天";
+const KOMUTECH_L_JZ_BHLCT_SCROLL_DIR = "plugins/RykenSlimefunCustomizer/addon_configs/Komutech/云篆匣";
+const KOMUTECH_L_JZ_BHLCT_ATTR_DIR = "plugins/RykenSlimefunCustomizer/addon_configs/Komutech/玩家属性";
+const KOMUTECH_L_JZ_BHLCT_PVP_LIST_PATH = "plugins/RykenSlimefunCustomizer/addon_configs/Komutech/灵PVP列表.json";
+let KOMUTECH_L_JZ_BHLCT_COMMON, KOMUTECH_L_JZ_BHLCT_SELF, KOMUTECH_L_JZ_BHLCT_cfgLoaded = false, KOMUTECH_L_JZ_BHLCT_configErrorMsg = "";
+try {
+    const raw = Files.readString(Paths.get(KOMUTECH_L_JZ_BHLCT_CONFIG_PATH), StandardCharsets.UTF_8);
+    const all = JSON.parse(raw);
+    KOMUTECH_L_JZ_BHLCT_COMMON = all["公共规则"];
+    KOMUTECH_L_JZ_BHLCT_SELF = all[KOMUTECH_L_JZ_BHLCT_SKILL_ID];
+    if (!KOMUTECH_L_JZ_BHLCT_COMMON) throw "缺少 公共规则";
+    if (!KOMUTECH_L_JZ_BHLCT_SELF) throw "缺少 " + KOMUTECH_L_JZ_BHLCT_SKILL_ID;
+    const required = ["基础伤害","射程","基础灵力消耗","基础冷却","熟练度上限"];
+    for (let k of required) if (KOMUTECH_L_JZ_BHLCT_SELF[k] === undefined) throw "缺少 " + k;
+    KOMUTECH_L_JZ_BHLCT_cfgLoaded = true;
+} catch(e) { KOMUTECH_L_JZ_BHLCT_configErrorMsg = String(e); print("[冰火两重天] 配置加载失败: " + e); }
+function KOMUTECH_L_JZ_BHLCT_sendActionBar(p, msg) { p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(msg)); }
+function KOMUTECH_L_JZ_BHLCT_hexToColor(hex) { const h = hex.replace('#',''); return Color.fromRGB(parseInt(h.substring(0,2),16), parseInt(h.substring(2,4),16), parseInt(h.substring(4,6),16)); }
+function KOMUTECH_L_JZ_BHLCT_parseLingLi(s) {
+    if (!s) return null;
+    const m = s.match(/^(\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)\s*\+\s*(-?\d+(?:\.\d+)?)?$/);
+    if (m) return { current: parseFloat(m[1]), baseMax: parseFloat(m[2]), extraMax: m[3] ? parseFloat(m[3]) : 0 };
+    const sm = s.match(/^(\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)$/);
+    if (sm) return { current: parseFloat(sm[1]), baseMax: parseFloat(sm[2]), extraMax: 0 };
+    return null;
+}
+function KOMUTECH_L_JZ_BHLCT_spiritVal(data) { const s = data["灵气"]; if (!s) return 0; const m = s.match(/^(\d+(?:\.\d+)?)/); return m ? parseFloat(m[1]) : 0; }
+function KOMUTECH_L_JZ_BHLCT_realmCoef(spirit, realmTable) {
+    if (spirit < 100) return 0.1;
+    if (spirit >= 100000000000) return 66;
+    const thresholds = [100,1000,10000,100000,1000000,10000000,100000000,1000000000];
+    const realmNames = ["引气入体","练气","筑基","金丹","元婴","化神","大成","渡劫","飞升","神人"];
+    let idx = 0;
+    for (let i = 1; i < thresholds.length; i++) { if (spirit < thresholds[i]) { idx = i - 1; break; } idx = i; }
+    if (spirit >= 1000000000) idx = 7;
+    const realmArr = realmTable[realmNames[idx]];
+    if (!realmArr) return 1;
+    const base = idx === 0 ? 100 : thresholds[idx];
+    const range = idx === 7 ? 100000000000 - 1000000000 : thresholds[idx + 1] - base;
+    const step = Math.floor(range / 9);
+    const rank = Math.floor((spirit - base) / step);
+    return realmArr[Math.min(rank, realmArr.length - 1)];
+}
+function KOMUTECH_L_JZ_BHLCT_getDamageScale(staff) {
+    if (!staff || !staff.hasItemMeta()) return 1.0;
+    const lore = staff.getItemMeta().getLore();
+    if (!lore) return 1.0;
+    const damageMap = KOMUTECH_L_JZ_BHLCT_COMMON["品阶伤害倍率"];
+    if (!damageMap) return 1.0;
+    for (let line of lore) { if (!line) continue; const clean = line.replace(/§./g, ''); const m = clean.match(/『([^』]+)阶』/); if (m) return damageMap[m[1] + '阶']; }
+    return 1.0;
+}
+function KOMUTECH_L_JZ_BHLCT_loadScrollData(name) { try { const p = Paths.get(KOMUTECH_L_JZ_BHLCT_SCROLL_DIR, '[' + name + ']云篆匣.json'); if (!Files.exists(p)) return null; return JSON.parse(Files.readString(p, StandardCharsets.UTF_8)); } catch(e) { print("[冰火两重天] 读取卷轴数据失败: " + e); return null; } }
+function KOMUTECH_L_JZ_BHLCT_saveScrollData(name, data) { try { const p = Paths.get(KOMUTECH_L_JZ_BHLCT_SCROLL_DIR, '[' + name + ']云篆匣.json'); new File(KOMUTECH_L_JZ_BHLCT_SCROLL_DIR).mkdirs(); Files.writeString(p, JSON.stringify(data, null, 2), StandardCharsets.UTF_8); } catch(e) { print("[冰火两重天] 保存卷轴数据失败: " + e); } }
+function KOMUTECH_L_JZ_BHLCT_getProficiency(playerName, skillId) { const data = KOMUTECH_L_JZ_BHLCT_loadScrollData(playerName); if (!data || !data.熟练度记录) return 0; return data.熟练度记录[skillId] || 0; }
+function KOMUTECH_L_JZ_BHLCT_addProficiency(playerName, skillId, amount, max) {
+    const data = KOMUTECH_L_JZ_BHLCT_loadScrollData(playerName);
+    if (!data) return 0;
+    if (!data.熟练度记录) data.熟练度记录 = {};
+    const old = data.熟练度记录[skillId] || 0;
+    const added = Math.min(amount, max - old);
+    if (added > 0) { data.熟练度记录[skillId] = old + added; KOMUTECH_L_JZ_BHLCT_saveScrollData(playerName, data); }
+    return added;
+}
+function KOMUTECH_L_JZ_BHLCT_loadPvpList() {
+    try {
+        const path = Paths.get(KOMUTECH_L_JZ_BHLCT_PVP_LIST_PATH);
+        if (!Files.exists(path)) return [];
+        const data = JSON.parse(Files.readString(path, StandardCharsets.UTF_8));
+        return Array.isArray(data) ? data : Object.keys(data);
+    } catch (e) { return []; }
+}
+function KOMUTECH_L_JZ_BHLCT_isPvpEnabled(playerName) {
+    const list = KOMUTECH_L_JZ_BHLCT_loadPvpList();
+    return !list.includes(playerName);
+}
+const KOMUTECH_L_JZ_BHLCT_FIRE_START = "#ff3300";
+const KOMUTECH_L_JZ_BHLCT_FIRE_END = "#ffcc00";
+const KOMUTECH_L_JZ_BHLCT_SNOW_START = "#cce5ff";
+const KOMUTECH_L_JZ_BHLCT_SNOW_END = "#80b3ff";
+const KOMUTECH_L_JZ_BHLCT_PARTICLE_SIZE = 5;
+const KOMUTECH_L_JZ_BHLCT_SPIRAL_RADIUS = 1.5;
+const KOMUTECH_L_JZ_BHLCT_DMG_DETECT_RANGE = 2;
+const KOMUTECH_L_JZ_BHLCT_FIRE_DUR = 100;
+const KOMUTECH_L_JZ_BHLCT_SLOW_DUR = 100;
+const KOMUTECH_L_JZ_BHLCT_SOUND_NAME = "entity.evoker.cast_spell";
+globalThis.castScroll = function(player, staff, attr) {
+    if (!KOMUTECH_L_JZ_BHLCT_cfgLoaded) { player.sendMessage("§c配置文件丢失: " + KOMUTECH_L_JZ_BHLCT_configErrorMsg); return; }
+    const baseDamage = KOMUTECH_L_JZ_BHLCT_SELF["基础伤害"];
+    const maxDist = KOMUTECH_L_JZ_BHLCT_SELF["射程"];
+    const energyCost = KOMUTECH_L_JZ_BHLCT_SELF["基础灵力消耗"];
+    const baseCooldown = KOMUTECH_L_JZ_BHLCT_SELF["基础冷却"];
+    const maxProficiency = KOMUTECH_L_JZ_BHLCT_SELF["熟练度上限"];
+    const meritRange = KOMUTECH_L_JZ_BHLCT_COMMON["功德变化范围"];
+    const whiteList = KOMUTECH_L_JZ_BHLCT_COMMON["白名单生物"];
+    const realmTable = KOMUTECH_L_JZ_BHLCT_COMMON["修为倍率"];
+    const attrMap = KOMUTECH_L_JZ_BHLCT_COMMON["灵根属性倍率"];
+    const formula = KOMUTECH_L_JZ_BHLCT_COMMON["公式参数"];
+    const spirit = KOMUTECH_L_JZ_BHLCT_spiritVal(attr);
+    const realmCo = KOMUTECH_L_JZ_BHLCT_realmCoef(spirit, realmTable);
+    const linggenAttr = attr["灵根属性"];
+    const linggenCo = attrMap[linggenAttr];
+    if (!linggenCo) { player.sendMessage("§c未知灵根属性: " + linggenAttr); return; }
+    const gengu = parseFloat(attr["根骨"]) || 1;
+    const wuxing = parseFloat(attr["悟性"]) || 1;
+    let attackActual = attr["攻击力_实际"];
+    if (typeof attackActual !== 'number' || isNaN(attackActual)) attackActual = 1.0;
+    const damageScale = KOMUTECH_L_JZ_BHLCT_getDamageScale(staff);
+    const playerName = player.getName();
+    let prof = KOMUTECH_L_JZ_BHLCT_getProficiency(playerName, KOMUTECH_L_JZ_BHLCT_SKILL_ID);
+    const profDmgFactor = 1 + Math.floor(prof / 100) * (formula["熟练度增伤因子"] || 0);
+    let finalDamage = attackActual * damageScale * realmCo * linggenCo * baseDamage * profDmgFactor;
+    if (isNaN(finalDamage) || finalDamage <= 0) finalDamage = 5.0;
+    const profCostFactor = 1 + Math.floor(prof / 100) * (formula["熟练度增耗因子"] || 0);
+    const finalCost = Math.max(1, Math.round(energyCost * realmCo * linggenCo * gengu * profCostFactor));
+    const wxReduction = Math.min(formula["悟性最大减免比例"] || 0.5, (wuxing - 1) * (formula["冷却减免因子_悟性"] || 0.05));
+    const profReduction = Math.min(formula["熟练度最大减免比例"] || 0.3, Math.floor(prof / 100) * (formula["冷却减免因子_熟练度"] || 0.003));
+    const totalReduction = Math.min(0.8, wxReduction + profReduction);
+    const finalCd = Math.max(formula["最小冷却"] || 4, Math.floor(baseCooldown * (1 - totalReduction)));
+    const cdMap = globalThis.KOMUTECH.卷轴冷却;
     const uuid = player.getUniqueId().toString();
-    const entities = new java.util.HashSet();
-
-    for (let i = 0; i <= CFG.maxDistance; i += 0.5) {
-        const pos = start.clone().add(dir.clone().multiply(i));
-        const nearby = world.getNearbyLivingEntities(pos, CFG.damageDetectRange, CFG.damageDetectRange, CFG.damageDetectRange);
-        for (let j = 0; j < nearby.size(); j++) entities.add(nearby.get(j));
-    }
-
-    if (!skillCache.containsKey(uuid)) skillCache.put(uuid, { white:0, nonWhite:0 });
-    const cache = skillCache.get(uuid);
-
-    entities.forEach(entity => {
-        if (entity === player || entity.getType().name() === "ARMOR_STAND" || entity.isDead()) return;
-        const white = CFG.whiteList.includes(entity.getType().name());
-
-        entity.damage(damage, player);
-        entity.setFireTicks(CFG.fireDuration);
-        entity.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, CFG.slowDuration, CFG.slowAmplifier));
-
-        if (white) cache.white++; else cache.nonWhite++;
-    });
-
-    return entities.size() > 0;
-};
-
-const settleMerit = (player, staff, staffInfo) => {
-    const uuid = player.getUniqueId().toString();
-    const cache = skillCache.get(uuid);
-    if (!cache) return;
-    const [min,max] = CFG.meritEffects.range;
-    let change = 0;
-    if (cache.white > 0) change -= cache.white * (Math.floor(Math.random()*(max-min+1))+min);
-    if (cache.nonWhite > 0) change += cache.nonWhite * (Math.floor(Math.random()*(max-min+1))+min);
-    if (change !== 0) {
-        const newMerit = staffInfo.merit + change;
-        updateLore(staff, "德值", newMerit>=0 ? `§b功德值：§6${newMerit}` : `§c缺德值：§6${-newMerit}`);
-        player.sendMessage(change>0 ? `§2✦ §a[${CFG.namePlain}] §2✦ §a积德行善！§6+${change}功德`
-                                   : `§4✧ §c[${CFG.namePlain}] §4✧ §c损德败行！§6${change}功德`);
-    }
-    skillCache.remove(uuid);
-};
-
-function onUse(event) {
-    const p = event.getPlayer();
-    const staff = p.getInventory().getItemInMainHand();
-    const book = p.getInventory().getItemInOffHand();
-
-    if (!staff?.getItemMeta() || !book?.getItemMeta()) {
-        p.sendMessage(`§4◆ §c『${CFG.namePlain}』§4◆ §c需主手法杖+副手卷轴！`);
-        return;
-    }
-
-    const staffInfo = getItemInfo(staff);
-    const bookInfo = getItemInfo(book);
-
-    if (!p.isSneaking()) {
-        if (staffInfo.bindState !== CFG.unlockLore && 
-            (staffInfo.bindState === CFG.defaultLore || staffInfo.bindState.startsWith("§a已录取卷轴"))) {
-            updateLore(staff, "卷轴", CFG.unlockLore);
-            p.sendMessage(`§2✦ §a『${CFG.namePlain}』§2✦ §a卷轴嵌杖成功！`);
-        }
-        return;
-    }
-
-    if (staffInfo.bindState !== CFG.unlockLore) {
-        p.sendMessage(`§4✖ §c『${CFG.namePlain}』§4✖ §c法杖未绑定此卷轴！`);
-        return;
-    }
-
-    const uuid = p.getUniqueId().toString();
+    const cdKey = uuid + "_" + KOMUTECH_L_JZ_BHLCT_SKILL_ID;
     const now = Bukkit.getServer().getCurrentTick();
-    const last = cooldowns.get(uuid) || 0;
-    const reduction = Math.min(Math.floor(bookInfo.prof/100)*CFG.cooldownReduction.per100, CFG.cooldownReduction.max);
-    const cd = Math.max(Math.floor(CFG.cooldown * (1 - reduction/100)), 1);
-    if (now - last < cd) {
-        p.sendMessage(`§c⚠ §4[${CFG.namePlain}] 冷却中！剩余 §6${((cd-(now-last))/20).toFixed(1)}秒`);
-        return;
+    const last = cdMap.getOrDefault(cdKey, 0);
+    if (now - last < finalCd) { KOMUTECH_L_JZ_BHLCT_sendActionBar(player, "§c✖ 冷却中！剩余 §6" + ((finalCd - (now - last)) * 0.05).toFixed(1) + " §c秒"); return; }
+    const parsedLi = KOMUTECH_L_JZ_BHLCT_parseLingLi(attr["灵力"]);
+    const curLi = parsedLi ? parsedLi.current : 0;
+    if (curLi < finalCost) { KOMUTECH_L_JZ_BHLCT_sendActionBar(player, `§c灵力不足！当前 §6${curLi.toFixed(2)}§c / 需要 §6${finalCost}`); return; }
+    parsedLi.current -= finalCost;
+    attr["灵力"] = parsedLi.current.toFixed(2) + "/" + parsedLi.baseMax + "+" + parsedLi.extraMax;
+    cdMap.put(cdKey, now);
+    KOMUTECH_L_JZ_BHLCT_sendActionBar(player, `§a消耗 ${finalCost} 灵力 §7| §f剩余 ${parsedLi.current.toFixed(0)}/${parsedLi.baseMax + parsedLi.extraMax}`);
+    const actualAdd = KOMUTECH_L_JZ_BHLCT_addProficiency(playerName, KOMUTECH_L_JZ_BHLCT_SKILL_ID, Math.floor(Math.random() * 10) + 1, maxProficiency);
+    if (actualAdd > 0) player.sendMessage(`§b熟练度+${actualAdd}`);
+    const world = player.getWorld();
+    world.playSound(player.getLocation(), KOMUTECH_L_JZ_BHLCT_SOUND_NAME, 1, 1);
+    const cache = { damage: finalDamage, white: 0, nonWhite: 0 };
+    const attackerPvpEnabled = KOMUTECH_L_JZ_BHLCT_isPvpEnabled(playerName);
+    function KOMUTECH_L_JZ_BHLCT_isValidTarget(entity) {
+        if (!entity || entity === player || entity.getType().name() === "ARMOR_STAND" || entity.isDead() || !(entity instanceof LivingEntity)) return false;
+        if (entity instanceof Player) {
+            if (!attackerPvpEnabled) return false;
+            const victimName = entity.getName();
+            if (!KOMUTECH_L_JZ_BHLCT_isPvpEnabled(victimName)) return false;
+        }
+        return true;
     }
-
-    let dynamicCost = CFG.baseEnergyCost;
-    if (staffInfo.merit > 0) {
-        const increase = costMaxIncrease * (staffInfo.merit / (staffInfo.merit + CFG.costK));
-        dynamicCost = Math.min(CFG.maxEnergyCost, Math.round(CFG.baseEnergyCost * (1 + increase)));
+    function KOMUTECH_L_JZ_BHLCT_applyDamage(entity, mult) {
+        if (!KOMUTECH_L_JZ_BHLCT_isValidTarget(entity)) return;
+        entity.damage(cache.damage * mult, player);
+        entity.setFireTicks(KOMUTECH_L_JZ_BHLCT_FIRE_DUR);
+        const slowness = PotionEffectType.getByKey(org.bukkit.NamespacedKey.minecraft("slowness"));
+        if (slowness) entity.addPotionEffect(new PotionEffect(slowness, KOMUTECH_L_JZ_BHLCT_SLOW_DUR, 0));
+        if (!(entity instanceof Player)) {
+            const w = whiteList.includes(entity.getType().name());
+            if (w) cache.white++; else cache.nonWhite++;
+        }
     }
-    if (staffInfo.energy < dynamicCost) {
-        p.sendMessage(`§c⚠ §4[${CFG.namePlain}] 灵力不足！需 §6${dynamicCost}`);
-        return;
-    }
-
-    cleanupCache(uuid);
-
-    if (bookInfo.prof < bookInfo.profMax) {
-        const add = Math.floor(Math.random() * (CFG.profAddRange[1]-CFG.profAddRange[0]+1)) + CFG.profAddRange[0];
-        const newProf = Math.min(bookInfo.prof + add, bookInfo.profMax);
-        if (updateLore(book, "熟练度", `§b熟练度：§6${newProf} §7/ §6${bookInfo.profMax}`) && add>0)
-            p.sendMessage(`§b熟练度+${add}`);
-    }
-
-    const levelBase = CFG.levelMultiplier[bookInfo.level] || 1.0;
-    const maxMulti = CFG.baseMaxMultiplier * levelBase * levelBase;
-    let meritMult;
-    if (staffInfo.merit >= 0) {
-        const gain = (maxMulti-1) * (staffInfo.merit / (staffInfo.merit + CFG.meritCurveK));
-        meritMult = 1 + gain;
-    } else {
-        meritMult = Math.max(0.1, 1 - (Math.abs(staffInfo.merit)/100) * CFG.meritEffects.penalty);
-    }
-    const profBonus = 1 + Math.floor(bookInfo.prof/100) * CFG.profDamagePer100;
-    const damage = CFG.baseDamage * meritMult * profBonus;
-
-    const world = p.getWorld();
-    const eye = p.getEyeLocation();
+    const eye = player.getEyeLocation();
     const dir = eye.getDirection();
     const start = eye.clone().add(dir);
-
-    generateSpiralBeam(world, start, dir);
-    const hasHit = spiralBeamDamage(p, start, dir, damage);
-
-    updateLore(staff, "灵力剩余", `§b灵力剩余：§6${Math.max(0, staffInfo.energy-dynamicCost)} §7/ §6${staffInfo.energyMax}`);
-    cooldowns.put(uuid, now);
-    world.playSound(p.getLocation(), CFG.soundName, 1,1);
-
-    settleMerit(p, staff, staffInfo);
-    p.sendMessage(hasHit ? `§a[${CFG.namePlain}] 冰火交融，螺旋激荡！` : `§7[${CFG.namePlain}] 未击中目标`);
-}
+    const fireData = new DustTransition(KOMUTECH_L_JZ_BHLCT_hexToColor(KOMUTECH_L_JZ_BHLCT_FIRE_START), KOMUTECH_L_JZ_BHLCT_hexToColor(KOMUTECH_L_JZ_BHLCT_FIRE_END), KOMUTECH_L_JZ_BHLCT_PARTICLE_SIZE);
+    const snowData = new DustTransition(KOMUTECH_L_JZ_BHLCT_hexToColor(KOMUTECH_L_JZ_BHLCT_SNOW_START), KOMUTECH_L_JZ_BHLCT_hexToColor(KOMUTECH_L_JZ_BHLCT_SNOW_END), KOMUTECH_L_JZ_BHLCT_PARTICLE_SIZE);
+    let up = new Vector(0, 1, 0);
+    let right = dir.clone().crossProduct(up).normalize();
+    if (right.lengthSquared() < 0.01) { up = new Vector(1, 0, 0); right = dir.clone().crossProduct(up).normalize(); }
+    const upLocal = right.clone().crossProduct(dir).normalize();
+    for (let d = 0; d <= maxDist; d += 0.08) {
+        const loc = start.clone().add(dir.clone().multiply(d));
+        const t = d / maxDist;
+        const radius = KOMUTECH_L_JZ_BHLCT_SPIRAL_RADIUS * (0.5 + t * 1.5);
+        const angle1 = d * 0.8;
+        const angle2 = d * 1.5;
+        world.spawnParticle(Particle.DUST_COLOR_TRANSITION, loc.clone().add(right.clone().multiply(Math.sin(angle1) * radius).add(upLocal.clone().multiply(Math.cos(angle1) * radius))), 2, 0.1, 0.1, 0.1, 0, fireData);
+        world.spawnParticle(Particle.DUST_COLOR_TRANSITION, loc.clone().add(right.clone().multiply(Math.sin(angle1 + Math.PI / 2) * radius * 0.8).add(upLocal.clone().multiply(Math.cos(angle1 + Math.PI / 2) * radius * 0.8))), 2, 0.1, 0.1, 0.1, 0, snowData);
+        world.spawnParticle(Particle.FLAME, loc.clone().add(right.clone().multiply(Math.sin(angle2) * radius * 0.5).add(upLocal.clone().multiply(Math.cos(angle2) * radius * 0.5))), 1, 0.1, 0.1, 0.1, 0.1, null);
+        world.spawnParticle(Particle.SNOWFLAKE, loc.clone().add(right.clone().multiply(Math.sin(angle2 + 0.3) * radius * 0.5).add(upLocal.clone().multiply(Math.cos(angle2 + 0.3) * radius * 0.5))), 1, 0.1, 0.1, 0.1, 0.1, null);
+        if (d % 2 === 0) world.spawnParticle(Particle.CRIT, loc, 3, 0.2, 0.2, 0.2, 0.1, null);
+    }
+    const entities = new java.util.HashSet();
+    for (let i = 0; i <= maxDist; i += 0.5) {
+        const pos = start.clone().add(dir.clone().multiply(i));
+        const nearby = world.getNearbyLivingEntities(pos, KOMUTECH_L_JZ_BHLCT_DMG_DETECT_RANGE, KOMUTECH_L_JZ_BHLCT_DMG_DETECT_RANGE, KOMUTECH_L_JZ_BHLCT_DMG_DETECT_RANGE);
+        for (let j = 0; j < nearby.size(); j++) entities.add(nearby.get(j));
+    }
+    entities.forEach(entity => {
+        KOMUTECH_L_JZ_BHLCT_applyDamage(entity, 1);
+    });
+    const [min, max] = meritRange; let ch = 0;
+    if (cache.white > 0) ch -= cache.white * (Math.floor(Math.random() * (max - min + 1)) + min);
+    if (cache.nonWhite > 0) ch += cache.nonWhite * (Math.floor(Math.random() * (max - min + 1)) + min);
+    if (ch !== 0) { attr["功德"] = Math.max(0, (attr["功德"] || 0) + ch); if (ch < 0) attr["煞气"] = (attr["煞气"] || 0) + Math.abs(ch); }
+    player.sendMessage("§a冰火交融，螺旋激荡！");
+};
+})();

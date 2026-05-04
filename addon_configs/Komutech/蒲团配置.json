@@ -1,0 +1,18 @@
+{
+  "KOMUTECH_L_X_蒲团": {
+    "基础修炼速度": 1,
+    "投影材质": "minecraft:horn_coral_fan"
+  },
+  "KOMUTECH_L_X_玉坐": {
+    "基础修炼速度": 3,
+    "投影材质": "minecraft:tube_coral_fan"
+  },
+  "KOMUTECH_L_X_莲台": {
+    "基础修炼速度": 9,
+    "投影材质": "minecraft:brain_coral_fan"
+  },
+  "KOMUTECH_L_X_云榻": {
+    "基础修炼速度": 16,
+    "投影材质": "minecraft:fire_coral_fan"
+  }
+}

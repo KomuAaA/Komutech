@@ -1369,6 +1369,339 @@ KOMUTECH_L_WD_ZHTMS:
       amount: 1
 
 
+##=========鉴灵石=========
+KOMUTECH_L_X_鉴灵石核心:
+  item_group: Komutech_L_X
+  item:
+    name: "{#a8edea}&kA{#b0eaea}&l☽{#b8ecec}&l❂{#c0eeee}&l·{#c8f0f0}&l鉴{#d0f2f2}&l灵{#d8f4f4}&l石{#e0f6f6}&l核{#e8f8f8}&l心{#f0fafa}&l·{#f8fcfc}&l❂{#fed6e3}&l☾{#fed6e3}&kA"    
+    lore:
+      - "{#a8edea}&kA{#b0e9ea}&l✧{#b8ebeb}&l {#c0eded}&l明{#c8efef}&l察{#d0f1f1}&l灵{#d8f3f3}&l韵{#e0f5f5}&l鉴{#e8f7f7}&l辨{#f0f9f9}&l根{#f2fbfb}&l骨{#fed6e3}&l ✧{#fed6e3}&kA"
+      - "{#a8edea}&kA{#b0e9ea}&l✧{#b8ebeb}&l {#c0eded}&l探{#c8efef}&l晓{#d0f1f1}&l资{#d8f3f3}&l质{#e0f5f5}&l洞{#e8f7f7}&l悉{#f0f9f9}&l悟{#f2fbfb}&l性{#fed6e3}&l ✧{#fed6e3}&kA"
+      - "{#a8edea}&kA{#b0e9ea}&l✧{#b8ebeb}&l {#c0eded}&l灵{#c8efef}&l石{#d0f1f1}&l映{#d8f3f3}&l照{#e0f5f5}&l真{#e8f7f7}&l实{#f0f9f9}&l底{#f2fbfb}&l蕴{#fed6e3}&l ✧{#fed6e3}&kA"
+      - "{#a8edea}&kA{#b0e9ea}&l❂{#b8ebeb}&l {#c0eded}&l此{#c8efef}&l为{#d0f1f1}&l多{#d8f3f3}&l方{#e0f5f5}&l块{#e8f7f7}&l构{#f0f9f9}&l核{#f2fbfb}&l心{#fed6e3}&l ❂{#fed6e3}&kA"    
+    material_type: mc
+    material: shroomlight
+    glow: true
+  script: L_修炼/鉴灵石
+  recipe_type: ENHANCED_CRAFTING_TABLE
+  recipe:
+    1:
+      material_type: slimefun
+      material: Komutech_L_KW_XLY
+      amount: 1
+    2:
+      material_type: slimefun
+      material: Komutech_L_XX_ZZ
+      amount: 1
+    3:
+      material_type: slimefun
+      material: Komutech_L_KW_XLY
+      amount: 1
+    4:
+      material_type: slimefun
+      material: Komutech_L_XX_ZZ
+      amount: 1
+    5:
+      material_type: slimefun
+      material: KOMUTECH_L_GJ_口木科技指南
+      amount: 1
+    6:
+      material_type: slimefun
+      material: Komutech_L_XX_ZZ
+      amount: 1
+    7:
+      material_type: slimefun
+      material: Komutech_L_KW_XLY
+      amount: 1
+    8:
+      material_type: slimefun
+      material: Komutech_L_XX_ZZ
+      amount: 1
+    9:
+      material_type: slimefun
+      material: Komutech_L_KW_XLY
+      amount: 1
+KOMUTECH_L_X_鉴灵石框架:
+  item_group: Komutech_L_X
+  item:
+    name: "{#a8edea}&kA{#b0eaea}&l☽{#b8ecec}&l❂{#c0eeee}&l·{#c8f0f0}&l鉴{#d0f2f2}&l灵{#d8f4f4}&l石{#e0f6f6}&l框{#e8f8f8}&l架{#f0fafa}&l·{#f8fcfc}&l❂{#fed6e3}&l☾{#fed6e3}&kA"    
+    lore:
+      - "{#a8edea}&kA{#b0e9ea}&l✧{#b8ebeb}&l {#c0eded}&l明{#c8efef}&l察{#d0f1f1}&l灵{#d8f3f3}&l韵{#e0f5f5}&l鉴{#e8f7f7}&l辨{#f0f9f9}&l根{#f2fbfb}&l骨{#fed6e3}&l ✧{#fed6e3}&kA"
+      - "{#a8edea}&kA{#b0e9ea}&l✧{#b8ebeb}&l {#c0eded}&l探{#c8efef}&l晓{#d0f1f1}&l资{#d8f3f3}&l质{#e0f5f5}&l洞{#e8f7f7}&l悉{#f0f9f9}&l悟{#f2fbfb}&l性{#fed6e3}&l ✧{#fed6e3}&kA"
+      - "{#a8edea}&kA{#b0e9ea}&l✧{#b8ebeb}&l {#c0eded}&l灵{#c8efef}&l石{#d0f1f1}&l映{#d8f3f3}&l照{#e0f5f5}&l真{#e8f7f7}&l实{#f0f9f9}&l底{#f2fbfb}&l蕴{#fed6e3}&l ✧{#fed6e3}&kA"
+      - "{#a8edea}&kA{#b0e9ea}&l❂{#b8ebeb}&l {#c0eded}&l此{#c8efef}&l为{#d0f1f1}&l多{#d8f3f3}&l方{#e0f5f5}&l块{#e8f7f7}&l构{#f0f9f9}&l框{#f2fbfb}&l架{#fed6e3}&l ❂{#fed6e3}&kA"    
+    material_type: mc
+    material: light_blue_stained_glass
+    glow: true
+    amount: 8
+  script: L_修炼/鉴灵石
+  recipe_type: ENHANCED_CRAFTING_TABLE
+  recipe:
+    1:
+      material_type: mc
+      material: light_blue_stained_glass
+      amount: 1
+    2:
+      material_type: mc
+      material: light_blue_stained_glass
+      amount: 1
+    3:
+      material_type: mc
+      material: light_blue_stained_glass
+      amount: 1
+    4:
+      material_type: mc
+      material: light_blue_stained_glass
+      amount: 1
+    5:
+      material_type: slimefun
+      material: KOMUTECH_L_X_鉴灵石核心
+      amount: 1
+    6:
+      material_type: mc
+      material: light_blue_stained_glass
+      amount: 1
+    7:
+      material_type: mc
+      material: light_blue_stained_glass
+      amount: 1
+    8:
+      material_type: mc
+      material: light_blue_stained_glass
+      amount: 1
+    9:
+      material_type: mc
+      material: light_blue_stained_glass
+      amount: 1
+KOMUTECH_L_X_鉴灵石框架板:
+  item_group: Komutech_L_X
+  item:
+    name: "{#a8edea}&kA{#b0eaea}&l☽{#b8ecec}&l❂{#c0eeee}&l·{#c8f0f0}&l鉴{#d0f2f2}&l灵{#d8f4f4}&l石{#e0f6f6}&l框{#e8f8f8}&l架{#f0fafa}&l板{#f8fcfc}&l❂{#fed6e3}&l☾{#fed6e3}&kA"    
+    lore:
+      - "{#a8edea}&kA{#b0e9ea}&l✧{#b8ebeb}&l {#c0eded}&l明{#c8efef}&l察{#d0f1f1}&l灵{#d8f3f3}&l韵{#e0f5f5}&l鉴{#e8f7f7}&l辨{#f0f9f9}&l根{#f2fbfb}&l骨{#fed6e3}&l ✧{#fed6e3}&kA"
+      - "{#a8edea}&kA{#b0e9ea}&l✧{#b8ebeb}&l {#c0eded}&l探{#c8efef}&l晓{#d0f1f1}&l资{#d8f3f3}&l质{#e0f5f5}&l洞{#e8f7f7}&l悉{#f0f9f9}&l悟{#f2fbfb}&l性{#fed6e3}&l ✧{#fed6e3}&kA"
+      - "{#a8edea}&kA{#b0e9ea}&l✧{#b8ebeb}&l {#c0eded}&l灵{#c8efef}&l石{#d0f1f1}&l映{#d8f3f3}&l照{#e0f5f5}&l真{#e8f7f7}&l实{#f0f9f9}&l底{#f2fbfb}&l蕴{#fed6e3}&l ✧{#fed6e3}&kA"
+      - "{#a8edea}&kA{#b0e9ea}&l❂{#b8ebeb}&l {#c0eded}&l此{#c8efef}&l为{#d0f1f1}&l多{#d8f3f3}&l方{#e0f5f5}&l块{#e8f7f7}&l构{#f0f9f9}&l框{#f2fbfb}&l架{#fed6e3}&l ❂{#fed6e3}&kA"    
+    material_type: mc
+    material: light_blue_stained_glass_pane
+    glow: true
+    amount: 6
+  script: L_修炼/鉴灵石
+  recipe_type: ENHANCED_CRAFTING_TABLE
+  recipe:
+    4:
+      material_type: slimefun
+      material: KOMUTECH_L_X_鉴灵石框架
+      amount: 1
+    5:
+      material_type: slimefun
+      material: KOMUTECH_L_X_鉴灵石框架
+      amount: 1
+    6:
+      material_type: slimefun
+      material: KOMUTECH_L_X_鉴灵石框架
+      amount: 1
+
+
+
+
+##修炼
+KOMUTECH_L_X_蒲团:
+  item_group: Komutech_L_X
+  item:
+    name: '{#A0522D}&kA{#B36B3F}&l蒲{#C68451}&l团{#D99D63}&kA'
+    lore:
+      - "{#A0522D}&kA{#B36B3F}&l༄{#C68451}&l {#D99D63}&l蒲{#ECB675}&l团{#FFCF87}&l冥{#A0522D}&l思{#B36B3F}&l·{#C68451}&l栖{#D99D63}&l身{#ECB675}&l悟{#FFCF87}&l道{#A0522D}&l {#B36B3F}&l༅{#C68451}&kA"
+      - "{#A0522D}&kA{#B36B3F}&l༄{#C68451}&l {#D99D63}&l敛{#ECB675}&l神{#FFCF87}&l凝{#A0522D}&l气{#B36B3F}&l·{#C68451}&l清{#D99D63}&l心{#ECB675}&l入{#FFCF87}&l定{#A0522D}&l {#B36B3F}&l༅{#C68451}&kA"
+      - "{#A0522D}&kA{#B36B3F}&l༄{#C68451}&l {#D99D63}&l草{#ECB675}&l庐{#FFCF87}&l静{#A0522D}&l坐{#B36B3F}&l·{#C68451}&l养{#D99D63}&l性{#ECB675}&l修{#FFCF87}&l真{#A0522D}&l {#B36B3F}&l༅{#C68451}&kA"
+      - "{#A0522D}&kA{#B36B3F}&l༄{#C68451}&l {#D99D63}&l一{#ECB675}&l席{#FFCF87}&l蒲{#A0522D}&l茵{#B36B3F}&l·{#C68451}&l尘{#D99D63}&l缘{#ECB675}&l皆{#FFCF87}&l空{#A0522D}&l {#B36B3F}&l༅{#C68451}&kA"      
+    material_type: mc
+    material: hay_block
+    glow: true
+  placeable: true
+  script: L_修炼/蒲团
+  recipe_type: ENHANCED_CRAFTING_TABLE
+  recipe:
+    1:
+      material_type: slimefun
+      material: Komutech_L_JCWP_SC
+      amount: 1
+    2:
+      material_type: slimefun
+      material: Komutech_L_JCWP_SC
+      amount: 1
+    3:
+      material_type: slimefun
+      material: Komutech_L_JCWP_SC
+      amount: 1
+    4:
+      material_type: slimefun
+      material: KOMUTECH_L_JCWP_YDMH
+      amount: 1
+    5:
+      material_type: slimefun
+      material: KOMUTECH_L_JCWP_YDMH
+      amount: 1
+    6:
+      material_type: slimefun
+      material: KOMUTECH_L_JCWP_YDMH
+      amount: 1
+    7:
+      material_type: slimefun
+      material: Komutech_L_JCWP_SC
+      amount: 1
+    8:
+      material_type: slimefun
+      material: Komutech_L_JCWP_SC
+      amount: 1
+    9:
+      material_type: slimefun
+      material: Komutech_L_JCWP_SC
+      amount: 1
+KOMUTECH_L_X_玉坐:
+  item_group: Komutech_L_X
+  item:
+    name: '{#87CEEB}&kA{#96D8F0}&l玉{#A5E2F5}&l坐{#C0F0FF}&kA'
+    lore:
+      - "{#87CEEB}&kA{#96D8F0}&l༄{#A5E2F5}&l {#B4E6F8}&l灵{#C3EBFB}&l玉{#D2F0FF}&l凝{#87CEEB}&l神{#96D8F0}&l·{#A5E2F5}&l盘{#B4E6F8}&l坐{#C3EBFB}&l修{#D2F0FF}&l心{#87CEEB}&l {#96D8F0}&l༅{#A5E2F5}&kA"
+      - "{#87CEEB}&kA{#96D8F0}&l༄{#A5E2F5}&l {#B4E6F8}&l纳{#C3EBFB}&l气{#D2F0FF}&l聚{#87CEEB}&l元{#96D8F0}&l·{#A5E2F5}&l静{#B4E6F8}&l守{#C3EBFB}&l道{#D2F0FF}&l宗{#87CEEB}&l {#96D8F0}&l༅{#A5E2F5}&kA"
+      - "{#87CEEB}&kA{#96D8F0}&l༄{#A5E2F5}&l {#B4E6F8}&l身{#C3EBFB}&l安{#D2F0FF}&l心{#87CEEB}&l定{#96D8F0}&l·{#A5E2F5}&l悟{#B4E6F8}&l彻{#C3EBFB}&l玄{#D2F0FF}&l机{#87CEEB}&l {#96D8F0}&l༅{#A5E2F5}&kA"
+      - "{#87CEEB}&kA{#96D8F0}&l༄{#A5E2F5}&l {#B4E6F8}&l玉{#C3EBFB}&l座{#D2F0FF}&l栖{#87CEEB}&l灵{#96D8F0}&l·{#A5E2F5}&l万{#B4E6F8}&l法{#C3EBFB}&l归{#D2F0FF}&l一{#87CEEB}&l {#96D8F0}&l༅{#A5E2F5}&kA"    
+    material_type: mc
+    material: sea_lantern
+    glow: true
+  placeable: true
+  script: L_修炼/蒲团
+  recipe_type: ENHANCED_CRAFTING_TABLE
+  recipe:
+    1:
+      material_type: slimefun
+      material: Komutech_L_KW_LBY
+      amount: 1
+    2:
+      material_type: slimefun
+      material: KOMUTECH_L_X_蒲团
+      amount: 1
+    3:
+      material_type: slimefun
+      material: Komutech_L_KW_LBY
+      amount: 1
+    4:
+      material_type: slimefun
+      material: Komutech_L_KW_PP
+      amount: 1
+    5:
+      material_type: slimefun
+      material: KOMUTECH_L_FZ_XXBYSFZ
+      amount: 1
+    6:
+      material_type: slimefun
+      material: Komutech_L_KW_PP
+      amount: 1
+    7:
+      material_type: slimefun
+      material: Komutech_L_KW_LBY
+      amount: 1
+    8:
+      material_type: slimefun
+      material: Komutech_L_KW_LSY
+      amount: 1
+    9:
+      material_type: slimefun
+      material: Komutech_L_KW_LBY
+      amount: 1      
+KOMUTECH_L_X_莲台:
+  item_group: Komutech_L_X
+  item:
+    name: '{#40E0D0}&kA{#58D6C6}&l莲{#88D8C0}&l台{#F4C2C2}&kA'
+    lore:
+      - "{#40E0D0}&kA{#58D6C6}&l༄{#70D6C0}&l {#88D8C0}&l碧{#A8E6CF}&l叶{#C5E8D5}&l承{#F4C2C2}&l身 {#40E0D0}· {#58D6C6}&l净{#70D6C0}&l心{#88D8C0}&l证{#A8E6CF}&l道{#C5E8D5}&l {#F4C2C2}༅{#40E0D0}&kA"
+      - "{#40E0D0}&kA{#58D6C6}&l༄{#70D6C0}&l {#88D8C0}&l居{#A8E6CF}&l台{#C5E8D5}&l纳{#F4C2C2}&l瑞 {#40E0D0}· {#58D6C6}&l聚{#70D6C0}&l灵{#88D8C0}&l通{#A8E6CF}&l玄{#C5E8D5}&l {#F4C2C2}༅{#40E0D0}&kA"
+      - "{#40E0D0}&kA{#58D6C6}&l༄{#70D6C0}&l {#88D8C0}&l莲{#A8E6CF}&l华{#C5E8D5}&l映{#F4C2C2}&l影 {#40E0D0}· {#58D6C6}&l禅{#70D6C0}&l意{#88D8C0}&l自{#A8E6CF}&l生{#C5E8D5}&l {#F4C2C2}༅{#40E0D0}&kA"
+      - "{#40E0D0}&kA{#58D6C6}&l༄{#70D6C0}&l {#88D8C0}&l登{#A8E6CF}&l台{#C5E8D5}&l修{#F4C2C2}&l悟 {#40E0D0}· {#58D6C6}&l福{#70D6C0}&l泽{#88D8C0}&l加{#A8E6CF}&l身{#C5E8D5}&l {#F4C2C2}༅{#40E0D0}&kA"    
+    material_type: mc
+    material: shroomlight
+    glow: true
+  placeable: true
+  script: L_修炼/蒲团
+  recipe_type: ENHANCED_CRAFTING_TABLE
+  recipe:
+    1:
+      material_type: slimefun
+      material: Komutech_L_KW_TXY
+      amount: 1
+    2:
+      material_type: slimefun
+      material: KOMUTECH_L_X_蒲团
+      amount: 1
+    3:
+      material_type: slimefun
+      material: Komutech_L_KW_TXY
+      amount: 1
+    4:
+      material_type: slimefun
+      material: Komutech_L_KW_LSY
+      amount: 1
+    5:
+      material_type: slimefun
+      material: KOMUTECH_L_FZ_WZLJFZ
+      amount: 1
+    6:
+      material_type: slimefun
+      material: Komutech_L_KW_LSY
+      amount: 1
+    7:
+      material_type: slimefun
+      material: Komutech_L_KW_TXY
+      amount: 1
+    8:
+      material_type: slimefun
+      material: Komutech_L_JCWP_QLR
+      amount: 1
+    9:
+      material_type: slimefun
+      material: Komutech_L_KW_TXY
+      amount: 1
+KOMUTECH_L_X_云榻:
+  item_group: Komutech_L_X
+  item:
+    name: '{#FFFFFF}&kA{#E0F7FA}&l云{#B2EBF2}&l榻{#80DEEA}&kA'
+    lore:
+      - "{#FFFFFF}&kA{#E0F7FA}&l༄{#B2EBF2}&l {#80DEEA}&l凌{#4DD0E1}&l云{#26C6DA}&l卧{#00BCD4}&l榻{#FFFFFF}&l·{#E0F7FA}&l清{#B2EBF2}&l虚{#80DEEA}&l养{#4DD0E1}&l神{#26C6DA}&l {#00BCD4}&l༅{#B2EBF2}&kA"
+      - "{#FFFFFF}&kA{#E0F7FA}&l༄{#B2EBF2}&l {#80DEEA}&l乘{#4DD0E1}&l烟{#26C6DA}&l静{#00BCD4}&l守{#FFFFFF}&l·{#E0F7FA}&l坐{#B2EBF2}&l忘{#80DEEA}&l尘{#4DD0E1}&l嚣{#26C6DA}&l {#00BCD4}&l༅{#B2EBF2}&kA"
+      - "{#FFFFFF}&kA{#E0F7FA}&l༄{#B2EBF2}&l {#80DEEA}&l仙{#4DD0E1}&l云{#26C6DA}&l绕{#00BCD4}&l身{#FFFFFF}&l·{#E0F7FA}&l凝{#B2EBF2}&l魂{#80DEEA}&l入{#4DD0E1}&l道{#26C6DA}&l {#00BCD4}&l༅{#B2EBF2}&kA"
+      - "{#FFFFFF}&kA{#E0F7FA}&l༄{#B2EBF2}&l {#80DEEA}&l云{#4DD0E1}&l床{#26C6DA}&l栖{#00BCD4}&l灵{#FFFFFF}&l·{#E0F7FA}&l朝{#B2EBF2}&l暮{#80DEEA}&l修{#4DD0E1}&l行{#26C6DA}&l {#00BCD4}&l༅{#B2EBF2}&kA"    
+    material_type: mc
+    material: snow_block
+    glow: true
+  placeable: true
+  script: L_修炼/蒲团
+  recipe_type: ENHANCED_CRAFTING_TABLE
+  recipe:
+    2:
+      material_type: slimefun
+      material: KOMUTECH_L_FZ_五行灵曦
+      amount: 1
+    4:
+      material_type: slimefun
+      material: KOMUTECH_L_FZ_天象灵曦
+      amount: 1
+    5:
+      material_type: slimefun
+      material: KOMUTECH_L_X_蒲团
+      amount: 1
+    6:
+      material_type: slimefun
+      material: KOMUTECH_L_FZ_造化灵曦
+      amount: 1
+    8:
+      material_type: slimefun
+      material: KOMUTECH_L_X_玉坐
+      amount: 1
+
+
+
+
 
 ##灵—道具
 KOMUTECH_L_DJ_XSDLY:
@@ -1543,7 +1876,7 @@ KOMUTECH_L_ZJ_終極合成台核心:
       amount: 1
     2:
       material_type: slimefun
-      material: Komutech_L_GJ_口木科技指南
+      material: KOMUTECH_L_GJ_口木科技指南
       amount: 1
     3:
       material_type: slimefun
