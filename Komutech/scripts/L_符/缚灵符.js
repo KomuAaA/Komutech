@@ -1,3 +1,4 @@
+(function() {
 const Bukkit = Java.type('org.bukkit.Bukkit');
 const Particle = Java.type('org.bukkit.Particle');
 const Color = Java.type('org.bukkit.Color');
@@ -6,213 +7,33 @@ const SlimefunItem = Java.type('io.github.thebusybiscuit.slimefun4.api.items.Sli
 const Files = Java.type('java.nio.file.Files');
 const Paths = Java.type('java.nio.file.Paths');
 const StandardCharsets = Java.type('java.nio.charset.StandardCharsets');
-
-const DATA_DIR = 'plugins/RykenSlimefunCustomizer/addon_configs/Komutech/玩家属性';
-const SPIRIT_COST = 5;
-const CONFIG = { COOLDOWN: 5000, RANGE: 8, DETECTION_RADIUS: 1.0, ANIMATION_DURATION: 60, SPIRAL_COUNT: 3, PARTICLES_PER_SPIRAL: 8, SPIRAL_RADIUS: 1.2, SPIRAL_SPEED: 0.2 };
-const SPECIAL_ITEM_ID = "KOMUTECH_L_F_灵墟缚灵符";
-
-let cooldownPlayers = {};
-let captureAnimations = {};
-let animationTasks = {};
-
-function loadData(name) {
-    let p = Paths.get(DATA_DIR, '[' + name + '].json');
-    if (!Files.exists(p)) return null;
-    try { return JSON.parse(Files.readString(p, StandardCharsets.UTF_8)); } catch (e) { return null; }
-}
-function saveData(name, d) {
-    let p = Paths.get(DATA_DIR, '[' + name + '].json');
-    try { Files.writeString(p, JSON.stringify(d, null, 2), StandardCharsets.UTF_8); return true; } catch (e) { return false; }
-}
-function parseLingli(raw) {
-    if (typeof raw !== 'string') raw = '100/100+0';
-    let m = raw.match(/^(\d+\.?\d*)\/(\d+\.?\d*)\+(-?\d+)$/);
-    if (m) return { cur: parseFloat(m[1]), max: parseFloat(m[2]), bonus: parseInt(m[3]) };
-    m = raw.match(/^(\d+\.?\d*)\/(\d+\.?\d*)$/);
-    if (m) return { cur: parseFloat(m[1]), max: parseFloat(m[2]), bonus: 0 };
-    return { cur: 100, max: 100, bonus: 0 };
-}
-function formatLingli(cur, max, bonus) { return cur.toFixed(2) + '/' + max + (bonus !== 0 ? '+' + bonus : ''); }
-
-function getPlayerHealthActual(player) {
-    let data = loadData(player.getName());
-    if (data && data['血量_实际'] !== undefined) return parseFloat(data['血量_实际']);
-    return 0;
-}
-
-function consumeSpirit(player, cost) {
-    let data = loadData(player.getName());
-    if (!data) return false;
-    if (!data.灵力) data.灵力 = '100/100+0';
-    let ling = parseLingli(data.灵力);
-    if (ling.cur < cost) return false;
-    ling.cur -= cost;
-    data.灵力 = formatLingli(ling.cur, ling.max, ling.bonus);
-    return saveData(player.getName(), data);
-}
-
-// 粒子效果（保持不变）
-function shootRayParticles(player, targetEntity) {
-    const startLoc = player.getEyeLocation();
-    const world = player.getWorld();
-    let endLoc;
-    if (targetEntity && targetEntity.isValid() && targetEntity instanceof Java.type('org.bukkit.entity.LivingEntity')) {
-        endLoc = targetEntity.getLocation().add(0, targetEntity.getHeight() / 2, 0);
-    } else {
-        const direction = startLoc.getDirection().normalize();
-        endLoc = startLoc.clone().add(direction.getX() * CONFIG.RANGE, direction.getY() * CONFIG.RANGE, direction.getZ() * CONFIG.RANGE);
-    }
-    const direction = endLoc.clone().subtract(startLoc).toVector();
-    const distance = direction.length();
-    const maxDistance = Math.min(distance, CONFIG.RANGE);
-    if (maxDistance < 0.5) return;
-    direction.normalize();
-    const startColor = Color.fromRGB(0, 255, 255);
-    const endColor = Color.fromRGB(255, 105, 180);
-    for (let d = 0; d <= maxDistance; d += 0.25) {
-        const progress = d / maxDistance;
-        const r = Math.round(startColor.getRed() + (endColor.getRed() - startColor.getRed()) * progress);
-        const g = Math.round(startColor.getGreen() + (endColor.getGreen() - startColor.getGreen()) * progress);
-        const b = Math.round(startColor.getBlue() + (endColor.getBlue() - startColor.getBlue()) * progress);
-        world.spawnParticle(Particle.DUST, startLoc.clone().add(direction.getX() * d, direction.getY() * d, direction.getZ() * d).getX(), startLoc.clone().add(direction.getX() * d, direction.getY() * d, direction.getZ() * d).getY(), startLoc.clone().add(direction.getX() * d, direction.getY() * d, direction.getZ() * d).getZ(), 1, 0, 0, 0, 0, new DustOptions(Color.fromRGB(r, g, b), 0.6));
-    }
-}
-function getTargetEntity(player, range, radius) {
-    const eyeLoc = player.getEyeLocation();
-    const direction = eyeLoc.getDirection();
-    const world = player.getWorld();
-    const result = world.rayTraceEntities(eyeLoc, direction, range, radius, entity => entity !== player && entity instanceof Java.type('org.bukkit.entity.LivingEntity') && !(entity instanceof Java.type('org.bukkit.entity.Player')));
-    return result ? result.getHitEntity() : null;
-}
-function generateSpiralParticles(entity, tick) {
-    if (!entity || !entity.isValid() || entity.isDead()) return;
-    const world = entity.getWorld();
-    const location = entity.getLocation();
-    const height = entity.getHeight();
-    for (let spiral = 0; spiral < CONFIG.SPIRAL_COUNT; spiral++) {
-        const spiralOffset = spiral * (Math.PI * 2 / CONFIG.SPIRAL_COUNT);
-        const spiralHeight = height * (spiral / CONFIG.SPIRAL_COUNT);
-        for (let i = 0; i < CONFIG.PARTICLES_PER_SPIRAL; i++) {
-            const angle = (i * (Math.PI * 2 / CONFIG.PARTICLES_PER_SPIRAL) + tick * CONFIG.SPIRAL_SPEED + spiralOffset) % (Math.PI * 2);
-            const x = Math.cos(angle) * CONFIG.SPIRAL_RADIUS;
-            const z = Math.sin(angle) * CONFIG.SPIRAL_RADIUS;
-            const y = spiralHeight + 0.1;
-            const particleLoc = location.clone().add(x, y, z);
-            world.spawnParticle(Particle.DUST, particleLoc.getX(), particleLoc.getY(), particleLoc.getZ(), 1, 0, 0, 0, 0, new DustOptions(Color.fromRGB(255, 105, 180), 0.5));
-            if (i % 2 === 0) world.spawnParticle(Particle.DUST, particleLoc.getX(), particleLoc.getY(), particleLoc.getZ(), 1, 0, 0, 0, 0, new DustOptions(Color.fromRGB(0, 255, 255), 0.4));
-        }
-    }
-}
-function startCaptureAnimation(player, entity, catchPercent, isSpecialItem) {
-    const uuid = player.getUniqueId().toString();
-    if (animationTasks[uuid]) { Bukkit.getScheduler().cancelTask(animationTasks[uuid]); delete animationTasks[uuid]; }
-    delete captureAnimations[uuid];
-    try {
-        const PotionEffect = Java.type('org.bukkit.potion.PotionEffect');
-        const PotionEffectType = Java.type('org.bukkit.potion.PotionEffectType');
-        let slowEffectType = PotionEffectType.SLOW || PotionEffectType.getByName("SLOWNESS");
-        if (slowEffectType) entity.addPotionEffect(new PotionEffect(slowEffectType, 60, 255, true, false));
-    } catch (e) {}
-    captureAnimations[uuid] = { player, entity, catchPercent, startTime: Date.now(), tick: 0, isSpecialItem };
-    const taskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(Bukkit.getPluginManager().getPlugin("RykenSlimefunCustomizer"), () => updateCaptureAnimation(uuid), 0, 1);
-    animationTasks[uuid] = taskId;
-}
-function updateCaptureAnimation(uuid) {
-    const anim = captureAnimations[uuid];
-    if (!anim) { if (animationTasks[uuid]) { Bukkit.getScheduler().cancelTask(animationTasks[uuid]); delete animationTasks[uuid]; } return; }
-    if (anim.tick >= CONFIG.ANIMATION_DURATION) { finishCaptureAnimation(uuid, true); return; }
-    if (anim.entity.isDead() || !anim.entity.isValid() || !anim.player.isOnline()) { finishCaptureAnimation(uuid, false); return; }
-    generateSpiralParticles(anim.entity, anim.tick);
-    anim.tick++;
-}
-function finishCaptureAnimation(uuid, success) {
-    const anim = captureAnimations[uuid];
-    if (!anim) { if (animationTasks[uuid]) { Bukkit.getScheduler().cancelTask(animationTasks[uuid]); delete animationTasks[uuid]; } return; }
-    if (animationTasks[uuid]) { Bukkit.getScheduler().cancelTask(animationTasks[uuid]); delete animationTasks[uuid]; }
-    if (success && anim.entity.isValid() && !anim.entity.isDead()) {
-        giveSpawnEggToPlayer(anim.player, anim.entity, anim.catchPercent, anim.isSpecialItem);
-    } else {
-        if (anim.player.isOnline()) anim.player.sendMessage("§c捕捉失败！");
-        try {
-            if (anim.entity && anim.entity.isValid()) {
-                const PotionEffectType = Java.type('org.bukkit.potion.PotionEffectType');
-                const slowEffectType = PotionEffectType.SLOW || PotionEffectType.getByName("SLOWNESS");
-                if (slowEffectType) anim.entity.removePotionEffect(slowEffectType);
-            }
-        } catch (e) {}
-    }
-    delete captureAnimations[uuid];
-}
-function consumeItem(player) {
-    const item = player.getInventory().getItemInMainHand();
-    if (item && item.getAmount() > 0) {
-        if (item.getAmount() > 1) item.setAmount(item.getAmount() - 1);
-        else player.getInventory().setItemInMainHand(null);
-        player.updateInventory();
-        return true;
-    }
-    return false;
-}
-function giveSpawnEggToPlayer(player, entity, catchPercent, isSpecialItem) {
-    try {
-        const PotionEffectType = Java.type('org.bukkit.potion.PotionEffectType');
-        const slowEffectType = PotionEffectType.SLOW || PotionEffectType.getByName("SLOWNESS");
-        if (slowEffectType) entity.removePotionEffect(slowEffectType);
-    } catch (e) {}
-    let eggMaterial;
-    try { eggMaterial = Java.type('org.bukkit.Material').valueOf(entity.getType().toString() + "_SPAWN_EGG"); } catch (e) { eggMaterial = Java.type('org.bukkit.Material').EGG; }
-    const location = entity.getLocation();
-    entity.remove();
-    const itemStack = new Java.type('org.bukkit.inventory.ItemStack')(eggMaterial, 1);
-    const added = player.getInventory().addItem(itemStack);
-    if (!added.isEmpty()) { player.getWorld().dropItem(location, itemStack); player.sendMessage("§e背包已满，刷怪蛋已掉落！"); }
-    player.updateInventory();
-    player.sendMessage((isSpecialItem ? "§6灵墟§a" : "§a") + "捕捉成功！ (" + catchPercent + "%)");
-}
-
-function onUse(event) {
-    const player = event.getPlayer();
-    const uuid = player.getUniqueId().toString();
-    const now = Date.now();
-    const expiredTime = now - CONFIG.COOLDOWN;
-    for (const uid in cooldownPlayers) { if (cooldownPlayers[uid] < expiredTime) delete cooldownPlayers[uid]; }
-    if (cooldownPlayers[uuid] && now - cooldownPlayers[uuid] < CONFIG.COOLDOWN) {
-        const remaining = Math.ceil((CONFIG.COOLDOWN - (now - cooldownPlayers[uuid])) / 1000);
-        player.sendMessage("§c冷却中，请等待 " + remaining + " 秒！");
-        return;
-    }
-    if (captureAnimations[uuid]) { player.sendMessage("§c你正在进行捕捉！"); return; }
-    const item = player.getInventory().getItemInMainHand();
-    let isSpecialItem = false;
-    if (item && !item.getType().equals(Java.type('org.bukkit.Material').AIR)) {
-        const sfItem = SlimefunItem.getByItem(item);
-        if (sfItem && sfItem.getId() === SPECIAL_ITEM_ID) isSpecialItem = true;
-    }
-    cooldownPlayers[uuid] = now;
-    const entity = getTargetEntity(player, CONFIG.RANGE, CONFIG.DETECTION_RADIUS);
-    shootRayParticles(player, entity);
-    if (entity == null || entity instanceof Java.type('org.bukkit.entity.Player') || !(entity instanceof Java.type('org.bukkit.entity.LivingEntity'))) {
-        player.sendMessage("§c未命中生物！ (0%)");
-        return;
-    }
-    // 检查灵力
-    if (!consumeSpirit(player, SPIRIT_COST)) {
-        player.sendMessage("§c灵力不足！需要 " + SPIRIT_COST + " 点灵力");
-        return;
-    }
-    if (!consumeItem(player)) return;
-    const baseHealth = getPlayerHealthActual(player) + 20;
-    if (entity.getHealth() >= baseHealth) { player.sendMessage("§c捕捉失败！ (0%)"); return; }
-    const healthRatio = (entity.getHealth() / baseHealth) * 100;
-    let catchChance;
-    if (isSpecialItem) {
-        catchChance = healthRatio <= 30 ? 1.0 : healthRatio <= 50 ? 0.90 : healthRatio <= 80 ? 0.80 : healthRatio <= 100 ? 0.50 : 0.10;
-    } else {
-        catchChance = healthRatio <= 10 ? 1.0 : healthRatio <= 20 ? 0.90 : healthRatio <= 50 ? 0.60 : healthRatio <= 80 ? 0.30 : 0.10;
-    }
-    const catchPercent = Math.round(catchChance * 100);
-    if (catchChance < 1.0 && Math.random() > catchChance) { player.sendMessage("§c捕捉失败！ (" + catchPercent + "%)"); return; }
-    player.sendMessage("§a捕捉成功！正在束缚... (" + catchPercent + "%)");
-    startCaptureAnimation(player, entity, catchPercent, isSpecialItem);
-}
+const ChatMessageType = Java.type('net.md_5.bungee.api.ChatMessageType');
+const TextComponent = Java.type('net.md_5.bungee.api.chat.TextComponent');
+globalThis.KOMUTECH = globalThis.KOMUTECH || {};
+globalThis.KOMUTECH.FLF = globalThis.KOMUTECH.FLF || {};
+const KOMUTECH_L_F_FLF_DATA_DIR = "plugins/RykenSlimefunCustomizer/addon_configs/Komutech/玩家属性";
+const KOMUTECH_L_F_FLF_SPIRIT_COST = 5;
+const KOMUTECH_L_F_FLF_CONFIG = { COOLDOWN: 1000, RANGE: 8, DETECTION_RADIUS: 1.0, ANIMATION_DURATION: 60, SPIRAL_COUNT: 3, PARTICLES_PER_SPIRAL: 8, SPIRAL_RADIUS: 1.2, SPIRAL_SPEED: 0.2 };
+const KOMUTECH_L_F_FLF_SPECIAL_ITEM_ID = "KOMUTECH_L_F_灵墟缚灵符";
+globalThis.KOMUTECH.FLF.cooldown = globalThis.KOMUTECH.FLF.cooldown || new java.util.HashMap();
+globalThis.KOMUTECH.FLF.captureAnim = globalThis.KOMUTECH.FLF.captureAnim || new java.util.HashMap();
+globalThis.KOMUTECH.FLF.animTasks = globalThis.KOMUTECH.FLF.animTasks || new java.util.HashMap();
+function KOMUTECH_L_F_FLF_sendActionBar(player, message) { player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(message)); }
+function KOMUTECH_L_F_FLF_loadData(name) { try { const path = Paths.get(KOMUTECH_L_F_FLF_DATA_DIR, "[" + name + "].json"); return Files.exists(path) ? JSON.parse(Files.readString(path, StandardCharsets.UTF_8)) : null; } catch(e) { return null; } }
+function KOMUTECH_L_F_FLF_saveData(name, data) { try { const path = Paths.get(KOMUTECH_L_F_FLF_DATA_DIR, "[" + name + "].json"); Files.writeString(path, JSON.stringify(data, null, 2), StandardCharsets.UTF_8); return true; } catch(e) { return false; } }
+function KOMUTECH_L_F_FLF_parseLingli(raw) { if (typeof raw !== 'string') raw = '100/100+0'; let m = raw.match(/^(\d+\.?\d*)\/(\d+\.?\d*)\+(-?\d+)$/); if (m) return { cur: parseFloat(m[1]), max: parseFloat(m[2]), bonus: parseInt(m[3]) }; m = raw.match(/^(\d+\.?\d*)\/(\d+\.?\d*)$/); if (m) return { cur: parseFloat(m[1]), max: parseFloat(m[2]), bonus: 0 }; return { cur: 100, max: 100, bonus: 0 }; }
+function KOMUTECH_L_F_FLF_formatLingli(cur, max, bonus) { return cur.toFixed(2) + '/' + max + (bonus !== 0 ? '+' + bonus : ''); }
+function KOMUTECH_L_F_FLF_getPlayerHealthActual(player) { let data = KOMUTECH_L_F_FLF_loadData(player.getName()); return data && data['血量_实际'] !== undefined ? parseFloat(data['血量_实际']) : 0; }
+function KOMUTECH_L_F_FLF_getPlayerLingShi(player) { let data = KOMUTECH_L_F_FLF_loadData(player.getName()); return data && data['灵识'] !== undefined ? parseFloat(data['灵识']) : 0; }
+function KOMUTECH_L_F_FLF_consumeSpirit(player, cost) { let data = KOMUTECH_L_F_FLF_loadData(player.getName()); if (!data) return false; if (!data.灵力) data.灵力 = '100/100+0'; let ling = KOMUTECH_L_F_FLF_parseLingli(data.灵力); if (ling.cur < cost) return false; ling.cur -= cost; data.灵力 = KOMUTECH_L_F_FLF_formatLingli(ling.cur, ling.max, ling.bonus); return KOMUTECH_L_F_FLF_saveData(player.getName(), data); }
+function KOMUTECH_L_F_FLF_consumeItemDirectly(player) { const item = player.getInventory().getItemInMainHand(); if (item && item.getAmount() > 0) { if (item.getAmount() > 1) item.setAmount(item.getAmount() - 1); else player.getInventory().setItemInMainHand(null); player.updateInventory(); return true; } return false; }
+function KOMUTECH_L_F_FLF_shootRayParticles(player, targetEntity) { const start = player.getEyeLocation(); const world = player.getWorld(); let end; if (targetEntity && targetEntity.isValid() && targetEntity instanceof Java.type('org.bukkit.entity.LivingEntity')) { end = targetEntity.getLocation().add(0, targetEntity.getHeight() / 2, 0); } else { const direction = start.getDirection().normalize(); end = start.clone().add(direction.getX() * KOMUTECH_L_F_FLF_CONFIG.RANGE, direction.getY() * KOMUTECH_L_F_FLF_CONFIG.RANGE, direction.getZ() * KOMUTECH_L_F_FLF_CONFIG.RANGE); } const direction = end.clone().subtract(start).toVector(); let distance = direction.length(); const maxDistance = Math.min(distance, KOMUTECH_L_F_FLF_CONFIG.RANGE); if (maxDistance < 0.5) return; direction.normalize(); const startColor = Color.fromRGB(0, 255, 255); const endColor = Color.fromRGB(255, 105, 180); for (let d = 0; d <= maxDistance; d += 0.25) { const progress = d / maxDistance; const r = Math.round(startColor.getRed() + (endColor.getRed() - startColor.getRed()) * progress); const g = Math.round(startColor.getGreen() + (endColor.getGreen() - startColor.getGreen()) * progress); const b = Math.round(startColor.getBlue() + (endColor.getBlue() - startColor.getBlue()) * progress); world.spawnParticle(Particle.DUST, start.getX() + direction.getX() * d, start.getY() + direction.getY() * d, start.getZ() + direction.getZ() * d, 1, 0, 0, 0, 0, new DustOptions(Color.fromRGB(r, g, b), 0.6)); } }
+function KOMUTECH_L_F_FLF_getTargetEntity(player, range, radius) { const eye = player.getEyeLocation(); const direction = eye.getDirection(); const result = player.getWorld().rayTraceEntities(eye, direction, range, radius, entity => entity !== player && entity instanceof Java.type('org.bukkit.entity.LivingEntity') && !(entity instanceof Java.type('org.bukkit.entity.Player'))); return result ? result.getHitEntity() : null; }
+function KOMUTECH_L_F_FLF_generateSpiralParticles(entity, tick) { if (!entity || !entity.isValid() || entity.isDead()) return; const world = entity.getWorld(); const location = entity.getLocation(); const height = entity.getHeight(); for (let spiral = 0; spiral < KOMUTECH_L_F_FLF_CONFIG.SPIRAL_COUNT; spiral++) { const spiralOffset = spiral * (Math.PI * 2 / KOMUTECH_L_F_FLF_CONFIG.SPIRAL_COUNT); const spiralHeight = height * (spiral / KOMUTECH_L_F_FLF_CONFIG.SPIRAL_COUNT); for (let i = 0; i < KOMUTECH_L_F_FLF_CONFIG.PARTICLES_PER_SPIRAL; i++) { const angle = (i * (Math.PI * 2 / KOMUTECH_L_F_FLF_CONFIG.PARTICLES_PER_SPIRAL) + tick * KOMUTECH_L_F_FLF_CONFIG.SPIRAL_SPEED + spiralOffset) % (Math.PI * 2); const x = Math.cos(angle) * KOMUTECH_L_F_FLF_CONFIG.SPIRAL_RADIUS; const z = Math.sin(angle) * KOMUTECH_L_F_FLF_CONFIG.SPIRAL_RADIUS; const y = spiralHeight + 0.1; const particleLoc = location.clone().add(x, y, z); world.spawnParticle(Particle.DUST, particleLoc.getX(), particleLoc.getY(), particleLoc.getZ(), 1, 0, 0, 0, 0, new DustOptions(Color.fromRGB(255, 105, 180), 0.5)); if (i % 2 === 0) world.spawnParticle(Particle.DUST, particleLoc.getX(), particleLoc.getY(), particleLoc.getZ(), 1, 0, 0, 0, 0, new DustOptions(Color.fromRGB(0, 255, 255), 0.4)); } } }
+function KOMUTECH_L_F_FLF_startCaptureAnimation(player, entity, catchPercent, isSpecialItem) { const uuid = player.getUniqueId().toString(); if (globalThis.KOMUTECH.FLF.animTasks.has(uuid)) { Bukkit.getScheduler().cancelTask(globalThis.KOMUTECH.FLF.animTasks.get(uuid)); globalThis.KOMUTECH.FLF.animTasks.remove(uuid); } globalThis.KOMUTECH.FLF.captureAnim.remove(uuid); try { const PotionEffect = Java.type('org.bukkit.potion.PotionEffect'); const PotionEffectType = Java.type('org.bukkit.potion.PotionEffectType'); let slowEffectType = PotionEffectType.SLOW || PotionEffectType.getByName("SLOWNESS"); if (slowEffectType) entity.addPotionEffect(new PotionEffect(slowEffectType, 60, 255, true, false)); } catch(e) {} globalThis.KOMUTECH.FLF.captureAnim.put(uuid, { player: player, entity: entity, catchPercent: catchPercent, startTime: Date.now(), tick: 0, isSpecialItem: isSpecialItem }); const taskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(Bukkit.getPluginManager().getPlugin("RykenSlimefunCustomizer"), () => KOMUTECH_L_F_FLF_updateCaptureAnimation(uuid), 0, 1); globalThis.KOMUTECH.FLF.animTasks.put(uuid, taskId); }
+function KOMUTECH_L_F_FLF_updateCaptureAnimation(uuid) { const anim = globalThis.KOMUTECH.FLF.captureAnim.get(uuid); if (!anim) { if (globalThis.KOMUTECH.FLF.animTasks.has(uuid)) { Bukkit.getScheduler().cancelTask(globalThis.KOMUTECH.FLF.animTasks.get(uuid)); globalThis.KOMUTECH.FLF.animTasks.remove(uuid); } return; } if (anim.tick >= KOMUTECH_L_F_FLF_CONFIG.ANIMATION_DURATION) { KOMUTECH_L_F_FLF_finishCaptureAnimation(uuid, true); return; } if (anim.entity.isDead() || !anim.entity.isValid() || !anim.player.isOnline()) { KOMUTECH_L_F_FLF_finishCaptureAnimation(uuid, false); return; } KOMUTECH_L_F_FLF_generateSpiralParticles(anim.entity, anim.tick); anim.tick++; }
+function KOMUTECH_L_F_FLF_finishCaptureAnimation(uuid, success) { const anim = globalThis.KOMUTECH.FLF.captureAnim.get(uuid); if (!anim) { if (globalThis.KOMUTECH.FLF.animTasks.has(uuid)) { Bukkit.getScheduler().cancelTask(globalThis.KOMUTECH.FLF.animTasks.get(uuid)); globalThis.KOMUTECH.FLF.animTasks.remove(uuid); } return; } if (globalThis.KOMUTECH.FLF.animTasks.has(uuid)) { Bukkit.getScheduler().cancelTask(globalThis.KOMUTECH.FLF.animTasks.get(uuid)); globalThis.KOMUTECH.FLF.animTasks.remove(uuid); } if (success && anim.entity.isValid() && !anim.entity.isDead()) { KOMUTECH_L_F_FLF_giveSpawnEggToPlayer(anim.player, anim.entity, anim.catchPercent, anim.isSpecialItem); } else { if (anim.player.isOnline()) KOMUTECH_L_F_FLF_sendActionBar(anim.player, "§c捕捉失败！"); try { const PotionEffectType = Java.type('org.bukkit.potion.PotionEffectType'); let slowEffectType = PotionEffectType.SLOW || PotionEffectType.getByName("SLOWNESS"); if (slowEffectType && anim.entity && anim.entity.isValid()) anim.entity.removePotionEffect(slowEffectType); } catch(e) {} } globalThis.KOMUTECH.FLF.captureAnim.remove(uuid); }
+function KOMUTECH_L_F_FLF_giveSpawnEggToPlayer(player, entity, catchPercent, isSpecialItem) { try { const PotionEffectType = Java.type('org.bukkit.potion.PotionEffectType'); let slowEffectType = PotionEffectType.SLOW || PotionEffectType.getByName("SLOWNESS"); if (slowEffectType) entity.removePotionEffect(slowEffectType); } catch(e) {} let eggMaterial; try { eggMaterial = Java.type('org.bukkit.Material').valueOf(entity.getType().toString() + "_SPAWN_EGG"); } catch(e) { eggMaterial = Java.type('org.bukkit.Material').EGG; } const location = entity.getLocation(); entity.remove(); const ItemStackClass = Java.type('org.bukkit.inventory.ItemStack'); const itemStack = new ItemStackClass(eggMaterial, 1); const added = player.getInventory().addItem(itemStack); if (!added.isEmpty()) { player.getWorld().dropItem(location, itemStack); KOMUTECH_L_F_FLF_sendActionBar(player, "§e背包已满，刷怪蛋已掉落！"); } player.updateInventory(); KOMUTECH_L_F_FLF_sendActionBar(player, (isSpecialItem ? "§6灵墟§a" : "§a") + "捕捉成功！ (" + catchPercent + "%)"); }
+function KOMUTECH_L_F_FLF_onUse(event) { const player = event.getPlayer(); const uuid = player.getUniqueId().toString(); const now = Date.now(); const lastCooldown = globalThis.KOMUTECH.FLF.cooldown.getOrDefault(uuid, 0); if (now - lastCooldown < KOMUTECH_L_F_FLF_CONFIG.COOLDOWN) { const remaining = Math.ceil((KOMUTECH_L_F_FLF_CONFIG.COOLDOWN - (now - lastCooldown)) / 1000); KOMUTECH_L_F_FLF_sendActionBar(player, "§c冷却中，请等待 " + remaining + " 秒！"); return; } if (globalThis.KOMUTECH.FLF.captureAnim.has(uuid)) { KOMUTECH_L_F_FLF_sendActionBar(player, "§c你正在进行捕捉！"); return; } const item = player.getInventory().getItemInMainHand(); let isSpecialItem = false; if (item && !item.getType().equals(Java.type('org.bukkit.Material').AIR)) { const sfItem = SlimefunItem.getByItem(item); if (sfItem && sfItem.getId() === KOMUTECH_L_F_FLF_SPECIAL_ITEM_ID) isSpecialItem = true; } globalThis.KOMUTECH.FLF.cooldown.put(uuid, now); const entity = KOMUTECH_L_F_FLF_getTargetEntity(player, KOMUTECH_L_F_FLF_CONFIG.RANGE, KOMUTECH_L_F_FLF_CONFIG.DETECTION_RADIUS); KOMUTECH_L_F_FLF_shootRayParticles(player, entity); if (entity == null || entity instanceof Java.type('org.bukkit.entity.Player') || !(entity instanceof Java.type('org.bukkit.entity.LivingEntity'))) { KOMUTECH_L_F_FLF_sendActionBar(player, "§c未命中生物！ (0%)"); return; } if (!KOMUTECH_L_F_FLF_consumeSpirit(player, KOMUTECH_L_F_FLF_SPIRIT_COST)) { KOMUTECH_L_F_FLF_sendActionBar(player, "§c灵力不足！需要 " + KOMUTECH_L_F_FLF_SPIRIT_COST + " 点灵力"); return; } const playerBaseHealth = KOMUTECH_L_F_FLF_getPlayerHealthActual(player) + 20; const entityHealth = entity.getHealth(); let catchChance; if (!isSpecialItem) { if (entityHealth >= playerBaseHealth) { catchChance = 0; } else { const deficitPercent = (playerBaseHealth - entityHealth) / playerBaseHealth * 100; catchChance = deficitPercent * 0.5; if (catchChance > 50) catchChance = 50; } } else { if (entityHealth > playerBaseHealth) { catchChance = 25; } else { const deficitPercent = (playerBaseHealth - entityHealth) / playerBaseHealth * 100; catchChance = 25 + deficitPercent; if (catchChance > 100) catchChance = 100; } } const chancePercent = Math.floor(catchChance); KOMUTECH_L_F_FLF_sendActionBar(player, "§e捕捉概率: " + chancePercent + "%"); const success = (catchChance >= 100) || (Math.random() * 100 < catchChance); if (success) { if (!KOMUTECH_L_F_FLF_consumeItemDirectly(player)) { KOMUTECH_L_F_FLF_sendActionBar(player, "§c物品已消失，取消捕捉"); return; } KOMUTECH_L_F_FLF_sendActionBar(player, "§a捕捉成功！正在束缚... (" + chancePercent + "%)"); KOMUTECH_L_F_FLF_startCaptureAnimation(player, entity, chancePercent, isSpecialItem); } else { const lingShi = KOMUTECH_L_F_FLF_getPlayerLingShi(player); let consumeProb = (100 - catchChance) - lingShi; if (consumeProb < 0) consumeProb = 0; if (consumeProb > 100) consumeProb = 100; const willConsume = Math.random() * 100 < consumeProb; if (willConsume) { if (!KOMUTECH_L_F_FLF_consumeItemDirectly(player)) { KOMUTECH_L_F_FLF_sendActionBar(player, "§c物品已消失，无法消耗"); return; } KOMUTECH_L_F_FLF_sendActionBar(player, "§c捕捉失败！符箓已损坏 (" + chancePercent + "%)"); } else { KOMUTECH_L_F_FLF_sendActionBar(player, "§c捕捉失败！但符箓完好无损 (" + chancePercent + "%)"); } } }
+globalThis.onUse = KOMUTECH_L_F_FLF_onUse;
+})();

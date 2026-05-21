@@ -101,12 +101,23 @@ function KOMUTECH_XDR_onUse(e) {
         const speed = PotionEffectType.getByKey(org.bukkit.NamespacedKey.minecraft("speed"));
         if (resistance) entity.addPotionEffect(new PotionEffect(resistance, KOMUTECH_XDR_DURATION_TICKS, KOMUTECH_XDR_RESISTANCE_LEVEL, true, true));
         if (speed) entity.addPotionEffect(new PotionEffect(speed, KOMUTECH_XDR_DURATION_TICKS, KOMUTECH_XDR_SPEED_LEVEL, true, true));
-        const item = e.getItem();
-        if (item) {
-            const amt = item.getAmount();
-            if (amt > 1) item.setAmount(amt - 1);
-            else p.getInventory().setItemInMainHand(null);
+        const hand = e.getHand();
+        const EquipmentSlot = Java.type('org.bukkit.inventory.EquipmentSlot');
+        const inv = p.getInventory();
+        if (hand === EquipmentSlot.HAND) {
+            const item = inv.getItemInMainHand();
+            if (item && item.getAmount() > 0) {
+                if (item.getAmount() > 1) item.setAmount(item.getAmount() - 1);
+                else inv.setItemInMainHand(null);
+            }
+        } else if (hand === EquipmentSlot.OFF_HAND) {
+            const item = inv.getItemInOffHand();
+            if (item && item.getAmount() > 0) {
+                if (item.getAmount() > 1) item.setAmount(item.getAmount() - 1);
+                else inv.setItemInOffHand(null);
+            }
         }
+        p.updateInventory();
         p.sendMessage("§a小岛人（" + (isSk ? "骷髅" : "僵尸") + "）生成完成");
         p.playSound(p.getLocation(), "entity.player.levelup", 1.0, 1.0);
         return true;

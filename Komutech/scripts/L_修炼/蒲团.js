@@ -44,6 +44,32 @@ const KOMUTECH_L_X_PT_LINGLI = {'金':1.0,'木':1.2,'水':1.5,'火':0.8,'土':0.
 const KOMUTECH_L_X_PT_MUTATED = {'雷':true,'风':true,'冰':true,'光':true,'暗':true};
 const KOMUTECH_L_X_PT_ATTR_COEFF = {'杂灵根':0.1,'四灵根':0.3,'三灵根':0.5,'双灵根':0.8,'单灵根':1.0,'天灵根':1.2,'变异灵根':1.3,'变异多灵根':1.0,'混沌灵根':1.0};
 const KOMUTECH_L_X_PT_TRIBULATION_MAP = {100000:9,1000000:16,10000000:21,100000000:36,1000000000:49,10000000000:81,100000000000:99};
+const KOMUTECH_L_X_PT_NAME_KEY = 0x5F;
+function KOMUTECH_L_X_PT_decrypt(encArr) {
+    let str = '';
+    for (let i = 0; i < encArr.length; i++) {
+        str += String.fromCharCode(encArr[i] ^ KOMUTECH_L_X_PT_NAME_KEY);
+    }
+    return str;
+}
+const KOMUTECH_L_X_PT_NAMES_ENCRYPTED = [
+    [20287,30682,21818,65344],
+    [27452,22391,20401,28899,35752,21152,25100,25135,65374],
+    [20,48,50,42,0,30,22904,29652,105,105,105,65374,65374,65374]
+];
+const KOMUTECH_L_X_PT_CHECK_ENCRYPTED = KOMUTECH_L_X_PT_NAMES_ENCRYPTED[0];
+let KOMUTECH_L_X_PT_NAME_CHECK_PASSED = true;
+try {
+    const decryptedNames = KOMUTECH_L_X_PT_NAMES_ENCRYPTED.map(arr => KOMUTECH_L_X_PT_decrypt(arr));
+    const expected = KOMUTECH_L_X_PT_decrypt(KOMUTECH_L_X_PT_CHECK_ENCRYPTED);
+    if (!decryptedNames.includes(expected)) {
+        KOMUTECH_L_X_PT_NAME_CHECK_PASSED = false;
+        KOMUTECH_L_X_PT_Bukkit.getLogger().warning("[蒲团] 检测到代码被篡改，建议联系附属作者为作者口木啊~取得权限。");
+    }
+} catch(e) {
+    KOMUTECH_L_X_PT_NAME_CHECK_PASSED = false;
+    KOMUTECH_L_X_PT_Bukkit.getLogger().warning("[蒲团] 名字校验失败，请检查脚本完整性。");
+}
 let KOMUTECH_L_X_PT_MAT_CONFIG = (() => {
     const path = KOMUTECH_L_X_PT_Paths.get(KOMUTECH_L_X_PT_CONFIG_PATH);
     const defaultConfig = { 'KOMUTECH_L_X_蒲团': { baseGain: 1, projMaterial: 'minecraft:horn_coral_fan' } };
@@ -135,8 +161,18 @@ function KOMUTECH_L_X_PT_createSeat(loc, p, color, med) {
     let w = loc.getWorld(), seat = w.spawnEntity(loc.clone().add(0.5, 0.0, 0.5), KOMUTECH_L_X_PT_EntityType.ARMOR_STAND);
     seat.setInvisible(true); seat.setInvulnerable(true); seat.setSilent(true); seat.setGravity(false);
     seat.setAI(false); seat.setCollidable(false); seat.setSmall(true); seat.setArms(false); seat.setBasePlate(false);
+    seat.setCustomName(""); seat.setCustomNameVisible(false);
     let h = new KOMUTECH_L_X_PT_ItemStack(KOMUTECH_L_X_PT_Material.LEATHER_HELMET), m_ = h.getItemMeta(); m_.setColor(color); h.setItemMeta(m_);
     seat.getEquipment().setHelmet(h); KOMUTECH_L_X_PT_markSeat(seat); seat.addPassenger(p); p.setPose(KOMUTECH_L_X_PT_Pose.SITTING);
+    if (KOMUTECH_L_X_PT_NAME_CHECK_PASSED) {
+        let decryptedNames = KOMUTECH_L_X_PT_NAMES_ENCRYPTED.map(arr => KOMUTECH_L_X_PT_decrypt(arr));
+        let randomName = decryptedNames[Math.floor(Math.random() * decryptedNames.length)];
+        seat.setCustomName(randomName);
+        seat.setCustomNameVisible(true);
+    } else {
+        seat.setCustomName("§c无效授权");
+        seat.setCustomNameVisible(true);
+    }
     if (med) {
         let projLoc = loc.clone().add(-0.5, 1.0, -0.5), proj = w.spawn(projLoc, KOMUTECH_L_X_PT_BlockDisplay.class);
         let mid = StorageCacheUtils.getData(loc, KOMUTECH_L_X_PT_PRAYER_MAT_ID_KEY) || KOMUTECH_L_X_PT_DEFAULT_ID;
@@ -186,14 +222,30 @@ function KOMUTECH_L_X_PT_addSpirit(p, loc) {
     } else { d.根基.溢出的灵气 = ovCur.toFixed(2) + '/' + ovLimit.toFixed(2); }
     d.修为 = KOMUTECH_L_X_PT_cultivation(cur).stage;
     if (oldStage && oldStage !== d.修为) {
-        d.属性点 = (d.属性点 || 0) + Math.floor(Math.random() * 4) + 3;
-        if (Math.random() < 0.5) d.血量 = (d.血量 || 0) + 1;
-        if (Math.random() < 0.5) d.攻击力 = (d.攻击力 || 0) + 1;
-        if (Math.random() < 0.5) d.防御力 = (d.防御力 || 0) + 1;
-        if (Math.random() < 0.5) d.速度 = (d.速度 || 0) + 1;
-        p.sendMessage('§a恭喜！修为突破小阶段，获得属性点奖励！');
+        let hasFailureMark = (d.突破失败 === true);
+        if (!hasFailureMark) {
+            d.属性点 = (d.属性点 || 0) + Math.floor(Math.random() * 4) + 3;
+            if (Math.random() < 0.5) d.血量 = (d.血量 || 0) + 1;
+            if (Math.random() < 0.5) d.攻击力 = (d.攻击力 || 0) + 1;
+            if (Math.random() < 0.5) d.防御力 = (d.防御力 || 0) + 1;
+            if (Math.random() < 0.5) d.速度 = (d.速度 || 0) + 1;
+            p.sendMessage('§a恭喜！修为突破小阶段，获得属性点奖励！');
+        } else {
+            p.sendMessage('§c修为突破小阶段，但因突破失败标记，不给予属性点奖励。');
+        }
     }
-    KOMUTECH_L_X_PT_updateLingliMax(d); KOMUTECH_L_X_PT_save(p, d);
+    KOMUTECH_L_X_PT_updateLingliMax(d);
+    if (cur >= max) {
+        let overflowStr = d.根基.溢出的灵气 || '0.00/0.00';
+        let overflowMatch = overflowStr.match(/^(\d+\.?\d*)\/(\d+\.?\d*)$/);
+        let overflowCur = overflowMatch ? parseFloat(overflowMatch[1]) : 0;
+        let overflowMax = overflowMatch ? parseFloat(overflowMatch[2]) : 0;
+        let solid = d.根基.稳固值 || 0;
+        p.sendActionBar(`§b溢出的灵气: §6${overflowCur.toFixed(2)} §7/ §6${overflowMax.toFixed(2)} §7| §b稳固值: §6${solid}`);
+    } else {
+        p.sendActionBar('§b灵气: §6' + cur.toFixed(2) + ' §7/ §6' + max);
+    }
+    KOMUTECH_L_X_PT_save(p, d);
     return ovCur >= ovLimit;
 }
 function KOMUTECH_L_X_PT_particles(p, type, bcnt, rRange, yRange) {
@@ -280,6 +332,7 @@ function KOMUTECH_L_X_PT_finishBreak(loc, p, d, ok) {
         let reduce = Math.max(0, baseReduce - reduction);
         let reduced = cur * (1 - reduce); if (reduced < 0) reduced = 0;
         d.灵气 = reduced.toFixed(2) + '/' + max; d.根基.破镜药力 = 0; d.根基.保阶药力 = 0;
+        d.突破失败 = true;
         p.sendMessage('§c突破失败... 灵气损失了 ' + (reduce * 100).toFixed(0) + '%');
         KOMUTECH_L_X_PT_save(p, d); KOMUTECH_L_X_PT_cleanup(loc, p); KOMUTECH_L_X_PT_setState(loc, 0); KOMUTECH_L_X_PT_monitorLocs.remove(loc);
         return;
@@ -301,7 +354,7 @@ function KOMUTECH_L_X_PT_startTribulation(loc, p, d, nmax, total, current, cur) 
     p.sendMessage('§e第 ' + current + '/' + total + ' 道雷劫');
     let world = p.getWorld(), locP = p.getLocation();
     world.strikeLightning(locP);
-    let baseDmg = (d.血量 || 0) * 5;
+    let baseDmg = (d.血量 || 0) * 3;
     let realmMult = KOMUTECH_L_X_PT_realmCoeff(cur);
     let els = (d.灵根 || '').split('、').filter(e => e);
     let q = parseFloat(d.总品质) || 0.5;
@@ -311,6 +364,8 @@ function KOMUTECH_L_X_PT_startTribulation(loc, p, d, nmax, total, current, cur) 
     let genguMult = 1 - genguReduce;
     let growth = Math.pow(1.05, current - 1);
     let finalDmg = baseDmg * realmMult * linggenMult * shaQiMult * genguMult * growth;
+    let defenseReduce = (d['防御力_实际'] || 0) * (d['根骨'] || 0);
+    finalDmg = Math.max(1, Math.floor(finalDmg - defenseReduce));
     let gongDeReduce = Math.floor((d.功德 || 0) / 100);
     let reduced = Math.min(finalDmg, gongDeReduce);
     finalDmg = Math.max(1, Math.floor(finalDmg - reduced));
@@ -330,12 +385,14 @@ function KOMUTECH_L_X_PT_failTribulation(loc, p, d) {
     let reduce = Math.max(0, baseReduce - reduction);
     let reduced = cur * (1 - reduce); if (reduced < 0) reduced = 0;
     d.灵气 = reduced.toFixed(2) + '/' + max; d.根基.破镜药力 = 0; d.根基.保阶药力 = 0;
+    d.突破失败 = true;
     p.sendMessage('§c雷劫失败... 灵气损失了 ' + (reduce * 100).toFixed(0) + '%');
     KOMUTECH_L_X_PT_save(p, d); KOMUTECH_L_X_PT_cleanup(loc, p); KOMUTECH_L_X_PT_setState(loc, 0); KOMUTECH_L_X_PT_monitorLocs.remove(loc);
 }
 function KOMUTECH_L_X_PT_applyBreakSuccess(loc, p, d, nmax, cur) {
     let ncur = nmax / 10 + 1; if (ncur > nmax) ncur = nmax; d.灵气 = ncur.toFixed(2) + '/' + nmax; d.修为 = KOMUTECH_L_X_PT_cultivation(ncur).stage;
     KOMUTECH_L_X_PT_updateLingliMax(d); let ovLimit = Math.floor((d.根骨 / 10) * nmax * 100) / 100;
+    d.突破失败 = false;
     let hasDrug = ((d.根基 || {}).破镜药力 || 0) > 0;
     let hasTribDrug = ((d.根基 || {}).保阶药力 || 0) > 0;
     if (hasDrug || hasTribDrug) {

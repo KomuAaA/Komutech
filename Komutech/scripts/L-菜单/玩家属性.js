@@ -23,7 +23,7 @@ const SLOT = {
     MODE: 8, HEAD: 4, CLOSE: 49, BACK: 48, PREV: 48, NEXT: 50, CONFIRM: 53, LINGGEN_ATTR: 40, SHAQI: 12,
     GLOBAL_TOGGLE: 51, ATTR_POINTS: 6, WUXING: 15, GENGU: 16, SPEED: 32, SPIRIT_SENSE: 33, LINGLI: 31,
     HP: 23, ATTACK: 24, DEFENSE: 25, SPIRIT: 22, CULTIVATION: 13, PLAYER_COUNT: 6, NO_DATA: 22,
-    FOUNDATION: 14, PVP: 0
+    FOUNDATION: 14, PVP: 0, BREAK_STATUS: 7
 };
 const BORDER_SLOTS = [0,1,2,3,5,7,9,17,18,26,27,35,36,44,45,46,47,52];
 const QUALITY_SLOTS = {20:'金',28:'木',30:'水',37:'火',39:'土',29:'雷',19:'风',21:'冰',11:'光',38:'暗'};
@@ -64,7 +64,8 @@ const KOMUTECH_WJSX_ATTR_META = {
     '功德':{mat:'GOLD_NUGGET',name:'§6功德'},'煞气':{mat:'GHAST_TEAR',name:'§6煞气'},'根基':{mat:'BEDROCK',name:'§6根基'},
     '悟性':{mat:'ENCHANTED_BOOK',name:'§6悟性'},'根骨':{mat:'BONE',name:'§6根骨'},'灵力':{mat:'GHAST_TEAR',name:'§6灵力'},
     '属性点':{mat:'NETHER_STAR',name:'§e属性点'},'灵根':{mat:'NETHER_STAR',name:'§6灵根'},'灵气':{mat:'EXPERIENCE_BOTTLE',name:'§6灵气'},
-    '修为':{mat:'PAINTING',name:'§6修为'},'灵根属性':{mat:'NETHER_STAR',name:'§6灵根属性'}
+    '修为':{mat:'PAINTING',name:'§6修为'},'灵根属性':{mat:'NETHER_STAR',name:'§6灵根属性'},
+    '突破状态':{mat:'EMERALD',name:'§e突破状态'}
 };
 const KOMUTECH_WJSX_MUTATED_COLORS = {'雷':true,'风':true,'冰':true,'光':true,'暗':true};
 const KOMUTECH_WJSX_MAX_REACH_BONUS = 5.0;
@@ -330,6 +331,12 @@ function KOMUTECH_WJSX_renderAttributes(inv, data, isAdm) {
         const m = KOMUTECH_WJSX_ATTR_META[k] || {};
         inv.setItem(parseInt(s), KOMUTECH_WJSX_createItem(m.mat || 'PAPER', m.name || k, lore));
     }
+    if (data && data.突破失败 !== undefined) {
+        let hasFailMark = data.突破失败 === true;
+        let statusLore = ['§7突破失败: ' + (hasFailMark ? '§c是' : '§a否')];
+        if (isAdm) statusLore.push('§a右键切换状态');
+        inv.setItem(SLOT.BREAK_STATUS, KOMUTECH_WJSX_createItem(hasFailMark ? 'REDSTONE' : 'EMERALD', '§e突破状态', statusLore));
+    }
 }
 function KOMUTECH_WJSX_applyLinggenQualities(inv, data, isAdm) {
     const sec = data.灵根品质; if (!sec) return;
@@ -479,7 +486,15 @@ function handleAdminViewClick(p, slot, e, st) {
     if (slot === SLOT.BACK) { KOMUTECH_WJSX_openAdminList(p, 1); return true; }
     if (slot === SLOT.CLOSE) { p.closeInventory(); return true; }
     if (slot === SLOT.CONFIRM) { savePlayerData(pn, dt); const target = Bukkit.getPlayer(pn); if (target != null && target.isOnline()) { KOMUTECH_WJSX_applyPlayerAttributes(target, dt); p.sendMessage('§a修改已保存并应用。'); } else { p.sendMessage('§a修改已保存，玩家上线后将自动生效。'); } KOMUTECH_WJSX_openAdminView(p, pn); return true; }
-    if (e.isRightClick() && dt) { KOMUTECH_WJSX_handleRightClick(p, slot, pn, dt); return true; }
+    if (e.isRightClick() && dt) {
+        if (slot === SLOT.BREAK_STATUS) {
+            dt.突破失败 = !(dt.突破失败 === true);
+            KOMUTECH_WJSX_openAdminViewWithTemp(p, pn, dt);
+            return true;
+        }
+        KOMUTECH_WJSX_handleRightClick(p, slot, pn, dt);
+        return true;
+    }
     return false;
 }
 function KOMUTECH_WJSX_registerListener() {

@@ -34,8 +34,7 @@ const KOMUTECH_QHG_ITEMS = {
     ],
     leisi: [
         { id: 'KOMUTECH_L_JCWP_儡肆通行柬', lines: ['§f---§a§l点击购买§f---', '§a•需：64 上品灵石 + 16 功德券'], price: [{ id: 'KOMUTECH_L_DJ_SPLS', amount: 64 }, { id: 'KOMUTECH_L_DJ_功德券', amount: 16 }] },
-        { id: 'KOMUTECH_L_SW_KLN', lines: ['§f---§a§l点击购买§f---', '§a•需：64 上品灵石 + 4 昙息玉'], price: [{ id: 'KOMUTECH_L_DJ_SPLS', amount: 64 }, { id: 'KOMUTECH_L_KW_TXY', amount: 4 }] },
-        { id: 'KOMUTECH_L_SW_XGO', lines: ['§f---§a§l点击购买§f---', '§a•需：64 上品灵石 + 4 枢机玉'], price: [{ id: 'KOMUTECH_L_DJ_SPLS', amount: 64 }, { id: 'KOMUTECH_L_KW_SJY', amount: 4 }] }
+        { id: 'KOMUTECH_L_SW_KLN', lines: ['§f---§a§l点击购买§f---', '§a•需：64 上品灵石 + 4 昙息玉'], price: [{ id: 'KOMUTECH_L_DJ_SPLS', amount: 64 }, { id: 'KOMUTECH_L_KW_TXY', amount: 4 }] }
     ]
 };
 let KOMUTECH_QHG_PRICE_MAP = new java.util.HashMap();

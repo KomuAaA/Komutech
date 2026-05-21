@@ -1,87 +1,64 @@
-// 功德值调整器 - 右键为副手道具增加1000功德值（上限1314520）
 const Bukkit = Java.type('org.bukkit.Bukkit');
-
-// 解析功德/缺德值
-function parseMeritValue(item) {
-    if (!item || !item.hasItemMeta()) return 0;
-    const meta = item.getItemMeta();
-    const lore = meta.hasLore() ? meta.getLore() : [];
-    for (let i = 0; i < lore.size(); i++) {
-        const line = lore.get(i);
-        let match = line.match(/§b功德值：§6(\d+)/);
-        if (match) return parseInt(match[1]) || 0;
-        match = line.match(/§c缺德值：§6(\d+)/);
-        if (match) return -parseInt(match[1]) || 0;
-    }
-    return 0;
+const Files = Java.type('java.nio.file.Files');
+const Paths = Java.type('java.nio.file.Paths');
+const StandardCharsets = Java.type('java.nio.charset.StandardCharsets');
+const ChatMessageType = Java.type('net.md_5.bungee.api.ChatMessageType');
+const TextComponent = Java.type('net.md_5.bungee.api.chat.TextComponent');
+const KOMUTECH_L_DJ_GDQ_DATA_DIR = 'plugins/RykenSlimefunCustomizer/addon_configs/Komutech/玩家属性';
+const KOMUTECH_L_DJ_GDQ_ITEM_ID = 'KOMUTECH_L_DJ_功德券';
+const KOMUTECH_L_DJ_GDQ_PER_TICKET = 100;
+function KOMUTECH_L_DJ_GDQ_sendMsg(player, msg) { player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(msg)); }
+function KOMUTECH_L_DJ_GDQ_loadData(name) { try { const path = Paths.get(KOMUTECH_L_DJ_GDQ_DATA_DIR, '[' + name + '].json'); return Files.exists(path) ? JSON.parse(Files.readString(path, StandardCharsets.UTF_8)) : null; } catch(e) { return null; } }
+function KOMUTECH_L_DJ_GDQ_saveData(name, data) { try { const path = Paths.get(KOMUTECH_L_DJ_GDQ_DATA_DIR, '[' + name + '].json'); Files.writeString(path, JSON.stringify(data, null, 2), StandardCharsets.UTF_8); return true; } catch(e) { return false; } }
+function KOMUTECH_L_DJ_GDQ_getTicketSlot(player) {
+    const main = player.getInventory().getItemInMainHand();
+    const off = player.getInventory().getItemInOffHand();
+    const SlimefunItem = Java.type('io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem');
+    let isTicket = function(item) {
+        if (!item || item.getType().isAir()) return false;
+        const sf = SlimefunItem.getByItem(item);
+        return sf && sf.getId() === KOMUTECH_L_DJ_GDQ_ITEM_ID;
+    };
+    if (isTicket(main)) return { slot: 'main', item: main, amount: main.getAmount() };
+    if (isTicket(off)) return { slot: 'off', item: off, amount: off.getAmount() };
+    return null;
 }
-
-// 设置功德值
-function setMeritValue(item, value) {
-    if (!item || !item.hasItemMeta()) return false;
-    const meta = item.getItemMeta();
-    const lore = meta.hasLore() ? meta.getLore() : [];
-    const absValue = Math.abs(value);
-    const targetLine = value >= 0 ? `§b功德值：§6${absValue}` : `§c缺德值：§6${absValue}`;
-    for (let i = 0; i < lore.size(); i++) {
-        const line = lore.get(i);
-        if (/§b功德值：§6\d+/.test(line) || /§c缺德值：§6\d+/.test(line)) {
-            lore.set(i, targetLine);
-            meta.setLore(lore);
-            item.setItemMeta(meta);
-            return true;
-        }
+function KOMUTECH_L_DJ_GDQ_consumeTicket(player, slot, consumeAll) {
+    const inv = player.getInventory();
+    let item = slot === 'main' ? inv.getItemInMainHand() : inv.getItemInOffHand();
+    if (!item || item.getAmount() < 1) return 0;
+    let consumed = consumeAll ? item.getAmount() : 1;
+    if (item.getAmount() > consumed) {
+        item.setAmount(item.getAmount() - consumed);
+    } else {
+        if (slot === 'main') inv.setItemInMainHand(null);
+        else inv.setItemInOffHand(null);
     }
-    return false;
+    player.updateInventory();
+    return consumed;
 }
-
-// 检查是否有功德值属性
-function hasMeritLine(item) {
-    if (!item || !item.hasItemMeta()) return false;
-    const meta = item.getItemMeta();
-    const lore = meta.hasLore() ? meta.getLore() : [];
-    for (let i = 0; i < lore.size(); i++) {
-        const line = lore.get(i);
-        if (/§b功德值：§6\d+/.test(line) || /§c缺德值：§6\d+/.test(line)) return true;
-    }
-    return false;
-}
-
-// 主函数
 function onUse(event) {
     const player = event.getPlayer();
-    const mainItem = player.getInventory().getItemInMainHand();
-    const offhandItem = player.getInventory().getItemInOffHand();
-
-    if (!offhandItem || offhandItem.getType().isAir()) {
-        player.sendMessage("§c请将需要调整的道具放在副手！");
+    const ticket = KOMUTECH_L_DJ_GDQ_getTicketSlot(player);
+    if (!ticket) { KOMUTECH_L_DJ_GDQ_sendMsg(player, "§c请手持功德券使用！"); return; }
+    let data = KOMUTECH_L_DJ_GDQ_loadData(player.getName());
+    if (!data) { KOMUTECH_L_DJ_GDQ_sendMsg(player, "§c无法读取玩家属性数据！"); return; }
+    let current = data.功德 || 0;
+    let consumeAll = player.isSneaking();
+    let amount = consumeAll ? ticket.amount : 1;
+    if (amount < 1) { KOMUTECH_L_DJ_GDQ_sendMsg(player, "§c没有足够的功德券！"); return; }
+    let add = amount * KOMUTECH_L_DJ_GDQ_PER_TICKET;
+    let newMerit = current + add;
+    data.功德 = newMerit;
+    if (!KOMUTECH_L_DJ_GDQ_saveData(player.getName(), data)) {
+        KOMUTECH_L_DJ_GDQ_sendMsg(player, "§c保存数据失败！");
         return;
     }
-    if (!mainItem || mainItem.getAmount() < 1) {
-        player.sendMessage("§c调整器数量不足！");
+    let consumed = KOMUTECH_L_DJ_GDQ_consumeTicket(player, ticket.slot, consumeAll);
+    if (consumed !== amount) {
+        KOMUTECH_L_DJ_GDQ_sendMsg(player, "§c消耗功德券数量异常！");
         return;
     }
-    if (!hasMeritLine(offhandItem)) {
-        player.sendMessage("§c副手道具没有功德值属性！");
-        return;
-    }
-
-    const currentMerit = parseMeritValue(offhandItem);
-    const MAX = 1314520;
-
-    // 检查是否已达上限（仅针对正功德）
-    if (currentMerit >= MAX) {
-        player.sendMessage(`§c功德值已达到上限 ${MAX}，无法继续增加！`);
-        return;
-    }
-
-    let newMerit = currentMerit + 1000;
-    if (newMerit > MAX) newMerit = MAX;
-
-    if (setMeritValue(offhandItem, newMerit)) {
-        player.sendMessage("§a功德值调整成功！");
-        player.sendMessage(`§6功德值：${currentMerit >= 0 ? currentMerit : "缺德" + Math.abs(currentMerit)} → ${newMerit >= 0 ? newMerit : "缺德" + Math.abs(newMerit)}`);
-        mainItem.setAmount(mainItem.getAmount() - 1);
-        player.getWorld().playSound(player.getLocation(), "block.note_block.bell", 1, 1);
-    }
+    KOMUTECH_L_DJ_GDQ_sendMsg(player, `§a功德 +${add} §7(消耗${consumed}张) §7| §f当前 ${newMerit}`);
+    player.getWorld().playSound(player.getLocation(), "block.note_block.bell", 1, 1);
 }

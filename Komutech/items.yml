@@ -4289,7 +4289,6 @@ Komutech_L_F_魂缚符:
       - "{#CC9A6E}│ {#D9B2D6}右键燃灵施惩戒 {#D2691E}·魂不敢逆"
       - "{#DDA0DD}│ {#CC9A6E}若魂殒命魂归墟 {#D2691E}·符随魂碎"
       - "{#D2691E}└─ {#D9B2D6}魂符相依 {#DDA0DD}·魂灭符灭"
-      - "§b灵力剩余：§6100 §7/ §6100"
       - "§7不要堆叠使用"
     material_type: mc
     material: map
@@ -4635,20 +4634,19 @@ Komutech_L_SW_BQG:
 
 
 ##灵-管理员工具
-Komutech_L_GL_灵-物品属性调整器:
+KOMUTECH_L_GL_云篆匣管理器:
   item_group: Komutech_L_GL
   item:
-    name: '&6&l⚠{#FFD700}&l灵{#FFC107}&l-{#FFA500}&l物{#FF8C00}&l品{#FF6B00}&l属{#E65C00}&l性{#CC4E00}&l调{#B34200}&l整{#993600}&l器&6&l⚠'
+    name: '{#9370DB}&kA{#BA55D3}&l云{#DDA0DD}&l篆{#E6E6FA}&l匣{#FFD700}&l管{#FFA500}&l理{#FF8C00}&l器{#FFD700}&kA'
     lore:
-      - "{#FFD700}🔱 {#FFC107}管理员专属 {#FFA500}· {#FF8C00}万灵属性执掌者 {#FF6B00}🔱"
-      - "{#FFC107}│ {#FFA500}⚙ 可调属性：{#FF8C00}功德值 {#FF6B00}| {#E65C00}品阶 {#CC4E00}| {#B34200}灵力上限 {#993600}| 熟练度"
-      - "{#FFA500}│ {#FF8C00}💡 指令提示：{#FF6B00}使用时输入「help」{#E65C00}查看详细使用手册"
-      - "{#FF8C00}│ {#FF6B00}🔒 权限限制：{#E65C00}仅管理员可使用 {#CC4E00}· 无调整上限"
-      - "{#FF6B00}└─ {#E65C00}一器定乾坤 {#CC4E00}· {#B34200}属性调校无边界 {#993600}"
+      - "     &6&l『&4&l管理员物品&6&l』"
+      - "{#9370DB}&kA{#BA55D3} {#DDA0DD}&l万{#E6E6FA}&l法{#FFD700}&l归{#FFA500}&l宗 {#FFD700}· {#DDA0DD}&l云{#E6E6FA}&l篆{#FFA500}&l通{#FFD700}&l玄{#BA55D3} {#9370DB}&kA"
+      - "{#BA55D3}&kA{#DDA0DD} {#E6E6FA}&l推{#FFD700}&l演{#FFA500}&l天{#FF8C00}&l机 {#DDA0DD}· {#E6E6FA}&l尽{#FFD700}&l览{#FFA500}&l卷{#FF8C00}&l宗{#BA55D3} {#DDA0DD}&kA"
+      - "{#DDA0DD}&kA{#E6E6FA} {#FFD700}&l熟{#FFA500}&l能{#FF8C00}&l生{#FFD700}&l巧 {#E6E6FA}· {#FFD700}&l心{#FFA500}&l印{#FF8C00}&l万{#FFD700}&l诀{#DDA0DD} {#E6E6FA}&kA"    
     material_type: mc
     material: feather
     glow: true
-  script: L_道具/灵-物品属性调整器
+  script: L_工具/云篆匣管理器
   recipe_type: NULL
 Komutech_L_GL_测试僵尸:
   lateInit: false

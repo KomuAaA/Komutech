@@ -183,11 +183,11 @@ function KOMUTECH_L_ZJ_ZJHC_finalCraft(p, procLoc, menu) {
     } else if (KOMUTECH_L_ZJ_ZJHC_slotsMatch(menu, [10], true, KOMUTECH_L_ZJ_ZJHC_ITEM_WU) &&
                KOMUTECH_L_ZJ_ZJHC_slotsMatch(menu, otherSlots, false, KOMUTECH_L_ZJ_ZJHC_ENDER_CHEST)) {
         outputItem = KOMUTECH_L_ZJ_ZJHC_getItemStack(KOMUTECH_L_ZJ_ZJHC_ITEM_WANXIANG);
-        consumeMap = otherSlots;
+        consumeMap = [10, ...otherSlots];
     } else if (KOMUTECH_L_ZJ_ZJHC_slotsMatch(menu, [10], true, KOMUTECH_L_ZJ_ZJHC_ITEM_WU) &&
                KOMUTECH_L_ZJ_ZJHC_slotsMatch(menu, otherSlots, true, KOMUTECH_L_ZJ_ZJHC_ITEM_XXZZ)) {
         outputItem = KOMUTECH_L_ZJ_ZJHC_getItemStack(KOMUTECH_L_ZJ_ZJHC_ITEM_WANYANYI);
-        consumeMap = otherSlots;
+        consumeMap = [10, ...otherSlots];
     } else {
         p.sendMessage("§c合成失败：配方不匹配！"); return;
     }
